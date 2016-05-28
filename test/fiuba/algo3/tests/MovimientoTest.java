@@ -1,6 +1,5 @@
 package fiuba.algo3.tests;
 
-import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.is;
 
 import org.junit.Assert;
@@ -19,8 +18,8 @@ public class MovimientoTest {
 		Coordenada destinoInvalido = new Coordenada ( 20, 20 );
 		
 				
-		Assert.assertThat( movimiento.movimientoValido(origen, destino), is( true ) );
-		Assert.assertThat( movimiento.movimientoValido(origen, destinoInvalido), is( false ) );
+		Assert.assertThat( movimiento.movimientoValido( origen, destino ), is( true ) );
+		Assert.assertThat( movimiento.movimientoValido( origen, destinoInvalido ), is( false ) );
 		
 	}
 

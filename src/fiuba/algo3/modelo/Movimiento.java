@@ -1,5 +1,7 @@
 package fiuba.algo3.modelo;
 
+//no se usa en ningun lado por el momento
+
 public class Movimiento {
 	private int rango;
 	

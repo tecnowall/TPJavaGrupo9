@@ -1,15 +1,16 @@
 package fiuba.algo3.tests;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.*;
 
 import org.junit.Assert;
 import org.junit.Test;
 
+import fiuba.algo3.modelo.Algoformer;
 import fiuba.algo3.modelo.Casillero;
+import fiuba.algo3.modelo.CasilleroOcupadoException;
+import fiuba.algo3.modelo.CasilleroVacioException;
 import fiuba.algo3.modelo.Coordenada;
 import fiuba.algo3.modelo.Ubicable;
-import fiuba.algo3.modelo.Algoformer;
 
 public class CasilleroTest {
 
@@ -18,7 +19,7 @@ public class CasilleroTest {
 		Coordenada coordenada = new Coordenada( 1, 1 );
 		Casillero casillero = new Casillero( coordenada );
 		
-		Assert.assertThat(casillero.estaVacio(), is( true ) );
+		Assert.assertThat(casillero.estaOcupado(), is( false ) );
 	}
 	
 	@Test
@@ -29,7 +30,7 @@ public class CasilleroTest {
 		
 		casillero.poner( algoformer );
 		
-		Assert.assertThat(casillero.estaVacio(), is( false ) );
+		Assert.assertThat(casillero.estaOcupado(), is( true ) );
 	}
 	
 	@Test
@@ -41,7 +42,7 @@ public class CasilleroTest {
 		casillero.poner( algoformer );
 		algoformer = casillero.sacar();
 		
-		Assert.assertThat(casillero.estaVacio(), is( true ) );
+		Assert.assertThat(casillero.estaOcupado(), is( false ) );
 	}
 
 	@Test
@@ -55,5 +56,23 @@ public class CasilleroTest {
 		algoformer2 = (Algoformer)casillero.sacar();
 		
 		Assert.assertThat( algoformer2.getNombre(), is( "Optimus" ) );
+	}
+	
+	@Test( expected = CasilleroOcupadoException.class )
+	public void testPonerEnUnCasilleroOcupadoLanzaExcepcion(){
+		Coordenada coordenada = new Coordenada( 1, 1 );
+		Casillero casillero = new Casillero( coordenada );
+		Algoformer algoformer = new Algoformer("Optimus");
+		
+		casillero.poner( algoformer );
+		casillero.poner( algoformer );
+	}
+	
+	@Test( expected = CasilleroVacioException.class )
+	public void testSacarDeUnCasilleroVacioLanzaExcepcion(){
+		Coordenada coordenada = new Coordenada( 1, 1 );
+		Casillero casillero = new Casillero( coordenada );
+		
+		casillero.sacar();	
 	}
 }

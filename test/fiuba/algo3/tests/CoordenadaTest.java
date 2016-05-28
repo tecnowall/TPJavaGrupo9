@@ -1,11 +1,7 @@
 package fiuba.algo3.tests;
 
-import static org.junit.Assert.*;
-
-import java.awt.Point;
-
-import static org.hamcrest.CoreMatchers.*;
-
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.not;
 
 import org.junit.Assert;
 import org.junit.Test;

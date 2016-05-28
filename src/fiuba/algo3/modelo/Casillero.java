@@ -14,16 +14,22 @@ public class Casillero {
 	}
 	
 	public Ubicable getContenido(){
+		if ( !estaOcupado() ){
+			throw new CasilleroVacioException();
+		}
 		return this.contenido;
 	}
 	
 	public void poner( Ubicable unUbicable ) {
+		if ( estaOcupado() ){
+			throw new CasilleroOcupadoException();
+		}
 		this.contenido = unUbicable;
 		unUbicable.ubicar( this.coordenada );
 	}
 	
-	public boolean estaVacio(){
-		return ( contenido == null );
+	public boolean estaOcupado(){
+		return ( contenido != null );
 	}
 	
 	public void vaciar(){
@@ -32,7 +38,7 @@ public class Casillero {
 	
 	public Ubicable sacar(){
 		try{
-			return this.contenido;
+			return this.getContenido();
 		} finally {
 			vaciar();
 		}
