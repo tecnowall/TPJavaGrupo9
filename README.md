@@ -12,5 +12,7 @@ Docente a cargo:
 ---------- 
 Gabriel Falcone
 
-Estado: Algun codigo hecho (falta arreglar y hacer un monton de cosas) y el Travis dice build correcto.
-Solo falta hacer todo el TP y terminamos.
+#####Estado: 
+Algun codigo hecho (falta arreglar y hacer un monton de cosas) y el Travis dice build correcto.
+Agregado el mover para los transformer pero no se si esta bien hecho de acuerdo a los que nos dijo Gabriel
+Algoformer, lo delega en Tablero.
