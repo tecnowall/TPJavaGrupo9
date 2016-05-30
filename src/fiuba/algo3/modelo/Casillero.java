@@ -3,10 +3,12 @@ package fiuba.algo3.modelo;
 public class Casillero {
 	private Coordenada coordenada;
 	private Ubicable contenido;
+	private boolean ocupado;
 	
 	public Casillero( Coordenada coordenada ){
 		this.coordenada = coordenada;
 		this.contenido = null;
+		this.ocupado = false;
 	}
 	
 	public Coordenada getCoordenada(){
@@ -25,15 +27,17 @@ public class Casillero {
 			throw new CasilleroOcupadoException();
 		}
 		this.contenido = unUbicable;
+		this.ocupado = true;
 		unUbicable.ubicar( this.coordenada );
 	}
 	
 	public boolean estaOcupado(){
-		return ( contenido != null );
+		return ( ocupado );
 	}
 	
 	public void vaciar(){
 		contenido = null;
+		this.ocupado = false;
 	}
 	
 	public Ubicable sacar(){
