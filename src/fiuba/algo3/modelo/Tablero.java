@@ -57,4 +57,8 @@ public class Tablero {
 	public void mover( Coordenada origen, Coordenada destino ) {
 		poner( sacar(origen), destino);
 	}
+
+	public void atacar(Coordenada destino, int equipo, int danio) throws FuegoAmigoException {
+		getContenido(destino).recibirAtaque(equipo,danio);
+	}
 }

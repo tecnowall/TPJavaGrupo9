@@ -6,8 +6,10 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import fiuba.algo3.modelo.Algoformer;
+import fiuba.algo3.modelo.AtaqueFueraDeRangoException;
 import fiuba.algo3.modelo.Coordenada;
 import fiuba.algo3.modelo.Forma;
+import fiuba.algo3.modelo.FuegoAmigoException;
 import fiuba.algo3.modelo.MovimientoFueraDeRangoException;
 import fiuba.algo3.modelo.Tablero;
 
@@ -93,6 +95,26 @@ public class AlgoformerTest {
 		Assert.assertThat( optimus.getPosicion(), is( origen ) );
 				
 		optimus.mover( unTablero, destinoLejano );
+	}
+	@Test
+	public void testAtacarAUnAlgoFormerReduceSuVida() throws AtaqueFueraDeRangoException, FuegoAmigoException{
+		Tablero unTablero = new Tablero( 20, 20 );
+		Forma forma1a = new Forma( 50, 2, 2 );
+		Forma forma2a = new Forma( 15, 4, 5 );
+		Algoformer optimus = new Algoformer( "Optimus", 500, forma1a, forma2a);
+		optimus.setEquipo(1);
+		Forma forma1b = new Forma( 10, 3, 1 );
+		Forma forma2b = new Forma( 55, 2, 8 );
+		Algoformer megatron = new Algoformer( "Megatron", 550, forma1b, forma2b);
+		megatron.setEquipo(2);
+		
+		Coordenada origena = new Coordenada( 2, 2 );
+		Coordenada origenb = new Coordenada( 3, 3 );
+		unTablero.poner( optimus, origena );
+		unTablero.poner( megatron, origenb );
+		Coordenada destinoa = origenb;
+		optimus.atacar(unTablero, origenb);
+		Assert.assertTrue(megatron.getVida()==500);
 	}
 
 }
