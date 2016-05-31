@@ -6,6 +6,7 @@ public class Algoformer implements Ubicable {
 	private int vida;
 	private Forma alterna;
 	private Forma actual;
+	private int equipo;
 	
 	public Algoformer( String nombre ){
 		this.nombre = nombre;
@@ -29,7 +30,7 @@ public class Algoformer implements Ubicable {
 	}
 	
 	public boolean movimientoValido( Coordenada destino ){
-		return  ( ( destino.getX() <= ( this.posicion.getX() + this.getRango() ) ) && (  destino.getY() <= ( this.posicion.getY() + this.getRango() ) ) );
+		return  ( ( destino.getX() <= ( this.posicion.getX() + this.getVelocidad() ) ) && (  destino.getY() <= ( this.posicion.getY() + this.getVelocidad() ) ) );
 	}
 	
 	public void mover( Tablero unTablero, Coordenada destino ){		
@@ -38,7 +39,24 @@ public class Algoformer implements Ubicable {
 		}		
 		else throw new MovimientoFueraDeRangoException();
 	}
-	
+	public boolean ataqueValido( Coordenada destino ){
+		return  ( ( destino.getX() <= ( this.posicion.getX() + this.getRango() ) ) && (  destino.getY() <= ( this.posicion.getY() + this.getRango() ) ) );
+	}
+	public void atacar (Tablero unTablero, Coordenada destino) throws AtaqueFueraDeRangoException, FuegoAmigoException{
+		if (ataqueValido(destino)){
+			unTablero.atacar(destino,equipo,this.getPoder());
+		}
+		else throw new AtaqueFueraDeRangoException();
+	}
+	public void recibirAtaque(int unEquipo, int danio) throws FuegoAmigoException{
+		if (unEquipo == equipo){
+			throw new FuegoAmigoException();
+		}
+		vida=vida-danio;
+		if (vida<=0){
+			//MATAR ALGOFORMER
+		}
+	}
 	public String getNombre(){
 		return this.nombre;
 	}
@@ -53,6 +71,9 @@ public class Algoformer implements Ubicable {
 	
 	public void setVida( int vida ){
 		this.vida = vida;
+	}
+	public void setEquipo(int unEquipo){
+		this.equipo=unEquipo;
 	}
 	
 	public int getPoder() {
