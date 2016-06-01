@@ -69,7 +69,7 @@ public class AlgoformerTest {
 		Algoformer optimus = new Algoformer( "Optimus", 500, forma1, forma2 );
 		Coordenada origen = new Coordenada( 2, 2 );
 		Coordenada destino = new Coordenada( 4, 4 );
-		Coordenada destinoLejano = new Coordenada( 7, 7 ); //alcanzable por el modo alterno pero no por el humanoide
+		Coordenada destinoLejano = new Coordenada( 9, 9 ); //alcanzable por el modo alterno pero no por el humanoide
 		
 		unTablero.poner( optimus, origen );
 		Assert.assertThat( optimus.getPosicion(), is( origen ) );
