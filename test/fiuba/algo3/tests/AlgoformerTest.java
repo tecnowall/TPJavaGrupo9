@@ -112,9 +112,42 @@ public class AlgoformerTest {
 		Coordenada origenb = new Coordenada( 3, 3 );
 		unTablero.poner( optimus, origena );
 		unTablero.poner( megatron, origenb );
-		Coordenada destinoa = origenb;
 		optimus.atacar(unTablero, origenb);
 		Assert.assertTrue(megatron.getVida()==500);
 	}
-
+	@Test(expected = AtaqueFueraDeRangoException.class )
+	public void testAtacarAUnAlgoFormerFueraDeRango() throws AtaqueFueraDeRangoException, FuegoAmigoException{
+		Tablero unTablero = new Tablero( 20, 20 );
+		Forma forma1a = new Forma( 50, 2, 2 );
+		Forma forma2a = new Forma( 15, 4, 5 );
+		Algoformer optimus = new Algoformer( "Optimus", 500, forma1a, forma2a);
+		optimus.setEquipo(1);
+		Forma forma1b = new Forma( 10, 3, 1 );
+		Forma forma2b = new Forma( 55, 2, 8 );
+		Algoformer megatron = new Algoformer( "Megatron", 550, forma1b, forma2b);
+		megatron.setEquipo(2);
+		Coordenada origena = new Coordenada( 2, 2 );
+		Coordenada origenb = new Coordenada( 10, 15 );
+		unTablero.poner( optimus, origena );
+		unTablero.poner( megatron, origenb );
+		optimus.atacar(unTablero, origenb);
+	}
+	@Test(expected = FuegoAmigoException.class )
+	public void testFuegoAmigoLanzaExcepcion() throws AtaqueFueraDeRangoException, FuegoAmigoException{
+		Tablero unTablero = new Tablero( 20, 20 );
+		Forma forma1a = new Forma( 50, 2, 2 );
+		Forma forma2a = new Forma( 15, 4, 5 );
+		Algoformer optimus = new Algoformer( "Optimus", 500, forma1a, forma2a);
+		optimus.setEquipo(1);
+		Forma forma1b = new Forma( 10, 3, 1 );
+		Forma forma2b = new Forma( 55, 2, 8 );
+		Algoformer megatron = new Algoformer( "Megatron", 550, forma1b, forma2b);
+		megatron.setEquipo(1);
+		
+		Coordenada origena = new Coordenada( 2, 2 );
+		Coordenada origenb = new Coordenada( 3, 3 );
+		unTablero.poner( optimus, origena );
+		unTablero.poner( megatron, origenb );
+		optimus.atacar(unTablero, origenb);
+	}
 }
