@@ -1,9 +1,12 @@
 package fiuba.algo3.modelo;
 
+
+
 import java.util.HashMap;
 
+
 public class Tablero {
-	private HashMap<Coordenada, Casillero> casilleros;
+	private transient HashMap<Coordenada, Casillero> casilleros;
 	private int ancho;
 	private int alto;
 	
@@ -23,6 +26,40 @@ public class Tablero {
 			}
 		}
 	}
+	
+//	public void persistir(){
+//		Gson gson = new Gson();
+//		String json = gson.toJson(this);
+////        System.out.println(json);
+//        System.out.println(System.getProperty("user.dir"));
+//      
+//        
+//        try (FileWriter writer = new FileWriter(System.getProperty("user.dir") + System.getProperty("file.separator") + "json" 
+//        + System.getProperty("file.separator") + "tablero.json")) {
+//
+//            gson.toJson(this, writer);
+//
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//	}
+//
+//	public static Tablero crearDesdeJson(){
+//		
+//	    GsonBuilder gsonBuilder = new GsonBuilder();
+//	    gsonBuilder.registerTypeAdapter(Tablero.class, new TableroDeserializador());
+//	    Gson gson = gsonBuilder.create();
+//	    
+//        try (Reader reader = new FileReader(System.getProperty("user.dir") + System.getProperty("file.separator") + "json" 
+//                + System.getProperty("file.separator") + "tablero.json")) {
+//
+//            Tablero tablero = gson.fromJson(reader, Tablero.class);
+//            return tablero;
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//        return null;
+//	}
 	
 	private Casillero getCasillero( Coordenada coordenada ){
 		if ( this.casilleros.containsKey( coordenada ) ){
@@ -60,5 +97,21 @@ public class Tablero {
 
 	public void atacar(Coordenada destino, int equipo, int danio) throws FuegoAmigoException {
 		getContenido(destino).recibirAtaque(equipo,danio);
+	}
+
+	public int getAncho() {
+		return ancho;
+	}
+
+	public void setAncho(int ancho) {
+		this.ancho = ancho;
+	}
+
+	public int getAlto() {
+		return alto;
+	}
+
+	public void setAlto(int alto) {
+		this.alto = alto;
 	}
 }
