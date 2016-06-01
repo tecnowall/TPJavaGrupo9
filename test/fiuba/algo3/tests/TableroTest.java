@@ -98,4 +98,15 @@ public class TableroTest {
 		tablero.poner( algoformer, origen );
 		tablero.mover( origen, fueraDelLimite );		
 	}
+	
+	@Test
+	public void testSePuedeCrearUnTableroConAnchoYAltoDefinidoPorTableroJson(){
+		Ubicable algoformer = new Algoformer("optimus");		
+		Coordenada coordenada = new Coordenada( 2, 2 );
+
+		Tablero tablero = Tablero.crearDesdeJson();		
+		tablero.poner(algoformer, coordenada);
+		
+		Assert.assertThat( tablero.estaOcupado( coordenada ), is( true ) );
+	}
 }
