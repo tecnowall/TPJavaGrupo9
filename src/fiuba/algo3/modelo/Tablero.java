@@ -4,17 +4,6 @@ package fiuba.algo3.modelo;
 
 import java.util.HashMap;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.Reader;
-
-
-import java.io.FileWriter;
-import java.io.IOException;
-
 
 public class Tablero {
 	private transient HashMap<Coordenada, Casillero> casilleros;
@@ -38,39 +27,39 @@ public class Tablero {
 		}
 	}
 	
-	public void persistir(){
-		Gson gson = new Gson();
-		String json = gson.toJson(this);
-//        System.out.println(json);
-        System.out.println(System.getProperty("user.dir"));
-      
-        
-        try (FileWriter writer = new FileWriter(System.getProperty("user.dir") + System.getProperty("file.separator") + "json" 
-        + System.getProperty("file.separator") + "tablero.json")) {
-
-            gson.toJson(this, writer);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-	}
-
-	public static Tablero crearDesdeJson(){
-		
-	    GsonBuilder gsonBuilder = new GsonBuilder();
-	    gsonBuilder.registerTypeAdapter(Tablero.class, new TableroDeserializador());
-	    Gson gson = gsonBuilder.create();
-	    
-        try (Reader reader = new FileReader(System.getProperty("user.dir") + System.getProperty("file.separator") + "json" 
-                + System.getProperty("file.separator") + "tablero.json")) {
-
-            Tablero tablero = gson.fromJson(reader, Tablero.class);
-            return tablero;
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return null;
-	}
+//	public void persistir(){
+//		Gson gson = new Gson();
+//		String json = gson.toJson(this);
+////        System.out.println(json);
+//        System.out.println(System.getProperty("user.dir"));
+//      
+//        
+//        try (FileWriter writer = new FileWriter(System.getProperty("user.dir") + System.getProperty("file.separator") + "json" 
+//        + System.getProperty("file.separator") + "tablero.json")) {
+//
+//            gson.toJson(this, writer);
+//
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//	}
+//
+//	public static Tablero crearDesdeJson(){
+//		
+//	    GsonBuilder gsonBuilder = new GsonBuilder();
+//	    gsonBuilder.registerTypeAdapter(Tablero.class, new TableroDeserializador());
+//	    Gson gson = gsonBuilder.create();
+//	    
+//        try (Reader reader = new FileReader(System.getProperty("user.dir") + System.getProperty("file.separator") + "json" 
+//                + System.getProperty("file.separator") + "tablero.json")) {
+//
+//            Tablero tablero = gson.fromJson(reader, Tablero.class);
+//            return tablero;
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//        return null;
+//	}
 	
 	private Casillero getCasillero( Coordenada coordenada ){
 		if ( this.casilleros.containsKey( coordenada ) ){
