@@ -13,7 +13,8 @@
         <dependency org="net.sourceforge.cobertura" name="cobertura" rev="2.1.1" conf="build->default"/>
         
         <dependency org="pmd" name="pmd" rev="4.3" conf="analysis->default"/>
-        
+        <!-- http://mvnrepository.com/artifact/com.google.code.gson/gson -->
+		<dependency org="com.google.code.gson" name="gson" rev="2.6.2"/>
         
         <!--
          
