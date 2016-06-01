@@ -44,7 +44,7 @@ public class Algoformer implements Ubicable {
 	}
 	public void atacar (Tablero unTablero, Coordenada destino) throws AtaqueFueraDeRangoException, FuegoAmigoException{
 		if (ataqueValido(destino)){
-			unTablero.atacar(destino,equipo,this.getPoder());
+			unTablero.getContenido(destino).recibirAtaque(equipo,this.getPoder());
 		}
 		else throw new AtaqueFueraDeRangoException();
 	}
