@@ -15,7 +15,8 @@
         <dependency org="pmd" name="pmd" rev="4.3" conf="analysis->default"/>
         <!-- http://mvnrepository.com/artifact/com.google.code.gson/gson -->
 		<dependency org="com.google.code.gson" name="gson" rev="2.6.2"/>
-        
+        <!-- http://mvnrepository.com/artifact/com.googlecode.json-simple/json-simple -->
+		<dependency org="com.googlecode.json-simple" name="json-simple" rev="1.1"/>
         <!--
          
         <dependency org="oro" name="oro" rev="2.0.8"/>  
