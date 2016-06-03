@@ -82,6 +82,14 @@ public class Tablero {
 		
 	}
 	
+	public void setTerreno( Coordenada coordenada, Terreno terreno ){
+		getCasillero( coordenada ).setTerreno( terreno );
+	}
+	
+	public Terreno getTerreno( Coordenada coordenada ){
+		return getCasillero( coordenada ).getTerreno();
+	}
+	
 	public void poner( Ubicable contenido, Coordenada coordenada ){
 			getCasillero( coordenada ).poner( contenido );;
 			

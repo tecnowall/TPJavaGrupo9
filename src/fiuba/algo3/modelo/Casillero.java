@@ -3,11 +3,20 @@ package fiuba.algo3.modelo;
 public class Casillero {
 	private Coordenada coordenada;
 	private Ubicable contenido;
+	private Terreno terreno;
 	private boolean ocupado;
 	
 	public Casillero( Coordenada coordenada ){
 		this.coordenada = coordenada;
 		this.contenido = null;
+		this.terreno = new Llanura();
+		this.ocupado = false;
+	}
+	
+	public Casillero( Coordenada coordenada, Terreno terreno ){
+		this.coordenada = coordenada;
+		this.contenido = null;
+		this.terreno = terreno;
 		this.ocupado = false;
 	}
 	
@@ -20,6 +29,14 @@ public class Casillero {
 			throw new CasilleroVacioException();
 		}
 		return this.contenido;
+	}
+	
+	public void setTerreno( Terreno terreno ){
+		this.terreno = terreno;
+	}
+	
+	public Terreno getTerreno(){
+		return this.terreno;
 	}
 	
 	public void poner( Ubicable unUbicable ) {

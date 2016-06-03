@@ -39,15 +39,18 @@ public class Algoformer implements Ubicable {
 		}		
 		else throw new MovimientoFueraDeRangoException();
 	}
+	
 	public boolean ataqueValido( Coordenada destino ){
 		return  ( ( destino.getX() <= ( this.posicion.getX() + this.getRango() ) ) && (  destino.getY() <= ( this.posicion.getY() + this.getRango() ) ) );
 	}
+	
 	public void atacar (Tablero unTablero, Coordenada destino) throws AtaqueFueraDeRangoException, FuegoAmigoException{
 		if (ataqueValido(destino)){
 			unTablero.getContenido(destino).recibirAtaque(this);
 		}
 		else throw new AtaqueFueraDeRangoException();
 	}
+	
 	public void recibirAtaque(Algoformer atacante) throws FuegoAmigoException{
 		if (atacante.equipo == equipo){
 			throw new FuegoAmigoException();
@@ -57,6 +60,7 @@ public class Algoformer implements Ubicable {
 			//MATAR ALGOFORMER
 		}
 	}
+	
 	public String getNombre(){
 		return this.nombre;
 	}
@@ -90,6 +94,9 @@ public class Algoformer implements Ubicable {
 		return actual.getVelocidad();
 	}
 	
+	public void aplicarEfectoTerrenoLlanura(){
+		//este terreno no deberia afectar en nada al algoformer
+	}
 	public void aplicarEfectoTerrenoRocoso(){
 		//this.formaActual.aplicarEfectoTerrenoRocoso;
 	}
