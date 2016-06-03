@@ -35,5 +35,6 @@ public abstract class Forma {
 		this.velocidad = velocidad;
 	}
 	
+	abstract public void aplicarEfectoTerrenoEspinas( Algoformer unAlgoformer );
 	
 }

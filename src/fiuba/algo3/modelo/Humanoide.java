@@ -6,4 +6,7 @@ public class Humanoide extends Forma {
 		super(poder, rango, velocidad);
 	}
 
+	public void aplicarEfectoTerrenoEspinas( Algoformer unAlgoformer ){
+		unAlgoformer.setVida( unAlgoformer.getVida() * 95/100 );
+	}
 }

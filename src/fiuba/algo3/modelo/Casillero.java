@@ -9,7 +9,7 @@ public class Casillero {
 	public Casillero( Coordenada coordenada ){
 		this.coordenada = coordenada;
 		this.contenido = null;
-		this.terreno = new Llanura();
+		this.terreno = new Rocoso();
 		this.ocupado = false;
 	}
 	

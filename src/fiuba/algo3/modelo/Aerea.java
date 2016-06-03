@@ -6,4 +6,7 @@ public class Aerea extends Alterna {
 		super(poder, rango, velocidad);
 	}
 
+	public void aplicarEfectoTerrenoEspinas( Algoformer unAlgoformer ){
+		//no causa efecto
+	}
 }

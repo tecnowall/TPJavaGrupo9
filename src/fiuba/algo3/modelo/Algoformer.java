@@ -35,7 +35,8 @@ public class Algoformer implements Ubicable {
 	
 	public void mover( Tablero unTablero, Coordenada destino ){		
 		if ( movimientoValido( destino ) ) {
-			unTablero.mover( this.posicion, destino);		
+			unTablero.mover( this.posicion, destino);
+			unTablero.getTerreno( destino ).afectar( this );
 		}		
 		else throw new MovimientoFueraDeRangoException();
 	}
@@ -94,26 +95,23 @@ public class Algoformer implements Ubicable {
 		return actual.getVelocidad();
 	}
 	
-	public void aplicarEfectoTerrenoLlanura(){
-		//este terreno no deberia afectar en nada al algoformer
-	}
 	public void aplicarEfectoTerrenoRocoso(){
-		//this.formaActual.aplicarEfectoTerrenoRocoso;
+		//this.actual.aplicarEfectoTerrenoRocoso;
 	}
 	public void aplicarEfectoTerrenoPantano(){
-		//this.formaActual.aplicarEfectoTerrenoPantano;
+		//this.actual.aplicarEfectoTerrenoPantano;
 	}
 	public void aplicarEfectoTerrenoEspinas(){
-		//this.formaActual.aplicarEfectoTerrenoEspinas;
+		this.actual.aplicarEfectoTerrenoEspinas( this );
 	}
 	public void aplicarEfectoTerrenoNube(){
-		//this.formaActual.aplicarEfectoTerrenoNube;
+		//this.actual.aplicarEfectoTerrenoNube;
 	}
 	public void aplicarEfectoTerrenoNebulosa(){
-		//this.formaActual.aplicarEfectoTerrenoNebulosa;
+		//this.actual.aplicarEfectoTerrenoNebulosa;
 	}
 	public void aplicarEfectoTerrenoTormenta(){
-		//this.formaActual.aplicarEfectoTerrenoTormenta;
+		//this.actual.aplicarEfectoTerrenoTormenta;
 	}
 	
 
