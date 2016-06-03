@@ -13,4 +13,5 @@ Docente a cargo:
 Gabriel Falcone
 
 #####Estado: 
-Agregados tipos de terreno y formas sin ninguna logica aun. Hay que implementar los metodos de Algoformer que indican como es afectado por cada tipo de terreno.
+Agregados tipos de terreno y formas sin ninguna logica aun. Hay que implementar los metodos de Algoformer que indican como es afectado por cada tipo de terreno (quizas haga falta un terreno default que no afecte en nada a nadie).
+Tambien falta meterle los terrenos adentro del casillero.
