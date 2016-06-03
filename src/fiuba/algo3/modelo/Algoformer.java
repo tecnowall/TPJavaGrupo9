@@ -44,15 +44,15 @@ public class Algoformer implements Ubicable {
 	}
 	public void atacar (Tablero unTablero, Coordenada destino) throws AtaqueFueraDeRangoException, FuegoAmigoException{
 		if (ataqueValido(destino)){
-			unTablero.getContenido(destino).recibirAtaque(equipo,this.getPoder());
+			unTablero.getContenido(destino).recibirAtaque(this);
 		}
 		else throw new AtaqueFueraDeRangoException();
 	}
-	public void recibirAtaque(int unEquipo, int danio) throws FuegoAmigoException{
-		if (unEquipo == equipo){
+	public void recibirAtaque(Algoformer atacante) throws FuegoAmigoException{
+		if (atacante.equipo == equipo){
 			throw new FuegoAmigoException();
 		}
-		vida=vida-danio;
+		vida=vida-(atacante.getPoder());
 		if (vida<=0){
 			//MATAR ALGOFORMER
 		}
