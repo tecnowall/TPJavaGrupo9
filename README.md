@@ -13,6 +13,4 @@ Docente a cargo:
 Gabriel Falcone
 
 #####Estado: 
-Algun codigo hecho (falta arreglar y hacer un monton de cosas) y el Travis dice build correcto.
-Agregado el mover para los transformer pero no se si esta bien hecho de acuerdo a los que nos dijo Gabriel
-Algoformer (el mover de algoformer lo delega en el tablero).
+Agregados tipos de terreno y formas sin ninguna logica aun. Hay que implementar los metodos de Algoformer que indican como es afectado por cada tipo de terreno.

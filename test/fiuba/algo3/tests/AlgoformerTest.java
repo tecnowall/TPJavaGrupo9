@@ -10,15 +10,17 @@ import fiuba.algo3.modelo.AtaqueFueraDeRangoException;
 import fiuba.algo3.modelo.Coordenada;
 import fiuba.algo3.modelo.Forma;
 import fiuba.algo3.modelo.FuegoAmigoException;
+import fiuba.algo3.modelo.Humanoide;
 import fiuba.algo3.modelo.MovimientoFueraDeRangoException;
 import fiuba.algo3.modelo.Tablero;
+import fiuba.algo3.modelo.Terrestre;
 
 public class AlgoformerTest {
 
 	@Test
 	public void testAlTransformarseCambianAtaqueRangoYVelocidad() {
-		Forma forma1 = new Forma( 50, 2, 2 );
-		Forma forma2 = new Forma( 15, 4, 5 );
+		Forma forma1 = new Humanoide( 50, 2, 2 );
+		Forma forma2 = new Terrestre( 15, 4, 5 );
 		Algoformer optimus = new Algoformer( "Optimus", 500, forma1, forma2 );
 
 		//forma inicial
@@ -43,8 +45,8 @@ public class AlgoformerTest {
 	
 	@Test
 	public void testSeMantieneLaVidaAlTransformarse() {
-		Forma forma1 = new Forma( 50, 2, 2 );
-		Forma forma2 = new Forma( 15, 4, 5 );
+		Forma forma1 = new Humanoide( 50, 2, 2 );
+		Forma forma2 = new Terrestre( 15, 4, 5 );
 		Algoformer optimus = new Algoformer( "Optimus", 500, forma1, forma2 );
 
 		//forma inicial
@@ -64,8 +66,8 @@ public class AlgoformerTest {
 	@Test
 	public void testMoverUnAlgoformerDentroDeSuAlcanceCambiaSuPosicion() {
 		Tablero unTablero = new Tablero( 20, 20 );
-		Forma forma1 = new Forma( 50, 2, 2 );
-		Forma forma2 = new Forma( 15, 4, 5 );
+		Forma forma1 = new Humanoide( 50, 2, 2 );
+		Forma forma2 = new Terrestre( 15, 4, 5 );
 		Algoformer optimus = new Algoformer( "Optimus", 500, forma1, forma2 );
 		Coordenada origen = new Coordenada( 2, 2 );
 		Coordenada destino = new Coordenada( 4, 4 );
@@ -85,8 +87,8 @@ public class AlgoformerTest {
 	@Test(expected = MovimientoFueraDeRangoException.class )
 	public void testMoverUnAlgoformerFueraDeSuAlcanceLanzaExcepcion() {
 		Tablero unTablero = new Tablero( 20, 20 );
-		Forma forma1 = new Forma( 50, 2, 2 );
-		Forma forma2 = new Forma( 15, 4, 5 );
+		Forma forma1 = new Humanoide( 50, 2, 2 );
+		Forma forma2 = new Terrestre( 15, 4, 5 );
 		Algoformer optimus = new Algoformer( "Optimus", 500, forma1, forma2 );
 		Coordenada origen = new Coordenada( 2, 2 );
 		Coordenada destinoLejano = new Coordenada( 7, 7 );
@@ -99,12 +101,12 @@ public class AlgoformerTest {
 	@Test
 	public void testAtacarAUnAlgoFormerReduceSuVida() throws AtaqueFueraDeRangoException, FuegoAmigoException{
 		Tablero unTablero = new Tablero( 20, 20 );
-		Forma forma1a = new Forma( 50, 2, 2 );
-		Forma forma2a = new Forma( 15, 4, 5 );
+		Forma forma1a = new Humanoide( 50, 2, 2 );
+		Forma forma2a = new Terrestre( 15, 4, 5 );
 		Algoformer optimus = new Algoformer( "Optimus", 500, forma1a, forma2a);
 		optimus.setEquipo(1);
-		Forma forma1b = new Forma( 10, 3, 1 );
-		Forma forma2b = new Forma( 55, 2, 8 );
+		Forma forma1b = new Humanoide( 10, 3, 1 );
+		Forma forma2b = new Terrestre( 55, 2, 8 );
 		Algoformer megatron = new Algoformer( "Megatron", 550, forma1b, forma2b);
 		megatron.setEquipo(2);
 		
@@ -119,12 +121,12 @@ public class AlgoformerTest {
 	@Test(expected = AtaqueFueraDeRangoException.class )
 	public void testAtacarAUnAlgoFormerFueraDeRango() throws AtaqueFueraDeRangoException, FuegoAmigoException{
 		Tablero unTablero = new Tablero( 20, 20 );
-		Forma forma1a = new Forma( 50, 2, 2 );
-		Forma forma2a = new Forma( 15, 4, 5 );
+		Forma forma1a = new Humanoide( 50, 2, 2 );
+		Forma forma2a = new Terrestre( 15, 4, 5 );
 		Algoformer optimus = new Algoformer( "Optimus", 500, forma1a, forma2a);
 		optimus.setEquipo(1);
-		Forma forma1b = new Forma( 10, 3, 1 );
-		Forma forma2b = new Forma( 55, 2, 8 );
+		Forma forma1b = new Humanoide( 10, 3, 1 );
+		Forma forma2b = new Terrestre( 55, 2, 8 );
 		Algoformer megatron = new Algoformer( "Megatron", 550, forma1b, forma2b);
 		megatron.setEquipo(2);
 		Coordenada origena = new Coordenada( 2, 2 );
@@ -136,12 +138,12 @@ public class AlgoformerTest {
 	@Test(expected = FuegoAmigoException.class )
 	public void testFuegoAmigoLanzaExcepcion() throws AtaqueFueraDeRangoException, FuegoAmigoException{
 		Tablero unTablero = new Tablero( 20, 20 );
-		Forma forma1a = new Forma( 50, 2, 2 );
-		Forma forma2a = new Forma( 15, 4, 5 );
+		Forma forma1a = new Humanoide( 50, 2, 2 );
+		Forma forma2a = new Terrestre( 15, 4, 5 );
 		Algoformer optimus = new Algoformer( "Optimus", 500, forma1a, forma2a);
 		optimus.setEquipo(1);
-		Forma forma1b = new Forma( 10, 3, 1 );
-		Forma forma2b = new Forma( 55, 2, 8 );
+		Forma forma1b = new Humanoide( 10, 3, 1 );
+		Forma forma2b = new Terrestre( 55, 2, 8 );
 		Algoformer megatron = new Algoformer( "Megatron", 550, forma1b, forma2b);
 		megatron.setEquipo(1);
 		

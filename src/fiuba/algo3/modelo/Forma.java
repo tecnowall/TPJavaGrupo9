@@ -1,6 +1,6 @@
 package fiuba.algo3.modelo;
 
-public class Forma {
+public abstract class Forma {
 	private int poder;
 	private int rango;
 	private int velocidad;

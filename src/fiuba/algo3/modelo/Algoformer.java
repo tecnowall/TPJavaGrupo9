@@ -89,5 +89,25 @@ public class Algoformer implements Ubicable {
 	public int getVelocidad() {
 		return actual.getVelocidad();
 	}
+	
+	public void aplicarEfectoTerrenoRocoso(){
+		//this.formaActual.aplicarEfectoTerrenoRocoso;
+	}
+	public void aplicarEfectoTerrenoPantano(){
+		//this.formaActual.aplicarEfectoTerrenoPantano;
+	}
+	public void aplicarEfectoTerrenoEspinas(){
+		//this.formaActual.aplicarEfectoTerrenoEspinas;
+	}
+	public void aplicarEfectoTerrenoNube(){
+		//this.formaActual.aplicarEfectoTerrenoNube;
+	}
+	public void aplicarEfectoTerrenoNebulosa(){
+		//this.formaActual.aplicarEfectoTerrenoNebulosa;
+	}
+	public void aplicarEfectoTerrenoTormenta(){
+		//this.formaActual.aplicarEfectoTerrenoTormenta;
+	}
+	
 
 }
