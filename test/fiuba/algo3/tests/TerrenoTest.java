@@ -1,7 +1,6 @@
 package fiuba.algo3.tests;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.*;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -79,14 +78,16 @@ public class TerrenoTest {
 		Forma forma1 = new Humanoide( 50, 2, 2 );
 		Forma forma2 = new Terrestre( 15, 4, 5 );
 		Algoformer optimus = new Algoformer( "Optimus", 500, forma1, forma2 );
-		Coordenada origen = new Coordenada( 2, 2 );
-		Coordenada destino = new Coordenada( 3, 3 );
+		Coordenada origen = new Coordenada( 1, 1 );
+		Coordenada destino = new Coordenada( 2, 2 );
 		
 		unTablero.setTerreno( destino, espinas );
 		unTablero.poner( optimus, origen );
 						
 		optimus.mover( unTablero, destino );
 		Assert.assertThat( optimus.getVida(), is( 475 ) ); //pierde 5%
+		
+
 	}
 	
 	@Test
@@ -96,15 +97,18 @@ public class TerrenoTest {
 		Forma forma1 = new Humanoide( 50, 2, 2 );
 		Forma forma2 = new Terrestre( 15, 4, 5 );
 		Algoformer optimus = new Algoformer( "Optimus", 500, forma1, forma2 );
-		Coordenada origen = new Coordenada( 2, 2 );
-		Coordenada destino = new Coordenada( 3, 3 );
+		Coordenada origen = new Coordenada( 1, 1 );
+		Coordenada enElCamino = new Coordenada( 2, 2 );
+		Coordenada destino = new Coordenada( 5, 5 );
 		
-		unTablero.setTerreno( destino, espinas );
 		unTablero.poner( optimus, origen );
-						
+		unTablero.setTerreno( enElCamino, espinas );
+		enElCamino.setXY( 4 , 4 );
+		unTablero.setTerreno( enElCamino, espinas );	
+		
 		optimus.transformar();
 		optimus.mover( unTablero, destino );
-		Assert.assertThat( optimus.getVida(), is( 475 ) ); //pierde 5%
+		Assert.assertThat( optimus.getVida(), is( 451 ) ); //pierde 5% de la vida actual dos veces
 	}
 	
 	@Test

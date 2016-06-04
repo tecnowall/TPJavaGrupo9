@@ -1,12 +1,13 @@
 package fiuba.algo3.modelo;
 
-public class Casillero {
+public class Casillero extends Nodo {
 	private Coordenada coordenada;
 	private Ubicable contenido;
 	private Terreno terreno;
 	private boolean ocupado;
 	
 	public Casillero( Coordenada coordenada ){
+		super( coordenada );
 		this.coordenada = coordenada;
 		this.contenido = null;
 		this.terreno = new Rocoso();
@@ -14,6 +15,7 @@ public class Casillero {
 	}
 	
 	public Casillero( Coordenada coordenada, Terreno terreno ){
+		super( coordenada );
 		this.coordenada = coordenada;
 		this.contenido = null;
 		this.terreno = terreno;

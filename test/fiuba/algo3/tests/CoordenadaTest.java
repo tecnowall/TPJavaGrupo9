@@ -20,4 +20,11 @@ public class CoordenadaTest {
 		Assert.assertThat(coordenada1, is( not( coordenada3 ) ) );
 	}
 
+//	@Test
+//	public void testProbandoCosasConDistanciaEsteTestNoVa(){
+//		Coordenada coordenada1 = new Coordenada( 1, 1 );
+//		Coordenada coordenada2 = new Coordenada( 2, 2 );
+//		
+//		Assert.assertThat( coordenada1.getDistancia( coordenada2 ), is( 1.4 ) );
+//	}
 }

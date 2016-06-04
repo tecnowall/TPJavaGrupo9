@@ -1,5 +1,7 @@
 package fiuba.algo3.modelo;
 
+import java.util.List;
+
 public class Algoformer implements Ubicable {
 	private Coordenada posicion;
 	private String nombre;
@@ -35,8 +37,13 @@ public class Algoformer implements Ubicable {
 	
 	public void mover( Tablero unTablero, Coordenada destino ){		
 		if ( movimientoValido( destino ) ) {
-			unTablero.mover( this.posicion, destino);
-			unTablero.getTerreno( destino ).afectar( this );
+			Camino camino = new Camino( unTablero, this.posicion, destino );
+			List<Coordenada> coordenadas = camino.crearCamino();
+			for ( Coordenada siguiente : coordenadas ){
+				unTablero.mover( this.posicion, siguiente );
+				unTablero.getTerreno( siguiente ).afectar( this );
+			}
+
 		}		
 		else throw new MovimientoFueraDeRangoException();
 	}

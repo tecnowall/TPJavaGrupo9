@@ -2,7 +2,9 @@ package fiuba.algo3.modelo;
 
 
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 
 public class Tablero {
@@ -10,6 +12,7 @@ public class Tablero {
 	private int ancho;
 	private int alto;
 	
+		
 	public Tablero ( int ancho, int alto ){
 		this.ancho = ancho;
 		this.alto = alto;
@@ -26,7 +29,8 @@ public class Tablero {
 			}
 		}
 	}
-	
+
+
 //	public void persistir(){
 //		Gson gson = new Gson();
 //		String json = gson.toJson(this);
@@ -60,8 +64,26 @@ public class Tablero {
 //        }
 //        return null;
 //	}
+	public List<Coordenada> getAdyacentes( Coordenada centro ){
+		List<Coordenada> adyacentes = new ArrayList<Coordenada>();
+		for ( int x = -1 ; x <= 1; x++ ){
+			for ( int y = -1; y <= 1; y++ ){
+				if ( x !=0 || y != 0 ){
+					try{
+						Coordenada posicion = new Coordenada( centro.getX() + x, centro.getY() + y );
+						getCasillero( posicion );
+						adyacentes.add( posicion );
+					}	
+					catch (FueraDelTableroException e){					
+					}
+				}
+
+			}
+		}
+		return adyacentes;
+	}
 	
-	private Casillero getCasillero( Coordenada coordenada ){
+	public Casillero getCasillero( Coordenada coordenada ){
 		if ( this.casilleros.containsKey( coordenada ) ){
 			return this.casilleros.get( coordenada );
 		}
@@ -103,7 +125,6 @@ public class Tablero {
 		poner( sacar(origen), destino);
 	}
 
-
 	public int getAncho() {
 		return ancho;
 	}
@@ -119,4 +140,6 @@ public class Tablero {
 	public void setAlto(int alto) {
 		this.alto = alto;
 	}
+	
+
 }

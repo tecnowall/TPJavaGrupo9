@@ -9,6 +9,10 @@ public class Coordenada {
 		this.y = y;
 	}
 	
+	public void setXY( int x, int y ){
+		setX( x );
+		setY( y );
+	}
 	public void setX( int x ) {
 		this.x = x;
 	}
@@ -24,7 +28,12 @@ public class Coordenada {
 	public int getY(){
 		return this.y;
 	}
-
+	
+	public double getDistancia ( Coordenada destino ){
+		double dx = this.getX() - destino.getX();
+		double dy = this.getY() - destino.getY();
+		return Math.sqrt( ( dx * dx ) + ( dy * dy ) ); 
+	}
 	
 	@Override
 	public int hashCode() {

@@ -100,6 +100,21 @@ public class TableroTest {
 	}
 	
 //	@Test
+//	public void testsarasa(){
+//		Tablero tablero = new Tablero( 20, 20 );	
+//		Coordenada origen = new Coordenada( 0 , 0 );
+//		Coordenada destino = new Coordenada( 2, 7 );
+//		Camino camino = new Camino( tablero, origen, destino );
+//		List<Coordenada> coordAdy;
+//		List<Coordenada> nodos = camino.crearCamino();
+//		System.out.println( nodos.size() );
+//		for (Coordenada c : nodos ){
+//			System.out.println( c.getX() + " " + c.getY() );
+//		}
+//
+//	}
+	
+//	@Test
 //	public void testSePuedeCrearUnTableroConAnchoYAltoDefinidoPorTableroJson(){
 //		Ubicable algoformer = new Algoformer("optimus");		
 //		Coordenada coordenada = new Coordenada( 2, 2 );
