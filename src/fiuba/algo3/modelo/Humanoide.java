@@ -7,6 +7,11 @@ public class Humanoide extends Forma {
 	}
 
 	public void aplicarEfectoTerrenoEspinas( Algoformer unAlgoformer ){
-		unAlgoformer.setVida( unAlgoformer.getVida() * 95/100 );
+		unAlgoformer.setVida( unAlgoformer.getVida() * (100 - Espinas.PODER_EFECTO) / 100 );
+	}
+
+	@Override
+	public void aplicarEfectoTerrenoPantano(Algoformer unAlgoformer) {
+		unAlgoformer.terminarMovimiento();		
 	}
 }

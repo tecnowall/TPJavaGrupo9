@@ -9,4 +9,9 @@ public class Aerea extends Alterna {
 	public void aplicarEfectoTerrenoEspinas( Algoformer unAlgoformer ){
 		//no causa efecto
 	}
+
+	@Override
+	public void aplicarEfectoTerrenoPantano(Algoformer unAlgoformer) {
+		//no causa efecto		
+	}
 }

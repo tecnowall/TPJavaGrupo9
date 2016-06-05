@@ -45,8 +45,8 @@ public class Nodo {
         return gCost;
     }
 
-    private void setGCost(int gCosts) {
-        this.gCost = gCosts;
+    private void setGCost(int gCost) {
+        this.gCost = gCost;
     }
 
     public void setGCost( Nodo padre, int costoBase ) {
@@ -70,8 +70,8 @@ public class Nodo {
         return hCost;
     }
 
-    protected void setHCost(int hCosts) {
-        this.hCost = hCosts;
+    protected void setHCost(int hCost) {
+        this.hCost = hCost;
     }
 
    

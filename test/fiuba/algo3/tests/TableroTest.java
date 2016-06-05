@@ -2,12 +2,16 @@ package fiuba.algo3.tests;
 
 import static org.hamcrest.CoreMatchers.is;
 
+import java.util.LinkedList;
+import java.util.List;
+
 import org.junit.Assert;
 import org.junit.Test;
 
 import fiuba.algo3.modelo.Algoformer;
 import fiuba.algo3.modelo.Coordenada;
 import fiuba.algo3.modelo.FueraDelTableroException;
+import fiuba.algo3.modelo.GeneradorDeCaminos;
 import fiuba.algo3.modelo.Tablero;
 import fiuba.algo3.modelo.Ubicable;
 
@@ -98,20 +102,21 @@ public class TableroTest {
 		tablero.poner( algoformer, origen );
 		tablero.mover( origen, fueraDelLimite );		
 	}
-	
+
 //	@Test
 //	public void testsarasa(){
 //		Tablero tablero = new Tablero( 20, 20 );	
 //		Coordenada origen = new Coordenada( 0 , 0 );
 //		Coordenada destino = new Coordenada( 2, 7 );
-//		Camino camino = new Camino( tablero, origen, destino );
-//		List<Coordenada> coordAdy;
-//		List<Coordenada> nodos = camino.crearCamino();
-//		System.out.println( nodos.size() );
-//		for (Coordenada c : nodos ){
+//		GeneradorDeCaminos camino = new GeneradorDeCaminos( tablero, origen, destino );
+//
+//		LinkedList<Coordenada> nodos = camino.crearCamino();
+//		Coordenada c;
+//		while ( !nodos.isEmpty() ){
+//			c = nodos.poll();
 //			System.out.println( c.getX() + " " + c.getY() );
 //		}
-//
+//		System.out.print( nodos.size() );
 //	}
 	
 //	@Test

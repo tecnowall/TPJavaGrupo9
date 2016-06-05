@@ -9,6 +9,7 @@ public class Algoformer implements Ubicable {
 	private Forma alterna;
 	private Forma actual;
 	private int equipo;
+	private Movimiento movimiento;
 	
 	public Algoformer( String nombre ){
 		this.nombre = nombre;
@@ -37,17 +38,30 @@ public class Algoformer implements Ubicable {
 	
 	public void mover( Tablero unTablero, Coordenada destino ){		
 		if ( movimientoValido( destino ) ) {
-			Camino camino = new Camino( unTablero, this.posicion, destino );
-			List<Coordenada> coordenadas = camino.crearCamino();
-			for ( Coordenada siguiente : coordenadas ){
-				unTablero.mover( this.posicion, siguiente );
-				unTablero.getTerreno( siguiente ).afectar( this );
+			movimiento = new Movimiento( unTablero );
+			movimiento.generarCamino( this.posicion , destino );
+			while ( !movimiento.terminado() ){
+				movimiento.avanzar( this );
 			}
+			
+//			GeneradorDeCaminos camino = new GeneradorDeCaminos( unTablero, this.posicion, destino );
+//			List<Coordenada> coordenadas = camino.crearCamino();
+//			for ( Coordenada siguiente : coordenadas ){
+//				unTablero.mover( this.posicion, siguiente );
+//				unTablero.getTerreno( siguiente ).afectar( this );
+//			}
 
 		}		
 		else throw new MovimientoFueraDeRangoException();
 	}
 	
+	public void terminarMovimiento(){
+		this.movimiento.terminar();
+	}
+	
+	public void gastarMovimientos( int gastados ){
+		this.movimiento.reducir( gastados );
+	}
 	public boolean ataqueValido( Coordenada destino ){
 		return  ( ( destino.getX() <= ( this.posicion.getX() + this.getRango() ) ) && (  destino.getY() <= ( this.posicion.getY() + this.getRango() ) ) );
 	}
@@ -106,7 +120,7 @@ public class Algoformer implements Ubicable {
 		//this.actual.aplicarEfectoTerrenoRocoso;
 	}
 	public void aplicarEfectoTerrenoPantano(){
-		//this.actual.aplicarEfectoTerrenoPantano;
+		this.actual.aplicarEfectoTerrenoPantano( this );
 	}
 	public void aplicarEfectoTerrenoEspinas(){
 		this.actual.aplicarEfectoTerrenoEspinas( this );

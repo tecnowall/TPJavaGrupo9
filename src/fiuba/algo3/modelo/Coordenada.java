@@ -35,6 +35,11 @@ public class Coordenada {
 		return Math.sqrt( ( dx * dx ) + ( dy * dy ) ); 
 	}
 	
+	@Override 
+	public String toString(){
+		return getX() + " " + getY();
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

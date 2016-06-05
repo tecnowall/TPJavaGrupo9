@@ -6,7 +6,7 @@ import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Camino {
+public class GeneradorDeCaminos {
 	private Tablero tablero;
 	private Coordenada origen;
 	private Coordenada destino;
@@ -25,13 +25,13 @@ public class Camino {
 
 	};
 	
-	public Camino ( Tablero tablero, Coordenada origen, Coordenada destino){
+	public GeneradorDeCaminos ( Tablero tablero, Coordenada origen, Coordenada destino){
 		this.tablero = tablero;
 		this.origen = origen;
 		this.destino = destino;
 	}
 
-	private List<Coordenada> armarCamino(Nodo origen, Nodo destino) {
+	private LinkedList<Coordenada> armarCamino(Nodo origen, Nodo destino) {
 		LinkedList<Coordenada> camino = new LinkedList<Coordenada>();
 
 		Nodo actual = destino;
@@ -66,7 +66,7 @@ public class Camino {
 	}
 	
 	//algoritmo A*
-	public List<Coordenada> crearCamino() {
+	public LinkedList<Coordenada> crearCamino() {
 		openList = new LinkedList<Nodo>();
 		closedList = new LinkedList<Nodo>();
 		openList.add(tablero.getCasillero( origen ) );

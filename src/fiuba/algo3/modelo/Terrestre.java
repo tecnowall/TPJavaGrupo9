@@ -9,4 +9,9 @@ public class Terrestre extends Alterna {
 	public void aplicarEfectoTerrenoEspinas( Algoformer unAlgoformer ){
 		unAlgoformer.setVida( unAlgoformer.getVida() * 95/100 );
 	}
+
+	@Override
+	public void aplicarEfectoTerrenoPantano(Algoformer unAlgoformer) {
+		unAlgoformer.gastarMovimientos( Pantano.PODER_EFECTO );	
+	}
 }

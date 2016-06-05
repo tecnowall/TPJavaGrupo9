@@ -11,6 +11,7 @@ import fiuba.algo3.modelo.Coordenada;
 import fiuba.algo3.modelo.Espinas;
 import fiuba.algo3.modelo.Forma;
 import fiuba.algo3.modelo.Humanoide;
+import fiuba.algo3.modelo.Pantano;
 import fiuba.algo3.modelo.Rocoso;
 import fiuba.algo3.modelo.Tablero;
 import fiuba.algo3.modelo.Terreno;
@@ -122,6 +123,64 @@ public class TerrenoTest {
 		Coordenada destino = new Coordenada( 3, 3 );
 		
 		unTablero.setTerreno( destino, espinas );
+		unTablero.poner( megatron, origen );
+		
+		megatron.transformar();
+		megatron.mover( unTablero, destino );
+		Assert.assertThat( megatron.getVida(), is( 550 ) ); 
+	}
+		
+	@Test
+	public void testTerrenoPantanoBloqueaHumanoide() {
+		Tablero unTablero = new Tablero( 20, 20 );
+		Terreno pantano = new Pantano();
+		Forma forma1 = new Humanoide( 50, 20, 20 );
+		Forma forma2 = new Terrestre( 15, 4, 5 );
+		Algoformer optimus = new Algoformer( "Optimus", 500, forma1, forma2 );
+		Coordenada origen = new Coordenada( 1, 1 );
+		Coordenada enElCamino = new Coordenada ( 8, 8 );
+		Coordenada destinoOriginal = new Coordenada( 15, 15 );
+		Coordenada destinoAfectado = new Coordenada( 7, 7 );
+		
+		unTablero.setTerreno( enElCamino, pantano );
+		unTablero.poner( optimus, origen );
+		
+		optimus.mover( unTablero, destinoOriginal );
+		Assert.assertThat( optimus.getPosicion(), is( destinoAfectado ) ); 
+	}
+	
+	@Test
+	public void testTerrenoPantanoTerrestreGastaDosMovimientos() {
+		Tablero unTablero = new Tablero( 20, 20 );
+		Terreno pantano = new Pantano();
+		Forma forma1 = new Humanoide( 50, 2, 2 );
+		Forma forma2 = new Terrestre( 15, 4, 5 );
+		Algoformer optimus = new Algoformer( "Optimus", 500, forma1, forma2 );
+		Coordenada origen = new Coordenada( 1, 1 );
+		Coordenada enElCamino = new Coordenada ( 2, 2 );
+		Coordenada destinoOriginal = new Coordenada( 6, 6 );
+		Coordenada destinoAfectado = new Coordenada( 5, 5 );
+		
+		unTablero.setTerreno( enElCamino, pantano );
+		unTablero.poner( optimus, origen );
+		optimus.transformar();
+		
+		optimus.mover( unTablero, destinoOriginal );
+		Assert.assertThat( optimus.getPosicion(), is( destinoAfectado ) ); 
+	}
+	
+	@Test
+	public void testTerrenoPantanoNoAfectaAerea() {
+		Tablero unTablero = new Tablero( 20, 20 );
+		Terreno pantano = new Pantano();
+		Forma forma1 = new Humanoide( 10, 3, 1 );
+		Forma forma2 = new Aerea( 55, 2, 8 );
+		Algoformer megatron = new Algoformer( "Megatron", 550, forma1, forma2 );
+		Coordenada origen = new Coordenada( 1, 1 );
+		Coordenada enElCamino = new Coordenada ( 4, 4 );
+		Coordenada destino = new Coordenada( 5, 5 );
+		
+		unTablero.setTerreno( enElCamino, pantano );
 		unTablero.poner( megatron, origen );
 		
 		megatron.transformar();
