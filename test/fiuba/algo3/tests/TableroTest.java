@@ -98,7 +98,6 @@ public class TableroTest {
 		Ubicable algoformer = new Algoformer("optimus");		
 		Coordenada origen = new Coordenada( 2, 2 );
 		Coordenada fueraDelLimite = new Coordenada( 15, 15 );
-		
 		tablero.poner( algoformer, origen );
 		tablero.mover( origen, fueraDelLimite );		
 	}

@@ -204,6 +204,7 @@ public class TerrenoTest {
 		megatron.mover( unTablero, destino );
 		Assert.assertThat( megatron.getPosicion(), is( destino ) );
 		Assert.assertThat( megatron.getPoder(), is(33) ); //reducido permanentemente en un 40%
+		Assert.assertThat( megatron.getPoderBase(), is(55) ); //poder base no modificado
 	}
 	@Test
 	public void testTormentaPsionicaNoAfectaTerrestres() {

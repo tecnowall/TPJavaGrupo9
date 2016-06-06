@@ -13,7 +13,9 @@ Docente a cargo:
 Gabriel Falcone
 
 #####Estado: 
-Agregados tipos de terreno y formas sin ninguna logica aun. Hay que implementar los metodos de Algoformer que indican como es afectado por cada tipo de terreno.
+Implementados rocoso, pantano, espinas y tormenta psionica.
 
 Agregado generador de caminos, ahora en vez de saltar desde origen a destino el algoformer va pasando por los casilleros en el medio.
+
+Agregado intento de sistema de bonus, probado por ahora solo con el efecto de la tormenta psionica.
 ..

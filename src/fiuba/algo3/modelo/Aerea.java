@@ -10,9 +10,10 @@ public class Aerea extends Alterna {
 		//no causa efecto
 	}
 	public void aplicarEfectoTerrenoTormenta(Algoformer unAlgoformer){
-		int nuevoPoder = (int) (unAlgoformer.getPoder()*0.6);
-		System.out.println(nuevoPoder);
-		unAlgoformer.setPoder(nuevoPoder);
+		Bonus bonus = new BonusTormentaPsionica();
+		unAlgoformer.nuevoBonus( bonus );
+//		int nuevoPoder = (int) (unAlgoformer.getPoderBase()*0.6);
+//		unAlgoformer.setPoder(nuevoPoder);
 	}
 	@Override
 	public void aplicarEfectoTerrenoPantano(Algoformer unAlgoformer) {

@@ -1,5 +1,6 @@
 package fiuba.algo3.modelo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Algoformer implements Ubicable {
@@ -10,6 +11,7 @@ public class Algoformer implements Ubicable {
 	private Forma actual;
 	private int equipo;
 	private Movimiento movimiento;
+	private List<Bonus> buffs;
 	
 	public Algoformer( String nombre ){
 		this.nombre = nombre;
@@ -20,6 +22,12 @@ public class Algoformer implements Ubicable {
 		this.vida = vida;
 		this.actual = humanoide;
 		this.alterna = alterna;
+		this.buffs = new ArrayList<Bonus>();
+	}
+	
+	public void nuevoBonus( Bonus unBonus ){
+		//fijarse que hacer con bonus repetidos
+		this.buffs.add( unBonus );
 	}
 	
 	public void transformar(){
@@ -103,6 +111,14 @@ public class Algoformer implements Ubicable {
 	}
 	
 	public int getPoder() {
+		int base = getPoderBase();
+		for (Bonus bonus : buffs){
+			base = bonus.aplicar( this, TipoModificador.PODER );
+		}
+		return base;
+	}
+	
+	public int getPoderBase(){
 		return actual.getPoder();
 	}
 	public void setPoder(int unPoder){
