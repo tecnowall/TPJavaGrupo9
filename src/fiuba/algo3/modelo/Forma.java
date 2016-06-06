@@ -39,4 +39,6 @@ public abstract class Forma {
 
 	abstract public void aplicarEfectoTerrenoPantano( Algoformer unAlgoformer );
 	
+	abstract public void aplicarEfectoTerrenoTormenta( Algoformer unAlgoformer );
+	
 }

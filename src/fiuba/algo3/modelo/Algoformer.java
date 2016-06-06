@@ -105,6 +105,9 @@ public class Algoformer implements Ubicable {
 	public int getPoder() {
 		return actual.getPoder();
 	}
+	public void setPoder(int unPoder){
+		actual.setPoder(unPoder);
+	}
 
 
 	public int getRango() {
@@ -132,7 +135,7 @@ public class Algoformer implements Ubicable {
 		//this.actual.aplicarEfectoTerrenoNebulosa;
 	}
 	public void aplicarEfectoTerrenoTormenta(){
-		//this.actual.aplicarEfectoTerrenoTormenta;
+		this.actual.aplicarEfectoTerrenoTormenta(this);
 	}
 	
 

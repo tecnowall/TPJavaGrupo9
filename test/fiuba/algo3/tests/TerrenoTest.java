@@ -16,6 +16,7 @@ import fiuba.algo3.modelo.Rocoso;
 import fiuba.algo3.modelo.Tablero;
 import fiuba.algo3.modelo.Terreno;
 import fiuba.algo3.modelo.Terrestre;
+import fiuba.algo3.modelo.TormentaPsionica;
 
 public class TerrenoTest {
 
@@ -186,5 +187,39 @@ public class TerrenoTest {
 		megatron.transformar();
 		megatron.mover( unTablero, destino );
 		Assert.assertThat( megatron.getVida(), is( 550 ) ); 
+	}
+	@Test
+	public void testTormentaPsionicaReducePoderDeAereos() {
+		Tablero unTablero = new Tablero( 20, 20 );
+		Terreno tormenta = new TormentaPsionica();
+		Forma forma1 = new Humanoide( 10, 3, 1 );
+		Forma forma2 = new Aerea( 55, 2, 8 );
+		Algoformer megatron = new Algoformer( "Megatron", 550, forma1, forma2 );
+		Coordenada origen = new Coordenada( 2, 2 );
+		Coordenada destino = new Coordenada( 3, 3 );
+		
+		unTablero.setTerreno( destino, tormenta );
+		unTablero.poner( megatron, origen );
+		megatron.transformar();	
+		megatron.mover( unTablero, destino );
+		Assert.assertThat( megatron.getPosicion(), is( destino ) );
+		Assert.assertThat( megatron.getPoder(), is(33) ); //reducido permanentemente en un 40%
+	}
+	@Test
+	public void testTormentaPsionicaNoAfectaTerrestres() {
+		Tablero unTablero = new Tablero( 20, 20 );
+		Terreno tormenta = new TormentaPsionica();
+		Forma forma1 = new Humanoide( 10, 3, 1 );
+		Forma forma2 = new Terrestre( 15, 4, 5 );
+		Algoformer megatron = new Algoformer( "Megatron", 550, forma1, forma2 );
+		Coordenada origen = new Coordenada( 2, 2 );
+		Coordenada destino = new Coordenada( 3, 3 );
+		
+		unTablero.setTerreno( destino, tormenta );
+		unTablero.poner( megatron, origen );
+		megatron.transformar();	
+		megatron.mover( unTablero, destino );
+		Assert.assertThat( megatron.getPosicion(), is( destino ) );
+		Assert.assertThat( megatron.getPoder(), is(15) );
 	}
 }

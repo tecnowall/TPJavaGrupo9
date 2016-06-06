@@ -14,4 +14,7 @@ public class Humanoide extends Forma {
 	public void aplicarEfectoTerrenoPantano(Algoformer unAlgoformer) {
 		unAlgoformer.terminarMovimiento();		
 	}
+	public void aplicarEfectoTerrenoTormenta(Algoformer unAlgoformer){
+		//no hace efecto
+	}
 }

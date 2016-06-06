@@ -9,9 +9,14 @@ public class Aerea extends Alterna {
 	public void aplicarEfectoTerrenoEspinas( Algoformer unAlgoformer ){
 		//no causa efecto
 	}
-
+	public void aplicarEfectoTerrenoTormenta(Algoformer unAlgoformer){
+		int nuevoPoder = (int) (unAlgoformer.getPoder()*0.6);
+		System.out.println(nuevoPoder);
+		unAlgoformer.setPoder(nuevoPoder);
+	}
 	@Override
 	public void aplicarEfectoTerrenoPantano(Algoformer unAlgoformer) {
 		//no causa efecto		
 	}
+
 }

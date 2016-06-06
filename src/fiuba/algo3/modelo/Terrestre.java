@@ -14,4 +14,8 @@ public class Terrestre extends Alterna {
 	public void aplicarEfectoTerrenoPantano(Algoformer unAlgoformer) {
 		unAlgoformer.gastarMovimientos( Pantano.PODER_EFECTO );	
 	}
+	public void aplicarEfectoTerrenoTormenta(Algoformer unAlgoformer){
+		//no causa efecto
+	}
+	
 }
