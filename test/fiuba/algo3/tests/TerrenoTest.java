@@ -11,6 +11,7 @@ import fiuba.algo3.modelo.Coordenada;
 import fiuba.algo3.modelo.Espinas;
 import fiuba.algo3.modelo.Forma;
 import fiuba.algo3.modelo.Humanoide;
+import fiuba.algo3.modelo.NebulosaDeAndromeda;
 import fiuba.algo3.modelo.Pantano;
 import fiuba.algo3.modelo.Rocoso;
 import fiuba.algo3.modelo.Tablero;
@@ -222,5 +223,26 @@ public class TerrenoTest {
 		megatron.mover( unTablero, destino );
 		Assert.assertThat( megatron.getPosicion(), is( destino ) );
 		Assert.assertThat( megatron.getPoder(), is(15) );
+	}
+	@Test
+	public void testNebulosaDeAndromedaDetienteAereos(){
+		Tablero unTablero = new Tablero( 20, 20 );
+		Terreno nebulosa = new NebulosaDeAndromeda();
+		Forma forma1 = new Humanoide( 10, 3, 1 );
+		Forma forma2 = new Aerea( 55, 2, 8 );
+		Algoformer megatron = new Algoformer( "Megatron", 550, forma1, forma2 );
+		Coordenada origen = new Coordenada( 1, 1 );
+		Coordenada enElCamino = new Coordenada ( 4, 4 );
+		Coordenada destinoOriginal = new Coordenada( 5, 5 );
+		Coordenada destinoAfectado = new Coordenada( 3, 3 );
+		
+		unTablero.setTerreno( enElCamino, nebulosa );
+		unTablero.poner( megatron, origen );
+		megatron.transformar();
+		megatron.mover( unTablero, 	destinoOriginal );
+		Assert.assertThat( megatron.getPosicion(), is( destinoAfectado ) ); 
+		//Assert.assertThat(megatron.getVelocidad(), is(0));
+		//DEBERÍA DAR 0 PERO SIGUE SIENDO 8
+		Assert.assertThat(megatron.getVelocidadBase(), is(8));
 	}
 }

@@ -17,5 +17,8 @@ public class Terrestre extends Alterna {
 	public void aplicarEfectoTerrenoTormenta(Algoformer unAlgoformer){
 		//no causa efecto
 	}
+	public void aplicarEfectoTerrenoNebulosa(Algoformer unAlgoformer){
+		//no causa efecto
+	}
 	
 }

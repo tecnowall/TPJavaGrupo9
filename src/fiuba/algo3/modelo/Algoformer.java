@@ -130,8 +130,14 @@ public class Algoformer implements Ubicable {
 		return actual.getRango();
 	}
 
-
-	public int getVelocidad() {
+	public int getVelocidad(){
+		int base = getVelocidadBase();
+		for (Bonus bonus : buffs){
+			base = bonus.aplicar(this, TipoModificador.VELOCIDAD);
+		}
+		return base;
+	}
+	public int getVelocidadBase() {
 		return actual.getVelocidad();
 	}
 	
@@ -148,7 +154,7 @@ public class Algoformer implements Ubicable {
 		//this.actual.aplicarEfectoTerrenoNube;
 	}
 	public void aplicarEfectoTerrenoNebulosa(){
-		//this.actual.aplicarEfectoTerrenoNebulosa;
+		this.actual.aplicarEfectoTerrenoNebulosa( this );
 	}
 	public void aplicarEfectoTerrenoTormenta(){
 		this.actual.aplicarEfectoTerrenoTormenta(this);

@@ -15,6 +15,12 @@ public class Aerea extends Alterna {
 //		int nuevoPoder = (int) (unAlgoformer.getPoderBase()*0.6);
 //		unAlgoformer.setPoder(nuevoPoder);
 	}
+	public void aplicarEfectoTerrenoNebulosa(Algoformer unAlgoformer){
+		unAlgoformer.terminarMovimiento();
+		Bonus bonus = new BonusNebulosaDeAndromeda();
+		unAlgoformer.nuevoBonus(bonus);
+		//VER PERSISTENCIA EN TURNOS
+	}
 	@Override
 	public void aplicarEfectoTerrenoPantano(Algoformer unAlgoformer) {
 		//no causa efecto		

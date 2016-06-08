@@ -6,7 +6,7 @@ public class EfectoMultiplicativoPoder {
 	public EfectoMultiplicativoPoder( double valor ){
 		modificador = new Modificador( valor, TipoModificador.PODER );				
 	}
-	
+	  
 	public int aplicar( double poderBase ){
 		return this.modificador.aplicar( poderBase );
 	}
