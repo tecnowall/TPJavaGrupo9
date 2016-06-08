@@ -1,7 +1,9 @@
 package fiuba.algo3.modelo;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Algoformer implements Ubicable {
 	private Coordenada posicion;
@@ -11,7 +13,7 @@ public class Algoformer implements Ubicable {
 	private Forma actual;
 	private int equipo;
 	private Movimiento movimiento;
-	private List<Bonus> buffs;
+	private transient Map<Integer, Bonus> buffs;
 	
 	public Algoformer( String nombre ){
 		this.nombre = nombre;
@@ -22,12 +24,11 @@ public class Algoformer implements Ubicable {
 		this.vida = vida;
 		this.actual = humanoide;
 		this.alterna = alterna;
-		this.buffs = new ArrayList<Bonus>();
+		this.buffs = new HashMap<Integer, Bonus>();
 	}
 	
 	public void nuevoBonus( Bonus unBonus ){
-		//fijarse que hacer con bonus repetidos
-		this.buffs.add( unBonus );
+		this.buffs.put( unBonus.getBonusID(), unBonus );
 	}
 	
 	public void transformar(){
@@ -50,15 +51,7 @@ public class Algoformer implements Ubicable {
 			movimiento.generarCamino( this.posicion , destino );
 			while ( !movimiento.terminado() ){
 				movimiento.avanzar( this );
-			}
-			
-//			GeneradorDeCaminos camino = new GeneradorDeCaminos( unTablero, this.posicion, destino );
-//			List<Coordenada> coordenadas = camino.crearCamino();
-//			for ( Coordenada siguiente : coordenadas ){
-//				unTablero.mover( this.posicion, siguiente );
-//				unTablero.getTerreno( siguiente ).afectar( this );
-//			}
-
+			}		
 		}		
 		else throw new MovimientoFueraDeRangoException();
 	}
@@ -85,7 +78,7 @@ public class Algoformer implements Ubicable {
 		if (atacante.equipo == equipo){
 			throw new FuegoAmigoException();
 		}
-		vida=vida-(atacante.getPoder());
+		vida = vida - (atacante.getPoder());
 		if (vida<=0){
 			//MATAR ALGOFORMER
 		}
@@ -114,8 +107,20 @@ public class Algoformer implements Ubicable {
 	
 	public int getPoder() {
 		int base = getPoderBase();
-		for (Bonus bonus : buffs){
-			base = bonus.aplicar( this, TipoModificador.PODER );
+		Bonus bonus;
+		for ( Map.Entry< Integer, Bonus> elemento : buffs.entrySet() ){
+			bonus = elemento.getValue();
+			base = bonus.aplicar( this, TipoEfecto.PODER );
+		}
+		return base;
+	}
+	
+	public int getVelocidad(){
+		int base = getVelocidadBase();
+		Bonus bonus;
+		for ( Map.Entry< Integer, Bonus> elemento : buffs.entrySet() ){
+			bonus = elemento.getValue();
+			base = bonus.aplicar( this, TipoEfecto.VELOCIDAD );
 		}
 		return base;
 	}
@@ -132,13 +137,7 @@ public class Algoformer implements Ubicable {
 		return actual.getRango();
 	}
 
-	public int getVelocidad(){
-		int base = getVelocidadBase();
-		for (Bonus bonus : buffs){
-			base = bonus.aplicar(this, TipoModificador.VELOCIDAD);
-		}
-		return base;
-	}
+
 	public int getVelocidadBase() {
 		return actual.getVelocidad();
 	}

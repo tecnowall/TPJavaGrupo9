@@ -1,5 +1,5 @@
 package fiuba.algo3.modelo;
 
-public enum TipoModificador {
+public enum TipoEfecto {
 	PODER, VELOCIDAD
 }

@@ -2,9 +2,9 @@ package fiuba.algo3.modelo;
 
 public class Modificador {
 	private double factor;
-	private TipoModificador tipo;
+	private TipoEfecto tipo;
 	
-	public Modificador( double valor, TipoModificador tipo ){
+	public Modificador( double valor, TipoEfecto tipo ){
 		this.factor = valor;
 		this.tipo = tipo;
 	}
@@ -13,7 +13,7 @@ public class Modificador {
 		return (int)( valorBase * factor) ;
 	}
 
-	public TipoModificador tipo(){
+	public TipoEfecto tipo(){
 		return tipo;
 	}
 }
