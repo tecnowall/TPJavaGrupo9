@@ -242,7 +242,6 @@ public class TerrenoTest {
 		megatron.mover( unTablero, 	destinoOriginal );
 		Assert.assertThat( megatron.getPosicion(), is( destinoAfectado ) ); 
 		Assert.assertThat(megatron.getVelocidad(), is(0));
-		//DEBERÍA DAR 0 PERO SIGUE SIENDO 8
 		Assert.assertThat(megatron.getVelocidadBase(), is(8));
 	}
 }
