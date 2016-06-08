@@ -103,40 +103,24 @@ public class TableroTest {
 	}
 
 	
-	@Test
-	public void testsarasa(){
-		Tablero tablero = new Tablero( 20, 20 );	
-		Coordenada origen = new Coordenada( 20 , 20 );
-		List<Coordenada> adyacentes = tablero.getAdyacentes(origen);
-		for (Coordenada c : adyacentes ){
-			System.out.print( c + "\n");
-		}
-	}
-	
 //	@Test
-//	public void testsarasa2(){
+//	public void testsarasa(){
 //		Tablero tablero = new Tablero( 20, 20 );	
-//		Coordenada origen = new Coordenada( 0 , 0 );
-//		Coordenada destino = new Coordenada( 2, 7 );
-//		GeneradorDeCaminos camino = new GeneradorDeCaminos( tablero, origen, destino );
-//
-//		LinkedList<Coordenada> nodos = camino.crearCamino();
-//		Coordenada c;
-//		while ( !nodos.isEmpty() ){
-//			c = nodos.poll();
-//			System.out.println( c.getX() + " " + c.getY() );
+//		Coordenada origen = new Coordenada( 20 , 20 );
+//		List<Coordenada> adyacentes = tablero.getAdyacentes(origen);
+//		for (Coordenada c : adyacentes ){
+//			System.out.print( c + "\n");
 //		}
-//		System.out.print( nodos.size() );
 //	}
 	
-//	@Test
-//	public void testSePuedeCrearUnTableroConAnchoYAltoDefinidoPorTableroJson(){
-//		Ubicable algoformer = new Algoformer("optimus");		
-//		Coordenada coordenada = new Coordenada( 2, 2 );
-//
-//		Tablero tablero = Tablero.crearDesdeJson();		
-//		tablero.poner(algoformer, coordenada);
-//		
-//		Assert.assertThat( tablero.estaOcupado( coordenada ), is( true ) );
-//	}
+	@Test
+	public void testSePuedeCrearUnTableroConAnchoYAltoDefinidoPorTableroJson(){
+		Ubicable algoformer = new Algoformer("optimus");		
+		Coordenada coordenada = new Coordenada( 2, 2 );
+
+		Tablero tablero = Tablero.crearDesdeJson();		
+		tablero.poner(algoformer, coordenada);
+		
+		Assert.assertThat( tablero.estaOcupado( coordenada ), is( true ) );
+	}
 }

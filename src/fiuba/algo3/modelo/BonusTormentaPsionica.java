@@ -1,18 +1,16 @@
 package fiuba.algo3.modelo;
 
-public class BonusTormentaPsionica implements Bonus {
+public class BonusTormentaPsionica extends Bonus {
 	private static final int bonusID = 1;
-	private EfectoMultiplicativoPoder efecto;
+	private Efecto efecto;
 	
 	public BonusTormentaPsionica(){
-		efecto = new EfectoMultiplicativoPoder( 0.6 );
+		efecto = new EfectoMultiplicativo( 0.6, TipoEfecto.PODER );
 	}
 	
+	
 	@Override
-	public int aplicar( Algoformer algoformer, TipoModificador tipo ){
-		if ( tipo == this.efecto.tipo() ){
-			return efecto.aplicar( algoformer.getPoderBase() );
-		}				
-		else return algoformer.getPoderBase();
+	public int aplicar( Algoformer algoformer, TipoEfecto tipo ){	
+		return this.efecto.getValorModificado( algoformer.getPoderBase(), tipo );
 	}
 }

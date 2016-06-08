@@ -8,6 +8,7 @@ import java.util.List;
 public class Movimiento {
 	private Tablero tablero;
 	private LinkedList<Coordenada> camino;
+	private LinkedList<Coordenada> caminoRecorrido;
 	private Coordenada anterior;
 	private boolean terminado = false;
 	
@@ -18,6 +19,11 @@ public class Movimiento {
 	public void generarCamino( Coordenada origen, Coordenada destino ){
 		GeneradorDeCaminos generador = new GeneradorDeCaminos( tablero, origen, destino );
 		camino = generador.crearCamino();
+		caminoRecorrido = new LinkedList<Coordenada>();
+	}
+	
+	public int caminoRestante(){
+		return this.camino.size();
 	}
 	
 	public boolean terminado(){
@@ -31,17 +37,18 @@ public class Movimiento {
 	public void avanzar( Algoformer unAlgoformer ){
 		Coordenada siguiente = camino.poll();	
 		if ( !terminado( ) ) 	{	
-			anterior = unAlgoformer.getPosicion();
-			tablero.mover( anterior, siguiente );	
-			tablero.getTerreno( siguiente ).afectar( unAlgoformer );
-				
-			
+			caminoRecorrido.add( unAlgoformer.getPosicion() );
+			tablero.mover( unAlgoformer.getPosicion(), siguiente );	
+			tablero.getTerreno( siguiente ).afectar( unAlgoformer );			
 			}
 		if ( this.camino.isEmpty() )	terminar();		
 	}
 	
-	public void retroceder( Algoformer unAlgoformer ){	
+	public void retroceder( Algoformer unAlgoformer ){
+		if ( !caminoRecorrido.isEmpty() ){
+		anterior = this.caminoRecorrido.pollLast();
 		tablero.mover( unAlgoformer.getPosicion() , anterior );
+		}
 	}
 
 	public void reducir( int gastados ) {
