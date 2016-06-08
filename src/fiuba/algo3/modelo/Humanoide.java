@@ -17,4 +17,7 @@ public class Humanoide extends Forma {
 	public void aplicarEfectoTerrenoTormenta(Algoformer unAlgoformer){
 		//no hace efecto
 	}
+	public void aplicarEfectoTerrenoNebulosa(Algoformer unAlgoformer){
+		//no causa efecto
+	}
 }
