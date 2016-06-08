@@ -14,6 +14,6 @@ public class Modificador {
 	}
 
 	public TipoModificador tipo(){
-		return TipoModificador.PODER;
+		return tipo;
 	}
 }

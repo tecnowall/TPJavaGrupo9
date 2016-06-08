@@ -102,8 +102,19 @@ public class TableroTest {
 		tablero.mover( origen, fueraDelLimite );		
 	}
 
+	
+	@Test
+	public void testsarasa(){
+		Tablero tablero = new Tablero( 20, 20 );	
+		Coordenada origen = new Coordenada( 20 , 20 );
+		List<Coordenada> adyacentes = tablero.getAdyacentes(origen);
+		for (Coordenada c : adyacentes ){
+			System.out.print( c + "\n");
+		}
+	}
+	
 //	@Test
-//	public void testsarasa(){
+//	public void testsarasa2(){
 //		Tablero tablero = new Tablero( 20, 20 );	
 //		Coordenada origen = new Coordenada( 0 , 0 );
 //		Coordenada destino = new Coordenada( 2, 7 );

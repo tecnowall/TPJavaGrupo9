@@ -90,7 +90,9 @@ public class Algoformer implements Ubicable {
 			//MATAR ALGOFORMER
 		}
 	}
-	
+	public Movimiento getMovimiento(){
+		return this.movimiento;
+	}
 	public String getNombre(){
 		return this.nombre;
 	}

@@ -10,9 +10,9 @@ public class BonusTormentaPsionica implements Bonus {
 	
 	@Override
 	public int aplicar( Algoformer algoformer, TipoModificador tipo ){
-		if ( tipo == this.efecto.tipo() )
-		return efecto.aplicar( algoformer.getPoderBase() );
-		
+		if ( tipo == this.efecto.tipo() ){
+			return efecto.aplicar( algoformer.getPoderBase() );
+		}				
 		else return algoformer.getPoderBase();
 	}
 }

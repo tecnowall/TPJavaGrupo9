@@ -234,14 +234,14 @@ public class TerrenoTest {
 		Coordenada origen = new Coordenada( 1, 1 );
 		Coordenada enElCamino = new Coordenada ( 4, 4 );
 		Coordenada destinoOriginal = new Coordenada( 5, 5 );
-		Coordenada destinoAfectado = new Coordenada( 3, 3 );
+		Coordenada destinoAfectado = new Coordenada( 4, 4 );
 		
 		unTablero.setTerreno( enElCamino, nebulosa );
 		unTablero.poner( megatron, origen );
 		megatron.transformar();
 		megatron.mover( unTablero, 	destinoOriginal );
 		Assert.assertThat( megatron.getPosicion(), is( destinoAfectado ) ); 
-		//Assert.assertThat(megatron.getVelocidad(), is(0));
+		Assert.assertThat(megatron.getVelocidad(), is(0));
 		//DEBERÍA DAR 0 PERO SIGUE SIENDO 8
 		Assert.assertThat(megatron.getVelocidadBase(), is(8));
 	}

@@ -29,14 +29,19 @@ public class Movimiento {
 	}
 	
 	public void avanzar( Algoformer unAlgoformer ){
-		Coordenada siguiente = camino.poll();
-		anterior = unAlgoformer.getPosicion();		
-		tablero.getTerreno( siguiente ).afectar( unAlgoformer );
-		if ( !terminado( ) ) 			tablero.mover( anterior, siguiente );	
+		Coordenada siguiente = camino.poll();	
+		if ( !terminado( ) ) 	{	
+			anterior = unAlgoformer.getPosicion();
+			tablero.mover( anterior, siguiente );	
+			tablero.getTerreno( siguiente ).afectar( unAlgoformer );
+				
+			
+			}
 		if ( this.camino.isEmpty() )	terminar();		
 	}
 	
-	private void retroceder( Algoformer unAlgoformer ){	
+	public void retroceder( Algoformer unAlgoformer ){	
+		tablero.mover( unAlgoformer.getPosicion() , anterior );
 	}
 
 	public void reducir( int gastados ) {
