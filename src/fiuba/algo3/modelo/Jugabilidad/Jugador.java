@@ -52,9 +52,11 @@ private HashMap<String, Algoformer> personajes = new HashMap<String,Algoformer>(
     public void hacerJugada(){
        /*
         TODO
-        elegir algoformer
-        obtener orden
-        ordenar al algofomer
+        a jugador hay que agregarle una clase controlador
+
+        elegir algoformer    this.controlador.getSelection()
+        obtener orden        this.controlador.getOrder()
+        ordenar al algofomer   Algoformer.do
         */
 
     }
