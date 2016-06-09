@@ -1,10 +1,10 @@
 package fiuba.algo3.modelo.Jugabilidad;
 
-import com.sun.xml.internal.bind.v2.TODO;
+
 import fiuba.algo3.modelo.Algoformer;
 import fiuba.algo3.modelo.TipoEquipo;
 
-import java.util.ArrayList;
+
 import java.util.HashMap;
 
 /**
