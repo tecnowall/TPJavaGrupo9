@@ -196,15 +196,17 @@ public class TerrenoTest {
 		Forma forma1 = new Humanoide( 10, 3, 1 );
 		Forma forma2 = new Aerea( 55, 2, 8 );
 		Algoformer megatron = new Algoformer( "Megatron", 550, forma1, forma2 );
-		Coordenada origen = new Coordenada( 2, 2 );
+		Coordenada origen = new Coordenada( 1, 1 );
+		Coordenada enElCamino = new Coordenada( 2, 2 );
 		Coordenada destino = new Coordenada( 3, 3 );
 		
 		unTablero.setTerreno( destino, tormenta );
+		unTablero.setTerreno( enElCamino, tormenta );
 		unTablero.poner( megatron, origen );
 		megatron.transformar();	
 		megatron.mover( unTablero, destino );
 		Assert.assertThat( megatron.getPosicion(), is( destino ) );
-		Assert.assertThat( megatron.getPoder(), is(33) ); //reducido permanentemente en un 40%
+		Assert.assertThat( megatron.getPoder(), is(33) ); //reducido permanentemente en un 40% habiendo pasado por 2 tormentas
 		Assert.assertThat( megatron.getPoderBase(), is(55) ); //poder base no modificado
 	}
 	@Test

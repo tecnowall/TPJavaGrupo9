@@ -66,7 +66,7 @@ public class GeneradorDeCaminos {
 	}
 	
 	//algoritmo A*
-	//fuente http://software-talk.org/blog/2012/01/a-star-java/
+	//fuente  http://software-talk.org/blog/2012/01/a-star-java/
 	public LinkedList<Coordenada> crearCamino() {
 		openList = new LinkedList<Nodo>();
 		closedList = new LinkedList<Nodo>();
