@@ -1,5 +1,6 @@
 package fiuba.algo3.modelo.Jugabilidad;
 
+import com.sun.xml.internal.bind.v2.TODO;
 import fiuba.algo3.modelo.Algoformer;
 import fiuba.algo3.modelo.TipoEquipo;
 
@@ -46,4 +47,19 @@ private HashMap<String, Algoformer> personajes = new HashMap<String,Algoformer>(
     }
 
     public String obtenerNombre(){return this.nombre;}
+
+
+    public void hacerJugada(){
+       /*
+        TODO
+        elegir algoformer
+        obtener orden
+        ordenar al algofomer
+        */
+
+    }
+
+    public void aregarControlador (){
+        // TODO objeto controlador, harcodeo para que pase y dues que obtenga del conrolador posta
+         };
 }
