@@ -2,18 +2,9 @@ package fiuba.algo3.tests;
 
 import static org.hamcrest.CoreMatchers.is;
 
+import fiuba.algo3.modelo.*;
 import org.junit.Assert;
 import org.junit.Test;
-
-import fiuba.algo3.modelo.Algoformer;
-import fiuba.algo3.modelo.AtaqueFueraDeRangoException;
-import fiuba.algo3.modelo.Coordenada;
-import fiuba.algo3.modelo.Forma;
-import fiuba.algo3.modelo.FuegoAmigoException;
-import fiuba.algo3.modelo.Humanoide;
-import fiuba.algo3.modelo.MovimientoFueraDeRangoException;
-import fiuba.algo3.modelo.Tablero;
-import fiuba.algo3.modelo.Terrestre;
 
 public class AlgoformerTest {
 
@@ -104,11 +95,11 @@ public class AlgoformerTest {
 		Forma forma1a = new Humanoide( 50, 2, 2 );
 		Forma forma2a = new Terrestre( 15, 4, 5 );
 		Algoformer optimus = new Algoformer( "Optimus", 500, forma1a, forma2a);
-		optimus.setEquipo(1);
+		optimus.setEquipo(TipoEquipo.AUTOBOTS);
 		Forma forma1b = new Humanoide( 10, 3, 1 );
 		Forma forma2b = new Terrestre( 55, 2, 8 );
 		Algoformer megatron = new Algoformer( "Megatron", 550, forma1b, forma2b);
-		megatron.setEquipo(2);
+		megatron.setEquipo(TipoEquipo.DECEPTICONS);
 		
 		Coordenada origena = new Coordenada( 2, 2 );
 		Coordenada origenb = new Coordenada( 3, 3 );
@@ -124,11 +115,11 @@ public class AlgoformerTest {
 		Forma forma1a = new Humanoide( 50, 2, 2 );
 		Forma forma2a = new Terrestre( 15, 4, 5 );
 		Algoformer optimus = new Algoformer( "Optimus", 500, forma1a, forma2a);
-		optimus.setEquipo(1);
+		optimus.setEquipo(TipoEquipo.AUTOBOTS);
 		Forma forma1b = new Humanoide( 10, 3, 1 );
 		Forma forma2b = new Terrestre( 55, 2, 8 );
 		Algoformer megatron = new Algoformer( "Megatron", 550, forma1b, forma2b);
-		megatron.setEquipo(2);
+		megatron.setEquipo(TipoEquipo.DECEPTICONS);
 		Coordenada origena = new Coordenada( 2, 2 );
 		Coordenada origenb = new Coordenada( 10, 15 );
 		unTablero.poner( optimus, origena );
@@ -141,11 +132,11 @@ public class AlgoformerTest {
 		Forma forma1a = new Humanoide( 50, 2, 2 );
 		Forma forma2a = new Terrestre( 15, 4, 5 );
 		Algoformer optimus = new Algoformer( "Optimus", 500, forma1a, forma2a);
-		optimus.setEquipo(1);
+		optimus.setEquipo(TipoEquipo.AUTOBOTS);
 		Forma forma1b = new Humanoide( 10, 3, 1 );
 		Forma forma2b = new Terrestre( 55, 2, 8 );
 		Algoformer megatron = new Algoformer( "Megatron", 550, forma1b, forma2b);
-		megatron.setEquipo(1);
+		megatron.setEquipo(TipoEquipo.AUTOBOTS);
 		
 		Coordenada origena = new Coordenada( 2, 2 );
 		Coordenada origenb = new Coordenada( 3, 3 );
