@@ -11,7 +11,7 @@ public class Algoformer implements Ubicable {
 	private int vida;
 	private Forma alterna;
 	private Forma actual;
-	private int equipo;
+	private TipoEquipo equipo;
 	private Movimiento movimiento;
 	private transient Map<Integer, Bonus> buffs;
 	
@@ -101,7 +101,7 @@ public class Algoformer implements Ubicable {
 	public void setVida( int vida ){
 		this.vida = vida;
 	}
-	public void setEquipo(int unEquipo){
+	public void setEquipo(TipoEquipo unEquipo){
 		this.equipo=unEquipo;
 	}
 	
@@ -130,6 +130,11 @@ public class Algoformer implements Ubicable {
 	}
 	public void setPoder(int unPoder){
 		actual.setPoder(unPoder);
+	}
+
+	public TipoEquipo getEquipo(){
+
+		return this.equipo;
 	}
 
 
