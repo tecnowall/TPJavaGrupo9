@@ -3,6 +3,7 @@ package fiuba.algo3.modelo.Jugabilidad;
 
 import fiuba.algo3.modelo.ChispaSuprema;
 import fiuba.algo3.modelo.Coordenada;
+import fiuba.algo3.modelo.Jugabilidad.Jugador.Jugador;
 import fiuba.algo3.modelo.tablero.Tablero;
 
 /**
@@ -14,6 +15,7 @@ public class Partida {
     private Jugador player1, player2;
     private Tablero tablero;
     private ChispaSuprema chispa;
+
     public Partida (Jugador j1, Jugador j2, Tablero tablero){
 
             this.turno= new Turno(j1,j2);
@@ -37,8 +39,8 @@ public class Partida {
     }
 
     public void siguienteTurno(){
-        Jugador  unJugador = this.turno.siguiente();
-        unJugador.hacerJugada();
+        this.turno.getTurno().finTurno();
+        this.turno.siguiente().inicioTurno();
     };
 
     private void posicionarAlgoformers( ){
@@ -53,6 +55,7 @@ public class Partida {
 
         //TODO refactoring..., crear un iterador
         // this.player1.obtenerPersonajes
+        //
         this.tablero.poner (this.player1.obtenerPersonaje("OPTIMUSS"),c1);
         this.player1.obtenerPersonaje("OPTIMUSS").ubicar(c1);
         this.tablero.poner (this.player1.obtenerPersonaje("BUMBLEBEE"),c2);

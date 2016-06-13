@@ -97,6 +97,9 @@ public class Algoformer implements Ubicable{
 	public void recibirDanio( int danio ){
 		int danioTotal = (int) ( danio - ( danio * getArmadura() / 100) );
 		vida = vida - danioTotal;
+
+		//TODO
+		//if (vida== 0) {this.jugador.notificarMuerte (self)};
 	}
 	
 	public Movimiento getMovimiento(){

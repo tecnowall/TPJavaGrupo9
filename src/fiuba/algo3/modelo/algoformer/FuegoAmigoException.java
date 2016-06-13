@@ -1,5 +1,5 @@
 package fiuba.algo3.modelo.algoformer;
 
-public class FuegoAmigoException extends Exception {
+public class FuegoAmigoException extends RuntimeException {
 
 }

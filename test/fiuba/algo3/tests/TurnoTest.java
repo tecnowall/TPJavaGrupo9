@@ -1,13 +1,11 @@
 package fiuba.algo3.tests;
 
-import fiuba.algo3.modelo.Jugabilidad.Jugador;
+import fiuba.algo3.modelo.Jugabilidad.Jugador.Jugador;
 import fiuba.algo3.modelo.Jugabilidad.Turno;
 import fiuba.algo3.modelo.TipoEquipo;
 import org.junit.Assert;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
-import static jdk.nashorn.internal.objects.Global.print;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.not;
 

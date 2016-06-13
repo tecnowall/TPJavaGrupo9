@@ -1,5 +1,7 @@
 package fiuba.algo3.modelo.Jugabilidad;
 
+import fiuba.algo3.modelo.Jugabilidad.Jugador.Jugador;
+
 /**
  * Created by jose on 09/06/2016.
  */
