@@ -6,8 +6,8 @@ import fiuba.algo3.modelo.tablero.Capturable;
 public class ChispaSuprema implements Capturable {
 	private Coordenada posicion;
 
-	public ChispaSuprema( Coordenada posicion ){
-		this.posicion = posicion;
+	public ChispaSuprema(){
+
 	}
 	
 	public Coordenada getPosicion() {
