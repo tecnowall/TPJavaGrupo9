@@ -1,4 +1,6 @@
-package fiuba.algo3.modelo;
+package fiuba.algo3.modelo.movimiento;
+
+import fiuba.algo3.modelo.Coordenada;
 
 public class Nodo {
 
@@ -8,9 +10,11 @@ public class Nodo {
     private Nodo padre;
     private int gCost;
     private int hCost;
+    private boolean pasable;
 
     public Nodo( Coordenada posicion ) {
     	this.posicion = posicion;
+    	pasable = true;
     }
 
     public void setPosicion ( Coordenada posicion ){
@@ -28,7 +32,15 @@ public class Nodo {
     public int getY(){
     	return this.posicion.getY();
     }
-      
+     
+    public boolean esPasable(){
+    	return this.pasable;
+    }
+    
+    public void setPasable( boolean pasable ){
+    	this.pasable = pasable;
+    }
+    
     public Nodo getPadre() {
         return padre;
     }

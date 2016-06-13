@@ -1,4 +1,4 @@
-package fiuba.algo3.modelo;
+package fiuba.algo3.modelo.tablero;
 
 import java.lang.reflect.Type;
 

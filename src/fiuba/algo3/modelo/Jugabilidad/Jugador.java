@@ -1,9 +1,8 @@
 package fiuba.algo3.modelo.Jugabilidad;
 
 
-import fiuba.algo3.modelo.Algoformer;
 import fiuba.algo3.modelo.TipoEquipo;
-
+import fiuba.algo3.modelo.algoformer.Algoformer;
 
 import java.util.HashMap;
 

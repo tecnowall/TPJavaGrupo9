@@ -2,14 +2,14 @@ package fiuba.algo3.modelo.bonus;
 
 import fiuba.algo3.modelo.algoformer.Algoformer;
 
-public class BonusTormentaPsionica extends Bonus {
-	
-	public BonusTormentaPsionica(){
-		bonusID = bonusID.TORMENTA;
-		efecto = new EfectoMultiplicativo( 0.6, TipoEfecto.PODER );
+public class BonusDobleCanion extends Bonus {
+
+	public BonusDobleCanion(){
+		bonusID = BonusID.DOBLE_CANION;
+		efecto = new EfectoMultiplicativo( 2, TipoEfecto.PODER );
 	}
-	
-	
+
+
 	@Override
 	public int aplicar( Algoformer algoformer, TipoEfecto tipo ){	
 		int nuevoPoder = this.efecto.getValorModificado( algoformer.getPoderAnterior(), tipo );

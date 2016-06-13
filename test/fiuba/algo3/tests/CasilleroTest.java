@@ -5,12 +5,14 @@ import static org.hamcrest.CoreMatchers.is;
 import org.junit.Assert;
 import org.junit.Test;
 
-import fiuba.algo3.modelo.Algoformer;
-import fiuba.algo3.modelo.Casillero;
-import fiuba.algo3.modelo.CasilleroOcupadoException;
-import fiuba.algo3.modelo.CasilleroVacioException;
 import fiuba.algo3.modelo.Coordenada;
-import fiuba.algo3.modelo.Ubicable;
+import fiuba.algo3.modelo.algoformer.Algoformer;
+import fiuba.algo3.modelo.bonus.BonusNebulosaDeAndromeda;
+import fiuba.algo3.modelo.tablero.Capturable;
+import fiuba.algo3.modelo.tablero.Casillero;
+import fiuba.algo3.modelo.tablero.CasilleroOcupadoException;
+import fiuba.algo3.modelo.tablero.CasilleroVacioException;
+import fiuba.algo3.modelo.tablero.Ubicable;
 
 public class CasilleroTest {
 
@@ -23,7 +25,7 @@ public class CasilleroTest {
 	}
 	
 	@Test
-	public void testAlPonerUnContenidoYaNoEstaVacio(){
+	public void testAlPonerUnUbicableQuedaOcupado(){
 		Coordenada coordenada = new Coordenada( 1, 1 );
 		Casillero casillero = new Casillero( coordenada );
 		Ubicable algoformer = new Algoformer("Optimus");
@@ -31,6 +33,17 @@ public class CasilleroTest {
 		casillero.poner( algoformer );
 		
 		Assert.assertThat(casillero.estaOcupado(), is( true ) );
+	}
+	
+	@Test
+	public void testAlPonerUnCapturableNoQuedaOcupado(){
+		Coordenada coordenada = new Coordenada( 1, 1 );
+		Casillero casillero = new Casillero( coordenada );
+		Capturable bonus = new BonusNebulosaDeAndromeda();
+		
+		casillero.poner( bonus );
+		
+		Assert.assertThat(casillero.estaOcupado(), is( false ) );
 	}
 	
 	@Test

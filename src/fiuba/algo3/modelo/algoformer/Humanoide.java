@@ -1,4 +1,6 @@
-package fiuba.algo3.modelo;
+package fiuba.algo3.modelo.algoformer;
+
+import fiuba.algo3.modelo.terreno.Espinas;
 
 public class Humanoide extends Forma {
 

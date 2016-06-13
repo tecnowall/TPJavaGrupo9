@@ -1,14 +1,16 @@
-package fiuba.algo3.modelo;
+package fiuba.algo3.modelo.algoformer;
 
 public abstract class Forma {
 	private int poder;
 	private int rango;
 	private int velocidad;
+	private double armadura;
 	
 	public Forma( int poder, int rango, int velocidad ){
 		this.poder = poder;
 		this.rango = rango;
 		this.velocidad = velocidad;
+		this.armadura = 0;
 	}
 
 	public int getPoder() {
@@ -35,6 +37,14 @@ public abstract class Forma {
 		this.velocidad = velocidad;
 	}
 	
+	public double getArmadura() {
+		return armadura;
+	}
+
+	public void setArmadura( double armadura ) {
+		this.armadura = armadura;
+	}
+
 	abstract public void aplicarEfectoTerrenoEspinas( Algoformer unAlgoformer );
 
 	abstract public void aplicarEfectoTerrenoPantano( Algoformer unAlgoformer );

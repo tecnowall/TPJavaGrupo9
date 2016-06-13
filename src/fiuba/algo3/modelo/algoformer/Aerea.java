@@ -1,4 +1,8 @@
-package fiuba.algo3.modelo;
+package fiuba.algo3.modelo.algoformer;
+
+import fiuba.algo3.modelo.bonus.Bonus;
+import fiuba.algo3.modelo.bonus.BonusNebulosaDeAndromeda;
+import fiuba.algo3.modelo.bonus.BonusTormentaPsionica;
 
 public class Aerea extends Alterna {
 
@@ -12,8 +16,6 @@ public class Aerea extends Alterna {
 	public void aplicarEfectoTerrenoTormenta(Algoformer unAlgoformer){
 		Bonus bonus = new BonusTormentaPsionica();
 		unAlgoformer.nuevoBonus( bonus );
-//		int nuevoPoder = (int) (unAlgoformer.getPoderBase()*0.6);
-//		unAlgoformer.setPoder(nuevoPoder);
 	}
 	public void aplicarEfectoTerrenoNebulosa(Algoformer unAlgoformer){
 		unAlgoformer.terminarMovimiento();

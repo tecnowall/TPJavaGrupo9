@@ -1,10 +1,14 @@
-package fiuba.algo3.modelo;
+package fiuba.algo3.modelo.movimiento;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
+
+import fiuba.algo3.modelo.Coordenada;
+import fiuba.algo3.modelo.tablero.FueraDelTableroException;
+import fiuba.algo3.modelo.tablero.Tablero;
 
 public class GeneradorDeCaminos {
 	private Tablero tablero;
@@ -31,6 +35,7 @@ public class GeneradorDeCaminos {
 		this.destino = destino;
 	}
 
+//	private void validarDestino
 	private LinkedList<Coordenada> armarCamino(Nodo origen, Nodo destino) {
 		LinkedList<Coordenada> camino = new LinkedList<Coordenada>();
 
@@ -54,7 +59,9 @@ public class GeneradorDeCaminos {
 					try{
 						Coordenada posicion = new Coordenada( centro.getX() + x, centro.getY() + y );
 						Nodo nodo = tablero.getCasillero( posicion );
-						if ( !closedList.contains( nodo ) ) adyacentes.add( nodo );					
+						if ( !closedList.contains( nodo ) && nodo.esPasable() ) {
+							adyacentes.add( nodo );					
+						}
 					}	
 					catch (FueraDelTableroException e){					
 					}

@@ -1,7 +1,12 @@
-package fiuba.algo3.modelo;
+package fiuba.algo3.modelo.movimiento;
 
 import java.util.LinkedList;
 import java.util.List;
+
+import fiuba.algo3.modelo.Coordenada;
+import fiuba.algo3.modelo.algoformer.Algoformer;
+import fiuba.algo3.modelo.tablero.CasilleroOcupadoException;
+import fiuba.algo3.modelo.tablero.Tablero;
 
 //no se usa en ningun lado por el momento
 
@@ -17,9 +22,25 @@ public class Movimiento {
 	}
 	
 	public void generarCamino( Coordenada origen, Coordenada destino ){
+		if ( this.tablero.estaOcupado( destino ) ) {
+			throw new CasilleroOcupadoException();
+		}
 		GeneradorDeCaminos generador = new GeneradorDeCaminos( tablero, origen, destino );
 		camino = generador.crearCamino();
+		truncarCamino();
 		caminoRecorrido = new LinkedList<Coordenada>();
+	}
+	
+	private void truncarCamino(){
+		Coordenada coordenada;
+		boolean done = false;
+		while ( !done && !camino.isEmpty() ){
+			coordenada = camino.getLast();
+			if ( tablero.estaOcupado( coordenada ) ){
+				camino.removeLast();
+			}
+			else done = true;
+		}
 	}
 	
 	public int caminoRestante(){

@@ -5,13 +5,13 @@ import static org.hamcrest.CoreMatchers.is;
 import org.junit.Assert;
 import org.junit.Test;
 
-import fiuba.algo3.modelo.Algoformer;
 import fiuba.algo3.modelo.Coordenada;
-import fiuba.algo3.modelo.Forma;
-import fiuba.algo3.modelo.Humanoide;
-import fiuba.algo3.modelo.Movimiento;
-import fiuba.algo3.modelo.Tablero;
-import fiuba.algo3.modelo.Terrestre;
+import fiuba.algo3.modelo.algoformer.Algoformer;
+import fiuba.algo3.modelo.algoformer.Forma;
+import fiuba.algo3.modelo.algoformer.Humanoide;
+import fiuba.algo3.modelo.algoformer.Terrestre;
+import fiuba.algo3.modelo.movimiento.Movimiento;
+import fiuba.algo3.modelo.tablero.Tablero;
 
 public class MovimientoTest {
 

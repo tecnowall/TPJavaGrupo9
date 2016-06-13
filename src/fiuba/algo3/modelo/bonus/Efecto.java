@@ -1,4 +1,4 @@
-package fiuba.algo3.modelo;
+package fiuba.algo3.modelo.bonus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,5 +36,6 @@ public abstract class Efecto {
 		}
 		else return (int)valorBase;
 	}
-	public abstract int aplicar(double poderBase);	
+	
+	public abstract int aplicar( double valorBase );	
 }

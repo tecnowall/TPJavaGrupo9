@@ -13,9 +13,5 @@ Docente a cargo:
 Gabriel Falcone
 
 #####Estado: 
-Implementados rocoso, pantano, espinas y tormenta psionica.
 
-Agregado generador de caminos, ahora en vez de saltar desde origen a destino el algoformer va pasando por los casilleros en el medio.
-
-Agregado intento de sistema de bonus, probado por ahora solo con el efecto de la tormenta psionica.
-..
+Implementados todos los bonus. Falta la fusion y el juego en si, ademas de la interfaz grafica.

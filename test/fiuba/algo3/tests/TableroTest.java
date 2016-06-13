@@ -8,12 +8,12 @@ import java.util.List;
 import org.junit.Assert;
 import org.junit.Test;
 
-import fiuba.algo3.modelo.Algoformer;
 import fiuba.algo3.modelo.Coordenada;
-import fiuba.algo3.modelo.FueraDelTableroException;
-import fiuba.algo3.modelo.GeneradorDeCaminos;
-import fiuba.algo3.modelo.Tablero;
-import fiuba.algo3.modelo.Ubicable;
+import fiuba.algo3.modelo.algoformer.Algoformer;
+import fiuba.algo3.modelo.movimiento.GeneradorDeCaminos;
+import fiuba.algo3.modelo.tablero.FueraDelTableroException;
+import fiuba.algo3.modelo.tablero.Tablero;
+import fiuba.algo3.modelo.tablero.Ubicable;
 
 public class TableroTest {
 

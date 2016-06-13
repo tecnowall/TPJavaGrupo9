@@ -1,4 +1,6 @@
-package fiuba.algo3.modelo;
+package fiuba.algo3.modelo.algoformer;
+
+import fiuba.algo3.modelo.terreno.Pantano;
 
 public class Terrestre extends Alterna {
 

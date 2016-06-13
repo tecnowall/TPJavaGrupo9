@@ -5,19 +5,19 @@ import static org.hamcrest.CoreMatchers.is;
 import org.junit.Assert;
 import org.junit.Test;
 
-import fiuba.algo3.modelo.Aerea;
-import fiuba.algo3.modelo.Algoformer;
 import fiuba.algo3.modelo.Coordenada;
-import fiuba.algo3.modelo.Espinas;
-import fiuba.algo3.modelo.Forma;
-import fiuba.algo3.modelo.Humanoide;
-import fiuba.algo3.modelo.NebulosaDeAndromeda;
-import fiuba.algo3.modelo.Pantano;
-import fiuba.algo3.modelo.Rocoso;
-import fiuba.algo3.modelo.Tablero;
-import fiuba.algo3.modelo.Terreno;
-import fiuba.algo3.modelo.Terrestre;
-import fiuba.algo3.modelo.TormentaPsionica;
+import fiuba.algo3.modelo.algoformer.Aerea;
+import fiuba.algo3.modelo.algoformer.Algoformer;
+import fiuba.algo3.modelo.algoformer.Forma;
+import fiuba.algo3.modelo.algoformer.Humanoide;
+import fiuba.algo3.modelo.algoformer.Terrestre;
+import fiuba.algo3.modelo.tablero.Tablero;
+import fiuba.algo3.modelo.terreno.Espinas;
+import fiuba.algo3.modelo.terreno.NebulosaDeAndromeda;
+import fiuba.algo3.modelo.terreno.Pantano;
+import fiuba.algo3.modelo.terreno.Rocoso;
+import fiuba.algo3.modelo.terreno.Terreno;
+import fiuba.algo3.modelo.terreno.TormentaPsionica;
 
 public class TerrenoTest {
 

@@ -3,6 +3,9 @@ package fiuba.algo3.tests;
 import fiuba.algo3.modelo.*;
 import fiuba.algo3.modelo.Jugabilidad.Jugador;
 import fiuba.algo3.modelo.Jugabilidad.Partida;
+import fiuba.algo3.modelo.algoformer.Algoformer;
+import fiuba.algo3.modelo.tablero.Tablero;
+
 import org.junit.Assert;
 import org.junit.Test;
 import static org.hamcrest.CoreMatchers.is;

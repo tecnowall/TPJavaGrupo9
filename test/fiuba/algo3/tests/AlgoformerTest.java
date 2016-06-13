@@ -3,6 +3,21 @@ package fiuba.algo3.tests;
 import static org.hamcrest.CoreMatchers.is;
 
 import fiuba.algo3.modelo.*;
+import fiuba.algo3.modelo.algoformer.Aerea;
+import fiuba.algo3.modelo.algoformer.Algoformer;
+import fiuba.algo3.modelo.algoformer.AtaqueFueraDeRangoException;
+import fiuba.algo3.modelo.algoformer.Forma;
+import fiuba.algo3.modelo.algoformer.FuegoAmigoException;
+import fiuba.algo3.modelo.algoformer.Humanoide;
+import fiuba.algo3.modelo.algoformer.MovimientoFueraDeRangoException;
+import fiuba.algo3.modelo.algoformer.Terrestre;
+import fiuba.algo3.modelo.bonus.BonusDobleCanion;
+import fiuba.algo3.modelo.bonus.BonusTormentaPsionica;
+import fiuba.algo3.modelo.tablero.Capturable;
+import fiuba.algo3.modelo.tablero.Tablero;
+import fiuba.algo3.modelo.terreno.Terreno;
+import fiuba.algo3.modelo.terreno.TormentaPsionica;
+
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -57,11 +72,11 @@ public class AlgoformerTest {
 	@Test
 	public void testMoverUnAlgoformerDentroDeSuAlcanceCambiaSuPosicion() {
 		Tablero unTablero = new Tablero( 20, 20 );
-		Forma forma1 = new Humanoide( 50, 2, 2 );
+		Forma forma1 = new Humanoide( 50, 20, 20 );
 		Forma forma2 = new Terrestre( 15, 4, 5 );
 		Algoformer optimus = new Algoformer( "Optimus", 500, forma1, forma2 );
-		Coordenada origen = new Coordenada( 2, 2 );
-		Coordenada destino = new Coordenada( 4, 4 );
+		Coordenada origen = new Coordenada( 0, 0 );
+		Coordenada destino = new Coordenada( 14, 14 );
 		Coordenada destinoLejano = new Coordenada( 9, 9 ); //alcanzable por el modo alterno pero no por el humanoide
 		
 		unTablero.poner( optimus, origen );
@@ -89,6 +104,9 @@ public class AlgoformerTest {
 				
 		optimus.mover( unTablero, destinoLejano );
 	}
+	
+
+	
 	@Test
 	public void testAtacarAUnAlgoFormerReduceSuVida() throws AtaqueFueraDeRangoException, FuegoAmigoException{
 		Tablero unTablero = new Tablero( 20, 20 );
@@ -126,6 +144,7 @@ public class AlgoformerTest {
 		unTablero.poner( megatron, origenb );
 		optimus.atacar(unTablero, origenb);
 	}
+	
 	@Test(expected = FuegoAmigoException.class )
 	public void testFuegoAmigoLanzaExcepcion() throws AtaqueFueraDeRangoException, FuegoAmigoException{
 		Tablero unTablero = new Tablero( 20, 20 );
@@ -144,5 +163,30 @@ public class AlgoformerTest {
 		unTablero.poner( megatron, origenb );
 		optimus.atacar(unTablero, origenb);
 
-}
+	}
+	
+	@Test
+	public void testPasarPorUnBonusLoCaptura(){
+		Tablero unTablero = new Tablero( 20, 20 );
+		Forma forma1a = new Aerea( 100, 20, 20 );
+		Forma forma2a = new Aerea( 15, 4, 5 );
+		Algoformer optimus = new Algoformer( "Optimus", 500, forma1a, forma2a);
+		Capturable bonus = new BonusDobleCanion();
+		Capturable bonus2 = new BonusTormentaPsionica();
+		Terreno tormenta = new TormentaPsionica();
+		Coordenada origen = new Coordenada( 0, 0 );
+		Coordenada enElCamino = new Coordenada( 1, 1 );
+		Coordenada enElCamino2 = new Coordenada( 4, 4 );
+		Coordenada destino = new Coordenada( 4, 4 );
+		
+		
+		unTablero.poner( bonus, enElCamino2 );
+		unTablero.setTerreno( enElCamino, tormenta );		
+		
+		unTablero.poner( optimus, origen );
+
+		optimus.mover( unTablero, destino );
+		Assert.assertThat( optimus.getPoder(), is( 120 ) ); //100*0.6*2 = 120
+	}
+	
 }

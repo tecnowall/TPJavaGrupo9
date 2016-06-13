@@ -1,4 +1,4 @@
-package fiuba.algo3.modelo;
+package fiuba.algo3.modelo.tablero;
 
 
 
@@ -13,6 +13,9 @@ import java.util.Map;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+
+import fiuba.algo3.modelo.Coordenada;
+import fiuba.algo3.modelo.terreno.Terreno;
 
 
 public class Tablero {
@@ -121,8 +124,11 @@ public class Tablero {
 	}
 	
 	public void poner( Ubicable contenido, Coordenada coordenada ){
-			getCasillero( coordenada ).poner( contenido );;
-			
+			getCasillero( coordenada ).poner( contenido );
+	}
+	
+	public void poner( Capturable capturable, Coordenada coordenada ){
+		getCasillero( coordenada ).poner( capturable );
 	}
 	
 	public Ubicable sacar( Coordenada coordenada ){

@@ -3,7 +3,7 @@ package fiuba.algo3.modelo.Jugabilidad;
 
 import fiuba.algo3.modelo.ChispaSuprema;
 import fiuba.algo3.modelo.Coordenada;
-import fiuba.algo3.modelo.Tablero;
+import fiuba.algo3.modelo.tablero.Tablero;
 
 /**
  * Created by jose on 09/06/2016.

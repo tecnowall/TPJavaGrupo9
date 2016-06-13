@@ -1,10 +1,13 @@
 package fiuba.algo3.modelo;
 
-public class ChispaSuprema implements Ubicable {
+import fiuba.algo3.modelo.algoformer.Algoformer;
+import fiuba.algo3.modelo.tablero.Capturable;
+
+public class ChispaSuprema implements Capturable {
 	private Coordenada posicion;
 
 	public ChispaSuprema( Coordenada posicion ){
-		ubicar ( posicion );
+		this.posicion = posicion;
 	}
 	
 	public Coordenada getPosicion() {
@@ -16,15 +19,21 @@ public class ChispaSuprema implements Ubicable {
 	}
 
 	@Override
-	public void ubicar(Coordenada unaCoordenada) {
-			this.posicion = unaCoordenada;
+	public void serCapturado(Algoformer unAlgoformer) {
+		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
-	public void recibirAtaque(Algoformer atacante) throws FuegoAmigoException {
-		// TODO Auto-generated method stub
-
-	}
+//	@Override
+//	public void ubicar(Coordenada unaCoordenada) {
+//			this.posicion = unaCoordenada;
+//		
+//	}
+//
+//	@Override
+//	public void recibirAtaque(Algoformer atacante) throws FuegoAmigoException {
+//		// TODO Auto-generated method stub
+//
+//	}
 
 }

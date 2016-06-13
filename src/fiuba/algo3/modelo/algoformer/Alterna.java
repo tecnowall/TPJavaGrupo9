@@ -1,4 +1,4 @@
-package fiuba.algo3.modelo;
+package fiuba.algo3.modelo.algoformer;
 
 public abstract class Alterna extends Forma {
 

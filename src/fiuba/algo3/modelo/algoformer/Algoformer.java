@@ -1,19 +1,32 @@
-package fiuba.algo3.modelo;
+package fiuba.algo3.modelo.algoformer;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Algoformer implements Ubicable {
+import fiuba.algo3.modelo.Coordenada;
+import fiuba.algo3.modelo.TipoEquipo;
+import fiuba.algo3.modelo.bonus.Bonus;
+import fiuba.algo3.modelo.bonus.BonusID;
+import fiuba.algo3.modelo.bonus.TipoEfecto;
+import fiuba.algo3.modelo.movimiento.Movimiento;
+import fiuba.algo3.modelo.tablero.Capturable;
+import fiuba.algo3.modelo.tablero.Tablero;
+import fiuba.algo3.modelo.tablero.Ubicable;
+
+public class Algoformer implements Ubicable{
 	private Coordenada posicion;
 	private String nombre;
 	private int vida;
+	private int poder;
+	private int velocidad;
+	private double armadura;
 	private Forma alterna;
 	private Forma actual;
 	private TipoEquipo equipo;
 	private Movimiento movimiento;
-	private transient Map<Integer, Bonus> buffs;
+	public transient Map<BonusID, Bonus> buffs;
 	
 	public Algoformer( String nombre ){
 		this.nombre = nombre;
@@ -24,7 +37,7 @@ public class Algoformer implements Ubicable {
 		this.vida = vida;
 		this.actual = humanoide;
 		this.alterna = alterna;
-		this.buffs = new HashMap<Integer, Bonus>();
+		this.buffs = new HashMap<BonusID, Bonus>();
 	}
 	
 	public void nuevoBonus( Bonus unBonus ){
@@ -78,11 +91,14 @@ public class Algoformer implements Ubicable {
 		if (atacante.equipo == equipo){
 			throw new FuegoAmigoException();
 		}
-		vida = vida - (atacante.getPoder());
-		if (vida<=0){
-			//MATAR ALGOFORMER
-		}
+		recibirDanio( atacante.getPoder() );
 	}
+	
+	public void recibirDanio( int danio ){
+		int danioTotal = (int) ( danio - ( danio * getArmadura() / 100) );
+		vida = vida - danioTotal;
+	}
+	
 	public Movimiento getMovimiento(){
 		return this.movimiento;
 	}
@@ -105,46 +121,87 @@ public class Algoformer implements Ubicable {
 		this.equipo=unEquipo;
 	}
 	
-	public int getPoder() {
-		int base = getPoderBase();
+	private void actualizarAtributos( TipoEfecto tipo ){
 		Bonus bonus;
-		for ( Map.Entry< Integer, Bonus> elemento : buffs.entrySet() ){
+		for ( Map.Entry< BonusID, Bonus> elemento : buffs.entrySet() ){
 			bonus = elemento.getValue();
-			base = bonus.aplicar( this, TipoEfecto.PODER );
-		}
-		return base;
+			bonus.aplicar( this, tipo );
+		}	
+	}
+	
+	public int getPoder() {
+		setPoder( getPoderBase() );
+		actualizarAtributos( TipoEfecto.PODER );
+		return this.poder;
 	}
 	
 	public int getVelocidad(){
-		int base = getVelocidadBase();
-		Bonus bonus;
-		for ( Map.Entry< Integer, Bonus> elemento : buffs.entrySet() ){
-			bonus = elemento.getValue();
-			base = bonus.aplicar( this, TipoEfecto.VELOCIDAD );
-		}
-		return base;
+		setVelocidad( getVelocidadBase() );
+		actualizarAtributos( TipoEfecto.VELOCIDAD );
+		return this.velocidad;
+	}
+	
+	public double getArmadura(){
+		setArmadura( getArmaduraBase() );
+		actualizarAtributos( TipoEfecto.ARMADURA );
+		return this.armadura;
 	}
 	
 	public int getPoderBase(){
 		return actual.getPoder();
 	}
-	public void setPoder(int unPoder){
+	
+	public int getPoderAnterior(){
+		return this.poder;
+	}
+	
+	public void setPoder( int poder ){
+		this.poder = poder;
+	}
+	
+	public void setPoderBase(int unPoder){
 		actual.setPoder(unPoder);
 	}
 
+	public void setVelocidad( int velocidad ){
+		this.velocidad = velocidad;
+	}
+	
+	public void setVelocidadBase( int velocidad ){
+		actual.setVelocidad( velocidad );
+	}
+	
+	public int getVelocidadAnterior(){
+		return this.velocidad;
+	}
+	
+	public int getVelocidadBase() {
+		return actual.getVelocidad();
+	}
+	
+	public double getArmaduraBase() {
+		return actual.getArmadura();
+	}
+
+	public void setArmadura( double armadura ) {
+		this.armadura = armadura;
+	}
+
+	public void setArmaduraBase( double armadura ) {
+		actual.setArmadura( armadura );
+	}
+
+	public double getArmaduraAnterior(){
+		return this.armadura;
+	}
+	
 	public TipoEquipo getEquipo(){
 
 		return this.equipo;
 	}
 
-
 	public int getRango() {
 		return actual.getRango();
-	}
-
-
-	public int getVelocidadBase() {
-		return actual.getVelocidad();
 	}
 	
 	public void aplicarEfectoTerrenoRocoso(){
@@ -165,6 +222,10 @@ public class Algoformer implements Ubicable {
 	public void aplicarEfectoTerrenoTormenta(){
 		this.actual.aplicarEfectoTerrenoTormenta(this);
 	}
-	
+
+	@Override
+	public void capturar( Capturable unCapturable ) {
+		unCapturable.serCapturado( this );		
+	}
 
 }

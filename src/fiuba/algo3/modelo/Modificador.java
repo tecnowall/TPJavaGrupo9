@@ -1,5 +1,7 @@
 package fiuba.algo3.modelo;
 
+import fiuba.algo3.modelo.bonus.TipoEfecto;
+
 public class Modificador {
 	private double factor;
 	private TipoEfecto tipo;

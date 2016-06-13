@@ -1,5 +1,5 @@
-package fiuba.algo3.modelo;
+package fiuba.algo3.modelo.bonus;
 
 public enum TipoEfecto {
-	PODER, VELOCIDAD
+	PODER, VELOCIDAD, ARMADURA
 }
