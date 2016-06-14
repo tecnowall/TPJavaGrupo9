@@ -10,11 +10,11 @@ public class BarraDeMenu {
 	MenuItem opcionAcercaDe;
 	
 	public void acercaDeHandle(){
-        Alert alert = new Alert(AlertType.INFORMATION);
-        alert.setTitle("Acerca de...");
-        alert.setHeaderText("Ejemplo de mensaje de alerta");
-        String mensaje = "Algoformers \nGrupo 9 \nPatente Pendiente";
-        alert.setContentText(mensaje);
-        alert.show();
+//        Alert alert = new Alert(AlertType.INFORMATION);
+//        alert.setTitle("Acerca de...");
+//        alert.setHeaderText("Ejemplo de mensaje de alerta");
+//        String mensaje = "Algoformers \nGrupo 9 \nPatente Pendiente";
+//        alert.setContentText(mensaje);
+//        alert.show();
 	}
 }

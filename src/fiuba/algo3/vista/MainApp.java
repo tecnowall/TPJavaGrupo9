@@ -47,7 +47,7 @@ public class MainApp extends Application {
             rootLayout.setCenter(tableroVista);
             // Darle acceso al controlador
 
-            TableroControlador controller = loader.getController();
+            TableroVistaControlador controller = loader.getController();
             controller.setMainApp(this);
         } catch (IOException e) {
             e.printStackTrace();
