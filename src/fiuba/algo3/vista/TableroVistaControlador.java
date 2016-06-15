@@ -31,6 +31,7 @@ public class TableroVistaControlador {
 
 	@FXML
 	public void dibujarTablero() {
+		tableroView.setOnMousePressed(null);
 		for (int i = 0;i<(tablero.getAncho());i++){
 			tableroView.getColumnConstraints().add(new ColumnConstraints(60));
 		}
@@ -43,7 +44,11 @@ public class TableroVistaControlador {
 	private void crearBotones(){
 		for (int i = 0; i<=tablero.getAncho();i++){
 			for (int j = 0; j<=tablero.getAlto();j++){
-				tableroView.add(new Button("    "), i, j);
+				Button boton=new Button("    ");
+				boton.setAlignment(Pos.CENTER);
+				boton.setPrefWidth(70);
+				boton.setPrefHeight(30);
+				tableroView.add(boton, i, j);
 			}
 		}
 	}
