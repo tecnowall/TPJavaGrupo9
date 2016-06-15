@@ -42,6 +42,9 @@ public class PartidaTest {
 
         Coordenada cChispa = new Coordenada( x, y );
 
+        j1.obtenerNombresDePersonajes();
+
+
         Assert.assertThat( unaPartida.obtenerChispaSuprema().getPosicion(), is( cChispa ) );
 
 

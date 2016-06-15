@@ -8,7 +8,10 @@ import fiuba.algo3.modelo.algoformer.Algoformer;
 
 import fiuba.algo3.modelo.tablero.Tablero;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 
 public class Jugador {
@@ -16,6 +19,7 @@ public class Jugador {
     private String nombre;
     private TipoEquipo equipo;
     private EstadoJugador estado;
+    private Algoformer personajeActivo;
 private HashMap<String, Algoformer> personajes = new HashMap<String,Algoformer>();
 
     public Jugador(String nombre, TipoEquipo equipo) {
@@ -38,18 +42,28 @@ private HashMap<String, Algoformer> personajes = new HashMap<String,Algoformer>(
 
     }
 
-    private boolean existePersonaje (String nombre){
-        return this.personajes.containsKey(nombre);
+    private boolean existePersonaje (String nombreDelPersonaje){
+        return this.personajes.containsKey(nombreDelPersonaje);
     }
 
-    public Algoformer obtenerPersonaje (String nombre){
+    public Algoformer obtenerPersonaje (String nombreDelPersonaje){
 
-        if (!existePersonaje(nombre)) throw new PersonajeInexistenteException();
-        return this.personajes.get(nombre);
+        if (!existePersonaje(nombreDelPersonaje)) throw new PersonajeInexistenteException();
+        return this.personajes.get(nombreDelPersonaje);
 
     }
+//TODO refacrçtttt
+    public ArrayList <String > obtenerNombresDePersonajes(){
 
-    public String obtenerNombre(){return this.nombre;}
+        Iterator it = personajes.entrySet().iterator();
+        ArrayList listaDeNombre = new ArrayList<String>();
+        while (it.hasNext()) {
+            Map.Entry e = (Map.Entry)it.next();
+            System.out.println(e.getKey());
+            listaDeNombre.add (e.getKey());
+        }
+        return listaDeNombre;
+    }
 
 
     public void hacerJugada(){
@@ -82,25 +96,31 @@ private HashMap<String, Algoformer> personajes = new HashMap<String,Algoformer>(
 
     };
 
-    public void moverPersonaje(String personaje, Coordenada posicion, Tablero tablero) {
+    public void seleccionarPersonaje (String nombreDelPersonaje){
 
-        this.estado.moverPersonaje(this.obtenerPersonaje(personaje), posicion, tablero);
+        if (!existePersonaje(nombreDelPersonaje)) throw new PersonajeInexistenteException();
+        personajeActivo= this.personajes.get(nombreDelPersonaje);
+
     }
 
-    public void atacarConPersonaje(String personaje, Coordenada posicion, Tablero tablero) {
+    public void moverPersonaje( Coordenada posicion, Tablero tablero) {
 
-        this.estado.atacarConPersonaje(this.obtenerPersonaje(personaje), posicion, tablero);
+        this.estado.moverPersonaje(this.personajeActivo, posicion, tablero);
     }
 
-    public void capturarChispa(String personaje, Coordenada posicion, Tablero tablero) {
-        this.estado.capturarChispa(this.obtenerPersonaje(personaje), posicion, tablero);
+    public void atacar( Coordenada posicion, Tablero tablero) {
+
+        this.estado.atacar((this.personajeActivo), posicion, tablero);
     }
 
-    public void tranformarPersonaje(String personaje, Coordenada posicion, Tablero tablero) {
 
-        this.estado.tranformarPersonaje(this.obtenerPersonaje(personaje), posicion, tablero);
+//TODO  hace un private get personaje y que lance excepcion si no hay activo
+    public void tranformarPersonaje( Coordenada posicion, Tablero tablero) {
+
+        this.estado.tranformarPersonaje(this.personajeActivo, posicion, tablero);
     }
 
+    //TODO
     public void CombinarPersonaje(String personaje, Coordenada posicion, Tablero tablero) {
 
 

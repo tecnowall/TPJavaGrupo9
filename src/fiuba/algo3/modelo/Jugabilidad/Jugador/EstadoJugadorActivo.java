@@ -22,10 +22,7 @@ public class EstadoJugadorActivo extends EstadoJugador {
         //TODO revisar la excepcion
     }
 
-    public void capturarChispa(Algoformer personaje, Coordenada posicion, Tablero tablero) {
-        //  this.obtenerPersonaje(nombre).capturar(tablero.getContenido(posicion));
-        //TODO ver si hay que plantear primero poder llegar,
-    }
+
 
     public void tranformarPersonaje(Algoformer personaje, Coordenada posicion, Tablero tablero) {
         personaje.transformar();

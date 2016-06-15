@@ -14,8 +14,6 @@ public class  EstadoJugadorEsperando extends EstadoJugador{
 
         }
 
-        public void capturarChispa(Algoformer personaje, Coordenada posicion, Tablero tablero) {
-        }
 
         public void tranformarPersonaje(Algoformer personaje, Coordenada posicion, Tablero tablero) {
         }
