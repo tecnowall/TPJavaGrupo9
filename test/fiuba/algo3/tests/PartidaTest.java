@@ -1,7 +1,7 @@
 package fiuba.algo3.tests;
 
 import fiuba.algo3.modelo.*;
-import fiuba.algo3.modelo.Jugabilidad.Jugador;
+import fiuba.algo3.modelo.Jugabilidad.Jugador.Jugador;
 import fiuba.algo3.modelo.Jugabilidad.Partida;
 import fiuba.algo3.modelo.algoformer.Algoformer;
 import fiuba.algo3.modelo.tablero.Tablero;
@@ -41,6 +41,9 @@ public class PartidaTest {
         int y= (20-1) /2;
 
         Coordenada cChispa = new Coordenada( x, y );
+
+        j1.obtenerNombresDePersonajes();
+
 
         Assert.assertThat( unaPartida.obtenerChispaSuprema().getPosicion(), is( cChispa ) );
 

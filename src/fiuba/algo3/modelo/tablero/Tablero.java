@@ -15,13 +15,16 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import fiuba.algo3.modelo.Coordenada;
+import fiuba.algo3.modelo.observadores.ObservadorTablero;
 import fiuba.algo3.modelo.terreno.Terreno;
+import fiuba.algo3.vista.TableroVistaControlador;
 
 
 public class Tablero {
 	private transient Map<Coordenada, Casillero> casilleros;
 	private int ancho;
 	private int alto;
+	private ObservadorTablero observador;
 	
 		
 	public Tablero ( int ancho, int alto ){
@@ -29,6 +32,7 @@ public class Tablero {
 		this.alto = alto;
 		casilleros = new HashMap<Coordenada, Casillero>( ancho * alto );
 		inicializarCasilleros();
+		//observador.notificartableroCreado(ancho, alto);
 	}
 	
 	public void inicializarCasilleros(){
