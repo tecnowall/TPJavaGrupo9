@@ -2,8 +2,10 @@ package fiuba.algo3.modelo.algoformer;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import fiuba.algo3.modelo.Coordenada;
 import fiuba.algo3.modelo.TipoEquipo;
@@ -26,7 +28,10 @@ public class Algoformer implements Ubicable{
 	private Forma actual;
 	private TipoEquipo equipo;
 	private Movimiento movimiento;
-	public transient Map<BonusID, Bonus> buffs;
+	private transient Map<BonusID, Bonus> buffs;
+	
+	public Algoformer(){
+	}
 	
 	public Algoformer( String nombre ){
 		this.nombre = nombre;
@@ -76,6 +81,7 @@ public class Algoformer implements Ubicable{
 	public void gastarMovimientos( int gastados ){
 		this.movimiento.reducir( gastados );
 	}
+	
 	public boolean ataqueValido( Coordenada destino ){
 		return  ( ( destino.getX() <= ( this.posicion.getX() + this.getRango() ) ) && (  destino.getY() <= ( this.posicion.getY() + this.getRango() ) ) );
 	}
@@ -102,6 +108,7 @@ public class Algoformer implements Ubicable{
 	public Movimiento getMovimiento(){
 		return this.movimiento;
 	}
+	
 	public String getNombre(){
 		return this.nombre;
 	}
@@ -117,6 +124,7 @@ public class Algoformer implements Ubicable{
 	public void setVida( int vida ){
 		this.vida = vida;
 	}
+	
 	public void setEquipo(TipoEquipo unEquipo){
 		this.equipo=unEquipo;
 	}
@@ -220,12 +228,13 @@ public class Algoformer implements Ubicable{
 		this.actual.aplicarEfectoTerrenoNebulosa( this );
 	}
 	public void aplicarEfectoTerrenoTormenta(){
-		this.actual.aplicarEfectoTerrenoTormenta(this);
+		this.actual.aplicarEfectoTerrenoTormenta( this );
 	}
 
 	@Override
 	public void capturar( Capturable unCapturable ) {
 		unCapturable.serCapturado( this );		
 	}
+
 
 }
