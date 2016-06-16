@@ -30,6 +30,7 @@ public class Algoformer implements Ubicable, Fusionable{
 	private TipoEquipo equipo;
 	private Movimiento movimiento;
 	private transient Map<BonusID, Bonus> buffs;
+//	private ObservadorTablero observador;
 	
 	public Algoformer(){
 	}
@@ -76,6 +77,10 @@ public class Algoformer implements Ubicable, Fusionable{
 	
 	public void ubicar( Coordenada unaCoordenada ){
 		this.posicion = unaCoordenada;
+		
+		//Notificar vista (?)
+		
+//		observador.ubicarAlgoformer(this, posicion.getX(), posicion.getY());
 	}
 	
 	public boolean movimientoValido( Coordenada destino ){

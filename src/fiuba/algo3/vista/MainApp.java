@@ -2,6 +2,10 @@ package fiuba.algo3.vista;
 import java.io.IOException;
 
 import fiuba.algo3.modelo.*;
+import fiuba.algo3.modelo.algoformer.Algoformer;
+import fiuba.algo3.modelo.algoformer.Forma;
+import fiuba.algo3.modelo.algoformer.Humanoide;
+import fiuba.algo3.modelo.algoformer.Terrestre;
 import fiuba.algo3.modelo.tablero.Tablero;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -20,7 +24,13 @@ public class MainApp extends Application {
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("Algoformers");
         
-        Tablero tablero = new Tablero(10,10);
+        Tablero tablero = new Tablero(14,9);
+        
+		Forma forma1 = new Humanoide( 50, 2, 2 );
+		Forma forma2 = new Terrestre( 15, 4, 5 );
+		Algoformer optimus = new Algoformer( "Optimus", 500, forma1, forma2 );
+		//tablero.poner(optimus, new Coordenada(2,2));
+		
         ContenedorPrincipal contenedorPrincipal = new ContenedorPrincipal(primaryStage, tablero);
         Scene scene = new Scene(contenedorPrincipal,680,480);
         primaryStage.setScene(scene);
