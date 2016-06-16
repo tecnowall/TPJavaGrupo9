@@ -5,14 +5,16 @@ import fiuba.algo3.modelo.algoformer.Algoformer;
 public class BonusDobleCanion extends Bonus {
 
 	public BonusDobleCanion(){
+		super();
 		bonusID = BonusID.DOBLE_CANION;
-		efecto = new EfectoMultiplicativo( 2, TipoEfecto.PODER );
+		duracion = 3;
+		efectos.add( new EfectoMultiplicativo( 2, TipoEfecto.PODER ) );
 	}
 
 
 	@Override
-	public int aplicar( Algoformer algoformer, TipoEfecto tipo ){	
-		int nuevoPoder = this.efecto.getValorModificado( algoformer.getPoderAnterior(), tipo );
+	public int aplicar( Efecto efecto, Algoformer algoformer, TipoEfecto tipo ){	
+		int	nuevoPoder = efecto.getValorModificado( algoformer.getPoderAnterior(), tipo );
 		algoformer.setPoder( nuevoPoder );
 		return nuevoPoder;
 	}

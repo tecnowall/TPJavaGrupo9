@@ -15,6 +15,10 @@ public class Algofusion extends Algoformer {
 		partes.add( parte3 );
 	}
 	
+	public List<Algoformer> getPartes(){
+		return this.partes;
+	}
+	
 	@Override
 	public void transformar(){
 		//las fusiones no se transforman

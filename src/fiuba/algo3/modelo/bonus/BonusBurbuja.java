@@ -5,14 +5,16 @@ import fiuba.algo3.modelo.algoformer.Algoformer;
 public class BonusBurbuja extends Bonus {
 
 	public BonusBurbuja(){
+		super();
 		bonusID = BonusID.BURBUJA;
-		efecto = new EfectoAditivo( 100, TipoEfecto.ARMADURA );
+		duracion = 2;
+		efectos.add( new EfectoAditivo( 100, TipoEfecto.ARMADURA ) );
 	}
 	
 	@Override
-	public int aplicar( Algoformer algoformer, TipoEfecto tipo ) {
-		int nuevaArmadura = this.efecto.getValorModificado( algoformer.getArmaduraAnterior(), tipo);
-		algoformer.setArmadura( nuevaArmadura);
+	public int aplicar( Efecto efecto, Algoformer algoformer, TipoEfecto tipo ) {
+		int	nuevaArmadura = efecto.getValorModificado( algoformer.getArmaduraAnterior(), tipo);
+			algoformer.setArmadura( nuevaArmadura);	
 		return nuevaArmadura;		
 	}
 

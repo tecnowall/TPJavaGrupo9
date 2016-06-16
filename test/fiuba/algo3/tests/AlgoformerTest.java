@@ -127,6 +127,28 @@ public class AlgoformerTest {
 		Assert.assertTrue(megatron.getVida()==500);
 	}
 
+	@Test
+	public void testCuandoAlgoFormerMuereSeSacaDelTablero() throws AtaqueFueraDeRangoException, FuegoAmigoException{
+		Tablero unTablero = new Tablero( 20, 20 );
+		Forma forma1a = new Humanoide( 5000, 2, 2 );
+		Forma forma2a = new Terrestre( 15, 4, 5 );
+		Algoformer optimus = new Algoformer( "Optimus", 500, forma1a, forma2a);
+		optimus.setEquipo(TipoEquipo.AUTOBOTS);
+		Forma forma1b = new Humanoide( 10, 3, 1 );
+		Forma forma2b = new Terrestre( 55, 2, 8 );
+		Algoformer megatron = new Algoformer( "Megatron", 550, forma1b, forma2b);
+		megatron.setEquipo(TipoEquipo.DECEPTICONS);
+		optimus.setTablero(unTablero);
+		megatron.setTablero(unTablero);
+		
+		Coordenada origena = new Coordenada( 2, 2 );
+		Coordenada origenb = new Coordenada( 3, 3 );
+		unTablero.poner( optimus, origena );
+		unTablero.poner( megatron, origenb );
+		optimus.atacar(unTablero, origenb);
+		Assert.assertThat( unTablero.estaOcupado( origenb ), is( false ) );
+	}
+	
 	@Test(expected = AtaqueFueraDeRangoException.class )
 	public void testAtacarAUnAlgoFormerFueraDeRango() throws AtaqueFueraDeRangoException, FuegoAmigoException{
 		Tablero unTablero = new Tablero( 20, 20 );

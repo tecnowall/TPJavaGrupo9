@@ -17,7 +17,8 @@ import fiuba.algo3.modelo.tablero.Capturable;
 import fiuba.algo3.modelo.tablero.Tablero;
 import fiuba.algo3.modelo.tablero.Ubicable;
 
-public class Algoformer implements Ubicable{
+public class Algoformer implements Ubicable, Fusionable{
+	private Tablero tablero;
 	private Coordenada posicion;
 	private String nombre;
 	private int vida;
@@ -45,8 +46,26 @@ public class Algoformer implements Ubicable{
 		this.buffs = new HashMap<BonusID, Bonus>();
 	}
 	
+	public Algoformer( String nombre, int vida, Forma humanoide, Forma alterna, Tablero tablero ){
+		this.nombre = nombre;
+		this.vida = vida;
+		this.actual = humanoide;
+		this.alterna = alterna;
+		this.buffs = new HashMap<BonusID, Bonus>();
+		setTablero( tablero );
+	}
+	
 	public void nuevoBonus( Bonus unBonus ){
+		unBonus.setAfectado( this );
 		this.buffs.put( unBonus.getBonusID(), unBonus );
+	}
+	
+	public void perderBonus( BonusID ID ){
+		this.buffs.remove( ID );
+	}
+	
+	public int cantidadBonus(){
+		return this.buffs.size();
 	}
 	
 	public void transformar(){
@@ -103,9 +122,7 @@ public class Algoformer implements Ubicable{
 	public void recibirDanio( int danio ){
 		int danioTotal = (int) ( danio - ( danio * getArmadura() / 100) );
 		vida = vida - danioTotal;
-
-		//TODO
-		//if (vida== 0) {this.jugador.notificarMuerte (self)};
+		if ( vida < 1 ) morir();
 	}
 	
 	public Movimiento getMovimiento(){
@@ -124,6 +141,14 @@ public class Algoformer implements Ubicable{
 		return this.posicion;
 	}
 	
+	public Tablero getTablero() {
+		return tablero;
+	}
+
+	public void setTablero(Tablero tablero) {
+		this.tablero = tablero;
+	}
+
 	public void setVida( int vida ){
 		this.vida = vida;
 	}
@@ -136,7 +161,7 @@ public class Algoformer implements Ubicable{
 		Bonus bonus;
 		for ( Map.Entry< BonusID, Bonus> elemento : buffs.entrySet() ){
 			bonus = elemento.getValue();
-			bonus.aplicar( this, tipo );
+			bonus.aplicarEfectos( this, tipo );
 		}	
 	}
 	
@@ -239,5 +264,26 @@ public class Algoformer implements Ubicable{
 		unCapturable.serCapturado( this );		
 	}
 
+	@Override
+	public void iniciarFusion(Algoformer parte1, Algoformer parte2, Algoformer parte3) {
+		// TODO Auto-generated method stub
+	}
 
+	@Override
+	public Algofusion completarFusion() {
+		return null;
+	}
+	
+	public void finTurno(){
+		Bonus bonus;
+		for ( Map.Entry< BonusID, Bonus> elemento : buffs.entrySet() ){
+			bonus = elemento.getValue();
+			bonus.consumirDuracion();
+		}
+	}
+
+	public void morir(){
+		this.tablero.sacar( this.posicion );
+	}
+	
 }

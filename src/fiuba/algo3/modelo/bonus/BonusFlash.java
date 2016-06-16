@@ -6,13 +6,14 @@ public class BonusFlash extends Bonus {
 
 	public BonusFlash(){
 		bonusID = BonusID.FLASH;
-		efecto = new EfectoMultiplicativo( 3, TipoEfecto.VELOCIDAD );
+		duracion = 3;
+		efectos.add( new EfectoMultiplicativo( 3, TipoEfecto.VELOCIDAD ) );
 	}
 
 	@Override
-	public int aplicar( Algoformer algoformer, TipoEfecto tipo ){
-		int nuevaVelocidad = this.efecto.getValorModificado( algoformer.getVelocidadAnterior(), tipo );
-		algoformer.setVelocidad( nuevaVelocidad );
+	public int aplicar( Efecto efecto, Algoformer algoformer, TipoEfecto tipo ){
+		int	nuevaVelocidad = efecto.getValorModificado( algoformer.getVelocidadAnterior(), tipo );
+			algoformer.setVelocidad( nuevaVelocidad );	
 		return nuevaVelocidad;
 	}
 }

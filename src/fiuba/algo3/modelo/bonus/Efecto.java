@@ -3,6 +3,8 @@ package fiuba.algo3.modelo.bonus;
 import java.util.ArrayList;
 import java.util.List;
 
+import fiuba.algo3.modelo.algoformer.Algoformer;
+
 public abstract class Efecto {
 
 	protected double factor;
@@ -38,4 +40,5 @@ public abstract class Efecto {
 	}
 	
 	public abstract int aplicar( double valorBase );	
+//	public abstract void aplicar( Algoformer algoformer );
 }
