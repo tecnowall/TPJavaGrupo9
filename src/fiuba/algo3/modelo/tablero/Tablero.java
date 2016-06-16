@@ -15,6 +15,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import fiuba.algo3.modelo.Coordenada;
+import fiuba.algo3.modelo.algoformer.Algoformer;
 import fiuba.algo3.modelo.observadores.ObservadorTablero;
 import fiuba.algo3.modelo.terreno.Terreno;
 import fiuba.algo3.vista.TableroVistaControlador;
@@ -129,6 +130,9 @@ public class Tablero {
 	
 	public void poner( Ubicable contenido, Coordenada coordenada ){
 			getCasillero( coordenada ).poner( contenido );
+			
+			//Notificar vista
+			//observador.ubicarAlgoformer((Algoformer) contenido, coordenada.getX(), coordenada.getY());
 	}
 	
 	public void poner( Capturable capturable, Coordenada coordenada ){

@@ -11,6 +11,7 @@ import fiuba.algo3.modelo.bonus.Bonus;
 import fiuba.algo3.modelo.bonus.BonusID;
 import fiuba.algo3.modelo.bonus.TipoEfecto;
 import fiuba.algo3.modelo.movimiento.Movimiento;
+import fiuba.algo3.modelo.observadores.ObservadorTablero;
 import fiuba.algo3.modelo.tablero.Capturable;
 import fiuba.algo3.modelo.tablero.Tablero;
 import fiuba.algo3.modelo.tablero.Ubicable;
@@ -27,6 +28,7 @@ public class Algoformer implements Ubicable{
 	private TipoEquipo equipo;
 	private Movimiento movimiento;
 	public transient Map<BonusID, Bonus> buffs;
+	private ObservadorTablero observador;
 	
 	public Algoformer( String nombre ){
 		this.nombre = nombre;
@@ -52,6 +54,10 @@ public class Algoformer implements Ubicable{
 	
 	public void ubicar( Coordenada unaCoordenada ){
 		this.posicion = unaCoordenada;
+		
+		//Notificar vista (?)
+		
+		observador.ubicarAlgoformer(this, posicion.getX(), posicion.getY());
 	}
 	
 	public boolean movimientoValido( Coordenada destino ){
