@@ -3,8 +3,8 @@ package fiuba.algo3.eventos;
 import fiuba.algo3.modelo.algoformer.Algoformer;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.control.*;
-import javafx.scene.control.Alert.*;
+
+import javafx.scene.control.Alert;
 
 public class SeleccionAlgoformerHandler implements EventHandler<ActionEvent> {
 
@@ -15,7 +15,7 @@ public class SeleccionAlgoformerHandler implements EventHandler<ActionEvent> {
 	}
 	@Override
 	public void handle(ActionEvent event) {
-		Alert alert = new Alert(AlertType.INFORMATION);
+		Alert alert = new Alert(Alert.AlertType.INFORMATION);
 		alert.setTitle("Algoformer");
 		alert.setHeaderText("Algoformer seleccionado: " + algoformer.getNombre());
 		alert.setContentText("Vida actual: " + algoformer.getVida() + "\nPoder: " + algoformer.getPoder()
