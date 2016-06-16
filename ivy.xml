@@ -18,6 +18,8 @@
         <!-- http://mvnrepository.com/artifact/com.googlecode.json-simple/json-simple -->
 		<dependency org="com.googlecode.json-simple" name="json-simple" rev="1.1"/>
 		<dependency org="org.json" name="json" rev="20090211" conf="build->default"/>
+		<!-- http://mvnrepository.com/artifact/com.javafx/scenario -->
+		<dependency org="com.javafx" name="scenario" rev="1.0.1"/>
         <!--
          
         <dependency org="oro" name="oro" rev="2.0.8"/>  
