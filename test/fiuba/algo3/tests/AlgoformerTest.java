@@ -3,6 +3,8 @@ package fiuba.algo3.tests;
 import static org.hamcrest.CoreMatchers.is;
 
 import fiuba.algo3.modelo.*;
+import fiuba.algo3.modelo.Jugabilidad.Jugador.Jugador;
+import fiuba.algo3.modelo.Jugabilidad.PersonajeInexistenteException;
 import fiuba.algo3.modelo.algoformer.Aerea;
 import fiuba.algo3.modelo.algoformer.Algoformer;
 import fiuba.algo3.modelo.algoformer.AtaqueFueraDeRangoException;
@@ -140,7 +142,12 @@ public class AlgoformerTest {
 		megatron.setEquipo(TipoEquipo.DECEPTICONS);
 		optimus.setTablero(unTablero);
 		megatron.setTablero(unTablero);
-		
+
+		Jugador j1= new Jugador("Diego", TipoEquipo.DECEPTICONS);
+		Jugador j2= new Jugador("Maradona", TipoEquipo.AUTOBOTS);
+		j1.agregarPersonaje(megatron);
+		j2.agregarPersonaje(optimus);
+
 		Coordenada origena = new Coordenada( 2, 2 );
 		Coordenada origenb = new Coordenada( 3, 3 );
 		unTablero.poner( optimus, origena );
@@ -148,6 +155,35 @@ public class AlgoformerTest {
 		optimus.atacar(unTablero, origenb);
 		Assert.assertThat( unTablero.estaOcupado( origenb ), is( false ) );
 	}
+
+	@Test(expected = PersonajeInexistenteException.class )
+	public void testCuandoAlgoFormerMuereSeSacaDelJugador() throws AtaqueFueraDeRangoException, FuegoAmigoException{
+		Tablero unTablero = new Tablero( 20, 20 );
+		Forma forma1a = new Humanoide( 5000, 2, 2 );
+		Forma forma2a = new Terrestre( 15, 4, 5 );
+		Algoformer optimus = new Algoformer( "Optimus", 500, forma1a, forma2a);
+		optimus.setEquipo(TipoEquipo.AUTOBOTS);
+		Forma forma1b = new Humanoide( 10, 3, 1 );
+		Forma forma2b = new Terrestre( 55, 2, 8 );
+		Algoformer megatron = new Algoformer( "Megatron", 550, forma1b, forma2b);
+		megatron.setEquipo(TipoEquipo.DECEPTICONS);
+		optimus.setTablero(unTablero);
+		megatron.setTablero(unTablero);
+
+		Jugador j1= new Jugador("Diego", TipoEquipo.DECEPTICONS);
+		Jugador j2= new Jugador("Maradona", TipoEquipo.AUTOBOTS);
+		j1.agregarPersonaje(megatron);
+		j2.agregarPersonaje(optimus);
+
+		Coordenada origena = new Coordenada( 2, 2 );
+		Coordenada origenb = new Coordenada( 3, 3 );
+		unTablero.poner( optimus, origena );
+		unTablero.poner( megatron, origenb );
+		optimus.atacar(unTablero, origenb);
+
+		j1.obtenerPersonaje("Megatron");
+	}
+
 	
 	@Test(expected = AtaqueFueraDeRangoException.class )
 	public void testAtacarAUnAlgoFormerFueraDeRango() throws AtaqueFueraDeRangoException, FuegoAmigoException{

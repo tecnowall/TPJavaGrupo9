@@ -20,7 +20,8 @@ public class Jugador {
     private TipoEquipo equipo;
     private EstadoJugador estado;
     private Algoformer personajeActivo;
-private HashMap<String, Algoformer> personajes = new HashMap<String,Algoformer>();
+    private HashMap<String, Algoformer> personajes = new HashMap<String,Algoformer>();
+
 
     public Jugador(String nombre, TipoEquipo equipo) {
         this.nombre = nombre;
@@ -39,6 +40,7 @@ private HashMap<String, Algoformer> personajes = new HashMap<String,Algoformer>(
         }
 
         personajes.put(unPersonaje.getNombre(), unPersonaje);
+        unPersonaje.agregarJugador(this);
 
     }
 
@@ -126,5 +128,20 @@ private HashMap<String, Algoformer> personajes = new HashMap<String,Algoformer>(
 
     }
 
+    public void murioUnPersonaje (Algoformer unAlgoformer){
+
+        this.eliminarPersonaje (unAlgoformer.getNombre());
+
+    }
+
+    public void eliminarPersonaje (String nombreDelPerosnaje){
+
+        //verificar existencia del personaje, sino excepcion
+        if (!existePersonaje(nombreDelPerosnaje)) throw new PersonajeInexistenteException();
+
+        // eliminar personaje
+        personajes.remove(nombreDelPerosnaje);
+
+    }
 
 }

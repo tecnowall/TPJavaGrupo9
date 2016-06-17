@@ -1,5 +1,7 @@
 package fiuba.algo3.tests;
 
+import fiuba.algo3.modelo.Jugabilidad.Jugador.Jugador;
+import fiuba.algo3.modelo.TipoEquipo;
 import org.junit.Assert;
 import org.junit.Test;
 import static org.hamcrest.CoreMatchers.*;
@@ -36,7 +38,20 @@ public class AlgofusionTest {
 		tablero.poner( optimus, origena);
 		tablero.poner( bumblebee, origenb);
 		tablero.poner( ratchet, origenc);
-		
+
+		Jugador j1= new Jugador("Maradona", TipoEquipo.AUTOBOTS);
+
+		optimus.setEquipo(TipoEquipo.AUTOBOTS);
+		bumblebee.setEquipo(TipoEquipo.AUTOBOTS);
+		ratchet.setEquipo(TipoEquipo.AUTOBOTS);
+
+		j1.agregarPersonaje(optimus);
+		j1.agregarPersonaje(bumblebee);
+		j1.agregarPersonaje(ratchet);
+
+
+
+
 		optimus.iniciarFusion( optimus, bumblebee, ratchet );
 		Algofusion superion = optimus.completarFusion();
 		
@@ -68,6 +83,17 @@ public class AlgofusionTest {
 		tablero.poner( bonecrusher, origenb);
 		tablero.poner( frenzy, origenc);
 
+		Jugador j1= new Jugador("Maradona", TipoEquipo.DECEPTICONS);
+
+		megatron.setEquipo( TipoEquipo.DECEPTICONS);
+		bonecrusher.setEquipo( TipoEquipo.DECEPTICONS);
+		frenzy.setEquipo( TipoEquipo.DECEPTICONS);
+
+		j1.agregarPersonaje(megatron);
+		j1.agregarPersonaje(bonecrusher);
+		j1.agregarPersonaje(frenzy);
+
+
 		megatron.iniciarFusion( megatron, bonecrusher, frenzy );
 		Algofusion menasor = megatron.completarFusion();
 		
@@ -97,7 +123,19 @@ public class AlgofusionTest {
 		tablero.poner( optimus, origena);
 		tablero.poner( bumblebee, origenb);
 		tablero.poner( ratchet, origenc);
-		
+
+
+		Jugador j1= new Jugador("Maradona", TipoEquipo.AUTOBOTS);
+
+		optimus.setEquipo(TipoEquipo.AUTOBOTS);
+		bumblebee.setEquipo(TipoEquipo.AUTOBOTS);
+		ratchet.setEquipo(TipoEquipo.AUTOBOTS);
+
+		j1.agregarPersonaje(optimus);
+		j1.agregarPersonaje(bumblebee);
+		j1.agregarPersonaje(ratchet);
+
+
 		optimus.iniciarFusion( optimus, bumblebee, ratchet );
 		
 		Assert.assertThat( optimus.getVelocidad(), is( 0 ) );

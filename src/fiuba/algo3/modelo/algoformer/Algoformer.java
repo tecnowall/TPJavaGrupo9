@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.Set;
 
 import fiuba.algo3.modelo.Coordenada;
+import fiuba.algo3.modelo.Jugabilidad.Jugador.Jugador;
 import fiuba.algo3.modelo.TipoEquipo;
 import fiuba.algo3.modelo.bonus.Bonus;
 import fiuba.algo3.modelo.bonus.BonusID;
@@ -30,6 +31,7 @@ public class Algoformer implements Ubicable, Fusionable{
 	private TipoEquipo equipo;
 	private Movimiento movimiento;
 	private transient Map<BonusID, Bonus> buffs;
+	private Jugador jugador;
 //	private ObservadorTablero observador;
 	
 	public Algoformer(){
@@ -289,6 +291,16 @@ public class Algoformer implements Ubicable, Fusionable{
 
 	public void morir(){
 		this.tablero.sacar( this.posicion );
+		this.jugador.murioUnPersonaje(this);
 	}
-	
+
+	//TODO hay que validar que no tenga otro jugador agregado
+	public void agregarJugador (Jugador unJugador){
+		this.jugador = unJugador;
+
+
+	}
+
+
+
 }

@@ -1,4 +1,4 @@
-package fiuba.algo3.tests;
+package fiuba.algo3.tests.Jugabilidad;
 
 import fiuba.algo3.modelo.Jugabilidad.PersonajeDeOtroEquipoException;
 import fiuba.algo3.modelo.Jugabilidad.PersonajeInexistenteException;
