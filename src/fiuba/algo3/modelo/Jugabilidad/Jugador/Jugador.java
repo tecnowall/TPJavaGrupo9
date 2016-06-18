@@ -32,7 +32,7 @@ public class Jugador {
     public String obtenerNombre(){return this.nombre;}
     public TipoEquipo obtenerEquipo(){return this.equipo;}
     public String getEstado (){return estado.getEstado();} //TODO for test
-
+    public Algoformer getJugadorActivo(){return this.personajeActivo;} //todo for test
     public void agregarPersonaje(Algoformer unPersonaje)  {
 
         if ( unPersonaje.getEquipo() != this.equipo) {
@@ -58,15 +58,14 @@ public class Jugador {
         return this.personajes.get(nombreDelPersonaje);
 
     }
-//TODO refacrçtttt
+
     public ArrayList <String > obtenerNombresDePersonajes(){
 
         Iterator it = personajes.entrySet().iterator();
-        ArrayList listaDeNombre = new ArrayList<String>();
+        ArrayList <String> listaDeNombre = new ArrayList<String>();
         while (it.hasNext()) {
             Map.Entry e = (Map.Entry)it.next();
-
-            listaDeNombre.add (e.getKey());
+            listaDeNombre.add ((String)e.getKey());
         }
         return listaDeNombre;
     }

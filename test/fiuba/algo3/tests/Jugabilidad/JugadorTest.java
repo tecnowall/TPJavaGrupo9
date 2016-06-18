@@ -134,7 +134,7 @@ public class JugadorTest {
 
         */
         Jugador j1 = new Jugador ("Diego", TipoEquipo.AUTOBOTS);
-        Assert.assertTrue(j1.getEstado()=="esperando");
+        Assert.assertTrue(j1.getEstado().equals("esperando"));
     }
 
     @Test
@@ -142,7 +142,7 @@ public class JugadorTest {
 
         Jugador j1 = new Jugador ("Diego", TipoEquipo.AUTOBOTS);
         j1.inicioTurno();
-        Assert.assertTrue(j1.getEstado()=="activo");
+        Assert.assertTrue(j1.getEstado().equals("activo"));
 
     }
 
@@ -152,36 +152,59 @@ public class JugadorTest {
 
         Jugador j1 = new Jugador ("Diego", TipoEquipo.AUTOBOTS);
         j1.finTurno();
-        Assert.assertTrue(j1.getEstado()=="esperando");
+        Assert.assertTrue(j1.getEstado().equals("esperando"));
     };
 
+    //TODO
 /*
     @Test
     public void testFinTurnoNotificaATodosSusPersonajesElFinDelTurno(){
         Assert.assertTrue(false);
     };
+*/
 
 
 
-
-    @Test
+    @Test (expected = PersonajeInexistenteException.class)
     public void testSeleccionarPersonajeDebeLanzarExcepcionSiNoExiste(){
-        Assert.assertTrue(false);
+
+        Jugador j1 = new Jugador ("Diego", TipoEquipo.AUTOBOTS);
+        j1.seleccionarPersonaje("Alberto");
+
+
     };
 
     @Test
+    //todo
     public void testSeleccionarPersonajeDebeSeleccionarAlPersonaje(){
-        Assert.assertTrue(false);
-    };
+        Jugador j1 = new Jugador ("Diego", TipoEquipo.AUTOBOTS);
+        Algoformer a1 = new Algoformer("diego");
+        Algoformer a2 = new Algoformer("armando");
+        a1.setEquipo(TipoEquipo.AUTOBOTS);
+        a2.setEquipo(TipoEquipo.AUTOBOTS);
+        j1.agregarPersonaje(a1);
+        j1.agregarPersonaje(a2);
+        j1.seleccionarPersonaje("diego");
+        Assert.assertTrue(j1.getJugadorActivo()==a1);
+        Assert.assertFalse(j1.getJugadorActivo()==a2);
 
-    @Test
-    public void testSeleccionarPersonajeDebeLanzarExcepcionSiElJugadorTieneEstadoEsperando(){
-        Assert.assertTrue(false);
+
     };
 
     @Test
     public void testSeleccionarPersonajeDebeSeleccionarAlPersonajeLuegoDeTenerOtroSeleccionado(){
-        Assert.assertTrue(false);
+        Jugador j1 = new Jugador ("Diego", TipoEquipo.AUTOBOTS);
+        Algoformer a1 = new Algoformer("diego");
+        Algoformer a2 = new Algoformer("armando");
+        a1.setEquipo(TipoEquipo.AUTOBOTS);
+        a2.setEquipo(TipoEquipo.AUTOBOTS);
+        j1.agregarPersonaje(a1);
+        j1.agregarPersonaje(a2);
+        j1.seleccionarPersonaje("diego");
+        j1.seleccionarPersonaje("armando");
+        Assert.assertTrue(j1.getJugadorActivo()==a2);
+
+
     };
 
 /*
@@ -233,17 +256,6 @@ public class JugadorTest {
 
 
 // quien va a avisar que se ejecuto el movimiento???
-
-
-
-
-
-
-
-
-
-
-
 
 
 
