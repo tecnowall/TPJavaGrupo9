@@ -8,19 +8,23 @@ import fiuba.algo3.modelo.tablero.Tablero;
 public class  EstadoJugadorEsperando extends EstadoJugador{
 
         public void moverPersonaje(Algoformer personaje, Coordenada posicion, Tablero tablero) {
-
+                throw new JugadorEnEstadoDeEsperaException();
         }
 
-        public void atacarConPersonaje(Algoformer personaje, Coordenada posicion, Tablero tablero) {
-
+        public void atacar(Algoformer personaje, Coordenada posicion, Tablero tablero) {
+                throw new JugadorEnEstadoDeEsperaException();
         }
 
 
         public void tranformarPersonaje(Algoformer personaje, Coordenada posicion, Tablero tablero) {
+                throw new JugadorEnEstadoDeEsperaException();
         }
 
         public void CombinarPersonaje(Algoformer personaje, Coordenada posicion, Tablero tablero) {
+                throw new JugadorEnEstadoDeEsperaException();
         }
+
+        public String getEstado (){return "esperando";}
 
 
 

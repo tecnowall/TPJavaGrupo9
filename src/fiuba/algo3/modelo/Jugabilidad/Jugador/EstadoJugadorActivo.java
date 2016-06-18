@@ -2,8 +2,6 @@ package fiuba.algo3.modelo.Jugabilidad.Jugador;
 
 import fiuba.algo3.modelo.Coordenada;
 import fiuba.algo3.modelo.algoformer.Algoformer;
-import fiuba.algo3.modelo.algoformer.AtaqueFueraDeRangoException;
-import fiuba.algo3.modelo.algoformer.FuegoAmigoException;
 import fiuba.algo3.modelo.tablero.Tablero;
 
 /**
@@ -17,7 +15,7 @@ public class EstadoJugadorActivo extends EstadoJugador {
 
     }
 
-    public void atacarConPersonaje(Algoformer personaje, Coordenada posicion, Tablero tablero)  {
+    public void atacar(Algoformer personaje, Coordenada posicion, Tablero tablero)  {
         personaje.atacar(tablero, posicion);
         //TODO revisar la excepcion
     }
@@ -34,6 +32,6 @@ public class EstadoJugadorActivo extends EstadoJugador {
 
     }
 
-
+    public String getEstado (){return "activo";}
 
 }

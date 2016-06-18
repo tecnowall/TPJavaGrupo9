@@ -7,22 +7,15 @@ import fiuba.algo3.modelo.tablero.Tablero;
 
 public abstract class EstadoJugador {
 
-    public void moverPersonaje(Algoformer personaje, Coordenada posicion, Tablero tablero) {
-    }
+    public abstract void moverPersonaje(Algoformer personaje, Coordenada posicion, Tablero tablero);
 
-    public void atacar(Algoformer personaje, Coordenada posicion, Tablero tablero) {
+    public abstract void atacar(Algoformer personaje, Coordenada posicion, Tablero tablero) ;
 
-    }
+    public abstract void tranformarPersonaje(Algoformer personaje, Coordenada posicion, Tablero tablero);
 
+    public abstract void CombinarPersonaje(Algoformer personaje, Coordenada posicion, Tablero tablero) ;
 
-    public void tranformarPersonaje(Algoformer personaje, Coordenada posicion, Tablero tablero) {
+    public abstract String getEstado ();
 
-
-    }
-
-    public void CombinarPersonaje(Algoformer personaje, Coordenada posicion, Tablero tablero) {
-
-
-    }
 }
 

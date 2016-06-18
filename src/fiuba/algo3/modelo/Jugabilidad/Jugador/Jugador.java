@@ -29,6 +29,9 @@ public class Jugador {
         this.estado = new EstadoJugadorEsperando();
         this.personajes = new HashMap<String,Algoformer>();
     }
+    public String obtenerNombre(){return this.nombre;}
+    public TipoEquipo obtenerEquipo(){return this.equipo;}
+    public String getEstado (){return estado.getEstado();} //TODO for test
 
     public void agregarPersonaje(Algoformer unPersonaje)  {
 
@@ -62,7 +65,7 @@ public class Jugador {
         ArrayList listaDeNombre = new ArrayList<String>();
         while (it.hasNext()) {
             Map.Entry e = (Map.Entry)it.next();
-            System.out.println(e.getKey());
+
             listaDeNombre.add (e.getKey());
         }
         return listaDeNombre;
@@ -95,6 +98,7 @@ public class Jugador {
     public void seleccionarPersonaje (String nombreDelPersonaje){
 
         if (!existePersonaje(nombreDelPersonaje)) throw new PersonajeInexistenteException();
+
         personajeActivo= this.personajes.get(nombreDelPersonaje);
 
     }
