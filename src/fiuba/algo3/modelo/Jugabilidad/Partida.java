@@ -38,7 +38,7 @@ public class Partida {
 
     }
 
-    public void siguienteTurno(){
+    public void pasarTurno(){
         this.turno.getTurno().finTurno();
         this.turno.siguiente().inicioTurno();
     };

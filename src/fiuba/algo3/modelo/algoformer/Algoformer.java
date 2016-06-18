@@ -294,12 +294,15 @@ public class Algoformer implements Ubicable, Fusionable{
 		this.jugador.murioUnPersonaje(this);
 	}
 
-	//TODO hay que validar que no tenga otro jugador agregado
-	public void agregarJugador (Jugador unJugador){
+
+	public void agregarJugador (Jugador unJugador) {
+		if (this.jugador !=null) {throw new YaPoseoJugadorException();}
 		this.jugador = unJugador;
-
-
 	}
+
+	//metodo para test
+	public Jugador  getJugador(){return this.jugador;}
+
 
 
 

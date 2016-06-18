@@ -5,14 +5,7 @@ import static org.hamcrest.CoreMatchers.is;
 import fiuba.algo3.modelo.*;
 import fiuba.algo3.modelo.Jugabilidad.Jugador.Jugador;
 import fiuba.algo3.modelo.Jugabilidad.PersonajeInexistenteException;
-import fiuba.algo3.modelo.algoformer.Aerea;
-import fiuba.algo3.modelo.algoformer.Algoformer;
-import fiuba.algo3.modelo.algoformer.AtaqueFueraDeRangoException;
-import fiuba.algo3.modelo.algoformer.Forma;
-import fiuba.algo3.modelo.algoformer.FuegoAmigoException;
-import fiuba.algo3.modelo.algoformer.Humanoide;
-import fiuba.algo3.modelo.algoformer.MovimientoFueraDeRangoException;
-import fiuba.algo3.modelo.algoformer.Terrestre;
+import fiuba.algo3.modelo.algoformer.*;
 import fiuba.algo3.modelo.bonus.BonusDobleCanion;
 import fiuba.algo3.modelo.bonus.BonusTormentaPsionica;
 import fiuba.algo3.modelo.tablero.Capturable;
@@ -246,5 +239,28 @@ public class AlgoformerTest {
 		optimus.mover( unTablero, destino );
 		Assert.assertThat( optimus.getPoder(), is( 120 ) ); //100*0.6*2 = 120
 	}
-	
+
+	@Test
+	public void  testAgregarJugadorDebeAgregarAlJugador(){
+
+		Jugador j1 = new Jugador("Diego",TipoEquipo.AUTOBOTS);
+		Algoformer a1 = new Algoformer("truchibot");
+		a1.setEquipo(TipoEquipo.AUTOBOTS);
+
+		a1.agregarJugador(j1);
+
+		Assert.assertTrue(j1 == a1.getJugador());}
+
+	@Test(expected = YaPoseoJugadorException.class )
+	public void  testAgregarJugadorDebeLanzarExcepcionSiHayAgregadoPreviamenteOtroJugador(){
+
+		Jugador j1 = new Jugador("Diego",TipoEquipo.AUTOBOTS);
+		Jugador j2 = new Jugador("Maradona",TipoEquipo.DECEPTICONS);
+		Algoformer a1 = new Algoformer("truchibot");
+		//a1.setEquipo(TipoEquipo.AUTOBOTS);
+
+		a1.agregarJugador(j1);
+		a1.agregarJugador(j2);
+}
+
 }

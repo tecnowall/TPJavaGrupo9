@@ -20,13 +20,14 @@ public class Jugador {
     private TipoEquipo equipo;
     private EstadoJugador estado;
     private Algoformer personajeActivo;
-    private HashMap<String, Algoformer> personajes = new HashMap<String,Algoformer>();
+    private HashMap<String, Algoformer> personajes;
 
 
     public Jugador(String nombre, TipoEquipo equipo) {
         this.nombre = nombre;
         this.equipo = equipo;
         this.estado = new EstadoJugadorEsperando();
+        this.personajes = new HashMap<String,Algoformer>();
     }
 
     public void agregarPersonaje(Algoformer unPersonaje)  {
@@ -68,33 +69,26 @@ public class Jugador {
     }
 
 
-    public void hacerJugada(){
-       /*
-        TODO
 
-        a jugador hay que agregarle una clase controlador
-
-        elegir algoformer    this.controlador.getSelection()
-        obtener orden        this.controlador.getOrder()
-        ordenar al algofomer   Algoformer.do
-        */
-
-    }
-
-
-
-
-    private void notificarTurno(){
+    private void notificarFinDeTurno(){
         //TODO
       //notificar a los algoformer de un nuevo turno
+
+        Iterator it = personajes.entrySet().iterator();
+        while (it.hasNext()) {
+            ((Algoformer)(((Map.Entry)it.next()).getValue())).finTurno();
+        }
+
     };
 
     public void inicioTurno(){
         this.estado= new EstadoJugadorActivo();
-        notificarTurno();
+
     };
+
     public void finTurno(){
         this.estado= new EstadoJugadorEsperando();
+        notificarFinDeTurno();
 
     };
 
@@ -105,6 +99,7 @@ public class Jugador {
 
     }
 
+    //todo debe lanzarexepcion
     public void moverPersonaje( Coordenada posicion, Tablero tablero) {
 
         this.estado.moverPersonaje(this.personajeActivo, posicion, tablero);
@@ -114,8 +109,7 @@ public class Jugador {
 
         this.estado.atacar((this.personajeActivo), posicion, tablero);
     }
-
-
+////////-------------------------------------------------------------------
 //TODO  hace un private get personaje y que lance excepcion si no hay activo
     public void tranformarPersonaje( Coordenada posicion, Tablero tablero) {
 
@@ -134,7 +128,7 @@ public class Jugador {
 
     }
 
-    public void eliminarPersonaje (String nombreDelPerosnaje){
+    private void eliminarPersonaje (String nombreDelPerosnaje){
 
         //verificar existencia del personaje, sino excepcion
         if (!existePersonaje(nombreDelPerosnaje)) throw new PersonajeInexistenteException();
@@ -143,5 +137,7 @@ public class Jugador {
         personajes.remove(nombreDelPerosnaje);
 
     }
+
+
 
 }

@@ -8,6 +8,7 @@ import fiuba.algo3.modelo.tablero.Tablero;
 public class  EstadoJugadorEsperando extends EstadoJugador{
 
         public void moverPersonaje(Algoformer personaje, Coordenada posicion, Tablero tablero) {
+
         }
 
         public void atacarConPersonaje(Algoformer personaje, Coordenada posicion, Tablero tablero) {
