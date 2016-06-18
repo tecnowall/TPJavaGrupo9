@@ -14,11 +14,13 @@ import fiuba.algo3.modelo.bonus.Bonus;
 import fiuba.algo3.modelo.bonus.BonusID;
 import fiuba.algo3.modelo.bonus.TipoEfecto;
 import fiuba.algo3.modelo.movimiento.Movimiento;
+import fiuba.algo3.modelo.observadores.ObservableAlgoformer;
+import fiuba.algo3.modelo.observadores.ObservadorAlgoformer;
 import fiuba.algo3.modelo.tablero.Capturable;
 import fiuba.algo3.modelo.tablero.Tablero;
 import fiuba.algo3.modelo.tablero.Ubicable;
 
-public class Algoformer implements Ubicable, Fusionable{
+public class Algoformer implements Ubicable, Fusionable, ObservableAlgoformer{
 	private Tablero tablero;
 	private Coordenada posicion;
 	private String nombre;
@@ -32,7 +34,7 @@ public class Algoformer implements Ubicable, Fusionable{
 	private Movimiento movimiento;
 	private transient Map<BonusID, Bonus> buffs;
 	private Jugador jugador;
-//	private ObservadorTablero observador;
+	private List<ObservadorAlgoformer> observadores;
 	
 	public Algoformer(){
 	}
@@ -47,6 +49,7 @@ public class Algoformer implements Ubicable, Fusionable{
 		this.actual = humanoide;
 		this.alterna = alterna;
 		this.buffs = new HashMap<BonusID, Bonus>();
+		this.observadores = new ArrayList<ObservadorAlgoformer>();
 	}
 	
 	public Algoformer( String nombre, int vida, Forma humanoide, Forma alterna, Tablero tablero ){
@@ -55,6 +58,7 @@ public class Algoformer implements Ubicable, Fusionable{
 		this.actual = humanoide;
 		this.alterna = alterna;
 		this.buffs = new HashMap<BonusID, Bonus>();
+		this.observadores = new ArrayList<ObservadorAlgoformer>();
 		setTablero( tablero );
 	}
 	
@@ -302,6 +306,19 @@ public class Algoformer implements Ubicable, Fusionable{
 
 	//metodo para test
 	public Jugador  getJugador(){return this.jugador;}
+
+	@Override
+	public void suscribir(ObservadorAlgoformer nuevoObservador) {
+		this.observadores.add( nuevoObservador );		
+	}
+
+	@Override
+	public void desSuscribir(ObservadorAlgoformer nuevoObservador) {		
+		if ( this.observadores.contains( nuevoObservador ) ){
+			this.observadores.remove( this.observadores.indexOf( nuevoObservador ) );
+		}
+		
+	}
 
 
 
