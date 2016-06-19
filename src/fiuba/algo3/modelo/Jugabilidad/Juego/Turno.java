@@ -1,4 +1,4 @@
-package fiuba.algo3.modelo.Jugabilidad;
+package fiuba.algo3.modelo.Jugabilidad.Juego;
 
 import fiuba.algo3.modelo.Jugabilidad.Jugador.Jugador;
 

@@ -23,6 +23,41 @@ public class MainApp extends Application {
 	public void start(Stage primaryStage) {
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("Algoformers");
+
+        /* TODO
+          hay que hacer una aplicacion principal que haga lo siguiente:
+
+          Juego unJuego = new Juego()
+          Vista unaVista = new Vista (unJuego)
+
+          el new de Vista va a tener lo siguiente:
+              juego.Iniciar;
+              juego.gettablero   y dibujar tablero
+
+              juego.getjugadoruno.     pones el nombre en la vista etc....
+              juego.getjugadoruno.getalgoformrs
+                   para cada algoformer ponerlos en la pantalla
+                        suscribirles un observador
+
+              lo mismo para jugador 2
+
+           juego.getchispa    y posicionarla
+
+           juego.getbonus,    posicionar los bonus en pantalla
+                                suscribir observadores
+
+           juego.agregarobservadores (this)     // este me va a avisar cuando el juego termina
+
+           juego.pasarturno
+
+           fin del new vista.
+
+
+         */
+
+
+
+
         
         Tablero tablero = new Tablero(14,9);
         

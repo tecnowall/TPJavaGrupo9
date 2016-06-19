@@ -1,10 +1,15 @@
-package fiuba.algo3.modelo.Jugabilidad;
+package fiuba.algo3.modelo.Jugabilidad.Juego;
 
 
 import fiuba.algo3.modelo.ChispaSuprema;
 import fiuba.algo3.modelo.Coordenada;
 import fiuba.algo3.modelo.Jugabilidad.Jugador.Jugador;
+import fiuba.algo3.modelo.bonus.Bonus;
+import fiuba.algo3.modelo.bonus.BonusDobleCanion;
 import fiuba.algo3.modelo.tablero.Tablero;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by jose on 09/06/2016.
@@ -16,6 +21,7 @@ public class Partida {
     private Tablero tablero;
     private ChispaSuprema chispa;
 
+    //todo si los jugadores no tienen 3 algoformers que lance exepcion
     public Partida (Jugador j1, Jugador j2, Tablero tablero){
 
             this.turno= new Turno(j1,j2);
@@ -56,20 +62,23 @@ public class Partida {
         //TODO refactoring..., crear un iterador
         // this.player1.obtenerPersonajes
         //
-        this.tablero.poner (this.player1.obtenerPersonaje("OPTIMUSS"),c1);
-        this.player1.obtenerPersonaje("OPTIMUSS").ubicar(c1);
-        this.tablero.poner (this.player1.obtenerPersonaje("BUMBLEBEE"),c2);
-        this.player1.obtenerPersonaje("BUMBLEBEE").ubicar(c2);
-        this.tablero.poner (this.player1.obtenerPersonaje("RATCHET"),c3);
-        this.player1.obtenerPersonaje("RATCHET").ubicar(c3);
+        ArrayList<String> lista1= this.player1.obtenerNombresDePersonajes();
+
+        this.tablero.poner (this.player1.obtenerPersonaje(lista1.get(0)),c1);
+        this.player1.obtenerPersonaje(lista1.get(0)).ubicar(c1);
+        this.tablero.poner (this.player1.obtenerPersonaje(lista1.get(1)),c2);
+        this.player1.obtenerPersonaje(lista1.get(1)).ubicar(c2);
+        this.tablero.poner (this.player1.obtenerPersonaje(lista1.get(2)),c3);
+        this.player1.obtenerPersonaje(lista1.get(2)).ubicar(c3);
 
 
-        this.tablero.poner (this.player2.obtenerPersonaje("MEGATRON"),c4);
-        this.player2.obtenerPersonaje("MEGATRON").ubicar(c4);
-        this.tablero.poner (this.player2.obtenerPersonaje("BOECRUSHER"),c5);
-        this.player2.obtenerPersonaje("BOECRUSHER").ubicar(c5);
-        this.tablero.poner (this.player2.obtenerPersonaje("FRENZY"),c6);
-        this.player2.obtenerPersonaje("FRENZY").ubicar(c6);
+        ArrayList<String> lista2= this.player2.obtenerNombresDePersonajes();
+        this.tablero.poner (this.player2.obtenerPersonaje(lista2.get(0)),c4);
+        this.player2.obtenerPersonaje(lista2.get(0)).ubicar(c4);
+        this.tablero.poner (this.player2.obtenerPersonaje(lista2.get(1)),c5);
+        this.player2.obtenerPersonaje(lista2.get(1)).ubicar(c5);
+        this.tablero.poner (this.player2.obtenerPersonaje(lista2.get(2)),c6);
+        this.player2.obtenerPersonaje(lista2.get(2)).ubicar(c6);
 
     }
 
@@ -86,4 +95,15 @@ public class Partida {
         return this.chispa;
     }
 
+    //TODO implementar esto!
+    public List<Bonus> getListaDeBonus(){
+
+
+        List<Bonus> lista;
+        lista = new ArrayList<>();
+        Bonus unBonus = new BonusDobleCanion();
+       lista.add(unBonus);
+        return lista;
+
+    };
 }

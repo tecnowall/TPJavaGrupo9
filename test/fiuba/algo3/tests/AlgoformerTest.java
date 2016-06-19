@@ -4,7 +4,7 @@ import static org.hamcrest.CoreMatchers.is;
 
 import fiuba.algo3.modelo.*;
 import fiuba.algo3.modelo.Jugabilidad.Jugador.Jugador;
-import fiuba.algo3.modelo.Jugabilidad.PersonajeInexistenteException;
+import fiuba.algo3.modelo.Jugabilidad.Jugador.PersonajeInexistenteException;
 import fiuba.algo3.modelo.algoformer.*;
 import fiuba.algo3.modelo.bonus.BonusDobleCanion;
 import fiuba.algo3.modelo.bonus.BonusTormentaPsionica;

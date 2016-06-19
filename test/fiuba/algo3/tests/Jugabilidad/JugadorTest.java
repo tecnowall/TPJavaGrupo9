@@ -1,17 +1,11 @@
 package fiuba.algo3.tests.Jugabilidad;
 
-import fiuba.algo3.modelo.Coordenada;
-import fiuba.algo3.modelo.Jugabilidad.Jugador.EstadoJugador;
-import fiuba.algo3.modelo.Jugabilidad.Jugador.EstadoJugadorEsperando;
 import fiuba.algo3.modelo.Jugabilidad.Jugador.Jugador;
-import fiuba.algo3.modelo.Jugabilidad.Jugador.JugadorEnEstadoDeEsperaException;
-import fiuba.algo3.modelo.Jugabilidad.PersonajeDeOtroEquipoException;
-import fiuba.algo3.modelo.Jugabilidad.PersonajeInexistenteException;
-import fiuba.algo3.modelo.Jugabilidad.PersonajeNombreDuplicadoExeptions;
-import fiuba.algo3.modelo.Jugabilidad.Turno;
+import fiuba.algo3.modelo.Jugabilidad.Jugador.PersonajeDeOtroEquipoException;
+import fiuba.algo3.modelo.Jugabilidad.Jugador.PersonajeInexistenteException;
+import fiuba.algo3.modelo.Jugabilidad.Jugador.PersonajeNombreDuplicadoExeptions;
 import fiuba.algo3.modelo.TipoEquipo;
 import fiuba.algo3.modelo.algoformer.Algoformer;
-import fiuba.algo3.modelo.tablero.Tablero;
 import org.junit.Assert;
 
 import org.junit.Test;

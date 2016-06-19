@@ -2,7 +2,6 @@ package fiuba.algo3.modelo.Jugabilidad.Jugador;
 
 
 import fiuba.algo3.modelo.Coordenada;
-import fiuba.algo3.modelo.Jugabilidad.*;
 import fiuba.algo3.modelo.TipoEquipo;
 import fiuba.algo3.modelo.algoformer.Algoformer;
 
@@ -62,12 +61,12 @@ public class Jugador {
     public ArrayList <String > obtenerNombresDePersonajes(){
 
         Iterator it = personajes.entrySet().iterator();
-        ArrayList <String> listaDeNombre = new ArrayList<String>();
+        ArrayList <String> listaDeNombres = new ArrayList<String>();
         while (it.hasNext()) {
             Map.Entry e = (Map.Entry)it.next();
-            listaDeNombre.add ((String)e.getKey());
+            listaDeNombres.add ((String)e.getKey());
         }
-        return listaDeNombre;
+        return listaDeNombres;
     }
 
 

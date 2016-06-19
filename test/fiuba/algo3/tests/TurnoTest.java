@@ -1,7 +1,7 @@
 package fiuba.algo3.tests;
 
 import fiuba.algo3.modelo.Jugabilidad.Jugador.Jugador;
-import fiuba.algo3.modelo.Jugabilidad.Turno;
+import fiuba.algo3.modelo.Jugabilidad.Juego.Turno;
 import fiuba.algo3.modelo.TipoEquipo;
 import org.junit.Assert;
 import org.junit.Test;
