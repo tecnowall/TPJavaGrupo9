@@ -139,6 +139,10 @@ public class Jugador {
         personajes.remove(nombreDelPerosnaje);
 
     }
+    
+    public HashMap<String,Algoformer> getAllPersonajes(){
+    	return personajes;
+    }
 
 
 

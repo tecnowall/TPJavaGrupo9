@@ -11,8 +11,12 @@ import fiuba.algo3.modelo.bonus.Bonus;
 import fiuba.algo3.modelo.tablero.*;
 import javafx.geometry.Pos;
 import javafx.scene.canvas.Canvas;
-import javafx.scene.control.Button;
+import javafx.scene.control.*;
+import javafx.scene.control.Label;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.util.List;
@@ -53,7 +57,20 @@ public class ContenedorPrincipal extends BorderPane {
 
     //TODO
     private void setJugadores(Jugador jugadorUno, Jugador jugadorDos) {
+    	
+    	HBox hbox=new HBox(120);
+    	JugadoresVista vistaJugadores=new JugadoresVista(hbox,jugadorUno,jugadorDos);
+    	vistaJugadores.dibujarJugadores();
+    	this.setTop(hbox);
+    	hbox.setTranslateX(220);
 
+    	for(Algoformer value: jugadorUno.getAllPersonajes().values()){
+    		vistaTablero.ubicarAlgoformer(value,value.getPosicion().getX(),value.getPosicion().getY());
+    	}
+    	for(Algoformer value: jugadorDos.getAllPersonajes().values()){
+    		vistaTablero.ubicarAlgoformer(value,value.getPosicion().getX(),value.getPosicion().getY());
+    	}
+    	
         /*
         // poner los nombres de los jugadores en pantalla
         // obtener los algoformers de cada uno y ponerlos en pantalla
@@ -74,10 +91,10 @@ public class ContenedorPrincipal extends BorderPane {
         vistaTablero.dibujarTablero();
         this.setCenter(grid);
         //TEST
-		Forma forma1 = new Humanoide( 50, 2, 2 );
-		Forma forma2 = new Terrestre( 15, 4, 5 );
-		Algoformer optimus = new Algoformer( "Optimus", 500, forma1, forma2 );
-		vistaTablero.ubicarAlgoformer(optimus,2,2);
+//		Forma forma1 = new Humanoide( 50, 2, 2 );
+//		Forma forma2 = new Terrestre( 15, 4, 5 );
+//		Algoformer optimus = new Algoformer( "Optimus", 500, forma1, forma2 );
+//		vistaTablero.ubicarAlgoformer(optimus,2,2);
 	}
 
 	private void setMenu(Stage stage) {

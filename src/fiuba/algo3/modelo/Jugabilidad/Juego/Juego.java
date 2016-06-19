@@ -3,8 +3,11 @@ package fiuba.algo3.modelo.Jugabilidad.Juego;
 import fiuba.algo3.modelo.ChispaSuprema;
 import fiuba.algo3.modelo.Jugabilidad.Jugador.Jugador;
 import fiuba.algo3.modelo.TipoEquipo;
+import fiuba.algo3.modelo.algoformer.Aerea;
 import fiuba.algo3.modelo.algoformer.Algoformer;
-
+import fiuba.algo3.modelo.algoformer.Forma;
+import fiuba.algo3.modelo.algoformer.Humanoide;
+import fiuba.algo3.modelo.algoformer.Terrestre;
 import fiuba.algo3.modelo.bonus.Bonus;
 import fiuba.algo3.modelo.observadores.ObservableJuego;
 import fiuba.algo3.modelo.observadores.ObservadorJuego;
@@ -40,10 +43,28 @@ public class Juego implements ObservableJuego {
         this.unTablero = new Tablero(alto,ancho);
 
         // creo los algoformers
-        Algoformer a1 = new Algoformer("OPTIMUSS"); a1.setEquipo(TipoEquipo.AUTOBOTS);
-        Algoformer a2 = new Algoformer("BUMBLEBEE"); a2.setEquipo(TipoEquipo.AUTOBOTS);
-        Algoformer a3 = new Algoformer("RATCHET"); a3.setEquipo(TipoEquipo.AUTOBOTS);
-
+        //hace falta refactoring
+        
+		Forma forma1a1 = new Humanoide( 50, 2, 2 );
+		Forma forma2a1 = new Terrestre( 15, 4, 5 );
+		Algoformer a1 = new Algoformer( "Optimus", 500, forma1a1, forma2a1 );
+		
+        //Algoformer a1 = new Algoformer("OPTIMUSS");
+		a1.setEquipo(TipoEquipo.AUTOBOTS);
+		
+		Forma forma1a2 = new Humanoide( 40, 1, 2 );
+		Forma forma2a2 = new Terrestre( 20, 3, 5 );
+		Algoformer a2= new Algoformer("Bumblebee",350,forma1a2,forma2a2);
+		
+        //Algoformer a2 = new Algoformer("BUMBLEBEE");
+		a2.setEquipo(TipoEquipo.AUTOBOTS);
+		
+		Forma forma1a3 = new Humanoide( 5, 5, 1 );
+		Forma forma2a3 = new Aerea( 35, 2, 8 );
+		Algoformer a3= new Algoformer("Ratchet",150,forma1a3,forma2a3);
+        //Algoformer a3 = new Algoformer("RATCHET");
+		a3.setEquipo(TipoEquipo.AUTOBOTS);
+			// si creo los algoformers a partir del nombre falta el resto de la informacion
         Algoformer a4 = new Algoformer("MEGATRON"); a4.setEquipo(TipoEquipo.DECEPTICONS);
         Algoformer a5 = new Algoformer("BOECRUSHER");a5.setEquipo(TipoEquipo.DECEPTICONS);
         Algoformer a6 = new Algoformer("FRENZY");a6.setEquipo(TipoEquipo.DECEPTICONS);
