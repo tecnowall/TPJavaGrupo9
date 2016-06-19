@@ -1,4 +1,4 @@
-package fiuba.algo3.tests;
+package fiuba.algo3.tests.algoformer;
 
 import static org.hamcrest.CoreMatchers.is;
 
