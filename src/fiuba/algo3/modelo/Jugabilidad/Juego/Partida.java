@@ -106,4 +106,12 @@ public class Partida {
         return lista;
 
     };
+
+    public boolean esFin(){
+
+        // algun jugador muerto?
+        // se capturo la chispa?
+        return false;
+    }
+
 }
