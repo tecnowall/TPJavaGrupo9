@@ -27,10 +27,9 @@ public class Juego implements ObservableJuego {
     private Tablero unTablero;
     private Partida unaPartida;
 
-    public  Juego (){
-    }
 
-    public void nuevoJuego() {
+
+    public Juego(int alto, int ancho) {
 
 
         //creo los jugadores
@@ -38,7 +37,7 @@ public class Juego implements ObservableJuego {
         this.jugadorDos = new Jugador ("Maradona", TipoEquipo.DECEPTICONS);
 
         // creo un tablero
-        this.unTablero = new Tablero(20,20);
+        this.unTablero = new Tablero(alto,ancho);
 
         // creo los algoformers
         Algoformer a1 = new Algoformer("OPTIMUSS"); a1.setEquipo(TipoEquipo.AUTOBOTS);

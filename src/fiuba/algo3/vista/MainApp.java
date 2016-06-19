@@ -2,6 +2,7 @@ package fiuba.algo3.vista;
 import java.io.IOException;
 
 import fiuba.algo3.modelo.*;
+import fiuba.algo3.modelo.Jugabilidad.Juego.Juego;
 import fiuba.algo3.modelo.algoformer.Algoformer;
 import fiuba.algo3.modelo.algoformer.Forma;
 import fiuba.algo3.modelo.algoformer.Humanoide;
@@ -24,40 +25,25 @@ public class MainApp extends Application {
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("Algoformers");
 
-        /* TODO
-          hay que hacer una aplicacion principal que haga lo siguiente:
 
-          Juego unJuego = new Juego()
-          Vista unaVista = new Vista (unJuego)
+       Juego unJuego = new Juego(10-1,10-1); // el modelo
+        unJuego.iniciar(); //inicio el juego
 
-          el new de Vista va a tener lo siguiente:
-              juego.Iniciar;
-              juego.gettablero   y dibujar tablero
+        ContenedorPrincipal contenedorPrincipal = new ContenedorPrincipal(primaryStage, unJuego); //
 
-              juego.getjugadoruno.     pones el nombre en la vista etc....
-              juego.getjugadoruno.getalgoformrs
-                   para cada algoformer ponerlos en la pantalla
-                        suscribirles un observador
+        Scene scene = new Scene(contenedorPrincipal,680,480);
+        primaryStage.setScene(scene);
+        primaryStage.show();
 
-              lo mismo para jugador 2
-
-           juego.getchispa    y posicionarla
-
-           juego.getbonus,    posicionar los bonus en pantalla
-                                suscribir observadores
-
-           juego.agregarobservadores (this)     // este me va a avisar cuando el juego termina
-
-           juego.pasarturno
-
-           fin del new vista.
-
-
-         */
+        //TODO EL FINTURNO DE ALGOFORMERS NO ESTA FUNCIONANDO
+       // unJuego.pasarTurno(); // Arranco el primer turno.
 
 
 
 
+
+
+/*
         
         Tablero tablero = new Tablero(14,9);
         
@@ -70,7 +56,7 @@ public class MainApp extends Application {
         Scene scene = new Scene(contenedorPrincipal,680,480);
         primaryStage.setScene(scene);
         primaryStage.show();
-
+*/
 	}
 //	
 //	public void initRootLayout(){
@@ -105,6 +91,8 @@ public class MainApp extends Application {
 //    }
 
 	public static void main(String[] args) {
+
+
 		launch(args);
 	}
 }

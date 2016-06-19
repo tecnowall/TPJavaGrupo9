@@ -284,13 +284,16 @@ public class Algoformer implements Ubicable, Fusionable, ObservableAlgoformer{
 	public Algofusion completarFusion() {
 		return null;
 	}
-	
+
+	//TODO REVISAR ESTO QUE PINCHA al llamarlo desde  juego.pasarturno
 	public void finTurno(){
-		Bonus bonus;
+
+			Bonus bonus;
 		for ( Map.Entry< BonusID, Bonus> elemento : buffs.entrySet() ){
 			bonus = elemento.getValue();
 			bonus.consumirDuracion();
 		}
+
 	}
 
 	public void morir(){
