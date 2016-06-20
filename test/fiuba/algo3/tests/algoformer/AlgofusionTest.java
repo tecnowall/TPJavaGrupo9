@@ -1,21 +1,16 @@
 package fiuba.algo3.tests.algoformer;
 
-import fiuba.algo3.modelo.Jugabilidad.Juego.Partida;
-import fiuba.algo3.modelo.Jugabilidad.Jugador.Jugador;
-import fiuba.algo3.modelo.TipoEquipo;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.is;
+
 import org.junit.Assert;
 import org.junit.Test;
-import static org.hamcrest.CoreMatchers.*;
 
 import fiuba.algo3.modelo.Coordenada;
-import fiuba.algo3.modelo.algoformer.Aerea;
-import fiuba.algo3.modelo.algoformer.Algoformer;
+import fiuba.algo3.modelo.TipoEquipo;
 import fiuba.algo3.modelo.algoformer.Algofusion;
 import fiuba.algo3.modelo.algoformer.Autobot;
 import fiuba.algo3.modelo.algoformer.Decepticon;
-import fiuba.algo3.modelo.algoformer.Forma;
-import fiuba.algo3.modelo.algoformer.Humanoide;
-import fiuba.algo3.modelo.algoformer.Terrestre;
 import fiuba.algo3.modelo.tablero.Tablero;
 
 public class AlgofusionTest {
@@ -37,24 +32,6 @@ public class AlgofusionTest {
 		tablero.poner( optimus, origena);
 		tablero.poner( bumblebee, origenb);
 		tablero.poner( ratchet, origenc);
-<<<<<<< HEAD
-=======
-
-		Jugador j1= new Jugador("Maradona", TipoEquipo.AUTOBOTS);
-
-		optimus.setEquipo(TipoEquipo.AUTOBOTS);
-		bumblebee.setEquipo(TipoEquipo.AUTOBOTS);
-		ratchet.setEquipo(TipoEquipo.AUTOBOTS);
-
-		j1.agregarPersonaje(optimus);
-		j1.agregarPersonaje(bumblebee);
-		j1.agregarPersonaje(ratchet);
-
-		Partida partida = new Partida();
-		j1.setPartida(partida);
-
-
->>>>>>> branch 'master' of https://github.com/federicofrontera/TPJavaGrupo9
 
 		optimus.iniciarFusion( optimus, bumblebee, ratchet );
 		Algofusion superion = optimus.completarFusion();
@@ -84,22 +61,10 @@ public class AlgofusionTest {
 		tablero.poner( megatron, origena);
 		tablero.poner( bonecrusher, origenb);
 		tablero.poner( frenzy, origenc);
-<<<<<<< HEAD
-=======
-
-		Jugador j1= new Jugador("Maradona", TipoEquipo.DECEPTICONS);
 
 		megatron.setEquipo( TipoEquipo.DECEPTICONS);
 		bonecrusher.setEquipo( TipoEquipo.DECEPTICONS);
 		frenzy.setEquipo( TipoEquipo.DECEPTICONS);
-
-		j1.agregarPersonaje(megatron);
-		j1.agregarPersonaje(bonecrusher);
-		j1.agregarPersonaje(frenzy);
-		Partida partida = new Partida();
-		j1.setPartida(partida);
-
->>>>>>> branch 'master' of https://github.com/federicofrontera/TPJavaGrupo9
 
 		megatron.iniciarFusion( megatron, bonecrusher, frenzy );
 		Algofusion menasor = megatron.completarFusion();

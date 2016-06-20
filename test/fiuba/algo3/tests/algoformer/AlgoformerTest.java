@@ -23,7 +23,7 @@ public class AlgoformerTest {
 	public void testAlTransformarseCambianAtaqueRangoYVelocidad() {
 		Forma forma1 = new Humanoide( 50, 2, 2 );
 		Forma forma2 = new Terrestre( 15, 4, 5 );
-		Algoformer optimus = new Algoformer( "Optimus", 500, forma1, forma2 );
+		Algoformer optimus = Autobot.getOptimus();
 
 		//forma inicial
 		Assert.assertThat(optimus.getPoder(), is( 50 ) );
