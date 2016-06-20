@@ -135,10 +135,7 @@ public class Partida implements ObservablePartida {
 
     private void notificarJugadorSinPersonajes (Jugador unJugador){
 
-        //TODO  para todos los observadores avisar que perdio
-        //animalada de prueba
-        observadores.get(0).jugadorSinPersonajes(unJugador);
-
+        for (ObservadorPartida unObservador : this.observadores){ unObservador.jugadorSinPersonajes(unJugador);}
 
     }
 
@@ -157,9 +154,7 @@ public class Partida implements ObservablePartida {
 
     private void notificarChispaCapturada (Jugador unJugador){
 
-        //TODO  para todos los observadores avisar que perdio
-        //animalada de prueba
-        observadores.get(0).capturaronChispaSuprema(unJugador);
+        for (ObservadorPartida unObservador : this.observadores){ unObservador.capturaronChispaSuprema(unJugador);}
 
     }
 
