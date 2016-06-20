@@ -1,5 +1,6 @@
 package fiuba.algo3.tests.algoformer;
 
+import fiuba.algo3.modelo.Jugabilidad.Juego.Partida;
 import fiuba.algo3.modelo.Jugabilidad.Jugador.Jugador;
 import fiuba.algo3.modelo.TipoEquipo;
 import org.junit.Assert;
@@ -49,6 +50,8 @@ public class AlgofusionTest {
 		j1.agregarPersonaje(bumblebee);
 		j1.agregarPersonaje(ratchet);
 
+		Partida partida = new Partida();
+		j1.setPartida(partida);
 
 
 
@@ -92,6 +95,8 @@ public class AlgofusionTest {
 		j1.agregarPersonaje(megatron);
 		j1.agregarPersonaje(bonecrusher);
 		j1.agregarPersonaje(frenzy);
+		Partida partida = new Partida();
+		j1.setPartida(partida);
 
 
 		megatron.iniciarFusion( megatron, bonecrusher, frenzy );
@@ -134,6 +139,9 @@ public class AlgofusionTest {
 		j1.agregarPersonaje(optimus);
 		j1.agregarPersonaje(bumblebee);
 		j1.agregarPersonaje(ratchet);
+
+		Partida partida = new Partida();
+		j1.setPartida(partida);
 
 
 		optimus.iniciarFusion( optimus, bumblebee, ratchet );

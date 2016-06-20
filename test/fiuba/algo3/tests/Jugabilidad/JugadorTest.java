@@ -1,4 +1,4 @@
-package fiuba.algo3.tests.Jugabilidad;
+package fiuba.algo3.tests.jugabilidad;
 
 import fiuba.algo3.modelo.Jugabilidad.Jugador.Jugador;
 import fiuba.algo3.modelo.Jugabilidad.Jugador.PersonajeDeOtroEquipoException;
@@ -250,10 +250,58 @@ public class JugadorTest {
 
 
 // quien va a avisar que se ejecuto el movimiento???
-
-
-
 */
+
+    @Test
+    public void testTenesPersonajesDebeDarFalseCuandoElJugadorEsRecienCreado(){
+        Jugador j1 = new Jugador ("Diego", TipoEquipo.AUTOBOTS);
+
+        Assert.assertFalse(j1.tenesPersonajes());
+
+
+    };
+
+    /*    TODO este va a dar JugadorSinPartidaException   por que notifica a la vista que se quedo sin personajes....
+    @Test
+    public void testTenesPersonajesDebeDarFalseCuandoAlJugadorSeLeAgregaUnPersonajeYSeLoElimina(){
+        Jugador j1 = new Jugador ("Diego", TipoEquipo.AUTOBOTS);
+        Algoformer a1 = new Algoformer("diego");
+
+        a1.setEquipo(TipoEquipo.AUTOBOTS);
+        j1.agregarPersonaje(a1);
+        j1.murioUnPersonaje(a1);
+        Assert.assertFalse(j1.tenesPersonajes());
+
+
+    };
+*/
+
+ @Test
+    public void testTenesPersonajesDebeDarTrueCuandoAlJugadorSeLeAgregaUnPersonaje(){
+     Jugador j1 = new Jugador ("Diego", TipoEquipo.AUTOBOTS);
+     Algoformer a1 = new Algoformer("diego");
+
+     a1.setEquipo(TipoEquipo.AUTOBOTS);
+     j1.agregarPersonaje(a1);
+
+     Assert.assertTrue(j1.tenesPersonajes());
+
+
+    };
+
+    @Test
+    public void testTenesPersonajesDebeDarTrueCuandoAlJugadorSeLeAgreganVariosPersonajesYSeEliminaUno(){
+        Jugador j1 = new Jugador ("Diego", TipoEquipo.AUTOBOTS);
+        Algoformer a1 = new Algoformer("diego");
+        Algoformer a2 = new Algoformer("maradona");
+        a1.setEquipo(TipoEquipo.AUTOBOTS);
+        j1.agregarPersonaje(a1);
+        a2.setEquipo(TipoEquipo.AUTOBOTS);
+        j1.agregarPersonaje(a2);
+
+        j1.murioUnPersonaje(a1);
+        Assert.assertTrue(j1.tenesPersonajes());
+   };
 
 
 
