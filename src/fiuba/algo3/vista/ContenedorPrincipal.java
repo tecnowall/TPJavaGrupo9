@@ -9,6 +9,7 @@ import fiuba.algo3.modelo.algoformer.Humanoide;
 import fiuba.algo3.modelo.algoformer.Terrestre;
 import fiuba.algo3.modelo.bonus.Bonus;
 import fiuba.algo3.modelo.tablero.*;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.*;
@@ -24,6 +25,7 @@ import java.util.List;
 public class ContenedorPrincipal extends BorderPane {
 
     BarraDeMenu menuBar;
+    MenuInferior menuInferior;
     TableroVistaControlador vistaTablero;
     Juego juego;
     Canvas canvasCentral;
@@ -58,11 +60,15 @@ public class ContenedorPrincipal extends BorderPane {
     //TODO
     private void setJugadores(Jugador jugadorUno, Jugador jugadorDos) {
     	
-    	HBox hbox=new HBox(120);
-    	JugadoresVista vistaJugadores=new JugadoresVista(hbox,jugadorUno,jugadorDos);
-    	vistaJugadores.dibujarJugadores();
-    	this.setTop(hbox);
-    	hbox.setTranslateX(220);
+    	VBox vbox1=new VBox(); VBox vbox2=new VBox();
+    	JugadorVista vistaJugador1 = new JugadorVista(vbox1,jugadorUno);
+    	JugadorVista vistaJugador2 = new JugadorVista(vbox2,jugadorDos);
+    	
+    	vistaJugador1.dibujarJugador();
+    	vistaJugador2.dibujarJugador();
+    	this.setLeft(vbox1);
+    	this.setRight(vbox2);
+    	
 
     	for(Algoformer value: jugadorUno.getAllPersonajes().values()){
     		vistaTablero.ubicarAlgoformer(value,value.getPosicion().getX(),value.getPosicion().getY());
@@ -100,5 +106,9 @@ public class ContenedorPrincipal extends BorderPane {
 	private void setMenu(Stage stage) {
         this.menuBar = new BarraDeMenu(stage);
         this.setTop(menuBar);
+        
+        this.menuInferior = new MenuInferior(stage);
+    	this.setBottom(menuInferior);
+
     }
 }

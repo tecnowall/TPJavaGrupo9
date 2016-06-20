@@ -28,6 +28,7 @@ public class TableroVistaControlador implements ObservadorTablero {
 	public TableroVistaControlador(Tablero unTablero,GridPane unGrid){
 		tableroView=unGrid;
 		tablero=unTablero;
+		boolean seleccionado=false;
 	}
 
 
