@@ -290,15 +290,19 @@ public class Algoformer implements Ubicable, Fusionable, ObservableAlgoformer{
 	public void finTurno(){
 
 			Bonus bonus;
-		for ( Map.Entry< BonusID, Bonus> elemento : buffs.entrySet() ){
+			for ( Map.Entry< BonusID, Bonus> elemento : buffs.entrySet() ){
 			bonus = elemento.getValue();
 			bonus.consumirDuracion();
 		}
 
 	}
 
-	public void morir(){
+	protected void salirDelTablero(){
 		this.tablero.sacar( this.posicion );
+	}
+	
+	public void morir(){
+		salirDelTablero();
 		this.jugador.murioUnPersonaje(this);
 	}
 

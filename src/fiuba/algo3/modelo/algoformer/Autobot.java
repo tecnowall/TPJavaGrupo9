@@ -18,6 +18,30 @@ public class Autobot extends Algoformer{
 		super( nombre, vida, humanoide, alterna, tablero );
 	}
 	
+	public static Autobot getOptimus(){
+		Forma humanoide = new Humanoide( 50, 2, 2 );
+		Forma terrestre = new Terrestre( 15, 4, 5 );
+		Autobot optimus = new Autobot( "Optimus", 500, humanoide, terrestre );
+		
+		return optimus;
+	}
+	
+	public static Autobot getBumblebee(){
+		Forma humanoide = new Humanoide( 40, 1, 2 );
+		Forma terrestre = new Terrestre( 20, 3, 5 );
+		Autobot bumblebee = new Autobot( "Bumblebee", 350, humanoide, terrestre );
+		
+		return bumblebee;
+	}
+	
+	public static Autobot getRatchet(){
+		Forma humanoide = new Humanoide( 5, 5, 1 );
+		Forma aerea = new Aerea( 35, 2, 8 );
+		Autobot ratchet = new Autobot( "Ratchet", 150, humanoide, aerea );
+		
+		return ratchet;
+	}
+	
 	@Override
 	public void iniciarFusion( Algoformer parte1, Algoformer parte2, Algoformer parte3 ) {
 		Forma forma = new Terrestre( 100, 2, 3 );
@@ -31,7 +55,7 @@ public class Autobot extends Algoformer{
 		List<Algoformer> partes = superion.getPartes();
 		
 		for( Algoformer parte : partes ){
-			parte.morir();
+			parte.salirDelTablero();
 		}
 		
 		this.getTablero().poner( superion, partes.get(0).getPosicion() );
