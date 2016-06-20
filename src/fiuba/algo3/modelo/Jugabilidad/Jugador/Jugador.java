@@ -130,7 +130,16 @@ public class Jugador {
 
         this.eliminarPersonaje (unAlgoformer.getNombre());
 
-        //TODO notificar aca?   //if (!tenesPersonajes())
+        if (!this.tenesPersonajes())  this.sinPersonajes();
+
+    }
+
+    public void sinPersonajes(){
+
+        if (this.partida==null) throw new JugadorSinPartidaException();
+
+        this.partida.jugadorSinPersonajes(this);
+
     }
 
     private void eliminarPersonaje (String nombreDelPerosnaje){
@@ -147,11 +156,7 @@ public class Jugador {
     	return personajes;
     }
 
-    public boolean tenesPersonajes( ){
-
-        return (!this.personajes.isEmpty());
-
-    }
+    public boolean tenesPersonajes( ){ return (!this.personajes.isEmpty()); }
 
     public void setPartida(Partida unaPartida){
 

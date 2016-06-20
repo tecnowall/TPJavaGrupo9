@@ -1,9 +1,10 @@
-package fiuba.algo3.tests.Jugabilidad;
+package fiuba.algo3.tests.jugabilidad;
 
 import fiuba.algo3.modelo.*;
 import fiuba.algo3.modelo.Jugabilidad.Jugador.Jugador;
 import fiuba.algo3.modelo.Jugabilidad.Juego.Partida;
 import fiuba.algo3.modelo.algoformer.Algoformer;
+import fiuba.algo3.modelo.observadores.ObservadorPartida;
 import fiuba.algo3.modelo.tablero.Tablero;
 
 import org.junit.Assert;
@@ -60,6 +61,7 @@ public class PartidaTest {
 
     @Test
     public void testCrearPartidaDebeLanzarExepcionCuandoLosJugadoresTienenElMismoEquipo(){};
+
 
 
 

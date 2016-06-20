@@ -23,9 +23,10 @@ public class Partida implements ObservablePartida {
     private Jugador player1, player2;
     private Tablero tablero;
     private ChispaSuprema chispa;
-    private List<ObservadorPartida> observadores;;
+    private List<ObservadorPartida> observadores = new ArrayList<ObservadorPartida>();
     private boolean terminada;
 
+    public Partida (){} //for test
 
     //todo si los jugadores no tienen 3 algoformers que lance exepcion
     public Partida (Jugador j1, Jugador j2, Tablero tablero){
@@ -61,6 +62,9 @@ public class Partida implements ObservablePartida {
 
 
     };
+
+
+
 
     private boolean finalizada (){return this.terminada;}
     private void posicionarAlgoformers( ){
