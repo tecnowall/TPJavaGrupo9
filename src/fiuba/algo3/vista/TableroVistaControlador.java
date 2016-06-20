@@ -84,36 +84,42 @@ public class TableroVistaControlador implements ObservadorTablero, ObservadorBon
 
 	@Override
 	public void fallecioAlgoformer(Algoformer unAlgoformerFallecido) {
-
+			//retirar el algoformer del tablero
 	}
 
 	@Override
 	public void huboUnMovimiento(Algoformer unAlgoformer) {
+        //actualizar el movimiento
+		// pasar turno    juego.pasarTurno
 
 	}
 
 	@Override
 	public void huboUnAtaque(Algoformer unAlgoformer) {
-
+          //actualizzar vista
+		// pasar turno    juego.pasarTurno
 	}
 
 	@Override
 	public void huboUnaTransformacion(Algoformer unAlgoformer) {
-
+		// pasar turno    juego.pasarTurno
 	}
 
 	@Override
 	public void seConsumioBonus(Bonus unBonus) {
-
+          //retirar bonus
 	}
 
 	@Override
 	public void finalizoJuego(Jugador playerWin) {
+		//actualizar vista, mostrar al ganador
 
 	}
 
 	@Override
 	public void jugadorActivo(Jugador unJugador) {
+		//actualizar vista,
+		//
 
 	}
 }

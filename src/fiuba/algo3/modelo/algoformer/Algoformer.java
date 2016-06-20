@@ -99,7 +99,8 @@ public class Algoformer implements Ubicable, Fusionable, ObservableAlgoformer{
 			movimiento.generarCamino( this.posicion , destino );
 			while ( !movimiento.terminado() ){
 				movimiento.avanzar( this );
-			}		
+			}
+			//TODO notificar observador
 		}		
 		else throw new MovimientoFueraDeRangoException();
 	}

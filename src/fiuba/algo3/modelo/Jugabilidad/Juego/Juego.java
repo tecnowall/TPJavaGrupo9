@@ -11,6 +11,7 @@ import fiuba.algo3.modelo.algoformer.Terrestre;
 import fiuba.algo3.modelo.bonus.Bonus;
 import fiuba.algo3.modelo.observadores.ObservableJuego;
 import fiuba.algo3.modelo.observadores.ObservadorJuego;
+import fiuba.algo3.modelo.observadores.ObservadorPartida;
 import fiuba.algo3.modelo.tablero.Tablero;
 
 import java.util.ArrayList;
@@ -21,7 +22,7 @@ import java.util.List;
  */
 
 //TODO esta clase puede ser que este demas... luego se ve.
-public class Juego implements ObservableJuego {
+public class Juego implements ObservableJuego, ObservadorPartida {
 
 
 
@@ -78,6 +79,7 @@ public class Juego implements ObservableJuego {
 
         // Creo la partida
         this.unaPartida = new Partida(this.jugadorUno,this.jugadorDos,this.unTablero);
+        //this.pasarTurno(); TODO esto deberia estar aca adentro al iniciar
 
     }
 
@@ -104,7 +106,10 @@ public class Juego implements ObservableJuego {
 */
     }
 
-public void finalizar (){ this.unaPartida= null; }
+public void finalizar (Jugador unJugador){
+
+    //notificar quien ganoo
+    this.unaPartida= null; }
 
     //todo
  private void notificarObsevadores (Jugador playerWin){
@@ -128,7 +133,15 @@ public void finalizar (){ this.unaPartida= null; }
     }
 
 
+    @Override
+    public void jugadorSinPersonajes(Jugador playerWin) {
 
+    }
+
+    @Override
+    public void capturaronChispaSuprema(Jugador unJugador) {
+
+    }
 }
 
 

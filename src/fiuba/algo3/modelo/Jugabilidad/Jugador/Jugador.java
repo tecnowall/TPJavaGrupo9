@@ -2,6 +2,7 @@ package fiuba.algo3.modelo.Jugabilidad.Jugador;
 
 
 import fiuba.algo3.modelo.Coordenada;
+import fiuba.algo3.modelo.Jugabilidad.Juego.Partida;
 import fiuba.algo3.modelo.TipoEquipo;
 import fiuba.algo3.modelo.algoformer.Algoformer;
 
@@ -20,7 +21,7 @@ public class Jugador {
     private EstadoJugador estado;
     private Algoformer personajeActivo;
     private HashMap<String, Algoformer> personajes;
-
+    private Partida partida;
 
     public Jugador(String nombre, TipoEquipo equipo) {
         this.nombre = nombre;
@@ -32,6 +33,7 @@ public class Jugador {
     public TipoEquipo obtenerEquipo(){return this.equipo;}
     public String getEstado (){return estado.getEstado();} //TODO for test
     public Algoformer getJugadorActivo(){return this.personajeActivo;} //todo for test
+
     public void agregarPersonaje(Algoformer unPersonaje)  {
 
         if ( unPersonaje.getEquipo() != this.equipo) {
@@ -128,6 +130,7 @@ public class Jugador {
 
         this.eliminarPersonaje (unAlgoformer.getNombre());
 
+        //TODO notificar aca?   //if (!tenesPersonajes())
     }
 
     private void eliminarPersonaje (String nombreDelPerosnaje){
@@ -139,11 +142,21 @@ public class Jugador {
         personajes.remove(nombreDelPerosnaje);
 
     }
-    
+    //TODO refactor.. que devuelva lista de algoformers no esta estructura
     public HashMap<String,Algoformer> getAllPersonajes(){
     	return personajes;
     }
 
+    public boolean tenesPersonajes( ){
 
+        return (!this.personajes.isEmpty());
+
+    }
+
+    public void setPartida(Partida unaPartida){
+
+        this.partida=unaPartida;
+
+    }
 
 }
