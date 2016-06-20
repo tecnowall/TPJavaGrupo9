@@ -33,6 +33,7 @@ public class SeleccionAlgoformerHandler implements EventHandler<ActionEvent> {
 				if (algoformer.getJugador().getEstado()=="activo"){
 					System.out.println("Algoformer seleccionado! Elija la posicion objetivo");
 					TableroVistaControlador.seleccionado=true;
+					TableroVistaControlador.algoformerSeleccionado=algoformer;
 				}
 				else{
 					System.out.println("Este algoformer no es tuyo");
@@ -52,6 +53,9 @@ public class SeleccionAlgoformerHandler implements EventHandler<ActionEvent> {
 				if (algoformer.getJugador().getEstado()=="activo"){
 					System.out.println("Algoformer seleccionado! Elija blanco de ataque");
 					TableroVistaControlador.seleccionado=true;
+					algoformer.getJugador().seleccionarPersonaje(algoformer.getNombre());
+					TableroVistaControlador.algoformerSeleccionado=algoformer;
+					
 				}
 				else{
 					System.out.println("Este algoformer no es tuyo");
@@ -60,8 +64,9 @@ public class SeleccionAlgoformerHandler implements EventHandler<ActionEvent> {
 			}
 			else{
 				//ATACAR
+				TableroVistaControlador.algoformerSeleccionado.getJugador().atacar(algoformer.getPosicion(), ContenedorPrincipal.juego.getTablero());
 				TableroVistaControlador.seleccionado=false;
-				
+				//TODO atrapar excepciones
 			}
 	}
 
