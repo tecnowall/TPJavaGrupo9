@@ -31,30 +31,39 @@ public class SeleccionAlgoformerHandler implements EventHandler<ActionEvent> {
 		if ("Mover"==ContenedorPrincipal.menuInferior.getSelectionModel().getSelectedItem().toString()){
 			if (TableroVistaControlador.seleccionado==false){
 				if (algoformer.getJugador().getEstado()=="activo"){
-					System.out.println("algoformer seleccionado!");
+					System.out.println("Algoformer seleccionado! Elija la posicion objetivo");
+					TableroVistaControlador.seleccionado=true;
 				}
 				else{
-					System.out.println("este algoformer no es tuyo");
+					System.out.println("Este algoformer no es tuyo");
 				}
 				
 			}
 			else{
+				System.out.println("Hay otro algoformer en esta ubicacion, movimiento no valido");
+				TableroVistaControlador.seleccionado=false;
 				
-				
-			}
+			} //el movimiento se realiza cuando hay un algoformer seleccionado y se hace click en un boton vacio
 			//TODO MOVIMIENTO
 		}
 		if ("Atacar"==ContenedorPrincipal.menuInferior.getSelectionModel().getSelectedItem().toString()){
 			//TODO ATAQUE
 			if (TableroVistaControlador.seleccionado==false){
+				if (algoformer.getJugador().getEstado()=="activo"){
+					System.out.println("Algoformer seleccionado! Elija blanco de ataque");
+					TableroVistaControlador.seleccionado=true;
+				}
+				else{
+					System.out.println("Este algoformer no es tuyo");
+				}
 				
 			}
 			else{
+				//ATACAR
+				TableroVistaControlador.seleccionado=false;
 				
 			}
-		}
-
-		
 	}
 
+}
 }

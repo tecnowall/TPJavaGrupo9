@@ -11,9 +11,6 @@ public class MenuInferior extends ChoiceBox<String>{
     	ContenedorPrincipal.setAlignment(this, Pos.BASELINE_CENTER);
     	this.getItems().addAll("Observar","Mover","Atacar");
     	this.getSelectionModel().selectFirst();
-    	if ("Observar"==this.getSelectionModel().getSelectedItem().toString()){
-    		System.out.println("wesa");
-    	}
 	}
 
 }

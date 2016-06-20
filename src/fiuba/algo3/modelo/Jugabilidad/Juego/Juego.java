@@ -5,6 +5,8 @@ import fiuba.algo3.modelo.Jugabilidad.Jugador.Jugador;
 import fiuba.algo3.modelo.TipoEquipo;
 import fiuba.algo3.modelo.algoformer.Aerea;
 import fiuba.algo3.modelo.algoformer.Algoformer;
+import fiuba.algo3.modelo.algoformer.Autobot;
+import fiuba.algo3.modelo.algoformer.Decepticon;
 import fiuba.algo3.modelo.algoformer.Forma;
 import fiuba.algo3.modelo.algoformer.Humanoide;
 import fiuba.algo3.modelo.algoformer.Terrestre;
@@ -41,27 +43,31 @@ public class Juego implements ObservableJuego, ObservadorPartida {
         this.unTablero = new Tablero(alto,ancho);
 
         // creo los algoformers
-        Forma forma1a1 = new Humanoide( 50, 2, 2 );
-		Forma forma2a1 = new Terrestre( 15, 4, 5 );
-		Algoformer a1 = new Algoformer( "Optimus", 500, forma1a1, forma2a1 );
+        //Autobots
+        Autobot a1=Autobot.getOptimus();
+        a1.setTablero(unTablero);
         a1.setEquipo(TipoEquipo.AUTOBOTS);
-
-		Forma forma1a2 = new Humanoide( 40, 1, 2 );
-		Forma forma2a2 = new Terrestre( 20, 3, 5 );
-		Algoformer a2= new Algoformer("Bumblebee",350,forma1a2,forma2a2);
-		a2.setEquipo(TipoEquipo.AUTOBOTS);
-
-
-		Forma forma1a3 = new Humanoide( 5, 5, 1 );
-		Forma forma2a3 = new Aerea( 35, 2, 8 );
-		Algoformer a3= new Algoformer("Ratchet",150,forma1a3,forma2a3);
+        
+        Autobot a2=Autobot.getBumblebee();
+        a2.setTablero(unTablero);
+        a2.setEquipo(TipoEquipo.AUTOBOTS);
+        
+        Autobot a3=Autobot.getRatchet();
+        a3.setTablero(unTablero);
         a3.setEquipo(TipoEquipo.AUTOBOTS);
 
-		//TODO falta esta parte, no la hago por que hay que ver la vista, asi la vista falla, hacer algun chequeo?
-		// si creo los algoformers a partir del nombre falta el resto de la informacion
-        Algoformer a4 = new Algoformer("MEGATRON"); a4.setEquipo(TipoEquipo.DECEPTICONS);
-        Algoformer a5 = new Algoformer("BOECRUSHER");a5.setEquipo(TipoEquipo.DECEPTICONS);
-        Algoformer a6 = new Algoformer("FRENZY");a6.setEquipo(TipoEquipo.DECEPTICONS);
+        //Decepticons
+        Decepticon a4=Decepticon.getMegatron();
+        a3.setTablero(unTablero);
+        a4.setEquipo(TipoEquipo.DECEPTICONS);
+        
+        Decepticon a5=Decepticon.getBonecrusher();
+        a5.setTablero(unTablero);
+        a5.setEquipo(TipoEquipo.DECEPTICONS);
+
+        Decepticon a6=Decepticon.getFrenzy();
+        a6.setTablero(unTablero);
+        a6.setEquipo(TipoEquipo.DECEPTICONS);
 
 
 //agrego los Algoformers a cada jugador
