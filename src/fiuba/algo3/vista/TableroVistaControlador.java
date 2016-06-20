@@ -1,7 +1,12 @@
 package fiuba.algo3.vista;
 import fiuba.algo3.eventos.SeleccionAlgoformerHandler;
 import fiuba.algo3.modelo.Coordenada;
+import fiuba.algo3.modelo.Jugabilidad.Jugador.Jugador;
 import fiuba.algo3.modelo.algoformer.Algoformer;
+import fiuba.algo3.modelo.bonus.Bonus;
+import fiuba.algo3.modelo.observadores.ObservadorAlgoformer;
+import fiuba.algo3.modelo.observadores.ObservadorBonus;
+import fiuba.algo3.modelo.observadores.ObservadorJuego;
 import fiuba.algo3.modelo.observadores.ObservadorTablero;
 import fiuba.algo3.modelo.tablero.*;
 import javafx.fxml.FXML;
@@ -20,7 +25,8 @@ import javafx.scene.layout.RowConstraints;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 
-public class TableroVistaControlador implements ObservadorTablero {
+//TODO ojo el obsvador juego....
+public class TableroVistaControlador implements ObservadorTablero, ObservadorBonus, ObservadorAlgoformer, ObservadorJuego {
 	//implements ObservadorTablero
 	Tablero tablero;
 	GridPane tableroView;
@@ -74,5 +80,40 @@ public class TableroVistaControlador implements ObservadorTablero {
 	public void notificartableroCreado(int ancho, int alto) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public void fallecioAlgoformer(Algoformer unAlgoformerFallecido) {
+
+	}
+
+	@Override
+	public void huboUnMovimiento(Algoformer unAlgoformer) {
+
+	}
+
+	@Override
+	public void huboUnAtaque(Algoformer unAlgoformer) {
+
+	}
+
+	@Override
+	public void huboUnaTransformacion(Algoformer unAlgoformer) {
+
+	}
+
+	@Override
+	public void seConsumioBonus(Bonus unBonus) {
+
+	}
+
+	@Override
+	public void finalizoJuego(Jugador playerWin) {
+
+	}
+
+	@Override
+	public void jugadorActivo(Jugador unJugador) {
+
 	}
 }
