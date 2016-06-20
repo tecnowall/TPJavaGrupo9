@@ -25,7 +25,7 @@ import java.util.List;
 public class ContenedorPrincipal extends BorderPane {
 
     BarraDeMenu menuBar;
-    MenuInferior menuInferior;
+    public static MenuInferior menuInferior;
     TableroVistaControlador vistaTablero;
     Juego juego;
     Canvas canvasCentral;
@@ -34,7 +34,7 @@ public class ContenedorPrincipal extends BorderPane {
 		this.setMenu(unStage);
 		this.juego = unJuego;
 
-        this.setTablero(unJuego.getTablero()); //dibuja el tablero
+        this.setTablero(unJuego); //dibuja el tablero
         this.setJugadores (unJuego.getJugadorUno(),unJuego.getJugadorDos()); // dibujar nombres en pantalla, obtener y presentar alfogormers, suscribir observadores que tiene que ser la vista
         this.setElementos (unJuego.getListaBonus(),unJuego.getChispaSuperma()); //
 
@@ -88,12 +88,12 @@ public class ContenedorPrincipal extends BorderPane {
 
 
 
-    private void setTablero(Tablero unTablero) {
+    private void setTablero(Juego unJuego) {
 		// TODO Auto-generated method stub
         GridPane grid=new GridPane();
         grid.setAlignment(Pos.CENTER);
         grid.setGridLinesVisible(true);
-        vistaTablero = new TableroVistaControlador(unTablero,grid);
+        vistaTablero = new TableroVistaControlador(unJuego,grid);
         vistaTablero.dibujarTablero();
         this.setCenter(grid);
         //TEST

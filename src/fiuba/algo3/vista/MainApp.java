@@ -37,52 +37,7 @@ public class MainApp extends Application {
         primaryStage.show();
 
 
-/*
-        
-        Tablero tablero = new Tablero(14,9);
-        
-		Forma forma1 = new Humanoide( 50, 2, 2 );
-		Forma forma2 = new Terrestre( 15, 4, 5 );
-		Algoformer optimus = new Algoformer( "Optimus", 500, forma1, forma2 );
-		//tablero.poner(optimus, new Coordenada(2,2));
-		
-        ContenedorPrincipal contenedorPrincipal = new ContenedorPrincipal(primaryStage, tablero);
-        Scene scene = new Scene(contenedorPrincipal,680,480);
-        primaryStage.setScene(scene);
-        primaryStage.show();
-*/
 	}
-//	
-//	public void initRootLayout(){
-//        // Cargar fxml
-//        FXMLLoader loader = new FXMLLoader();
-//        loader.setLocation(MainApp.class.getResource("RootLayout.fxml"));
-//        try {
-//			rootLayout = (BorderPane) loader.load();
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//
-//        // Mostrar scene con rootLayout.
-//        Scene scene = new Scene(rootLayout);
-//        primaryStage.setScene(scene);
-//        primaryStage.show();
-//	}
-//    public void mostrarVistaTablero() {
-//        try {
-//            FXMLLoader loader = new FXMLLoader();
-//            loader.setLocation(MainApp.class.getResource("TableroVista.fxml"));
-//            AnchorPane tableroVista = (AnchorPane) loader.load();
-//            rootLayout.setCenter(tableroVista);
-//            // Darle acceso al controlador
-//            TableroVistaControlador controller = loader.getController();
-//            controller.setMainApp(this);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//
-//    }
 
 	public static void main(String[] args) {
 

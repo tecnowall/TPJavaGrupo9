@@ -1,6 +1,7 @@
 package fiuba.algo3.vista;
 import fiuba.algo3.eventos.SeleccionAlgoformerHandler;
 import fiuba.algo3.modelo.Coordenada;
+import fiuba.algo3.modelo.Jugabilidad.Juego.Juego;
 import fiuba.algo3.modelo.Jugabilidad.Jugador.Jugador;
 import fiuba.algo3.modelo.algoformer.Algoformer;
 import fiuba.algo3.modelo.bonus.Bonus;
@@ -30,11 +31,14 @@ public class TableroVistaControlador implements ObservadorTablero, ObservadorBon
 	//implements ObservadorTablero
 	Tablero tablero;
 	GridPane tableroView;
+	Juego juego;
+	public static boolean seleccionado;
 	
-	public TableroVistaControlador(Tablero unTablero,GridPane unGrid){
+	public TableroVistaControlador(Juego unJuego,GridPane unGrid){
 		tableroView=unGrid;
-		tablero=unTablero;
-		boolean seleccionado=false;
+		tablero=unJuego.getTablero();
+		juego=unJuego;
+		seleccionado=false;
 	}
 
 
@@ -56,6 +60,7 @@ public class TableroVistaControlador implements ObservadorTablero, ObservadorBon
 				boton.setAlignment(Pos.CENTER);
 				boton.setPrefWidth(70);
 				boton.setPrefHeight(30);
+				//agregar handler para mover y atacar a ubicacion vacia
 				tableroView.add(boton, i, j);
 			}
 		}
