@@ -14,9 +14,6 @@ import fiuba.algo3.modelo.tablero.Tablero;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by jose on 19/06/2016.
- */
 
 //TODO esta clase puede ser que este demas... luego se ve.
 public class Juego implements ObservableJuego {
@@ -26,17 +23,10 @@ public class Juego implements ObservableJuego {
     private Tablero unTablero;
     private int altoTablero;
     private int anchoTablero;
-
-
-
     //todo revisar
     private Turno turno;
     private ChispaSuprema chispa;
     private boolean terminada;
-
-
-
-
 
 
     //crea los jugadores, el tablero y los algoformers.
@@ -241,64 +231,6 @@ public class Juego implements ObservableJuego {
 
 
     }
-}
-
-
-/*
-
-public class Partida {
-
-
-
-
-
-
-    private boolean finalizada() {
-        return this.terminada;
-    }
-
-
-    public void jugadorSinPersonajes(Jugador unJugador) {
-
-        finalizar();  // la marco finalizada
-        notificarJugadorSinPersonajes(unJugador);
-
-
-    }
-
-    private void finalizar() {
-        this.terminada = true;
-    }
-
-    private void notificarJugadorSinPersonajes(Jugador unJugador) {
-
-        for (ObservadorPartida unObservador : this.observadores) {
-            unObservador.jugadorSinPersonajes(unJugador);
-        }
-
-    }
-
-    //TODO EN UNO le avisas quien gana y en otro quien pierde..... revisar
-    // refac repetis codifo con jugadorSinPersonajes
-
-
-    public void chispaCapturada(Jugador unJugador) {
-
-        finalizar();  // la marco finalizada
-        notificarChispaCapturada(unJugador);
-
-    }
-
-    private void notificarChispaCapturada(Jugador unJugador) {
-
-        for (ObservadorPartida unObservador : this.observadores) {
-            unObservador.capturaronChispaSuprema(unJugador);
-        }
-
-    }
 
 }
 
-
-
- */

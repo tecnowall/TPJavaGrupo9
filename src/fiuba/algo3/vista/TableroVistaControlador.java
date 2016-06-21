@@ -134,12 +134,7 @@ public class TableroVistaControlador implements ObservadorTablero, ObservadorBon
 
 	}
 
-	@Override
-	public void jugadorActivo(Jugador unJugador) {
-		//actualizar vista,
-		//
 
-	}
 
 	@Override
 	public void esElTurnoDelJugador(Jugador unJugador) {
