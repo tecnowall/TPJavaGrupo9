@@ -36,7 +36,7 @@ public class ContenedorPrincipal extends BorderPane {
 
         this.setTablero(unJuego); //dibuja el tablero
         this.setJugadores (unJuego.getJugadorUno(),unJuego.getJugadorDos()); // dibujar nombres en pantalla, obtener y presentar alfogormers, suscribir observadores que tiene que ser la vista
-        this.setElementos (unJuego.getListaBonus(),unJuego.getChispaSuperma()); //
+        this.setElementos (unJuego.getListaDeBonus(),unJuego.getChispaSuperma()); //
 
 
          /*
@@ -70,10 +70,10 @@ public class ContenedorPrincipal extends BorderPane {
     	this.setRight(vbox2);
     	
 
-    	for(Algoformer value: jugadorUno.getAllPersonajes().values()){
+    	for(Algoformer value: jugadorUno.getAllPersonajes()){
     		vistaTablero.ubicarAlgoformer(value,value.getPosicion().getX(),value.getPosicion().getY());
     	}
-    	for(Algoformer value: jugadorDos.getAllPersonajes().values()){
+    	for(Algoformer value: jugadorDos.getAllPersonajes()){
     		vistaTablero.ubicarAlgoformer(value,value.getPosicion().getX(),value.getPosicion().getY());
     	}
     	

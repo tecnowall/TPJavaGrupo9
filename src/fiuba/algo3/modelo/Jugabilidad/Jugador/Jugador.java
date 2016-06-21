@@ -2,6 +2,7 @@ package fiuba.algo3.modelo.Jugabilidad.Jugador;
 
 
 import fiuba.algo3.modelo.Coordenada;
+import fiuba.algo3.modelo.Jugabilidad.Juego.Juego;
 import fiuba.algo3.modelo.Jugabilidad.Juego.Partida;
 import fiuba.algo3.modelo.TipoEquipo;
 import fiuba.algo3.modelo.algoformer.Algoformer;
@@ -21,7 +22,7 @@ public class Jugador {
     private EstadoJugador estado;
     private Algoformer personajeActivo;
     private HashMap<String, Algoformer> personajes;
-    private Partida partida;
+    private Juego juego;
 
     public Jugador(String nombre, TipoEquipo equipo) {
         this.nombre = nombre;
@@ -157,9 +158,9 @@ public class Jugador {
 
     public void sinPersonajes(){
 
-        if (this.partida==null) throw new JugadorSinPartidaException();
+        if (this.juego==null) throw new JugadorSinJuegoException();
 
-        this.partida.jugadorSinPersonajes(this);
+        this.juego.jugadorSinPersonajes(this);
 
     }
 
@@ -172,16 +173,24 @@ public class Jugador {
         personajes.remove(nombreDelPerosnaje);
 
     }
-    //TODO refactor.. que devuelva lista de algoformers no esta estructura
-    public HashMap<String,Algoformer> getAllPersonajes(){
-    	return personajes;
+
+    public ArrayList<Algoformer> getAllPersonajes(){
+
+        Iterator it = personajes.entrySet().iterator();
+        ArrayList <Algoformer> listaDeAlgoformers = new ArrayList<Algoformer>();
+        while (it.hasNext()) {
+            Map.Entry e = (Map.Entry)it.next();
+            listaDeAlgoformers.add ((Algoformer) e.getValue());
+        }
+        return listaDeAlgoformers;
+
     }
 
     public boolean tenesPersonajes( ){ return (!this.personajes.isEmpty()); }
 
-    public void setPartida(Partida unaPartida){
+    public void setJuego(Juego unJuego){
 
-        this.partida=unaPartida;
+        this.juego=unJuego;
 
     }
 

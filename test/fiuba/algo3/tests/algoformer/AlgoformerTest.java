@@ -3,6 +3,7 @@ package fiuba.algo3.tests.algoformer;
 import static org.hamcrest.CoreMatchers.is;
 
 import fiuba.algo3.modelo.*;
+import fiuba.algo3.modelo.Jugabilidad.Juego.Juego;
 import fiuba.algo3.modelo.Jugabilidad.Juego.Partida;
 import fiuba.algo3.modelo.Jugabilidad.Jugador.Jugador;
 import fiuba.algo3.modelo.Jugabilidad.Jugador.PersonajeInexistenteException;
@@ -142,9 +143,9 @@ public class AlgoformerTest {
 		j1.agregarPersonaje(megatron);
 		j2.agregarPersonaje(optimus);
 
-		Partida partida = new Partida();
-		j1.setPartida(partida);
-		j2.setPartida(partida);
+		Juego juego = new Juego();
+		j1.setJuego(juego);
+		j2.setJuego(juego);
 
 		Coordenada origena = new Coordenada( 2, 2 );
 		Coordenada origenb = new Coordenada( 3, 3 );
@@ -173,9 +174,9 @@ public class AlgoformerTest {
 		j1.agregarPersonaje(megatron);
 		j2.agregarPersonaje(optimus);
 
-		Partida partida = new Partida();
-		j1.setPartida(partida);
-		j2.setPartida(partida);
+		Juego juego = new Juego();
+		j1.setJuego(juego);
+		j2.setJuego(juego);
 
 
 		Coordenada origena = new Coordenada( 2, 2 );
