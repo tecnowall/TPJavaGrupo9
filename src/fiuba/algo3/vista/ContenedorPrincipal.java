@@ -27,7 +27,7 @@ public class ContenedorPrincipal extends BorderPane {
     BarraDeMenu menuBar;
     public static MenuInferior menuInferior;
     TableroVistaControlador vistaTablero;
-    Juego juego;
+    public static Juego juego;  //OJO
     Canvas canvasCentral;
     
 	public ContenedorPrincipal(Stage unStage, Juego unJuego){
@@ -78,8 +78,8 @@ public class ContenedorPrincipal extends BorderPane {
     	}
     	
         /*
-        // poner los nombres de los jugadores en pantalla
-        // obtener los algoformers de cada uno y ponerlos en pantalla
+        // poner los nombres de los jugadores en pantalla DONE
+        // obtener los algoformers de cada uno y ponerlos en pantalla DONE
         // jugador.getAlgoformers..........
         // subscribir los observadores
         //  algoformer.subscribirobservador
@@ -96,11 +96,7 @@ public class ContenedorPrincipal extends BorderPane {
         vistaTablero = new TableroVistaControlador(unJuego,grid);
         vistaTablero.dibujarTablero();
         this.setCenter(grid);
-        //TEST
-//		Forma forma1 = new Humanoide( 50, 2, 2 );
-//		Forma forma2 = new Terrestre( 15, 4, 5 );
-//		Algoformer optimus = new Algoformer( "Optimus", 500, forma1, forma2 );
-//		vistaTablero.ubicarAlgoformer(optimus,2,2);
+
 	}
 
 	private void setMenu(Stage stage) {
@@ -109,6 +105,6 @@ public class ContenedorPrincipal extends BorderPane {
         
         this.menuInferior = new MenuInferior(stage);
     	this.setBottom(menuInferior);
-
+    	
     }
 }

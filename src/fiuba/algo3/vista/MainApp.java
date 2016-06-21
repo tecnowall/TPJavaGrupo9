@@ -29,7 +29,7 @@ public class MainApp extends Application {
         Juego unJuego = new Juego(10-1,10-1); // el modelo
         unJuego.iniciar(); //inicio el juego
         //TODO EL FINTURNO DE ALGOFORMERS NO ESTA FUNCIONANDO
-     // unJuego.pasarTurno(); // Arranco el primer turno.   TODO esto meterlo dentro de juego.iniciar
+        // unJuego.pasarTurno(); // Arranco el primer turno.   TODO esto meterlo dentro de juego.iniciar
         ContenedorPrincipal contenedorPrincipal = new ContenedorPrincipal(primaryStage, unJuego); //
 
         Scene scene = new Scene(contenedorPrincipal,800,480);

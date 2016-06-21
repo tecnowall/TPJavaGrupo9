@@ -1,5 +1,6 @@
 package fiuba.algo3.vista;
 import fiuba.algo3.eventos.SeleccionAlgoformerHandler;
+import fiuba.algo3.eventos.SeleccionVacioHandler;
 import fiuba.algo3.modelo.Coordenada;
 import fiuba.algo3.modelo.Jugabilidad.Juego.Juego;
 import fiuba.algo3.modelo.Jugabilidad.Jugador.Jugador;
@@ -10,6 +11,8 @@ import fiuba.algo3.modelo.observadores.ObservadorBonus;
 import fiuba.algo3.modelo.observadores.ObservadorJuego;
 import fiuba.algo3.modelo.observadores.ObservadorTablero;
 import fiuba.algo3.modelo.tablero.*;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
@@ -33,6 +36,7 @@ public class TableroVistaControlador implements ObservadorTablero, ObservadorBon
 	GridPane tableroView;
 	Juego juego;
 	public static boolean seleccionado;
+	public static Algoformer algoformerSeleccionado;
 	
 	public TableroVistaControlador(Juego unJuego,GridPane unGrid){
 		tableroView=unGrid;
@@ -54,12 +58,16 @@ public class TableroVistaControlador implements ObservadorTablero, ObservadorBon
 	}
 
 	private void crearBotones(){
+		Coordenada coordenada=new Coordenada(0, 0);
 		for (int i = 0; i<=tablero.getAncho();i++){
 			for (int j = 0; j<=tablero.getAlto();j++){
 				Button boton=new Button("    ");
 				boton.setAlignment(Pos.CENTER);
 				boton.setPrefWidth(70);
 				boton.setPrefHeight(30);
+				coordenada.setXY(i, j);
+				SeleccionVacioHandler seleccionVacioHandler = new SeleccionVacioHandler(coordenada);
+				boton.setOnAction(seleccionVacioHandler);
 				//agregar handler para mover y atacar a ubicacion vacia
 				tableroView.add(boton, i, j);
 			}
