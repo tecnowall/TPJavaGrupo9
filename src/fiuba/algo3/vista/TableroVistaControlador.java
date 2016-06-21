@@ -103,23 +103,28 @@ public class TableroVistaControlador implements ObservadorTablero, ObservadorBon
 	@Override
 	public void huboUnMovimiento(Algoformer unAlgoformer) {
         //actualizar el movimiento
-		// pasar turno    juego.pasarTurno
+		this.juego.pasarTurno();
 
 	}
 
 	@Override
 	public void huboUnAtaque(Algoformer unAlgoformer) {
           //actualizzar vista
-		// pasar turno    juego.pasarTurno
+		this.juego.pasarTurno();
 	}
 
 	@Override
 	public void huboUnaTransformacion(Algoformer unAlgoformer) {
-		// pasar turno    juego.pasarTurno
+		//actualizzar vista
+		this.juego.pasarTurno();
 	}
 
 	@Override
 	public void huboUnaFusion(Algoformer unAlgoformer) {
+		//actualizzar vista
+		// hay que retirar los 3 algoformers y poner el fusionado
+
+		this.juego.pasarTurno();
 
 	}
 
