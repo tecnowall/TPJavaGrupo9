@@ -45,6 +45,7 @@ public class ContenedorPrincipal extends BorderPane {
 
 
          */
+        juego.suscribir(vistaTablero);
 	}
 
     //TODO

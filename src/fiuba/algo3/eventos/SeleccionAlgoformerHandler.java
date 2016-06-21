@@ -1,6 +1,8 @@
 package fiuba.algo3.eventos;
 
 import fiuba.algo3.modelo.algoformer.Algoformer;
+import fiuba.algo3.modelo.algoformer.AtaqueFueraDeRangoException;
+import fiuba.algo3.modelo.algoformer.FuegoAmigoException;
 import fiuba.algo3.vista.ContenedorPrincipal;
 import fiuba.algo3.vista.TableroVistaControlador;
 import javafx.event.ActionEvent;
@@ -62,11 +64,22 @@ public class SeleccionAlgoformerHandler implements EventHandler<ActionEvent> {
 				}
 				
 			}
-			else{
+			else{ //Seleccionado=true
 				//ATACAR
-				TableroVistaControlador.algoformerSeleccionado.getJugador().atacar(algoformer.getPosicion(), ContenedorPrincipal.juego.getTablero());
+				try{
+					TableroVistaControlador.algoformerSeleccionado.getJugador().atacar(algoformer.getPosicion(), ContenedorPrincipal.juego.getTablero());
+					System.out.println(TableroVistaControlador.algoformerSeleccionado.getNombre()+" ataca a " + algoformer.getNombre());
+					ContenedorPrincipal.juego.pasarTurno();
+				}
+				catch(FuegoAmigoException e){
+					System.out.println("Fuego amigo!");
+				}
+				catch(AtaqueFueraDeRangoException e){
+					System.out.println("Ataque fuera de rango");
+				}
+				
 				TableroVistaControlador.seleccionado=false;
-				//TODO atrapar excepciones
+				//atrapar excepciones DONE
 			}
 	}
 
