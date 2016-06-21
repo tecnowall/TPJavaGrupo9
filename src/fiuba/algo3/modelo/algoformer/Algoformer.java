@@ -307,6 +307,15 @@ public class Algoformer implements Ubicable, Fusionable, ObservableAlgoformer{
 	}
 
 
+
+	protected void  notificarFusionAObservadores (Algoformer unAlgoformer){
+
+		//TODO aca la vista va a tener que retirar a los 3 (se los pide a funsion) y poner a fusion a la vista
+		for (ObservadorAlgoformer unObservador : this.observadores){ unObservador.huboUnaFusion(unAlgoformer);}
+
+	}
+
+
 	public void agregarJugador (Jugador unJugador) {
 		if ( unJugador != null ){
 		if (this.jugador !=null) {throw new YaPoseoJugadorException();}

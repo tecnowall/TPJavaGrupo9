@@ -119,6 +119,11 @@ public class TableroVistaControlador implements ObservadorTablero, ObservadorBon
 	}
 
 	@Override
+	public void huboUnaFusion(Algoformer unAlgoformer) {
+
+	}
+
+	@Override
 	public void seConsumioBonus(Bonus unBonus) {
           //retirar bonus
 	}

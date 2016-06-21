@@ -8,4 +8,5 @@ public interface ObservadorAlgoformer {
     public void huboUnMovimiento(Algoformer unAlgoformer);
     public void huboUnAtaque(Algoformer unAlgoformer);
     public void huboUnaTransformacion(Algoformer unAlgoformer);
+    public void huboUnaFusion (Algoformer unAlgoformer);
 }

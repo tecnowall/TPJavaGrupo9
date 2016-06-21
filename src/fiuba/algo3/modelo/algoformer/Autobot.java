@@ -59,15 +59,16 @@ public class Autobot extends Algoformer{
 	public Algofusion completarFusion() {
 		List<Algoformer> partes = superion.getPartes();
 		
-		////superion.agregarJugador( superion.getPartes().get(0).getJugador() );
+
 		
 		for( Algoformer parte : partes ){
 			parte.salirDelTablero();
+
 		}
 		
 		this.getTablero().poner( superion, partes.get(0).getPosicion() );
-		this.jugador.agregarPersonaje( superion );
-		
+		this.jugador.agregarPersonaje( superion ); // este metodo tiene que retirar a los algoformers de su lista
+		superion.notificarFusionAObservadores(this);
 		return superion;
 	}
 	

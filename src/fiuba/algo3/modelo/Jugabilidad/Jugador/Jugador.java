@@ -49,6 +49,27 @@ public class Jugador {
 
     }
 
+
+    //
+    public void agregarPersonaje(Algofusion personajeFusionado)  {
+
+        if ( personajeFusionado.getEquipo() != this.equipo) {
+            throw new PersonajeDeOtroEquipoException();
+        }
+
+        if (existePersonaje(personajeFusionado.getNombre())){
+            throw new PersonajeNombreDuplicadoExeptions();
+        }
+
+        personajes.put(personajeFusionado.getNombre(), personajeFusionado);
+        personajeFusionado.agregarJugador(this);
+
+        //TODO quita a los fusionados
+        for (Algoformer algoformer : personajeFusionado.getPartes()){ this.eliminarPersonaje(algoformer.getNombre());}
+
+
+    }
+
     private boolean existePersonaje (String nombreDelPersonaje){
         return this.personajes.containsKey(nombreDelPersonaje);
     }
@@ -164,8 +185,6 @@ public class Jugador {
 
     }
 
-    public void nuevaFusion( Algofusion nuevaFusion ){
-    	//TODO jose aca comete una empanada
-    }
+
     
 }
