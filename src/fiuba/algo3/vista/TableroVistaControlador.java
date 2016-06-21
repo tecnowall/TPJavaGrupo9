@@ -140,4 +140,9 @@ public class TableroVistaControlador implements ObservadorTablero, ObservadorBon
 		//
 
 	}
+
+	@Override
+	public void esElTurnoDelJugador(Jugador unJugador) {
+		//TODO te va a pasar el jugador activo que es el que tiene el turno para jugar
+	}
 }

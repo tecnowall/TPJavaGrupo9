@@ -165,10 +165,6 @@ public class Juego implements ObservableJuego {
         this.chispa.setPosicion(posicion);
     }
 
-
-
-
-
     //TODO implementar esto!
     public List<Bonus> getListaDeBonus(){
 
@@ -181,28 +177,31 @@ public class Juego implements ObservableJuego {
 
     };
 
-
-
-
-
-
     public Jugador  getJugadorUno() {return this.jugadorUno;}
-    public Jugador  getJugadorDos() {return this.jugadorDos;}
-    public Tablero  getTablero() {return this.unTablero;}
-    public ChispaSuprema getChispaSuperma (){return this.chispa;}
-  //  public List<Bonus> getListaBonus (){return this.unaPartida.getListaDeBonus();}
 
+    public Jugador  getJugadorDos() {return this.jugadorDos;}
+
+    public Tablero  getTablero() {return this.unTablero;}
+
+    public ChispaSuprema getChispaSuperma (){return this.chispa;}
 
     public void pasarTurno(){
 
-       if (terminada) { throw new JuegoNoIniciadoException();};
+       if (this.terminada) { throw new JuegoNoIniciadoException();};
 
         this.turno.getTurno().finTurno();
         this.turno.siguiente().inicioTurno();
+        notificarObsevadoresTurnoDeJugador(this.turno.getTurno());
 
     }
 
     public void finalizar (){ this.terminada= true;}
+
+    private void notificarObsevadoresTurnoDeJugador (Jugador jugadorActivo){
+
+        for (ObservadorJuego unObservador : this.observadores){ unObservador.esElTurnoDelJugador(jugadorActivo);}
+
+    }
 
     //todo
  private void notificarObsevadores (Jugador playerWin){
@@ -249,33 +248,9 @@ public class Juego implements ObservableJuego {
 
 public class Partida {
 
-    private Turno turno;
-    private Jugador player1, player2;
-    private Tablero tablero;
-    private ChispaSuprema chispa;
-    private List<ObservadorPartida> observadores = new ArrayList<ObservadorPartida>();
-    private boolean terminada;
-
-    public Partida() {
-    } //for test
-
-    //todo si los jugadores no tienen 3 algoformers que lance exepcion
-    public Partida(Jugador j1, Jugador j2, Tablero tablero) {
-
-    }
-
-    public void pasarTurno() {
 
 
-        if (finalizada()) throw new PartidaFffffinalizadaException();
 
-        this.turno.getTurno().finTurno();
-        this.turno.siguiente().inicioTurno();
-
-
-    }
-
-    ;
 
 
     private boolean finalizada() {

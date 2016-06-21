@@ -14,15 +14,11 @@ public class Turno {
 
     public Turno (Jugador player1, Jugador player2){
 
-
         turnos[0] = player1;
         turnos[1] = player2;
 
         int turnoAlAzar =  (int) (Math.random()*turnos.length);
-
         this.siguiente= turnoAlAzar;
-
-
 
     }
 

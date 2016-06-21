@@ -3,7 +3,7 @@ package fiuba.algo3.modelo.Jugabilidad.Jugador;
 
 import fiuba.algo3.modelo.Coordenada;
 import fiuba.algo3.modelo.Jugabilidad.Juego.Juego;
-import fiuba.algo3.modelo.Jugabilidad.Juego.Partida;
+
 import fiuba.algo3.modelo.TipoEquipo;
 import fiuba.algo3.modelo.algoformer.Algoformer;
 import fiuba.algo3.modelo.algoformer.Algofusion;
@@ -65,7 +65,7 @@ public class Jugador {
         personajes.put(personajeFusionado.getNombre(), personajeFusionado);
         personajeFusionado.agregarJugador(this);
 
-        //TODO quita a los fusionados
+        // quita a los fusionados
         for (Algoformer algoformer : personajeFusionado.getPartes()){ this.eliminarPersonaje(algoformer.getNombre());}
 
 
@@ -95,16 +95,7 @@ public class Jugador {
 
 
 
-    private void notificarFinDeTurno(){
-        //TODO
-      //notificar a los algoformer de un nuevo turno
 
-        Iterator it = personajes.entrySet().iterator();
-        while (it.hasNext()) {
-            ((Algoformer)(((Map.Entry)it.next()).getValue())).finTurno();
-        }
-
-    };
 
     public void inicioTurno(){
         this.estado= new EstadoJugadorActivo();
@@ -112,8 +103,14 @@ public class Jugador {
     };
 
     public void finTurno(){
+
         this.estado= new EstadoJugadorEsperando();
-        notificarFinDeTurno();
+
+        //AVISO A ALGOFORMERS FIN DE TURNO
+        Iterator it = personajes.entrySet().iterator();
+        while (it.hasNext()) {
+            ((Algoformer)(((Map.Entry)it.next()).getValue())).finTurno();
+        }
 
     };
 
