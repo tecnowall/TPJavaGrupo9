@@ -8,6 +8,7 @@ import org.junit.Test;
 
 import fiuba.algo3.modelo.Coordenada;
 import fiuba.algo3.modelo.TipoEquipo;
+import fiuba.algo3.modelo.Jugabilidad.Jugador.Jugador;
 import fiuba.algo3.modelo.algoformer.Algofusion;
 import fiuba.algo3.modelo.algoformer.Autobot;
 import fiuba.algo3.modelo.algoformer.Decepticon;
@@ -17,6 +18,7 @@ public class AlgofusionTest {
 
 	@Test
 	public void testFusionarTresAutobotsDevuelveSuperionEnLaPosicionDelQueIniciaLaFusion(){
+		Jugador jugador = new Jugador("jugador", TipoEquipo.AUTOBOTS );
 		Tablero tablero = new Tablero( 20, 20 );
 		Autobot optimus = Autobot.getOptimus();
 		Autobot bumblebee = Autobot.getBumblebee();
@@ -32,9 +34,19 @@ public class AlgofusionTest {
 		tablero.poner( optimus, origena);
 		tablero.poner( bumblebee, origenb);
 		tablero.poner( ratchet, origenc);
-
+		
+		jugador.agregarPersonaje(optimus);
+		System.out.println(optimus.getJugador().getAllPersonajes().size());
+		jugador.agregarPersonaje(bumblebee);
+		System.out.println(optimus.getJugador().getAllPersonajes().size());
+		jugador.agregarPersonaje(ratchet);
+		System.out.println(optimus.getJugador().getAllPersonajes().size());
+		
+		
 		optimus.iniciarFusion( optimus, bumblebee, ratchet );
 		Algofusion superion = optimus.completarFusion();
+		
+		System.out.println(superion.getJugador().getAllPersonajes().size());
 		
 		Assert.assertThat( superion.getVida(), is( 500 + 350 + 150 ) );
 		Assert.assertThat( superion.getPoder(), is( 100 ) );
@@ -45,6 +57,7 @@ public class AlgofusionTest {
 	
 	@Test
 	public void testFusionarTresDecepticonDevuelveMenasorEnLaPosicionDelQueIniciaLaFusion(){
+		Jugador jugador = new Jugador("jugador", TipoEquipo.DECEPTICONS );
 		Tablero tablero = new Tablero( 20, 20 );
 		Decepticon megatron = Decepticon.getMegatron();
 		Decepticon bonecrusher = Decepticon.getBonecrusher();
@@ -61,6 +74,9 @@ public class AlgofusionTest {
 		tablero.poner( megatron, origena);
 		tablero.poner( bonecrusher, origenb);
 		tablero.poner( frenzy, origenc);
+		jugador.agregarPersonaje(megatron);
+		jugador.agregarPersonaje(bonecrusher);
+		jugador.agregarPersonaje(frenzy);
 
 		megatron.setEquipo( TipoEquipo.DECEPTICONS);
 		bonecrusher.setEquipo( TipoEquipo.DECEPTICONS);
@@ -78,6 +94,7 @@ public class AlgofusionTest {
 	
 	@Test
 	public void testFusionarTardaDosTurnosEnCompletarseYEliminaLosAlgoformerQueSeFusionan(){
+		Jugador jugador = new Jugador("jugador", TipoEquipo.AUTOBOTS );
 		Tablero tablero = new Tablero( 20, 20 );
 		Autobot optimus = Autobot.getOptimus();
 		Autobot bumblebee = Autobot.getBumblebee();
@@ -93,6 +110,9 @@ public class AlgofusionTest {
 		tablero.poner( optimus, origena);
 		tablero.poner( bumblebee, origenb);
 		tablero.poner( ratchet, origenc);
+		jugador.agregarPersonaje(optimus);
+		jugador.agregarPersonaje(bumblebee);
+		jugador.agregarPersonaje(ratchet);
 
 
 		optimus.iniciarFusion( optimus, bumblebee, ratchet );

@@ -5,7 +5,7 @@ import fiuba.algo3.modelo.Coordenada;
 import fiuba.algo3.modelo.Jugabilidad.Juego.Partida;
 import fiuba.algo3.modelo.TipoEquipo;
 import fiuba.algo3.modelo.algoformer.Algoformer;
-
+import fiuba.algo3.modelo.algoformer.Algofusion;
 import fiuba.algo3.modelo.tablero.Tablero;
 
 import java.util.ArrayList;
@@ -164,4 +164,8 @@ public class Jugador {
 
     }
 
+    public void nuevaFusion( Algofusion nuevaFusion ){
+    	//TODO jose aca comete una empanada
+    }
+    
 }

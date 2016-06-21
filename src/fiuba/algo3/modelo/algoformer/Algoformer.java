@@ -33,7 +33,7 @@ public class Algoformer implements Ubicable, Fusionable, ObservableAlgoformer{
 	private TipoEquipo equipo;
 	private Movimiento movimiento;
 	private transient Map<BonusID, Bonus> buffs;
-	private Jugador jugador;
+	protected Jugador jugador;
 	private List<ObservadorAlgoformer> observadores;
 	
 	public Algoformer(){
@@ -308,8 +308,10 @@ public class Algoformer implements Ubicable, Fusionable, ObservableAlgoformer{
 
 
 	public void agregarJugador (Jugador unJugador) {
+		if ( unJugador != null ){
 		if (this.jugador !=null) {throw new YaPoseoJugadorException();}
-		this.jugador = unJugador;
+		this.jugador = unJugador;	
+		}
 	}
 
 	//metodo para test
