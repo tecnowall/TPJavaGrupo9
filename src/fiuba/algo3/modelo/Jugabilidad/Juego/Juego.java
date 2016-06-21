@@ -51,8 +51,8 @@ public class Juego implements ObservableJuego {
         //****************************************************************************//
         // creo los jugadores
         //***************************************************************************//
-        this.jugadorUno = new Jugador ("Diego", TipoEquipo.AUTOBOTS);
-        this.jugadorDos = new Jugador ("Maradona", TipoEquipo.DECEPTICONS);
+        this.jugadorUno = new Jugador ("Jugador 1", TipoEquipo.AUTOBOTS);
+        this.jugadorDos = new Jugador ("Jugador 2", TipoEquipo.DECEPTICONS);
 
         //****************************************************************************//
         // creo un tablero

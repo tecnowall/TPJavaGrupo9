@@ -4,6 +4,7 @@ import fiuba.algo3.modelo.algoformer.Algoformer;
 import fiuba.algo3.modelo.algoformer.AtaqueFueraDeRangoException;
 import fiuba.algo3.modelo.algoformer.FuegoAmigoException;
 import fiuba.algo3.vista.ContenedorPrincipal;
+import fiuba.algo3.vista.MenuInferior;
 import fiuba.algo3.vista.TableroVistaControlador;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -20,7 +21,7 @@ public class SeleccionAlgoformerHandler implements EventHandler<ActionEvent> {
 	@Override
 	public void handle(ActionEvent event) {
 		
-		if ("Observar"==ContenedorPrincipal.menuInferior.getSelectionModel().getSelectedItem().toString()){
+		if ("Observar"==MenuInferior.selecOpciones.getSelectionModel().getSelectedItem().toString()){
 			Alert alert = new Alert(Alert.AlertType.INFORMATION);
 			alert.setTitle("Algoformer");
 			alert.setHeaderText("Algoformer seleccionado: " + algoformer.getNombre());
@@ -30,10 +31,11 @@ public class SeleccionAlgoformerHandler implements EventHandler<ActionEvent> {
 	
 			alert.showAndWait();
 		}
-		if ("Mover"==ContenedorPrincipal.menuInferior.getSelectionModel().getSelectedItem().toString()){
+		if ("Mover"==MenuInferior.selecOpciones.getSelectionModel().getSelectedItem().toString()){
 			if (TableroVistaControlador.seleccionado==false){
 				if (algoformer.getJugador().getEstado()=="activo"){
-					System.out.println("Algoformer seleccionado! Elija la posicion objetivo");
+					
+					MenuInferior.log.insertText(0, "\nAlgoformer seleccionado! Elija la posicion objetivo");
 					TableroVistaControlador.seleccionado=true;
 					TableroVistaControlador.algoformerSeleccionado=algoformer;
 				}
@@ -43,24 +45,27 @@ public class SeleccionAlgoformerHandler implements EventHandler<ActionEvent> {
 				
 			}
 			else{
-				System.out.println("Hay otro algoformer en esta ubicacion, movimiento no valido");
+				
+				MenuInferior.log.insertText(0, "\nHay otro algoformer en esta ubicacion, movimiento no valido");
 				TableroVistaControlador.seleccionado=false;
 				
 			} //el movimiento se realiza cuando hay un algoformer seleccionado y se hace click en un boton vacio
 			//TODO MOVIMIENTO
 		}
-		if ("Atacar"==ContenedorPrincipal.menuInferior.getSelectionModel().getSelectedItem().toString()){
+		if ("Atacar"==MenuInferior.selecOpciones.getSelectionModel().getSelectedItem().toString()){
 			//TODO ATAQUE
 			if (TableroVistaControlador.seleccionado==false){
 				if (algoformer.getJugador().getEstado()=="activo"){
-					System.out.println("Algoformer seleccionado! Elija blanco de ataque");
+					
+					MenuInferior.log.insertText(0, "\nAlgoformer seleccionado! Elija blanco de ataque");
 					TableroVistaControlador.seleccionado=true;
 					algoformer.getJugador().seleccionarPersonaje(algoformer.getNombre());
 					TableroVistaControlador.algoformerSeleccionado=algoformer;
 					
 				}
 				else{
-					System.out.println("Este algoformer no es tuyo");
+					
+					MenuInferior.log.insertText(0, "\nEste algoformer no es tuyo");
 				}
 				
 			}
@@ -68,14 +73,17 @@ public class SeleccionAlgoformerHandler implements EventHandler<ActionEvent> {
 				//ATACAR
 				try{
 					TableroVistaControlador.algoformerSeleccionado.getJugador().atacar(algoformer.getPosicion(), ContenedorPrincipal.juego.getTablero());
-					System.out.println(TableroVistaControlador.algoformerSeleccionado.getNombre()+" ataca a " + algoformer.getNombre());
+					
+					MenuInferior.log.insertText(0, "\n" + TableroVistaControlador.algoformerSeleccionado.getNombre()+" ataca a " + algoformer.getNombre());
 					ContenedorPrincipal.juego.pasarTurno();
 				}
 				catch(FuegoAmigoException e){
-					System.out.println("Fuego amigo!");
+					MenuInferior.log.insertText(0, "\nFuego amigo!");
+					
 				}
 				catch(AtaqueFueraDeRangoException e){
-					System.out.println("Ataque fuera de rango");
+					
+					MenuInferior.log.insertText(0, "\nAtaque fuera de rango");
 				}
 				
 				TableroVistaControlador.seleccionado=false;

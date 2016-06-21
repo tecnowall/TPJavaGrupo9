@@ -3,14 +3,30 @@ package fiuba.algo3.vista;
 
 import javafx.geometry.Pos;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
-public class MenuInferior extends ChoiceBox<String>{
-		
+public class MenuInferior extends HBox{
+	public static ChoiceBox<String> selecOpciones=new ChoiceBox<String>();
+	public static TextArea log = new TextArea();	
+	
 	public MenuInferior(Stage stage){
     	ContenedorPrincipal.setAlignment(this, Pos.BASELINE_CENTER);
-    	this.getItems().addAll("Observar","Mover","Atacar");
-    	this.getSelectionModel().selectFirst();
+    	selecOpciones.getItems().addAll("Observar","Mover","Atacar");
+    	selecOpciones.getSelectionModel().selectFirst();
+    	selecOpciones.setPrefWidth(200);
+    	log.setEditable(false);
+    	log.setPrefWidth(250);
+    	log.setPrefHeight(50);
+    	log.setWrapText(true);
+    	log.insertText(0, "");
+    	
+    	
+    	this.setSpacing(100);
+    	this.getChildren().addAll(log,selecOpciones);
+    	this.setAlignment(Pos.BOTTOM_CENTER);
 	}
 
 }
