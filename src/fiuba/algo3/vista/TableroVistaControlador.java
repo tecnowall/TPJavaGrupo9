@@ -26,6 +26,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 
@@ -49,12 +50,13 @@ public class TableroVistaControlador implements ObservadorTablero, ObservadorBon
 	public void dibujarTablero() {
 		tableroView.setOnMousePressed(null);
 		for (int i = 0;i<(tablero.getAncho());i++){
-			tableroView.getColumnConstraints().add(new ColumnConstraints(70));
+			tableroView.getColumnConstraints().add(new ColumnConstraints(80));
 		}
 		for (int j = 0; j<(tablero.getAlto());j++){
-			tableroView.getRowConstraints().add(new RowConstraints(30));
+			tableroView.getRowConstraints().add(new RowConstraints(40));
 		} //Creo tablero de 11x11 si Tablero (10,10);
 		crearBotones();
+		tableroView.setAlignment(Pos.CENTER);
 	}
 
 	private void crearBotones(){
@@ -63,12 +65,16 @@ public class TableroVistaControlador implements ObservadorTablero, ObservadorBon
 			for (int j = 0; j<=tablero.getAlto();j++){
 				Button boton=new Button("    ");
 				boton.setAlignment(Pos.CENTER);
+				boton.setTranslateX(5);
 				boton.setPrefWidth(70);
 				boton.setPrefHeight(30);
 				coordenada.setXY(i, j);
 				SeleccionVacioHandler seleccionVacioHandler = new SeleccionVacioHandler(coordenada);
 				boton.setOnAction(seleccionVacioHandler);
-				//agregar handler para mover y atacar a ubicacion vacia
+				if ((ContenedorPrincipal.juego.getChispaSuperma().getPosicion().getX()==i) && (ContenedorPrincipal.juego.getChispaSuperma().getPosicion().getX()==j)){
+					boton.setStyle("-fx-base: #e6e600;"); //Color de chispa suprema
+				}
+				
 				tableroView.add(boton, i, j);
 			}
 		}
@@ -81,6 +87,7 @@ public class TableroVistaControlador implements ObservadorTablero, ObservadorBon
 		botonAlgo.setAlignment(Pos.CENTER);
 		botonAlgo.setPrefWidth(70);
 		botonAlgo.setPrefHeight(30);
+		botonAlgo.setTranslateX(5);
 		
 		SeleccionAlgoformerHandler seleccionAlgoformerHandler = new SeleccionAlgoformerHandler(unAlgoformer);
 		botonAlgo.setOnAction(seleccionAlgoformerHandler);

@@ -11,6 +11,7 @@ import fiuba.algo3.modelo.tablero.Tablero;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
@@ -31,6 +32,7 @@ public class MainApp extends Application {
         ContenedorPrincipal contenedorPrincipal = new ContenedorPrincipal(primaryStage, unJuego); //
 
         Scene scene = new Scene(contenedorPrincipal,800,480);
+        
         primaryStage.setScene(scene);
         primaryStage.show();
 

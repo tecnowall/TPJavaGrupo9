@@ -14,6 +14,7 @@ import javafx.geometry.Pos;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.*;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -69,6 +70,7 @@ public class ContenedorPrincipal extends BorderPane {
     	vistaJugador2.dibujarJugador();
     	this.setLeft(vbox1);
     	this.setRight(vbox2);
+    	Image img = new Image("file:AutobotLogo.png");
     	
 
     	for(Algoformer value: jugadorUno.getAllPersonajes()){

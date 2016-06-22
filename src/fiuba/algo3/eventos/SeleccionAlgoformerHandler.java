@@ -28,7 +28,8 @@ public class SeleccionAlgoformerHandler implements EventHandler<ActionEvent> {
 			alert.setContentText("Vida actual: " + algoformer.getVida() + "\nPoder: " + algoformer.getPoder()
 			+ " (Poder Base: " + algoformer.getPoderBase() + ")\nVelocidad: "+ algoformer.getVelocidad()
 			+ " (Velocidad Base: " + algoformer.getVelocidadBase() + ")");
-	
+			
+			System.out.println(algoformer.getJugador().getEstado());
 			alert.showAndWait();
 		}
 		if ("Mover"==MenuInferior.selecOpciones.getSelectionModel().getSelectedItem().toString()){
@@ -40,7 +41,7 @@ public class SeleccionAlgoformerHandler implements EventHandler<ActionEvent> {
 					TableroVistaControlador.algoformerSeleccionado=algoformer;
 				}
 				else{
-					System.out.println("Este algoformer no es tuyo");
+					MenuInferior.log.insertText(0, "\nEste algoformer no es tuyo");
 				}
 				
 			}
@@ -76,6 +77,7 @@ public class SeleccionAlgoformerHandler implements EventHandler<ActionEvent> {
 					
 					MenuInferior.log.insertText(0, "\n" + TableroVistaControlador.algoformerSeleccionado.getNombre()+" ataca a " + algoformer.getNombre());
 					ContenedorPrincipal.juego.pasarTurno();
+					TableroVistaControlador.seleccionado=false;
 				}
 				catch(FuegoAmigoException e){
 					MenuInferior.log.insertText(0, "\nFuego amigo!");

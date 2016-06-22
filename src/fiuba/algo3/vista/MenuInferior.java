@@ -19,7 +19,8 @@ public class MenuInferior extends HBox{
     	selecOpciones.setPrefWidth(200);
     	log.setEditable(false);
     	log.setPrefWidth(250);
-    	log.setPrefHeight(50);
+    	log.setPrefHeight(120);
+    	log.setTranslateY(50);
     	log.setWrapText(true);
     	log.insertText(0, "");
     	

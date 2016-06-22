@@ -23,7 +23,10 @@ public class SeleccionVacioHandler implements EventHandler<ActionEvent>{
 				}
 				else{
 					//Mover y terminar turno
+
 					TableroVistaControlador.algoformerSeleccionado.getJugador().moverPersonaje(coordenada, ContenedorPrincipal.juego.getTablero());
+
+					ContenedorPrincipal.juego.pasarTurno();
 					TableroVistaControlador.seleccionado=false;
 					
 					MenuInferior.log.insertText(0, "\nAlgoformer: mover a posicion " + coordenada.getX() + " , " + coordenada.getY());
@@ -38,6 +41,7 @@ public class SeleccionVacioHandler implements EventHandler<ActionEvent>{
 				//TableroVistaControlador.algoformerSeleccionado.getJugador().atacar(coordenada, ContenedorPrincipal.juego.getTablero());
 				MenuInferior.log.insertText(0, "\n" + TableroVistaControlador.algoformerSeleccionado.getNombre()+" :ataque fallido!");
 				ContenedorPrincipal.juego.pasarTurno();
+				TableroVistaControlador.seleccionado=false;
 				//Atacar a lugar vacio
 			}
 		}
