@@ -52,7 +52,7 @@ public class TableroVistaControlador implements ObservadorTablero, ObservadorBon
 		for (int i = 0;i<(tablero.getAncho());i++){
 			tableroView.getColumnConstraints().add(new ColumnConstraints(80));
 		}
-		for (int j = 0; j<(tablero.getAlto());j++){
+		for (int j = 0; j<=(tablero.getAlto());j++){
 			tableroView.getRowConstraints().add(new RowConstraints(40));
 		} //Creo tablero de 11x11 si Tablero (10,10);
 		crearBotones();
@@ -61,7 +61,7 @@ public class TableroVistaControlador implements ObservadorTablero, ObservadorBon
 
 	private void crearBotones(){
 		Coordenada coordenada=new Coordenada(0, 0);
-		for (int i = 0; i<=tablero.getAncho();i++){
+		for (int i = 0; i<tablero.getAncho();i++){
 			for (int j = 0; j<=tablero.getAlto();j++){
 				Button boton=new Button("    ");
 				boton.setAlignment(Pos.CENTER);

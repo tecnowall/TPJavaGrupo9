@@ -70,7 +70,6 @@ public class ContenedorPrincipal extends BorderPane {
     	vistaJugador2.dibujarJugador();
     	this.setLeft(vbox1);
     	this.setRight(vbox2);
-    	Image img = new Image("file:AutobotLogo.png");
     	
 
     	for(Algoformer value: jugadorUno.getAllPersonajes()){

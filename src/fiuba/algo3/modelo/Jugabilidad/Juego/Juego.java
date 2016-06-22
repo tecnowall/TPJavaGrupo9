@@ -118,13 +118,13 @@ public class Juego implements ObservableJuego {
 
     private void posicionarAlgoformers( ){
 
-        Coordenada c1 = new Coordenada( 0, 1 );
-        Coordenada c2 = new Coordenada( 0, 2 );
-        Coordenada c3 = new Coordenada( 0, 3 );
+        Coordenada c1 = new Coordenada( 0, 2 );
+        Coordenada c2 = new Coordenada( 0, 4 );
+        Coordenada c3 = new Coordenada( 0, 6 );
 
-        Coordenada c4 = new Coordenada( this.unTablero.getAncho()-1, 1 );
-        Coordenada c5 = new Coordenada( this.unTablero.getAncho()-1, 2 );
-        Coordenada c6 = new Coordenada( this.unTablero.getAncho()-1, 3 );
+        Coordenada c4 = new Coordenada( this.unTablero.getAncho()-1, 2 );
+        Coordenada c5 = new Coordenada( this.unTablero.getAncho()-1, 4 );
+        Coordenada c6 = new Coordenada( this.unTablero.getAncho()-1, 6 );
 
         //TODO refactoring..., crear un iterador
         // this.player1.obtenerPersonajes

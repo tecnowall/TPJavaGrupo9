@@ -20,5 +20,8 @@ public class JugadorVista {
 		vbox.getChildren().add(j);
 		j.setFont(new Font("Arial",20));
 		vbox.setTranslateY(150);
+		if(jugador.getEstado()=="activo"){
+			MenuInferior.log.insertText(0, "\nEs turno de " + jugador.obtenerNombre());
+		}
 	}
 }

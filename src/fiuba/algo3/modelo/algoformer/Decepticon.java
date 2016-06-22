@@ -40,7 +40,7 @@ public class Decepticon extends Algoformer implements Fusionable {
 	public static Decepticon getFrenzy(){
 		Forma humanoide = new Humanoide( 10, 5, 2 );
 		Forma terrestre = new Terrestre( 25, 2, 6 );
-		Decepticon frenzy = new Decepticon( "frenzy", 400, humanoide, terrestre );
+		Decepticon frenzy = new Decepticon( "Frenzy", 400, humanoide, terrestre );
 		frenzy.setEquipo( TipoEquipo.DECEPTICONS );
 		
 		return frenzy;
