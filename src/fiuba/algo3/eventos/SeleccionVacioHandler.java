@@ -1,6 +1,7 @@
 package fiuba.algo3.eventos;
 
 import fiuba.algo3.modelo.Coordenada;
+import fiuba.algo3.modelo.algoformer.MovimientoFueraDeRangoException;
 import fiuba.algo3.vista.ContenedorPrincipal;
 import fiuba.algo3.vista.MenuInferior;
 import fiuba.algo3.vista.TableroVistaControlador;
@@ -17,14 +18,21 @@ public class SeleccionVacioHandler implements EventHandler<ActionEvent>{
 	@Override
 	public void handle(ActionEvent event) {
 		// TODO Auto-generated method stub
+		if ("Observar"==MenuInferior.selecOpciones.getSelectionModel().getSelectedItem().toString()){
+			MenuInferior.log.insertText(0, "\nCasillero vacío: "+coordenada.getX() +" , " + coordenada.getY());
+		}
 		if ("Mover"==MenuInferior.selecOpciones.getSelectionModel().getSelectedItem().toString()){
 			if (TableroVistaControlador.seleccionado==false){
 				MenuInferior.log.insertText(0, "\nPor favor, seleccione un Algoformer");
 				}
 				else{
 					//Mover y terminar turno
-
-					TableroVistaControlador.algoformerSeleccionado.getJugador().moverPersonaje(coordenada, ContenedorPrincipal.juego.getTablero());
+					try{
+						TableroVistaControlador.algoformerSeleccionado.getJugador().moverPersonaje(coordenada, ContenedorPrincipal.juego.getTablero());
+					}
+					catch (MovimientoFueraDeRangoException e){
+						MenuInferior.log.insertText(0, "\nMovimiento fuera de rango");
+					}
 
 					ContenedorPrincipal.juego.pasarTurno();
 					TableroVistaControlador.seleccionado=false;

@@ -60,7 +60,7 @@ public class TableroVistaControlador implements ObservadorTablero, ObservadorBon
 	}
 
 	private void crearBotones(){
-		Coordenada coordenada=new Coordenada(0, 0);
+		
 		for (int i = 0; i<tablero.getAncho();i++){
 			for (int j = 0; j<=tablero.getAlto();j++){
 				Button boton=new Button("    ");
@@ -68,15 +68,15 @@ public class TableroVistaControlador implements ObservadorTablero, ObservadorBon
 				boton.setTranslateX(5);
 				boton.setPrefWidth(70);
 				boton.setPrefHeight(30);
-				coordenada.setXY(i, j);
+				Coordenada coordenada=new Coordenada(i, j);
 				SeleccionVacioHandler seleccionVacioHandler = new SeleccionVacioHandler(coordenada);
 				boton.setOnAction(seleccionVacioHandler);
 				if ((ContenedorPrincipal.juego.getChispaSuperma().getPosicion().getX()==i) && (ContenedorPrincipal.juego.getChispaSuperma().getPosicion().getX()==j)){
 					boton.setStyle("-fx-base: #e6e600;"); //Color de chispa suprema
 				}
 				//boton.setId("#" + Integer.toString(i)+"," + Integer.toString(j));
-				
 				tableroView.add(boton, i, j);
+				
 			}
 		}
 	}
@@ -151,7 +151,6 @@ public class TableroVistaControlador implements ObservadorTablero, ObservadorBon
 
 	@Override
 	public void esElTurnoDelJugador(Jugador unJugador) {
-		System.out.println("Es turno de: " + unJugador.obtenerNombre());
 		MenuInferior.log.insertText(0, "\nEs turno de: " + unJugador.obtenerNombre());
 		//TODO te va a pasar el jugador activo que es el que tiene el turno para jugar
 	}
