@@ -52,7 +52,7 @@ public class TableroVistaControlador implements ObservadorTablero, ObservadorBon
 		for (int i = 0;i<(tablero.getAncho());i++){
 			tableroView.getColumnConstraints().add(new ColumnConstraints(80));
 		}
-		for (int j = 0; j<=(tablero.getAlto());j++){
+		for (int j = 0; j<(tablero.getAlto());j++){
 			tableroView.getRowConstraints().add(new RowConstraints(40));
 		} //Creo tablero de 11x11 si Tablero (10,10);
 		crearBotones();
@@ -62,8 +62,9 @@ public class TableroVistaControlador implements ObservadorTablero, ObservadorBon
 	private void crearBotones(){
 		
 		for (int i = 0; i<tablero.getAncho();i++){
-			for (int j = 0; j<=tablero.getAlto();j++){
-				Button boton=new Button("    ");
+			for (int j = 0; j<tablero.getAlto();j++){
+
+				Button boton=new Button("");
 				boton.setAlignment(Pos.CENTER);
 				boton.setTranslateX(5);
 				boton.setPrefWidth(70);
@@ -74,28 +75,41 @@ public class TableroVistaControlador implements ObservadorTablero, ObservadorBon
 				if ((ContenedorPrincipal.juego.getChispaSuperma().getPosicion().getX()==i) && (ContenedorPrincipal.juego.getChispaSuperma().getPosicion().getX()==j)){
 					boton.setStyle("-fx-base: #e6e600;"); //Color de chispa suprema
 				}
-				//boton.setId("#" + Integer.toString(i)+"," + Integer.toString(j));
+				boton.setId("#" + Integer.toString(i)+"," + Integer.toString(j));
 				tableroView.add(boton, i, j);
 				
 			}
 		}
+		//tableroView.getChildren().remove(9);
+
 	}
 	
 	public void ubicarAlgoformer(Algoformer unAlgoformer,int x,int y){
 		Button botonAlgo=new Button();
-		//botonAlgo =(Button) tableroView.lookup("#" + Integer.toString(1)+"," + Integer.toString(1));
+		botonAlgo = (Button) tableroView.getChildren().get((tablero.getAlto()*x) + y + 1);
 		botonAlgo.setText(unAlgoformer.getNombre());
-		botonAlgo.setAlignment(Pos.CENTER);
-		botonAlgo.setPrefWidth(70);
-		botonAlgo.setPrefHeight(30);
-		botonAlgo.setTranslateX(5);
+//		botonAlgo.setAlignment(Pos.CENTER);
+//		botonAlgo.setPrefWidth(70);
+//		botonAlgo.setPrefHeight(30);
+//		botonAlgo.setTranslateX(5);
 		
 		SeleccionAlgoformerHandler seleccionAlgoformerHandler = new SeleccionAlgoformerHandler(unAlgoformer);
 		botonAlgo.setOnAction(seleccionAlgoformerHandler);
 		
-		tableroView.add(botonAlgo, x,y);
+		//tableroView.add(botonAlgo, x,y);
+		
 	}
-
+	
+	public void quitarAlgoformer(int x, int y){
+		Button botonAlgo=new Button();
+		Coordenada coordenada=new Coordenada(x,y);
+		botonAlgo = (Button) tableroView.getChildren().get((tablero.getAlto()*x) + y + 1);
+		botonAlgo.setText("");
+		
+		SeleccionVacioHandler seleccionVacioHandler = new SeleccionVacioHandler(coordenada);
+		botonAlgo.setOnAction(seleccionVacioHandler);
+	}
+	
 
 	@Override
 	public void notificartableroCreado(int ancho, int alto) {
@@ -109,9 +123,12 @@ public class TableroVistaControlador implements ObservadorTablero, ObservadorBon
 	}
 
 	@Override
-	public void huboUnMovimiento(Algoformer unAlgoformer) {
+	public void huboUnMovimiento(Algoformer unAlgoformer, Coordenada original) {
         //actualizar el movimiento
-		this.juego.pasarTurno();
+		this.quitarAlgoformer(original.getX(), original.getY());
+		this.ubicarAlgoformer(unAlgoformer, unAlgoformer.getPosicion().getX(), unAlgoformer.getPosicion().getY());
+		
+		//this.juego.pasarTurno();
 
 	}
 

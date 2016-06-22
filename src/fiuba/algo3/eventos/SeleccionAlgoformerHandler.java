@@ -103,6 +103,7 @@ public class SeleccionAlgoformerHandler implements EventHandler<ActionEvent> {
 				MenuInferior.log.insertText(0, "\nEste algoformer no es tuyo");
 			}
 		}
+		
 		//FUSION TODO
 
 }

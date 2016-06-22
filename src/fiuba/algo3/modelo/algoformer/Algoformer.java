@@ -82,11 +82,14 @@ public class Algoformer implements Ubicable, Fusionable, ObservableAlgoformer{
 	}
 	
 	public void ubicar( Coordenada unaCoordenada ){
+		
+		Coordenada original = this.posicion;
 		this.posicion = unaCoordenada;
 		
-		//Notificar vista (?)
-		
-//		observador.ubicarAlgoformer(this, posicion.getX(), posicion.getY());
+		//Notificar vista
+		for(ObservadorAlgoformer unObservador : this.observadores){
+			unObservador.huboUnMovimiento(this,original);
+		}
 	}
 	
 	public boolean movimientoValido( Coordenada destino ){

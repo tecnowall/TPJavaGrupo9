@@ -31,7 +31,7 @@ public class MainApp extends Application {
         unJuego.iniciar();
         ContenedorPrincipal contenedorPrincipal = new ContenedorPrincipal(primaryStage, unJuego); //
 
-        Scene scene = new Scene(contenedorPrincipal,800,480);
+        Scene scene = new Scene(contenedorPrincipal,1280,720);
         
         primaryStage.setScene(scene);
         primaryStage.show();
