@@ -24,7 +24,7 @@ public class SeleccionAlgoformerHandler implements EventHandler<ActionEvent> {
 		if ("Observar"==MenuInferior.selecOpciones.getSelectionModel().getSelectedItem().toString()){
 			Alert alert = new Alert(Alert.AlertType.INFORMATION);
 			alert.setTitle("Algoformer");
-			alert.setHeaderText("Algoformer seleccionado: " + algoformer.getNombre());
+			alert.setHeaderText("Algoformer seleccionado: " + algoformer.getNombre() + " (Forma " + algoformer.getNombreForma() + ")");
 			alert.setContentText("Vida actual: " + algoformer.getVida() + "\nPoder: " + algoformer.getPoder()
 			+ " (Poder Base: " + algoformer.getPoderBase() + ")\nVelocidad: "+ algoformer.getVelocidad()
 			+ " (Velocidad Base: " + algoformer.getVelocidadBase() + ")");
@@ -92,6 +92,18 @@ public class SeleccionAlgoformerHandler implements EventHandler<ActionEvent> {
 				//atrapar excepciones DONE
 			}
 	}
+		if ("Transformar"==MenuInferior.selecOpciones.getSelectionModel().getSelectedItem().toString()){
+			if (algoformer.getJugador().getEstado()=="activo"){
+				algoformer.transformar();
+				MenuInferior.log.insertText(0, "\n" + algoformer.getNombre()+" cambió de forma a " + algoformer.getNombreForma());
+				ContenedorPrincipal.juego.pasarTurno();
+				TableroVistaControlador.seleccionado=false;
+			}
+			else{
+				MenuInferior.log.insertText(0, "\nEste algoformer no es tuyo");
+			}
+		}
+		//FUSION TODO
 
 }
 }

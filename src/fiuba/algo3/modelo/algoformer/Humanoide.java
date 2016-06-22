@@ -23,4 +23,11 @@ public class Humanoide extends Forma {
 	public void aplicarEfectoTerrenoNebulosa(Algoformer unAlgoformer){
 		//no causa efecto
 	}
+
+	@Override
+	public String getNombre() {
+		return "Humanoide";
+		// TODO Auto-generated method stub
+		
+	}
 }

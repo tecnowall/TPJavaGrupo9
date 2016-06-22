@@ -28,4 +28,10 @@ public class Aerea extends Alterna {
 		//no causa efecto		
 	}
 
+	@Override
+	public String getNombre() {
+		// TODO Auto-generated method stub
+		return "Aerea";
+	}
+
 }

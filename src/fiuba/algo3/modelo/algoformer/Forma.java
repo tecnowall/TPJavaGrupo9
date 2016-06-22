@@ -44,6 +44,8 @@ public abstract class Forma {
 	public void setArmadura( double armadura ) {
 		this.armadura = armadura;
 	}
+	
+	abstract public String getNombre();
 
 	abstract public void aplicarEfectoTerrenoEspinas( Algoformer unAlgoformer );
 

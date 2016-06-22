@@ -144,6 +144,9 @@ public class Algoformer implements Ubicable, Fusionable, ObservableAlgoformer{
 	public String getNombre(){
 		return this.nombre;
 	}
+	public String getNombreForma(){
+		return actual.getNombre();
+	}
 	
 	public int getVida(){
 		return this.vida;

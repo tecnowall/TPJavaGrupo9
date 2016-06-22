@@ -22,5 +22,11 @@ public class Terrestre extends Alterna {
 	public void aplicarEfectoTerrenoNebulosa(Algoformer unAlgoformer){
 		//no causa efecto
 	}
+
+	@Override
+	public String getNombre() {
+		// TODO Auto-generated method stub
+		return "Terrestre";
+	}
 	
 }

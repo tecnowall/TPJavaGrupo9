@@ -74,6 +74,7 @@ public class TableroVistaControlador implements ObservadorTablero, ObservadorBon
 				if ((ContenedorPrincipal.juego.getChispaSuperma().getPosicion().getX()==i) && (ContenedorPrincipal.juego.getChispaSuperma().getPosicion().getX()==j)){
 					boton.setStyle("-fx-base: #e6e600;"); //Color de chispa suprema
 				}
+				//boton.setId("#" + Integer.toString(i)+"," + Integer.toString(j));
 				
 				tableroView.add(boton, i, j);
 			}
@@ -82,7 +83,7 @@ public class TableroVistaControlador implements ObservadorTablero, ObservadorBon
 	
 	public void ubicarAlgoformer(Algoformer unAlgoformer,int x,int y){
 		Button botonAlgo=new Button();
-
+		//botonAlgo =(Button) tableroView.lookup("#" + Integer.toString(1)+"," + Integer.toString(1));
 		botonAlgo.setText(unAlgoformer.getNombre());
 		botonAlgo.setAlignment(Pos.CENTER);
 		botonAlgo.setPrefWidth(70);
