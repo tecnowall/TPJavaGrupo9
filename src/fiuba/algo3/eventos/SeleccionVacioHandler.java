@@ -19,7 +19,7 @@ public class SeleccionVacioHandler implements EventHandler<ActionEvent>{
 	public void handle(ActionEvent event) {
 		// TODO Auto-generated method stub
 		if ("Observar"==MenuInferior.selecOpciones.getSelectionModel().getSelectedItem().toString()){
-			MenuInferior.log.insertText(0, "\nCasillero vacío: "+coordenada.getX() +" , " + coordenada.getY());
+			MenuInferior.log.insertText(0, "\nCasillero vacio: "+coordenada.getX() +" , " + coordenada.getY());
 		}
 		if ("Mover"==MenuInferior.selecOpciones.getSelectionModel().getSelectedItem().toString()){
 			if (TableroVistaControlador.seleccionado==false){
