@@ -415,4 +415,29 @@ public class JugadorTest {
 
 */
 
-}
+/*
+        @Test (expected =   .clas)
+        public void testCombinarPersonajeDebeLanzarExepcionSiNoSeAvisoInicioJuegoAJugador(){
+
+        }
+
+        @Test(expected =   .clas)
+        public void testCombinarPersonajeDebeLanzarExcepcionSiNoTieneTodasLasPartes(){
+
+        }
+        @Test(expected =   .clas)
+        public void testCombinarPersonajeDebeLanzarExcepcionSiTieneTodasLasPartesYMuereUna(){
+
+        }
+        @Test(expected =   .clas)
+        public void TestCombinarPersonajeDebreCrearUnaFusion(){
+
+        }
+
+        @Test (expected =   .clas)
+        public void testCombinarPersonajeDebeLanzarExepcionSiElJugadorNoEstaActivo(){
+
+        }
+    */
+    }
+

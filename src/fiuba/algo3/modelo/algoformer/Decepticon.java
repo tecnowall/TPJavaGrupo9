@@ -65,7 +65,9 @@ public class Decepticon extends Algoformer implements Fusionable {
 		
 		this.getTablero().poner( menasor, partes.get(0).getPosicion() );
 		this.jugador.agregarPersonaje( menasor );
-		
+		menasor.notificarFusionAObservadores(menasor);
+
+
 		return menasor;
 	}
 	
