@@ -101,7 +101,7 @@ public class SeleccionAlgoformerHandler implements EventHandler<ActionEvent> {
 
 		//TODO este metodo hay que armarlo bien con las excepciones
 
-	     if ("Combinar" == MenuInferior.selecOpciones.getSelectionModel().getSelectedItem().toString()) {
+	     if ("Fusionar" == MenuInferior.selecOpciones.getSelectionModel().getSelectedItem().toString()) {
 			if (algoformer.getJugador().getEstado() == "activo") {
 
 				try {
@@ -110,6 +110,7 @@ public class SeleccionAlgoformerHandler implements EventHandler<ActionEvent> {
 					MenuInferior.log.appendText("\n" + algoformer.getNombre() + " combina " + algoformer.getNombreForma());
 					ContenedorPrincipal.juego.pasarTurno();
 					TableroVistaControlador.seleccionado = false;
+					
 				} catch (FaltanPersonajesParaFusionException e) {
 					MenuInferior.log.appendText("\nFaltan personajes para la fusion!");
 				} catch (PersonajeNoSeleccionadoException e) {
@@ -122,8 +123,5 @@ public class SeleccionAlgoformerHandler implements EventHandler<ActionEvent> {
 
 
 		}
-
-			//FUSION TODO
-
 	}
 }

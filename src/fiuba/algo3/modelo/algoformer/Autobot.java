@@ -5,6 +5,7 @@ import java.util.List;
 import fiuba.algo3.modelo.TipoEquipo;
 import fiuba.algo3.modelo.bonus.Bonus;
 import fiuba.algo3.modelo.bonus.BonusFusion;
+import fiuba.algo3.modelo.observadores.ObservadorAlgoformer;
 import fiuba.algo3.modelo.tablero.Tablero;
 
 public class Autobot extends Algoformer{
@@ -69,7 +70,13 @@ public class Autobot extends Algoformer{
 		this.getTablero().poner( superion, partes.get(0).getPosicion() );
 		this.jugador.agregarPersonaje( superion ); // este metodo tiene que retirar a los algoformers de su lista
 		superion.notificarFusionAObservadores(superion);
+		
+		for(ObservadorAlgoformer unObservador : this.observadores){
+			unObservador.huboUnaFusion(superion);
+		}
+		
 		return superion;
+
 	}
 	
 	

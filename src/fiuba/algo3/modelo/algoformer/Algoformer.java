@@ -34,7 +34,7 @@ public class Algoformer implements Ubicable, Fusionable, ObservableAlgoformer{
 	private Movimiento movimiento;
 	private transient Map<BonusID, Bonus> buffs;
 	protected Jugador jugador;
-	private List<ObservadorAlgoformer> observadores;
+	protected List<ObservadorAlgoformer> observadores;
 	
 	public Algoformer(){
 	}
@@ -108,7 +108,6 @@ public class Algoformer implements Ubicable, Fusionable, ObservableAlgoformer{
 			while ( !movimiento.terminado() ){
 				movimiento.avanzar( this );
 			}
-			//TODO notificar observador
 		}		
 		else throw new MovimientoFueraDeRangoException();
 	}
