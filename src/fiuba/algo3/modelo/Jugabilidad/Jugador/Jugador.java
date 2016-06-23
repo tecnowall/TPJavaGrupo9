@@ -20,7 +20,7 @@ public class Jugador {
     private String nombre;
     private TipoEquipo equipo;
     private EstadoJugador estado;
-    private Algoformer personajeActivo;
+    private Algoformer personajeSeleccionado;
     private HashMap<String, Algoformer> personajes;
     private Juego juego;
 
@@ -33,7 +33,7 @@ public class Jugador {
     public String obtenerNombre(){return this.nombre;}
     public TipoEquipo obtenerEquipo(){return this.equipo;}
     public String getEstado (){return estado.getEstado();} //TODO for test
-    public Algoformer getJugadorActivo(){return this.personajeActivo;} //todo for test
+    public Algoformer getPersonajeSeleccionado(){return this.personajeSeleccionado;} //todo for test
 
     public void agregarPersonaje(Algoformer unPersonaje)  {
 
@@ -50,8 +50,6 @@ public class Jugador {
 
     }
 
-
-    //
     public void agregarPersonaje(Algofusion personajeFusionado)  {
 
         if ( personajeFusionado.getEquipo() != this.equipo) {
@@ -94,13 +92,9 @@ public class Jugador {
     }
 
 
-
-
-
     public void inicioTurno(){
         this.estado= new EstadoJugadorActivo();
-
-    };
+ };
 
     public void finTurno(){
 
@@ -114,42 +108,45 @@ public class Jugador {
 
     };
 
+    //****************************
+    // Acciones ************
+    //********************************
     public void seleccionarPersonaje (String nombreDelPersonaje){
 
         if (!existePersonaje(nombreDelPersonaje)) throw new PersonajeInexistenteException();
 
-        personajeActivo= this.personajes.get(nombreDelPersonaje);
+        personajeSeleccionado = this.personajes.get(nombreDelPersonaje);
 
     }
 
-    //todo debe lanzarexepcion
     public void moverPersonaje( Coordenada posicion, Tablero tablero) {
 
-        this.estado.moverPersonaje(this.personajeActivo, posicion, tablero);
+        if ( this.personajeSeleccionado ==null) throw new PersonajeNoSeleccionadoException();
+        this.estado.moverPersonaje(this.personajeSeleccionado, posicion, tablero);
     }
 
     public void atacar( Coordenada posicion, Tablero tablero) {
-
-        this.estado.atacar((this.personajeActivo), posicion, tablero);
+        if ( this.personajeSeleccionado ==null) throw new PersonajeNoSeleccionadoException();
+        this.estado.atacar((this.personajeSeleccionado), posicion, tablero);
     }
-////////-------------------------------------------------------------------
-//TODO  hace un private get personaje y que lance excepcion si no hay activo
-    public void tranformarPersonaje( Coordenada posicion, Tablero tablero) {
 
-        this.estado.tranformarPersonaje(this.personajeActivo, posicion, tablero);
+    public void tranformarPersonaje( Coordenada posicion, Tablero tablero) {
+        if ( this.personajeSeleccionado ==null) throw new PersonajeNoSeleccionadoException();
+        this.estado.tranformarPersonaje(this.personajeSeleccionado, posicion, tablero);
     }
 
     //TODO
     public void CombinarPersonaje(String personaje, Coordenada posicion, Tablero tablero) {
-
+        if ( this.personajeSeleccionado ==null) throw new PersonajeNoSeleccionadoException();
 
     }
+
+    //***********************************
 
     public void murioUnPersonaje (Algoformer unAlgoformer){
 
         this.eliminarPersonaje (unAlgoformer.getNombre());
-
-        if (!this.tenesPersonajes())  this.sinPersonajes();
+       if (!this.tenesPersonajes())  this.sinPersonajes();
 
     }
 
@@ -163,10 +160,7 @@ public class Jugador {
 
     private void eliminarPersonaje (String nombreDelPerosnaje){
 
-        //verificar existencia del personaje, sino excepcion
-        if (!existePersonaje(nombreDelPerosnaje)) throw new PersonajeInexistenteException();
-
-        // eliminar personaje
+       if (!existePersonaje(nombreDelPerosnaje)) throw new PersonajeInexistenteException();
         personajes.remove(nombreDelPerosnaje);
 
     }

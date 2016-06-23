@@ -78,6 +78,7 @@ public class ContenedorPrincipal extends BorderPane {
     	}
     	for(Algoformer value: jugadorDos.getAllPersonajes()){
     		vistaTablero.ubicarAlgoformer(value,value.getPosicion().getX(),value.getPosicion().getY());
+            value.suscribir(vistaTablero);
     	}
     	
         /*

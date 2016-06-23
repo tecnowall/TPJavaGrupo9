@@ -20,7 +20,7 @@ import java.util.List;
 //TODO esta clase puede ser que este demas... luego se ve.
 public class Juego implements ObservableJuego {
 
-    private List<ObservadorJuego> observadores = new ArrayList<ObservadorJuego>();
+    private List<ObservadorJuego> observadores;
     private Jugador jugadorUno, jugadorDos;
     private Tablero unTablero;
     private int altoTablero;
@@ -37,11 +37,12 @@ public class Juego implements ObservableJuego {
         this.altoTablero = alto;
         this.anchoTablero = ancho;
         this.terminada = true;
+        this.observadores = new ArrayList<ObservadorJuego>();
     }
 
     public Juego() {
 
-
+        this.observadores = new ArrayList<ObservadorJuego>();
         this.terminada = true;
     }
 
@@ -55,6 +56,7 @@ public class Juego implements ObservableJuego {
         //***************************************************************************//
         this.jugadorUno = new Jugador ("Jugador 1", TipoEquipo.AUTOBOTS);
         this.jugadorDos = new Jugador ("Jugador 2", TipoEquipo.DECEPTICONS);
+
 
         //****************************************************************************//
         // creo un tablero
@@ -80,18 +82,24 @@ public class Juego implements ObservableJuego {
         a3.setTablero(unTablero);
         a4.setEquipo(TipoEquipo.DECEPTICONS);
 
+
         Decepticon a5=Decepticon.getBonecrusher();
         a5.setTablero(unTablero);
         a5.setEquipo(TipoEquipo.DECEPTICONS);
+
 
         Decepticon a6=Decepticon.getFrenzy();
         a6.setTablero(unTablero);
         a6.setEquipo(TipoEquipo.DECEPTICONS);
 
+
+
         //****************************************************************************//
-        //agrego los Algoformers a cada jugador
+       // agrego los Algoformers a cada jugador
         this.jugadorUno.agregarPersonaje(a1);         this.jugadorUno.agregarPersonaje(a2);         this.jugadorUno.agregarPersonaje(a3);
-        this.jugadorDos.agregarPersonaje(a4); this.jugadorDos.agregarPersonaje(a5);this.jugadorDos.agregarPersonaje(a6);
+      this.jugadorDos.agregarPersonaje(a4); this.jugadorDos.agregarPersonaje(a5);this.jugadorDos.agregarPersonaje(a6);
+
+
 
 
         //****************************************************************************//
@@ -128,6 +136,9 @@ public class Juego implements ObservableJuego {
         Coordenada c4 = new Coordenada( this.unTablero.getAncho()-1, 2 );
         Coordenada c5 = new Coordenada( this.unTablero.getAncho()-1, 4 );
         Coordenada c6 = new Coordenada( this.unTablero.getAncho()-1, 6 );
+
+
+
 
         //TODO refactoring..., crear un iterador
         // this.player1.obtenerPersonajes

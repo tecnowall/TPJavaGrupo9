@@ -160,7 +160,7 @@ public class TableroVistaControlador implements ObservadorTablero, ObservadorBon
 		this.quitarAlgoformer(original.getX(), original.getY());
 		this.ubicarAlgoformer(unAlgoformer, unAlgoformer.getPosicion().getX(), unAlgoformer.getPosicion().getY());
 		
-		//this.juego.pasarTurno();
+		this.juego.pasarTurno();
 
 	}
 

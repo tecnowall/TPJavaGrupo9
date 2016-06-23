@@ -17,7 +17,7 @@ public class EstadoJugadorActivo extends EstadoJugador {
 
     public void atacar(Algoformer personaje, Coordenada posicion, Tablero tablero)  {
         personaje.atacar(tablero, posicion);
-        //TODO revisar la excepcion
+
     }
 
 
@@ -28,7 +28,7 @@ public class EstadoJugadorActivo extends EstadoJugador {
     }
 
     public void CombinarPersonaje(Algoformer personaje, Coordenada posicion, Tablero tablero) {
-        // tiene que recibir un algoformer, revisar un rango y si estan en el rango comibar
+      //  TODO
 
     }
 

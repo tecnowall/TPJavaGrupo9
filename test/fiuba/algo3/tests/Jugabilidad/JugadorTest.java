@@ -1,11 +1,13 @@
 package fiuba.algo3.tests.Jugabilidad;
 
-import fiuba.algo3.modelo.Jugabilidad.Jugador.Jugador;
-import fiuba.algo3.modelo.Jugabilidad.Jugador.PersonajeDeOtroEquipoException;
-import fiuba.algo3.modelo.Jugabilidad.Jugador.PersonajeInexistenteException;
-import fiuba.algo3.modelo.Jugabilidad.Jugador.PersonajeNombreDuplicadoExeptions;
+import fiuba.algo3.modelo.Coordenada;
+import fiuba.algo3.modelo.Jugabilidad.Jugador.*;
 import fiuba.algo3.modelo.TipoEquipo;
 import fiuba.algo3.modelo.algoformer.Algoformer;
+import fiuba.algo3.modelo.algoformer.Forma;
+import fiuba.algo3.modelo.algoformer.Humanoide;
+import fiuba.algo3.modelo.algoformer.Terrestre;
+import fiuba.algo3.modelo.tablero.Tablero;
 import org.junit.Assert;
 
 import org.junit.Test;
@@ -110,23 +112,10 @@ public class JugadorTest {
     }
 
     //TODO refactor quizas...
-    @Test//( expected = JugadorEnEstadoDeEsperaException.class)
+    @Test
     public void testCreoUnJugadorYEstadoDelJugadorEsEsperando(){
 
-       /* Tablero t1= new Tablero(10,10);
-        Coordenada c1 = new Coordenada(1,1);
-        Coordenada c2 = new Coordenada(2,2);
 
-        EstadoJugador estado = new EstadoJugadorEsperando();
-        Jugador j1 = new Jugador ("Diego", TipoEquipo.AUTOBOTS);
-        Algoformer a2 = new Algoformer("armando");
-        a2.setEquipo(TipoEquipo.AUTOBOTS);
-        j1.agregarPersonaje(a2);
-        t1.poner(a2,c1);
-       j1.seleccionarPersonaje("armando");
-        j1.atacar(c2,t1);
-
-        */
         Jugador j1 = new Jugador ("Diego", TipoEquipo.AUTOBOTS);
         Assert.assertTrue(j1.getEstado().equals("esperando"));
     }
@@ -149,15 +138,6 @@ public class JugadorTest {
         Assert.assertTrue(j1.getEstado().equals("esperando"));
     };
 
-    //TODO
-/*
-    @Test
-    public void testFinTurnoNotificaATodosSusPersonajesElFinDelTurno(){
-        Assert.assertTrue(false);
-    };
-*/
-
-
 
     @Test (expected = PersonajeInexistenteException.class)
     public void testSeleccionarPersonajeDebeLanzarExcepcionSiNoExiste(){
@@ -179,8 +159,8 @@ public class JugadorTest {
         j1.agregarPersonaje(a1);
         j1.agregarPersonaje(a2);
         j1.seleccionarPersonaje("diego");
-        Assert.assertTrue(j1.getJugadorActivo()==a1);
-        Assert.assertFalse(j1.getJugadorActivo()==a2);
+        Assert.assertTrue(j1.getPersonajeSeleccionado()==a1);
+        Assert.assertFalse(j1.getPersonajeSeleccionado()==a2);
 
 
     };
@@ -196,61 +176,182 @@ public class JugadorTest {
         j1.agregarPersonaje(a2);
         j1.seleccionarPersonaje("diego");
         j1.seleccionarPersonaje("armando");
-        Assert.assertTrue(j1.getJugadorActivo()==a2);
+        Assert.assertTrue(j1.getPersonajeSeleccionado()==a2);
 
 
     };
 
-/*
+    @Test (expected = PersonajeNoSeleccionadoException.class)
+    public void testMoverPersonajeDebeLanzarExcepcionSiNoHayPersonajeSeleccionado(){
+
+        Jugador j1 = new Jugador ("Diego", TipoEquipo.AUTOBOTS);
+        Algoformer a1 = new Algoformer("diego");
+
+        a1.setEquipo(TipoEquipo.AUTOBOTS);
+
+        j1.agregarPersonaje(a1);
+        Coordenada c1 = new Coordenada(5,5);
+        Tablero tablero= new Tablero(10,10);
+        j1.moverPersonaje(c1,tablero);
+    }
+
+
     // ********************************************************************************************
     //   ACCIONES
     //*************************************************************************************
 
-    @Test
-    public void testMoverPersonajeDebeLanzarExcepcionSiNoHayPersonajeSeleccionado(){Assert.assertTrue(false);};
+    @Test (expected = JugadorEnEstadoDeEsperaException.class)
+    public void testMoverPersonajeDebeLanzarExcepcionSiElJugadorTieneEstadoEsperando(){
+
+        Jugador j1 = new Jugador ("Diego", TipoEquipo.AUTOBOTS);
+        Algoformer a1 = new Algoformer("diego");
+
+        a1.setEquipo(TipoEquipo.AUTOBOTS);
+
+        j1.agregarPersonaje(a1);
+        Coordenada c1 = new Coordenada(5,5);
+        Tablero tablero= new Tablero(10,10);
+        j1.seleccionarPersonaje("diego");
+        j1.moverPersonaje(c1,tablero);
+
+    };
+
+    @Test (expected = JugadorEnEstadoDeEsperaException.class)
+    public void testAtacarDebeLanzarExcepcionSiElJugadorTieneEstadoEsperando(){
+        Jugador j1 = new Jugador ("Diego", TipoEquipo.AUTOBOTS);
+        Algoformer a1 = new Algoformer("diego");
+
+        a1.setEquipo(TipoEquipo.AUTOBOTS);
+
+        j1.agregarPersonaje(a1);
+        Coordenada c1 = new Coordenada(5,5);
+        Tablero tablero= new Tablero(10,10);
+        j1.seleccionarPersonaje("diego");
+        j1.atacar(c1,tablero);
+
+       };
+
+
+    @Test (expected = JugadorEnEstadoDeEsperaException.class)
+    public void testTranformarPersonajeDebeLanzarExcepcionSiElJugadorTieneEstadoEsperando(){
+        Jugador j1 = new Jugador ("Diego", TipoEquipo.AUTOBOTS);
+        Algoformer a1 = new Algoformer("diego");
+
+        a1.setEquipo(TipoEquipo.AUTOBOTS);
+
+        j1.agregarPersonaje(a1);
+        Coordenada c1 = new Coordenada(5,5);
+        Tablero tablero= new Tablero(10,10);
+        j1.seleccionarPersonaje("diego");
+        j1.tranformarPersonaje(c1,tablero);
+
+        };
+
+
 
     @Test
-    public void testMoverPersonajeDebeLanzarExcepcionSiElJugadorTieneEstadoEsperando(){Assert.assertTrue(false);};
+    public void testMoverPersonajeDebeMoverAlPersonajeSeleccionado (){
+
+        Jugador j1 = new Jugador ("Diego", TipoEquipo.AUTOBOTS);
+        Forma forma1 = new Humanoide( 50, 2, 2 );
+        Forma forma2 = new Terrestre( 15, 4, 5 );
+        Algoformer a1 = new Algoformer( "diego", 500, forma1, forma2 );
+
+        a1.setEquipo(TipoEquipo.AUTOBOTS);
+
+
+        j1.agregarPersonaje(a1);
+        Coordenada c0 = new Coordenada(4,4);
+        Coordenada c1 = new Coordenada(5,5);
+        Tablero tablero= new Tablero(10,10);
+        j1.inicioTurno();
+        j1.seleccionarPersonaje("diego");
+        tablero.poner(a1,c0);
+        a1.ubicar(c0);
+        j1.moverPersonaje(c1,tablero);
+
+        Assert.assertTrue(a1.getPosicion().equals(c1));
+      };
+
+
+    @Test (expected = PersonajeNoSeleccionadoException.class)
+    public void testAtacarDebeLanzarExcepcionSiNoHayPersonajeSeleccionado(){
+        Jugador j1 = new Jugador ("Diego", TipoEquipo.AUTOBOTS);
+        Algoformer a1 = new Algoformer("diego");
+
+        a1.setEquipo(TipoEquipo.AUTOBOTS);
+
+        j1.agregarPersonaje(a1);
+        Coordenada c1 = new Coordenada(5,5);
+        Tablero tablero= new Tablero(10,10);
+        j1.atacar(c1,tablero);
+    };
+
+    @Test (expected = PersonajeNoSeleccionadoException.class)
+    public void testTranformarPersonajeDebeLanzarExcepcionSiNoHayPersonajeSeleccionado(){
+        Jugador j1 = new Jugador ("Diego", TipoEquipo.AUTOBOTS);
+        Algoformer a1 = new Algoformer("diego");
+
+        a1.setEquipo(TipoEquipo.AUTOBOTS);
+
+        j1.agregarPersonaje(a1);
+        Coordenada c1 = new Coordenada(5,5);
+        Tablero tablero= new Tablero(10,10);
+        j1.tranformarPersonaje(c1,tablero);
+       };
+
+
+    @Test (expected = PersonajeInexistenteException.class)
+    public void testMurioUnPersonajeDebeLanzarExepcionSiElPersonajeNoEsDelJugador(){
+
+        Jugador j1 = new Jugador ("Diego", TipoEquipo.AUTOBOTS);
+        Jugador j2 = new Jugador("Milton" , TipoEquipo.AUTOBOTS);
+        Algoformer a1 = new Algoformer("diego");
+        a1.setEquipo(TipoEquipo.AUTOBOTS);
+        Algoformer a2 = new Algoformer("Sandro");
+        a2.setEquipo(TipoEquipo.AUTOBOTS);
+        j1.agregarPersonaje(a1);
+        j2.agregarPersonaje(a2);
+
+        j1.murioUnPersonaje(a2);}
+
+    @Test (expected = PersonajeInexistenteException.class)
+    public void testMurioUnPersonajeDebeQuitarAlPersonajeDeLaListaDelJugador(){
+
+        Jugador j1 = new Jugador ("Diego", TipoEquipo.AUTOBOTS);
+
+        Algoformer a1 = new Algoformer("diego");
+        a1.setEquipo(TipoEquipo.AUTOBOTS);
+        Algoformer a2 = new Algoformer("Sandro");
+        a2.setEquipo(TipoEquipo.AUTOBOTS);
+
+        j1.agregarPersonaje(a1);
+        j1.agregarPersonaje(a2);
+
+        j1.murioUnPersonaje(a1);
+        j1.obtenerPersonaje("diego");
+    }
 
     @Test
-    public void testMoverPersonajeDebeMoverAlPersonajeSeleccionado (){Assert.assertTrue(false);};
+    public void testMurioUnPersonajeDebeDejaarIntactosAlRestoDeLosPersonajes(){
 
-    // TODO ver firmas de mover...?
+        Jugador j1 = new Jugador ("Diego", TipoEquipo.AUTOBOTS);
 
+        Algoformer a1 = new Algoformer("diego");
+        a1.setEquipo(TipoEquipo.AUTOBOTS);
+        Algoformer a2 = new Algoformer("Sandro");
+        a2.setEquipo(TipoEquipo.AUTOBOTS);
 
-    @Test
-    public void testAtacarDebeLanzarExcepcionSiNoHayPersonajeSeleccionado(){Assert.assertTrue(false);};
+        j1.agregarPersonaje(a1);
+        j1.agregarPersonaje(a2);
 
-    @Test
-    public void testAtacarDebeLanzarExcepcionSiElJugadorTieneEstadoEsperando(){Assert.assertTrue(false);};
-
-    @Test
-    public void testAtacarDebeAtacarElAreaSeleccioneada (){Assert.assertTrue(false);};
-
-
-    @Test
-    public void testTranformarPersonajeDebeLanzarExcepcionSiNoHayPersonajeSeleccionado(){Assert.assertTrue(false);};
-
-    @Test
-    public void testTranformarPersonajeDebeLanzarExcepcionSiElJugadorTieneEstadoEsperando(){Assert.assertTrue(false);};
-
-    @Test //TODO faltan
-    public void testTranformarPersonajeDebeCambiarAlPersonajeSeleccionado (){Assert.assertTrue(false);};
-
-
-    @Test
-    public void testMurioUnPersonajeDebeLanzarExepcionSiElPersonajeNoEsDelJugador(){Assert.assertTrue(false);}
-
-    @Test
-    public void testMurioUnPersonajeDebeQuitarAlPersonajeDeLaListaDelJugador(){Assert.assertTrue(false);}
-
-    @Test
-    public void testMurioUnPersonajeDebeDejaarIntactosAlRestoDeLosPersonajes(){Assert.assertTrue(false);}
+        j1.murioUnPersonaje(a1);
 
 
 
-// quien va a avisar que se ejecuto el movimiento???
-*/
+        Assert.assertTrue(a2.equals( j1.obtenerPersonaje("Sandro")));}
+
+
 
     @Test
     public void testTenesPersonajesDebeDarFalseCuandoElJugadorEsRecienCreado(){
@@ -261,20 +362,7 @@ public class JugadorTest {
 
     };
 
-    /*    TODO este va a dar JugadorSinPartidaException   por que notifica a la vista que se quedo sin personajes....
-    @Test
-    public void testTenesPersonajesDebeDarFalseCuandoAlJugadorSeLeAgregaUnPersonajeYSeLoElimina(){
-        Jugador j1 = new Jugador ("Diego", TipoEquipo.AUTOBOTS);
-        Algoformer a1 = new Algoformer("diego");
 
-        a1.setEquipo(TipoEquipo.AUTOBOTS);
-        j1.agregarPersonaje(a1);
-        j1.murioUnPersonaje(a1);
-        Assert.assertFalse(j1.tenesPersonajes());
-
-
-    };
-*/
 
  @Test
     public void testTenesPersonajesDebeDarTrueCuandoAlJugadorSeLeAgregaUnPersonaje(){
@@ -303,6 +391,28 @@ public class JugadorTest {
         Assert.assertTrue(j1.tenesPersonajes());
    };
 
+  /*    TODO este va a dar JugadorSinPartidaException   por que notifica a la vista que se quedo sin personajes....
+    @Test
+    public void testTenesPersonajesDebeDarFalseCuandoAlJugadorSeLeAgregaUnPersonajeYSeLoElimina(){
+        Jugador j1 = new Jugador ("Diego", TipoEquipo.AUTOBOTS);
+        Algoformer a1 = new Algoformer("diego");
 
+        a1.setEquipo(TipoEquipo.AUTOBOTS);
+        j1.agregarPersonaje(a1);
+        j1.murioUnPersonaje(a1);
+        Assert.assertFalse(j1.tenesPersonajes());
+
+
+    };
+
+
+    @Test
+    public void testAtacarDebeAtacarElAreaSeleccioneada (){Assert.assertTrue(false);};
+
+    @Test //TODO faltan
+    public void testTranformarPersonajeDebeCambiarAlPersonajeSeleccionado (){Assert.assertTrue(false);};
+
+
+*/
 
 }
