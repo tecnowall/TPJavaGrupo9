@@ -2,12 +2,13 @@ package fiuba.algo3.modelo.Jugabilidad.Juego;
 
 import fiuba.algo3.modelo.Jugabilidad.Jugador.Jugador;
 
+
 /**
  * Created by jose on 09/06/2016.
  */
 public class Turno {
-//TODO listacircular
-    private int siguiente;
+    //TODO listacircular
+    private int numeroDeTurno;
     private Jugador[] turnos = new Jugador [2];
 
 
@@ -18,24 +19,24 @@ public class Turno {
         turnos[1] = player2;
 
         int turnoAlAzar =  (int) (Math.random()*turnos.length);
-        this.siguiente= turnoAlAzar;
+        this.numeroDeTurno= turnoAlAzar;
+
 
     }
 
     //este metodo es para test
-public Jugador getTurno (){
+    public Jugador getTurnoActual(){
 
-    return this.turnos [siguiente];
+        return this.turnos [numeroDeTurno];
 
-}
+    }
 
-    public Jugador siguiente(){
+    public Jugador getTurnoSiguiente(){
 
-        int auxiliar = this.siguiente;
-        this.siguiente = this.siguiente +1;
-        if (this.siguiente >= this.turnos.length) this.siguiente=0;
+        this.numeroDeTurno = this.numeroDeTurno +1;
+        if (this.numeroDeTurno >= this.turnos.length) this.numeroDeTurno=0;
 
-        return this.turnos [auxiliar];
+        return this.turnos [this.numeroDeTurno];
 
     }
 

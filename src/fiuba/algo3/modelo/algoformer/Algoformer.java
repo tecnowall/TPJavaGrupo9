@@ -41,6 +41,7 @@ public class Algoformer implements Ubicable, Fusionable, ObservableAlgoformer{
 	
 	public Algoformer( String nombre ){
 		this.nombre = nombre;
+		this.observadores = new ArrayList<ObservadorAlgoformer>();
 	}
 	
 	public Algoformer( String nombre, int vida, Forma humanoide, Forma alterna ){

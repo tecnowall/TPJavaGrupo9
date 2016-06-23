@@ -179,9 +179,9 @@ public class Juego implements ObservableJuego {
 
        if (this.terminada) { throw new JuegoNoIniciadoException();};
 
-        this.turno.getTurno().finTurno();
-        this.turno.siguiente().inicioTurno();
-        notificarObsevadoresTurnoDeJugador(this.turno.getTurno());
+        this.turno.getTurnoActual().finTurno();
+        this.turno.getTurnoSiguiente().inicioTurno();
+        notificarObsevadoresTurnoDeJugador(this.turno.getTurnoActual());
 
     }
 

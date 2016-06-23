@@ -17,24 +17,14 @@ public class TurnoTest {
 
 
     @Test
-    public void testAlCrearelTurnoElSiguienteDebeSerElCreado(){
-        Jugador player1 = new Jugador("Maradona", TipoEquipo.AUTOBOTS);
-        Jugador player2 = new Jugador("DIEGO", TipoEquipo.DECEPTICONS);
-        Turno turno =  new Turno(player1,player2);
-        Jugador creado = turno.getTurno();
-
-        Assert.assertThat( turno.siguiente(),is( creado )  );
-    }
-
-    @Test
-     public void testSiguienteDebeDarUnJugadorDistintoAlAnteriorLuegoDeHaberSolicitadoElPrimerTurno(){
+     public void testTurnoSiguienteDebeDarUnJugadorDistintoAlAnteriorLuegoDeHaberSolicitadoElPrimerTurno(){
         Jugador player1 = new Jugador("Maradona", TipoEquipo.AUTOBOTS);
         Jugador player2 = new Jugador("DIEGO", TipoEquipo.DECEPTICONS);
         Turno turno =  new Turno(player1,player2);
 
-        Jugador anterior = turno.siguiente();  //primer turno
+        Jugador anterior = turno.getTurnoActual();  //primer turno
 
-        Assert.assertThat( turno.siguiente(),is( not( anterior ) ) );
+        Assert.assertThat( turno.getTurnoSiguiente(),is( not( anterior ) ) );
 
 
     }
@@ -45,10 +35,10 @@ public class TurnoTest {
         Jugador player2 = new Jugador("DIEGO", TipoEquipo.DECEPTICONS);
         Turno turno =  new Turno(player1,player2);
 
-        Jugador turno1= turno.siguiente();
-        Jugador turno2= turno.siguiente();
+        Jugador turno1= turno.getTurnoActual();
+        Jugador turno2= turno.getTurnoSiguiente();
         Assert.assertThat( turno1,is( not( turno2 ) ) );
-        Assert.assertThat( turno.siguiente(),is( not( turno2 ) ) );
+        Assert.assertThat( turno.getTurnoSiguiente(),is( not( turno2 ) ) );
 
 
     }
