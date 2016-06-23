@@ -5,5 +5,4 @@ import fiuba.algo3.modelo.bonus.Bonus;
 
 public interface ObservadorBonus {
 
-    public void seConsumioBonus (Bonus unBonus);
 }

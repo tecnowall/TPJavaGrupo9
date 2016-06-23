@@ -1,5 +1,7 @@
 package fiuba.algo3.eventos;
 
+import fiuba.algo3.modelo.Jugabilidad.Jugador.FaltanPersonajesParaFusionException;
+import fiuba.algo3.modelo.Jugabilidad.Jugador.PersonajeNoSeleccionadoException;
 import fiuba.algo3.modelo.algoformer.Algoformer;
 import fiuba.algo3.modelo.algoformer.AtaqueFueraDeRangoException;
 import fiuba.algo3.modelo.algoformer.FuegoAmigoException;
@@ -30,8 +32,6 @@ public class SeleccionAlgoformerHandler implements EventHandler<ActionEvent> {
 					+ " (Poder Base: " + algoformer.getPoderBase() + ")\nVelocidad: " + algoformer.getVelocidad()
 					+ " (Velocidad Base: " + algoformer.getVelocidadBase() + ")\nRango de ataque: "
 					+ algoformer.getRango());
-
-			System.out.println(algoformer.getJugador().getEstado());
 			alert.showAndWait();
 		}
 		if ("Mover" == MenuInferior.selecOpciones.getSelectionModel().getSelectedItem().toString()) {
@@ -100,29 +100,29 @@ public class SeleccionAlgoformerHandler implements EventHandler<ActionEvent> {
 		}
 
 		//TODO este metodo hay que armarlo bien con las excepciones
-		/*
-		     if ("Combinar" == MenuInferior.selecOpciones.getSelectionModel().getSelectedItem().toString()) {
-				if (algoformer.getJugador().getEstado() == "activo") {
 
-					try {
+	     if ("Combinar" == MenuInferior.selecOpciones.getSelectionModel().getSelectedItem().toString()) {
+			if (algoformer.getJugador().getEstado() == "activo") {
 
-						algoformer.getJugador().combinarPersonaje(algoformer.getNombre());
-						MenuInferior.log.appendText("\n" + algoformer.getNombre() + " combina " + algoformer.getNombreForma());
-						ContenedorPrincipal.juego.pasarTurno();
-						TableroVistaControlador.seleccionado = false;
-					} catch (FuegoAmigoException e) {
-						MenuInferior.log.appendText("\nFuego amigo!");
-					} catch (AtaqueFueraDeRangoException e) {
+				try {
+					algoformer.getJugador().seleccionarPersonaje(algoformer.getNombre());
+					algoformer.getJugador().combinarPersonaje(algoformer.getNombre());
+					MenuInferior.log.appendText("\n" + algoformer.getNombre() + " combina " + algoformer.getNombreForma());
+					ContenedorPrincipal.juego.pasarTurno();
+					TableroVistaControlador.seleccionado = false;
+				} catch (FaltanPersonajesParaFusionException e) {
+					MenuInferior.log.appendText("\nFaltan personajes para la fusion!");
+				} catch (PersonajeNoSeleccionadoException e) {
 
-						MenuInferior.log.appendText("\nAtaque fuera de rango");
-					}
-				} else {
-					MenuInferior.log.appendText("\nEste algoformer no es tuyo");
+					MenuInferior.log.appendText("\nNo hay algoformer seleccionado");
 				}
-
-
+			} else {
+				MenuInferior.log.appendText("\nEste algoformer no es tuyo");
 			}
-			*/
+
+
+		}
+
 			//FUSION TODO
 
 	}

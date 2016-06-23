@@ -66,6 +66,10 @@ public class Algoformer implements Ubicable, Fusionable, ObservableAlgoformer{
 	public void nuevoBonus( Bonus unBonus ){
 		unBonus.setAfectado( this );
 		this.buffs.put( unBonus.getBonusID(), unBonus );
+		//Notifica
+		for(ObservadorAlgoformer unObservador : this.observadores){
+			unObservador.seConsumioUnBonus(posicion);
+		}
 	}
 	
 	public void perderBonus( BonusID ID ){
@@ -87,7 +91,7 @@ public class Algoformer implements Ubicable, Fusionable, ObservableAlgoformer{
 		Coordenada original = this.posicion;
 		this.posicion = unaCoordenada;
 		
-		//Notificar vista
+
 		for(ObservadorAlgoformer unObservador : this.observadores){
 			unObservador.huboUnMovimiento(this,original);
 		}

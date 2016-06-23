@@ -11,4 +11,5 @@ public interface ObservadorAlgoformer {
     public void huboUnAtaque(Algoformer unAlgoformer);
     public void huboUnaTransformacion(Algoformer unAlgoformer);
     public void huboUnaFusion (Algofusion unAlgoformer);
+    public void seConsumioUnBonus (Coordenada coordenada);
 }

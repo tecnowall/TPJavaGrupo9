@@ -124,7 +124,8 @@ public class TableroVistaControlador implements ObservadorTablero, ObservadorBon
 						case "class fiuba.algo3.modelo.bonus.BonusDobleCanion":
 							boton.setStyle("-fx-background-color: #cc0000");break;
 						case "class fiuba.algo3.modelo.bonus.BonusFlash":
-							boton.setStyle("-fx-background-color: #ffff99");break;
+							boton.setStyle("-fx-background-color: #ffff99");
+							break;
 						default:
 							break;
 				}
@@ -132,6 +133,14 @@ public class TableroVistaControlador implements ObservadorTablero, ObservadorBon
 
 			}
 		}
+	}
+	public void quitarBonus(int x, int y){
+		Button boton=new Button();
+		boton = (Button) tableroView.getChildren().get((tablero.getAlto()*x) + y + (tablero.getAlto()*tablero.getAncho())+1);
+		boton.setStyle("-fx-background-color: #f2f2f2;");
+		boton.setStyle("-fx-border-width: 1px;");
+
+
 	}
 	
 	public void dibujarTerrenos(){
@@ -223,11 +232,6 @@ public class TableroVistaControlador implements ObservadorTablero, ObservadorBon
 
 	}
 
-	@Override
-	public void seConsumioBonus(Bonus unBonus) {
-          //retirar bonus
-		MenuInferior.log.appendText("\n Se consumio un bonus"  );
-	}
 
 	@Override
 	public void finalizoJuego(Jugador playerWin) {
@@ -243,5 +247,14 @@ public class TableroVistaControlador implements ObservadorTablero, ObservadorBon
 		//MenuInferior.log.insertText(0, "\nEs turno de: " + unJugador.obtenerNombre());
 		MenuInferior.log.appendText("\nEs turno de: " + unJugador.obtenerNombre());
 		//TODO te va a pasar el jugador activo que es el que tiene el turno para jugar
+	}
+
+
+	@Override
+	public void seConsumioUnBonus(Coordenada coordenada) {
+		// TODO Auto-generated method stub
+		this.quitarBonus(coordenada.getX(), coordenada.getY());
+		MenuInferior.log.appendText("\nSe consumio un bonus"  );
+		
 	}
 }
