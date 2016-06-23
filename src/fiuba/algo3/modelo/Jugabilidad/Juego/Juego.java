@@ -7,6 +7,7 @@ import fiuba.algo3.modelo.TipoEquipo;
 import fiuba.algo3.modelo.algoformer.Autobot;
 import fiuba.algo3.modelo.algoformer.Decepticon;
 import fiuba.algo3.modelo.bonus.Bonus;
+import fiuba.algo3.modelo.bonus.*;
 import fiuba.algo3.modelo.bonus.BonusDobleCanion;
 import fiuba.algo3.modelo.observadores.ObservableJuego;
 import fiuba.algo3.modelo.observadores.ObservadorJuego;
@@ -117,6 +118,7 @@ public class Juego implements ObservableJuego {
         this.posicionarChispaSuprema(cChispa);
         this.posicionarAlgoformers();
         this.posicionarTerrenos();
+        this.posicionarBonus();
 
         jugadorUno.setJuego(this);
         jugadorDos.setJuego(this);
@@ -188,6 +190,19 @@ public class Juego implements ObservableJuego {
     	
 
     	
+    }
+    public void posicionarBonus(){
+    	BonusBurbuja burbuja = new BonusBurbuja();
+    	BonusFlash flash = new BonusFlash();
+    	BonusDobleCanion doblecanion = new BonusDobleCanion();
+    	
+    	Coordenada c1 = new Coordenada(6,6);
+    	Coordenada c2 = new Coordenada(3,3);
+    	Coordenada c3 = new Coordenada(2,5);
+    	
+    	unTablero.setCapturable(c1, burbuja);
+    	unTablero.setCapturable(c2, flash);
+    	unTablero.setCapturable(c3, doblecanion);
     }
 
     //TODO implementar esto!

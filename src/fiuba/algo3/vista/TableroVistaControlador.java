@@ -58,6 +58,7 @@ public class TableroVistaControlador implements ObservadorTablero, ObservadorBon
 		} //Creo tablero de 11x11 si Tablero (10,10);
 		dibujarTerrenos();
 		crearBotones();
+		dibujarBonus();
 		
 		tableroView.setAlignment(Pos.CENTER);
 	}
@@ -83,13 +84,11 @@ public class TableroVistaControlador implements ObservadorTablero, ObservadorBon
 				
 			}
 		}
-		//tableroView.getChildren().remove(9);
-
 	}
 	
 	public void ubicarAlgoformer(Algoformer unAlgoformer,int x,int y){
 		Button botonAlgo=new Button();
-		//botonAlgo = (Button) tableroView.getChildren().get((tablero.getAlto()*x) + y + 1);
+
 		botonAlgo = (Button) tableroView.getChildren().get((tablero.getAlto()*x) + y + (tablero.getAlto()*tablero.getAncho())+1);
 		botonAlgo.setText(unAlgoformer.getNombre());
 		
@@ -101,13 +100,37 @@ public class TableroVistaControlador implements ObservadorTablero, ObservadorBon
 	
 	public void quitarAlgoformer(int x, int y){
 		Button botonAlgo=new Button();
+		
 		Coordenada coordenada=new Coordenada(x,y);
-		//botonAlgo = (Button) tableroView.getChildren().get((tablero.getAlto()*x) + y + 1);
 		botonAlgo = (Button) tableroView.getChildren().get((tablero.getAlto()*x) + y + (tablero.getAlto()*tablero.getAncho())+1);
 		botonAlgo.setText("");
 		
 		SeleccionVacioHandler seleccionVacioHandler = new SeleccionVacioHandler(coordenada);
 		botonAlgo.setOnAction(seleccionVacioHandler);
+	}
+	
+	public void dibujarBonus(){
+
+		for (int i = 0; i<tablero.getAncho();i++){
+			for (int j = 0; j<tablero.getAlto();j++){
+				Coordenada coordenada = new Coordenada (i,j);
+				Button boton = new Button();
+				boton = (Button) tableroView.getChildren().get((tablero.getAlto()*i) + j + (tablero.getAlto()*tablero.getAncho())+1);
+				if (tablero.getCapturable(coordenada)!=null){
+					switch (tablero.getCapturable(coordenada).getClass().toString()){
+						case "class fiuba.algo3.modelo.bonus.BonusBurbuja":
+							boton.setStyle("-fx-background-color: #1ac6ff");break;
+						case "class fiuba.algo3.modelo.bonus.BonusDobleCanion":
+							boton.setStyle("-fx-background-color: #cc0000");break;
+						case "class fiuba.algo3.modelo.bonus.BonusFlash":
+							boton.setStyle("-fx-background-color: #ffff99");break;
+						default:
+							break;
+				}
+				}
+
+			}
+		}
 	}
 	
 	public void dibujarTerrenos(){
@@ -117,9 +140,9 @@ public class TableroVistaControlador implements ObservadorTablero, ObservadorBon
 			Pane r = new Pane();
 			switch (tablero.getTerreno(coordenada).getClass().toString()){
 				case "class fiuba.algo3.modelo.terreno.Rocoso":
-					r.setStyle("-fx-background-color: #666633;");break;
+					r.setStyle("-fx-background-color: #f2e6d9;");break;
 				case "class fiuba.algo3.modelo.terreno.Pantano":
-					r.setStyle("-fx-background-color: #ffffb3");break;
+					r.setStyle("-fx-background-color: #714e28");break;
 				case "class fiuba.algo3.modelo.terreno.Espinas":
 					r.setStyle("-fx-background-color: #008000");break;
 				case "class fiuba.algo3.modelo.terreno.Nube":

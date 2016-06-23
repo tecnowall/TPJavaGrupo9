@@ -87,6 +87,13 @@ public class Casillero extends Nodo {
 		}
 	}
 	
+	public Capturable getCapturable(){
+		if (this.capturable()){
+		return capturable;
+		}
+		return null;
+	}
+	
 //	public Capturable capturar(){
 //		if ( capturable != null ) return capturable;
 //	}

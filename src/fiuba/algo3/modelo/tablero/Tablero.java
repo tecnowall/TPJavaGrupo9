@@ -119,9 +119,16 @@ public class Tablero {
 			return getCasillero( coordenada ).getContenido();
 		
 	}
+	public Capturable getCapturable(Coordenada coordenada){
+		return getCasillero(coordenada).getCapturable();
+	}
 	
 	public void setTerreno( Coordenada coordenada, Terreno terreno ){
 		getCasillero( coordenada ).setTerreno( terreno );
+	}
+	
+	public void setCapturable (Coordenada coordenada, Capturable unCapturable){
+		getCasillero(coordenada).poner(unCapturable);
 	}
 	
 	public Terreno getTerreno( Coordenada coordenada ){
@@ -138,6 +145,8 @@ public class Tablero {
 	public void poner( Capturable capturable, Coordenada coordenada ){
 		getCasillero( coordenada ).poner( capturable );
 	}
+	
+
 	
 	public Ubicable sacar( Coordenada coordenada ){
 		return getCasillero( coordenada ).sacar();
