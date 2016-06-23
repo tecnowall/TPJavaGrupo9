@@ -94,7 +94,7 @@ public class Algoformer implements Ubicable, Fusionable, ObservableAlgoformer{
 	}
 	
 	public boolean movimientoValido( Coordenada destino ){
-		return  ( ( destino.getX() <= ( this.posicion.getX() + this.getVelocidad() ) ) && (  destino.getY() <= ( this.posicion.getY() + this.getVelocidad() ) ) );
+		return  ( Math.abs ( destino.getX() - this.posicion.getX()) <= ( this.getVelocidad() ) ) && ( Math.abs (  destino.getY()- this.posicion.getY()) <= ( this.getVelocidad() ) ) ;
 	}
 	
 	public void mover( Tablero unTablero, Coordenada destino ){		
