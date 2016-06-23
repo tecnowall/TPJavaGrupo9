@@ -27,7 +27,8 @@ public class SeleccionAlgoformerHandler implements EventHandler<ActionEvent> {
 			alert.setHeaderText(algoformer.getNombre() + " (Forma " + algoformer.getNombreForma() + ")");
 			alert.setContentText("Vida actual: " + algoformer.getVida() + "\nPoder: " + algoformer.getPoder()
 			+ " (Poder Base: " + algoformer.getPoderBase() + ")\nVelocidad: "+ algoformer.getVelocidad()
-			+ " (Velocidad Base: " + algoformer.getVelocidadBase() + ")");
+			+ " (Velocidad Base: " + algoformer.getVelocidadBase() + ")\nRango de ataque: "
+			+algoformer.getRango());
 			
 			System.out.println(algoformer.getJugador().getEstado());
 			alert.showAndWait();

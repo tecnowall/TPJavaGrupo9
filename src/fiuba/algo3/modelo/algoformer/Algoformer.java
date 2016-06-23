@@ -311,6 +311,9 @@ public class Algoformer implements Ubicable, Fusionable, ObservableAlgoformer{
 	public void morir(){
 		salirDelTablero();
 		this.jugador.murioUnPersonaje(this);
+		for(ObservadorAlgoformer unObservador : this.observadores){
+			unObservador.fallecioAlgoformer(this);
+		}//Notificar muerte
 	}
 
 

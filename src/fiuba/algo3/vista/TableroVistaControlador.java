@@ -150,6 +150,8 @@ public class TableroVistaControlador implements ObservadorTablero, ObservadorBon
 	@Override
 	public void fallecioAlgoformer(Algoformer unAlgoformerFallecido) {
 			//retirar el algoformer del tablero
+		MenuInferior.log.appendText("\n" + unAlgoformerFallecido.getNombre() + " ha muerto!");
+		this.quitarAlgoformer(unAlgoformerFallecido.getPosicion().getX(), unAlgoformerFallecido.getPosicion().getY());
 	}
 
 	@Override
