@@ -168,7 +168,8 @@ public class TableroVistaControlador implements ObservadorTablero, ObservadorBon
 
 	@Override
 	public void esElTurnoDelJugador(Jugador unJugador) {
-		MenuInferior.log.insertText(0, "\nEs turno de: " + unJugador.obtenerNombre());
+		//MenuInferior.log.insertText(0, "\nEs turno de: " + unJugador.obtenerNombre());
+		MenuInferior.log.appendText("\nEs turno de: " + unJugador.obtenerNombre());
 		//TODO te va a pasar el jugador activo que es el que tiene el turno para jugar
 	}
 }

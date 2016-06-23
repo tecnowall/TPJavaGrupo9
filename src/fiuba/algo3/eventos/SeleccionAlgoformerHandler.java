@@ -36,18 +36,18 @@ public class SeleccionAlgoformerHandler implements EventHandler<ActionEvent> {
 			if (TableroVistaControlador.seleccionado==false){
 				if (algoformer.getJugador().getEstado()=="activo"){
 					algoformer.getJugador().seleccionarPersonaje(algoformer.getNombre());
-					MenuInferior.log.insertText(0, "\nAlgoformer seleccionado! Elija la posicion objetivo");
+					MenuInferior.log.appendText("\nAlgoformer seleccionado! Elija la posicion objetivo");
 					TableroVistaControlador.seleccionado=true;
 					TableroVistaControlador.algoformerSeleccionado=algoformer;
 				}
 				else{
-					MenuInferior.log.insertText(0, "\nEste algoformer no es tuyo");
+					MenuInferior.log.appendText("\nEste algoformer no es tuyo");
 				}
 				
 			}
 			else{
 				
-				MenuInferior.log.insertText(0, "\nHay otro algoformer en esta ubicacion, movimiento no valido");
+				MenuInferior.log.appendText("\nHay otro algoformer en esta ubicacion, movimiento no valido");
 				TableroVistaControlador.seleccionado=false;
 				
 			} //el movimiento se realiza cuando hay un algoformer seleccionado y se hace click en un boton vacio
@@ -58,7 +58,7 @@ public class SeleccionAlgoformerHandler implements EventHandler<ActionEvent> {
 			if (TableroVistaControlador.seleccionado==false){
 				if (algoformer.getJugador().getEstado()=="activo"){
 					
-					MenuInferior.log.insertText(0, "\nAlgoformer seleccionado! Elija blanco de ataque");
+					MenuInferior.log.appendText("\nAlgoformer seleccionado! Elija blanco de ataque");
 					TableroVistaControlador.seleccionado=true;
 					algoformer.getJugador().seleccionarPersonaje(algoformer.getNombre());
 					TableroVistaControlador.algoformerSeleccionado=algoformer;
@@ -66,7 +66,7 @@ public class SeleccionAlgoformerHandler implements EventHandler<ActionEvent> {
 				}
 				else{
 					
-					MenuInferior.log.insertText(0, "\nEste algoformer no es tuyo");
+					MenuInferior.log.appendText("\nEste algoformer no es tuyo");
 				}
 				
 			}
@@ -75,17 +75,17 @@ public class SeleccionAlgoformerHandler implements EventHandler<ActionEvent> {
 				try{
 					TableroVistaControlador.algoformerSeleccionado.getJugador().atacar(algoformer.getPosicion(), ContenedorPrincipal.juego.getTablero());
 					
-					MenuInferior.log.insertText(0, "\n" + TableroVistaControlador.algoformerSeleccionado.getNombre()+" ataca a " + algoformer.getNombre());
+					MenuInferior.log.appendText("\n" + TableroVistaControlador.algoformerSeleccionado.getNombre()+" ataca a " + algoformer.getNombre());
 					ContenedorPrincipal.juego.pasarTurno();
 					TableroVistaControlador.seleccionado=false;
 				}
 				catch(FuegoAmigoException e){
-					MenuInferior.log.insertText(0, "\nFuego amigo!");
+					MenuInferior.log.appendText("\nFuego amigo!");
 					
 				}
 				catch(AtaqueFueraDeRangoException e){
 					
-					MenuInferior.log.insertText(0, "\nAtaque fuera de rango");
+					MenuInferior.log.appendText("\nAtaque fuera de rango");
 				}
 				
 				TableroVistaControlador.seleccionado=false;
@@ -95,12 +95,12 @@ public class SeleccionAlgoformerHandler implements EventHandler<ActionEvent> {
 		if ("Transformar"==MenuInferior.selecOpciones.getSelectionModel().getSelectedItem().toString()){
 			if (algoformer.getJugador().getEstado()=="activo"){
 				algoformer.transformar();
-				MenuInferior.log.insertText(0, "\n" + algoformer.getNombre()+" cambia de forma a " + algoformer.getNombreForma());
+				MenuInferior.log.appendText("\n" + algoformer.getNombre()+" cambia de forma a " + algoformer.getNombreForma());
 				ContenedorPrincipal.juego.pasarTurno();
 				TableroVistaControlador.seleccionado=false;
 			}
 			else{
-				MenuInferior.log.insertText(0, "\nEste algoformer no es tuyo");
+				MenuInferior.log.appendText("\nEste algoformer no es tuyo");
 			}
 		}
 		

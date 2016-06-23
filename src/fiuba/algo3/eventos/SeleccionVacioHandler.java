@@ -19,35 +19,37 @@ public class SeleccionVacioHandler implements EventHandler<ActionEvent>{
 	public void handle(ActionEvent event) {
 		// TODO Auto-generated method stub
 		if ("Observar"==MenuInferior.selecOpciones.getSelectionModel().getSelectedItem().toString()){
-			MenuInferior.log.insertText(0, "\nCasillero vacio: "+coordenada.getX() +" , " + coordenada.getY());
+			MenuInferior.log.appendText("\nCasillero vacio: "+coordenada.getX() +" , " + coordenada.getY());
 		}
 		if ("Mover"==MenuInferior.selecOpciones.getSelectionModel().getSelectedItem().toString()){
 			if (TableroVistaControlador.seleccionado==false){
-				MenuInferior.log.insertText(0, "\nPor favor, seleccione un Algoformer");
+				MenuInferior.log.appendText("\nPor favor, seleccione un Algoformer");
 				}
 				else{
 					//Mover y terminar turno
 					try{
-						TableroVistaControlador.algoformerSeleccionado.getJugador().moverPersonaje(coordenada, ContenedorPrincipal.juego.getTablero());
+						TableroVistaControlador.algoformerSeleccionado.getJugador().moverPersonaje(coordenada, ContenedorPrincipal.juego.getTablero());			
+						MenuInferior.log.appendText("\nAlgoformer: mover a posicion " + coordenada.getX() + " , " + coordenada.getY());
+						ContenedorPrincipal.juego.pasarTurno();
 					}
 					catch (MovimientoFueraDeRangoException e){
-						MenuInferior.log.insertText(0, "\nMovimiento fuera de rango");
+						MenuInferior.log.appendText("\nMovimiento fuera de rango");
 					}
 
-					ContenedorPrincipal.juego.pasarTurno();
+					
 					TableroVistaControlador.seleccionado=false;
 					
-					MenuInferior.log.insertText(0, "\nAlgoformer: mover a posicion " + coordenada.getX() + " , " + coordenada.getY());
+					
 				}
 		}
 		if ("Atacar"==MenuInferior.selecOpciones.getSelectionModel().getSelectedItem().toString()){
 			if (TableroVistaControlador.seleccionado==false){
 				
-				MenuInferior.log.insertText(0, "\nPor favor, seleccione un Algoformer");
+				MenuInferior.log.appendText("\nPor favor, seleccione un Algoformer");
 			}
 			else{
 				//TableroVistaControlador.algoformerSeleccionado.getJugador().atacar(coordenada, ContenedorPrincipal.juego.getTablero());
-				MenuInferior.log.insertText(0, "\n" + TableroVistaControlador.algoformerSeleccionado.getNombre()+" :ataque fallido!");
+				MenuInferior.log.appendText("\n" + TableroVistaControlador.algoformerSeleccionado.getNombre()+" :ataque fallido!");
 				ContenedorPrincipal.juego.pasarTurno();
 				TableroVistaControlador.seleccionado=false;
 				//Atacar a lugar vacio
