@@ -11,6 +11,8 @@ import fiuba.algo3.modelo.bonus.BonusDobleCanion;
 import fiuba.algo3.modelo.observadores.ObservableJuego;
 import fiuba.algo3.modelo.observadores.ObservadorJuego;
 import fiuba.algo3.modelo.tablero.Tablero;
+import fiuba.algo3.modelo.terreno.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -106,6 +108,7 @@ public class Juego implements ObservableJuego {
         Coordenada cChispa = new Coordenada( x, y );
         this.posicionarChispaSuprema(cChispa);
         this.posicionarAlgoformers();
+        this.posicionarTerrenos();
 
         jugadorUno.setJuego(this);
         jugadorDos.setJuego(this);
@@ -153,6 +156,27 @@ public class Juego implements ObservableJuego {
 
         this.unTablero.poner(this.chispa, posicion);
         this.chispa.setPosicion(posicion);
+    }
+    
+    private void posicionarTerrenos(){
+    	//TODO
+    	//Por default es rocoso
+    	Rocoso rocoso = new Rocoso();
+    	Pantano pantano = new Pantano();
+    	NebulosaDeAndromeda andromeda = new NebulosaDeAndromeda();
+    	TormentaPsionica psi = new TormentaPsionica();
+    	
+    	Coordenada c1 = new Coordenada(6,2);
+    	Coordenada c2 = new Coordenada(2,2);
+    	Coordenada c3 = new Coordenada(4,6);
+    	
+    	this.unTablero.setTerreno(c1, psi);
+    	this.unTablero.setTerreno(c2, pantano);
+    	this.unTablero.setTerreno(c3, andromeda);
+    	
+    	
+
+    	
     }
 
     //TODO implementar esto!

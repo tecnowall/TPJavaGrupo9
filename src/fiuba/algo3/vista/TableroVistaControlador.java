@@ -25,6 +25,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -55,7 +56,9 @@ public class TableroVistaControlador implements ObservadorTablero, ObservadorBon
 		for (int j = 0; j<(tablero.getAlto());j++){
 			tableroView.getRowConstraints().add(new RowConstraints(40));
 		} //Creo tablero de 11x11 si Tablero (10,10);
+		dibujarTerrenos();
 		crearBotones();
+		
 		tableroView.setAlignment(Pos.CENTER);
 	}
 
@@ -86,28 +89,55 @@ public class TableroVistaControlador implements ObservadorTablero, ObservadorBon
 	
 	public void ubicarAlgoformer(Algoformer unAlgoformer,int x,int y){
 		Button botonAlgo=new Button();
-		botonAlgo = (Button) tableroView.getChildren().get((tablero.getAlto()*x) + y + 1);
+		//botonAlgo = (Button) tableroView.getChildren().get((tablero.getAlto()*x) + y + 1);
+		botonAlgo = (Button) tableroView.getChildren().get((tablero.getAlto()*x) + y + (tablero.getAlto()*tablero.getAncho())+1);
 		botonAlgo.setText(unAlgoformer.getNombre());
-//		botonAlgo.setAlignment(Pos.CENTER);
-//		botonAlgo.setPrefWidth(70);
-//		botonAlgo.setPrefHeight(30);
-//		botonAlgo.setTranslateX(5);
 		
 		SeleccionAlgoformerHandler seleccionAlgoformerHandler = new SeleccionAlgoformerHandler(unAlgoformer);
 		botonAlgo.setOnAction(seleccionAlgoformerHandler);
 		
-		//tableroView.add(botonAlgo, x,y);
 		
 	}
 	
 	public void quitarAlgoformer(int x, int y){
 		Button botonAlgo=new Button();
 		Coordenada coordenada=new Coordenada(x,y);
-		botonAlgo = (Button) tableroView.getChildren().get((tablero.getAlto()*x) + y + 1);
+		//botonAlgo = (Button) tableroView.getChildren().get((tablero.getAlto()*x) + y + 1);
+		botonAlgo = (Button) tableroView.getChildren().get((tablero.getAlto()*x) + y + (tablero.getAlto()*tablero.getAncho())+1);
 		botonAlgo.setText("");
 		
 		SeleccionVacioHandler seleccionVacioHandler = new SeleccionVacioHandler(coordenada);
 		botonAlgo.setOnAction(seleccionVacioHandler);
+	}
+	
+	public void dibujarTerrenos(){
+	for (int i = 0; i<tablero.getAncho();i++){
+		for (int j = 0; j<tablero.getAlto();j++){
+			Coordenada coordenada = new Coordenada (i,j);
+			Pane r = new Pane();
+			switch (tablero.getTerreno(coordenada).getClass().toString()){
+				case "class fiuba.algo3.modelo.terreno.Rocoso":
+					r.setStyle("-fx-background-color: #666633;");break;
+				case "class fiuba.algo3.modelo.terreno.Pantano":
+					r.setStyle("-fx-background-color: #ffffb3");break;
+				case "class fiuba.algo3.modelo.terreno.Espinas":
+					r.setStyle("-fx-background-color: #008000");break;
+				case "class fiuba.algo3.modelo.terreno.Nube":
+					r.setStyle("-fx-background-color: #b3ffff");break;
+				case "class fiuba.algo3.modelo.terreno.NebulosaDeAndromeda":
+					r.setStyle("-fx-background-color: #990099");break;
+				case "class fiuba.algo3.modelo.terreno.TormentaPsionica":
+					r.setStyle("-fx-background-color: #0047b3");break;
+				default:
+					r.setStyle("-fx-background-color: #ffffff;");break;
+					
+			}
+			
+			r.prefHeight(70);
+			r.prefWidth(70);
+			tableroView.add(r, i, j);
+		}
+	}
 	}
 	
 
