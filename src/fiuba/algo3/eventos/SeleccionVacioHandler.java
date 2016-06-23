@@ -30,7 +30,7 @@ public class SeleccionVacioHandler implements EventHandler<ActionEvent>{
 					try{
 						TableroVistaControlador.algoformerSeleccionado.getJugador().moverPersonaje(coordenada, ContenedorPrincipal.juego.getTablero());			
 						MenuInferior.log.appendText("\nAlgoformer: mover a posicion " + coordenada.getX() + " , " + coordenada.getY());
-						//ContenedorPrincipal.juego.pasarTurno();
+						ContenedorPrincipal.juego.pasarTurno();
 					}
 					catch (MovimientoFueraDeRangoException e){
 						MenuInferior.log.appendText("\nMovimiento fuera de rango");
