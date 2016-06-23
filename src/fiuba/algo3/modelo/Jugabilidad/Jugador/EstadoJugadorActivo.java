@@ -4,6 +4,8 @@ import fiuba.algo3.modelo.Coordenada;
 import fiuba.algo3.modelo.algoformer.Algoformer;
 import fiuba.algo3.modelo.tablero.Tablero;
 
+import java.util.ArrayList;
+
 /**
  * Created by jose on 13/06/2016.
  */
@@ -27,9 +29,10 @@ public class EstadoJugadorActivo extends EstadoJugador {
 
     }
 
-    public void CombinarPersonaje(Algoformer personaje, Coordenada posicion, Tablero tablero) {
+    public void combinarPersonaje(Algoformer personaje, ArrayList<Algoformer> listaPersonajes) {
       //  TODO
 
+        personaje.iniciarFusion(listaPersonajes.get(0),listaPersonajes.get(1),listaPersonajes.get(2));
     }
 
     public String getEstado (){return "activo";}

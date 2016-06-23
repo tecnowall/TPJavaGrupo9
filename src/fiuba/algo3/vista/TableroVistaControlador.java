@@ -5,6 +5,7 @@ import fiuba.algo3.modelo.Coordenada;
 import fiuba.algo3.modelo.Jugabilidad.Juego.Juego;
 import fiuba.algo3.modelo.Jugabilidad.Jugador.Jugador;
 import fiuba.algo3.modelo.algoformer.Algoformer;
+import fiuba.algo3.modelo.algoformer.Algofusion;
 import fiuba.algo3.modelo.bonus.Bonus;
 import fiuba.algo3.modelo.observadores.ObservadorAlgoformer;
 import fiuba.algo3.modelo.observadores.ObservadorBonus;
@@ -168,31 +169,47 @@ public class TableroVistaControlador implements ObservadorTablero, ObservadorBon
 	public void huboUnAtaque(Algoformer unAlgoformer) {
           //actualizzar vista
 		this.juego.pasarTurno();
+		MenuInferior.log.appendText("\n ataque"  );
 	}
 
 	@Override
 	public void huboUnaTransformacion(Algoformer unAlgoformer) {
 		//actualizzar vista
+		MenuInferior.log.appendText("\n transformacion"  );
 		this.juego.pasarTurno();
 	}
 
 	@Override
-	public void huboUnaFusion(Algoformer unAlgoformer) {
-		//actualizzar vista
-		// hay que retirar los 3 algoformers y poner el fusionado
+	public void huboUnaFusion(Algofusion unAlgoformer) {
 
-		this.juego.pasarTurno();
+
+		//retiro las 3 partes
+		for (Algoformer unaParte : unAlgoformer.getPartes()){this.quitarAlgoformer(unaParte.getPosicion().getX(), unaParte.getPosicion().getY());}
+		//ubico al fusionado
+		this.ubicarAlgoformer(unAlgoformer, unAlgoformer.getPosicion().getX(), unAlgoformer.getPosicion().getY());
+
+		//actualizzar vista
+		MenuInferior.log.appendText("\n SFusion"  );
+		//this.juego.pasarTurno();
+
+
+
+
+
+
 
 	}
 
 	@Override
 	public void seConsumioBonus(Bonus unBonus) {
           //retirar bonus
+		MenuInferior.log.appendText("\n Se consumio un bonus"  );
 	}
 
 	@Override
 	public void finalizoJuego(Jugador playerWin) {
 		//actualizar vista, mostrar al ganador
+		MenuInferior.log.appendText("\n Finalizo juego" + playerWin.obtenerNombre() + " ......!");
 
 	}
 

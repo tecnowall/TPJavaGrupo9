@@ -68,7 +68,7 @@ public class Autobot extends Algoformer{
 		
 		this.getTablero().poner( superion, partes.get(0).getPosicion() );
 		this.jugador.agregarPersonaje( superion ); // este metodo tiene que retirar a los algoformers de su lista
-		superion.notificarFusionAObservadores(this);
+		superion.notificarFusionAObservadores(superion);
 		return superion;
 	}
 	

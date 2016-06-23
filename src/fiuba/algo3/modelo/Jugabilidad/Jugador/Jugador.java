@@ -23,6 +23,7 @@ public class Jugador {
     private Algoformer personajeSeleccionado;
     private HashMap<String, Algoformer> personajes;
     private Juego juego;
+    private int cantidadPersonajes;
 
     public Jugador(String nombre, TipoEquipo equipo) {
         this.nombre = nombre;
@@ -135,9 +136,12 @@ public class Jugador {
         this.estado.tranformarPersonaje(this.personajeSeleccionado, posicion, tablero);
     }
 
-    //TODO
-    public void CombinarPersonaje(String personaje, Coordenada posicion, Tablero tablero) {
+    //TODO  ver si los algoformer tienen un tablero guardado por que sino no tiene sentido pasar tablero
+    public void combinarPersonaje(String personaje) {
         if ( this.personajeSeleccionado ==null) throw new PersonajeNoSeleccionadoException();
+        if (this.cantidadPersonajes != this.personajes.size()) throw new FaltanPersonajesParaFusionException();
+
+        this.estado.combinarPersonaje(this.personajeSeleccionado,this.getAllPersonajes());
 
     }
 
@@ -186,5 +190,9 @@ public class Jugador {
     }
 
 
-    
+    public void iniciaJuego (){
+
+        this.cantidadPersonajes =  this.personajes.size();
+
+    }
 }

@@ -121,6 +121,9 @@ public class Juego implements ObservableJuego {
         jugadorUno.setJuego(this);
         jugadorDos.setJuego(this);
 
+        jugadorUno.iniciaJuego();
+        jugadorDos.iniciaJuego();
+
         //arranco la partida
         this.pasarTurno();
 
