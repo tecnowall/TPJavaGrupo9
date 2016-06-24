@@ -32,6 +32,7 @@ public class Jugador {
         this.estado = new EstadoJugadorEsperando();
         this.personajes = new HashMap<String,Algoformer>();
         this.fusionIniciada= false;
+
     }
     public String obtenerNombre(){return this.nombre;}
     public TipoEquipo obtenerEquipo(){return this.equipo;}
@@ -63,11 +64,12 @@ public class Jugador {
             throw new PersonajeNombreDuplicadoExeptions();
         }
 
-        personajes.put(personajeFusionado.getNombre(), personajeFusionado);
-        personajeFusionado.agregarJugador(this);
+        //TODO no se puede modificar el hashmap mientras esta siendo iterado
+       // personajes.put(personajeFusionado.getNombre(), personajeFusionado);
+      //  personajeFusionado.agregarJugador(this);
 
         // quita a los fusionados
-        for (Algoformer algoformer : personajeFusionado.getPartes()){ this.eliminarPersonaje(algoformer.getNombre());}
+       // for (Algoformer algoformer : personajeFusionado.getPartes()){ this.eliminarPersonaje(algoformer.getNombre());}
 
 
     }
@@ -139,7 +141,7 @@ public class Jugador {
     }
 
     //TODO  ver si los algoformer tienen un tablero guardado por que sino no tiene sentido pasar tablero
-    public void combinarPersonaje(String personaje) {
+    public void combinarPersonaje() {
         if ( this.personajeSeleccionado ==null) throw new PersonajeNoSeleccionadoException();
         if (this.cantidadPersonajes != this.personajes.size()) throw new FaltanPersonajesParaFusionException();
         if (fusionIniciada) throw new NoSePuedeFusionarMasDeUnaVezException();

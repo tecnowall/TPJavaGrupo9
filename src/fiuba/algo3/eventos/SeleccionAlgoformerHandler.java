@@ -106,7 +106,7 @@ public class SeleccionAlgoformerHandler implements EventHandler<ActionEvent> {
 
 				try {
 					algoformer.getJugador().seleccionarPersonaje(algoformer.getNombre());
-					algoformer.getJugador().combinarPersonaje(algoformer.getNombre());
+					algoformer.getJugador().combinarPersonaje();
 					MenuInferior.log.appendText("\n" + algoformer.getNombre() + " combina " + algoformer.getNombreForma());
 					ContenedorPrincipal.juego.pasarTurno();
 					TableroVistaControlador.seleccionado = false;

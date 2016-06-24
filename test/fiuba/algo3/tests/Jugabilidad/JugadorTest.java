@@ -3,10 +3,7 @@ package fiuba.algo3.tests.Jugabilidad;
 import fiuba.algo3.modelo.Coordenada;
 import fiuba.algo3.modelo.Jugabilidad.Jugador.*;
 import fiuba.algo3.modelo.TipoEquipo;
-import fiuba.algo3.modelo.algoformer.Algoformer;
-import fiuba.algo3.modelo.algoformer.Forma;
-import fiuba.algo3.modelo.algoformer.Humanoide;
-import fiuba.algo3.modelo.algoformer.Terrestre;
+import fiuba.algo3.modelo.algoformer.*;
 import fiuba.algo3.modelo.tablero.Tablero;
 import org.junit.Assert;
 
@@ -415,10 +412,81 @@ public class JugadorTest {
 
 */
 
-/*
-        @Test (expected =   .clas)
+
+        @Test (expected =FaltanPersonajesParaFusionException.class)
         public void testCombinarPersonajeDebeLanzarExepcionSiNoSeAvisoInicioJuegoAJugador(){
 
+            Jugador j1 = new Jugador ("Diego", TipoEquipo.AUTOBOTS);
+            Autobot a1 = Autobot.getOptimus();
+            Autobot a2 = Autobot.getBumblebee();
+            Autobot a3 = Autobot.getRatchet();
+
+            j1.agregarPersonaje(a1);
+            j1.agregarPersonaje(a2);
+            j1.agregarPersonaje(a3);
+            j1.inicioTurno();
+            j1.seleccionarPersonaje(a1.getNombre());
+
+            j1.combinarPersonaje();
+        }
+/*
+    @Test
+        public void TestCombinarPersonajeDebreCrearUnaFusion(){
+        Tablero tablero = new Tablero(10,10);
+        Jugador j1 = new Jugador ("Diego", TipoEquipo.AUTOBOTS);
+        Autobot a1 = Autobot.getOptimus();
+        Autobot a2 = Autobot.getBumblebee();
+        Autobot a3 = Autobot.getRatchet();
+
+        a1.setTablero(tablero);
+        a2.setTablero(tablero);
+        a3.setTablero(tablero);
+
+
+        Coordenada c1 = new Coordenada( 0, 2 );
+        Coordenada c2 = new Coordenada( 0, 4 );
+        Coordenada c3 = new Coordenada( 0, 6 );
+        a1.ubicar(c1);
+        a2.ubicar(c2);
+        a3.ubicar(c3);
+
+        tablero.poner (a1,c1);
+        tablero.poner (a2,c2);
+        tablero.poner (a3,c3);
+
+
+
+
+
+
+        j1.agregarPersonaje(a1);
+        j1.agregarPersonaje(a2);
+        j1.agregarPersonaje(a3);
+        j1.inicioTurno();
+        j1.seleccionarPersonaje(a1.getNombre());
+        j1.iniciaJuego();
+
+
+        j1.combinarPersonaje();
+
+
+
+        j1.getAllPersonajes().size();
+
+        j1.finTurno();
+        j1.inicioTurno();
+        j1.finTurno();
+        j1.inicioTurno();
+        j1.finTurno();
+        j1.inicioTurno();
+        j1.getAllPersonajes().size();
+    }
+
+
+*/
+
+
+/*
         }
 
         @Test(expected =   .clas)
@@ -429,8 +497,10 @@ public class JugadorTest {
         public void testCombinarPersonajeDebeLanzarExcepcionSiTieneTodasLasPartesYMuereUna(){
 
         }
+
+
         @Test(expected =   .clas)
-        public void TestCombinarPersonajeDebreCrearUnaFusion(){
+        public void TestCombinarPersonajeDebreLanzarExcepcionSiYaSeInicioUnaFusionPreviamente(){
 
         }
 

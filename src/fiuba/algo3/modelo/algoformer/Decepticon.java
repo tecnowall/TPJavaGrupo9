@@ -52,7 +52,7 @@ public class Decepticon extends Algoformer implements Fusionable {
 		menasor = new Algofusion( "Menasor", forma, parte1, parte2, parte3 );
 		menasor.setEquipo( TipoEquipo.DECEPTICONS);
 		Bonus bonus = new BonusFusion();
-		parte1.nuevoBonus( bonus );
+		this.nuevoBonus( bonus );
 	}
 
 	@Override
@@ -63,7 +63,7 @@ public class Decepticon extends Algoformer implements Fusionable {
 			parte.salirDelTablero();
 		}
 		
-		this.getTablero().poner( menasor, partes.get(0).getPosicion() );
+		this.getTablero().poner( menasor, this.getPosicion() );
 		this.jugador.agregarPersonaje( menasor );
 		menasor.notificarFusionAObservadores(menasor);
 

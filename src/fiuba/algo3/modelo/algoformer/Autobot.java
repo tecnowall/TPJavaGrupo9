@@ -53,7 +53,8 @@ public class Autobot extends Algoformer{
 		superion = new Algofusion( "Superion", forma, parte1, parte2, parte3 );
 		superion.setEquipo( TipoEquipo.AUTOBOTS);
 		Bonus bonus = new BonusFusion();
-		parte1.nuevoBonus( bonus );
+		this.nuevoBonus( bonus );
+
 	}
 
 	@Override
@@ -66,8 +67,8 @@ public class Autobot extends Algoformer{
 			parte.salirDelTablero();
 
 		}
-		
-		this.getTablero().poner( superion, partes.get(0).getPosicion() );
+
+		this.getTablero().poner( superion, this.getPosicion() );
 		this.jugador.agregarPersonaje( superion );
 		superion.notificarFusionAObservadores(superion);
 
