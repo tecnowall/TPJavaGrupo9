@@ -31,6 +31,7 @@ import javafx.scene.layout.RowConstraints;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
+import org.apache.commons.lang3.ObjectUtils;
 
 //TODO ojo el obsvador juego....
 public class TableroVistaControlador implements ObservadorTablero, ObservadorBonus, ObservadorAlgoformer, ObservadorJuego {
@@ -190,10 +191,15 @@ public class TableroVistaControlador implements ObservadorTablero, ObservadorBon
 	@Override
 	public void huboUnMovimiento(Algoformer unAlgoformer, Coordenada original) {
         //actualizar el movimiento
-		this.quitarAlgoformer(original.getX(), original.getY());
+
+		//TODO PARCHE Arreglar!!!
+		// esto pincha por que cuando el modelo coloca al fusionado, este metodo intenta sacarlo de su posicion que la vista no lo tiene
+		// por que nuenva fue agregado
+		 this.quitarAlgoformer(original.getX(), original.getY());
+
 		this.ubicarAlgoformer(unAlgoformer, unAlgoformer.getPosicion().getX(), unAlgoformer.getPosicion().getY());
 		
-		//this.juego.pasarTurno();
+
 
 	}
 
@@ -221,7 +227,7 @@ public class TableroVistaControlador implements ObservadorTablero, ObservadorBon
 		this.ubicarAlgoformer(unAlgoformer, unAlgoformer.getPosicion().getX(), unAlgoformer.getPosicion().getY());
 
 		//actualizzar vista
-		MenuInferior.log.appendText("\n SFusion"  );
+		MenuInferior.log.appendText("\n Se completo la Fusion"  );
 		//this.juego.pasarTurno();
 
 

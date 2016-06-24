@@ -5,6 +5,7 @@ import java.util.List;
 import fiuba.algo3.modelo.TipoEquipo;
 import fiuba.algo3.modelo.bonus.Bonus;
 import fiuba.algo3.modelo.bonus.BonusFusion;
+import fiuba.algo3.modelo.observadores.ObservadorAlgoformer;
 import fiuba.algo3.modelo.tablero.Tablero;
 
 public class Decepticon extends Algoformer implements Fusionable {
@@ -53,6 +54,9 @@ public class Decepticon extends Algoformer implements Fusionable {
 		menasor.setEquipo( TipoEquipo.DECEPTICONS);
 		Bonus bonus = new BonusFusion();
 		this.nuevoBonus( bonus );
+
+		for(ObservadorAlgoformer unObservador : parte1.observadores){
+			menasor.suscribir(unObservador);}
 	}
 
 	@Override
@@ -62,7 +66,8 @@ public class Decepticon extends Algoformer implements Fusionable {
 		for( Algoformer parte : partes ){
 			parte.salirDelTablero();
 		}
-		
+		//TODO aca tenemos un problema como esta recien creado, su posicion orignal es null
+		// cuando lo ubiques el algoformer va a notificar cambio de posicion y va a pinchar le null
 		this.getTablero().poner( menasor, this.getPosicion() );
 		this.jugador.agregarPersonaje( menasor );
 		menasor.notificarFusionAObservadores(menasor);

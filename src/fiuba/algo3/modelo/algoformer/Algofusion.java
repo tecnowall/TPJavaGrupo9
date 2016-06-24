@@ -13,6 +13,7 @@ public class Algofusion extends Algoformer {
 		partes.add( parte1 );
 		partes.add( parte2 );
 		partes.add( parte3 );
+
 	}
 	
 	public List<Algoformer> getPartes(){

@@ -9,10 +9,7 @@ import fiuba.algo3.modelo.algoformer.Algoformer;
 import fiuba.algo3.modelo.algoformer.Algofusion;
 import fiuba.algo3.modelo.tablero.Tablero;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
+import java.util.*;
 
 
 public class Jugador {
@@ -25,6 +22,7 @@ public class Jugador {
     private Juego juego;
     private int cantidadPersonajes;
     private boolean fusionIniciada;
+    private boolean fusionTerminada;
 
     public Jugador(String nombre, TipoEquipo equipo) {
         this.nombre = nombre;
@@ -32,6 +30,7 @@ public class Jugador {
         this.estado = new EstadoJugadorEsperando();
         this.personajes = new HashMap<String,Algoformer>();
         this.fusionIniciada= false;
+        this.fusionTerminada= false;
 
     }
     public String obtenerNombre(){return this.nombre;}
@@ -65,12 +64,12 @@ public class Jugador {
         }
 
         //TODO no se puede modificar el hashmap mientras esta siendo iterado
-       // personajes.put(personajeFusionado.getNombre(), personajeFusionado);
-      //  personajeFusionado.agregarJugador(this);
+        personajes.put(personajeFusionado.getNombre(), personajeFusionado);
+        personajeFusionado.agregarJugador(this);
 
-        // quita a los fusionados
-       // for (Algoformer algoformer : personajeFusionado.getPartes()){ this.eliminarPersonaje(algoformer.getNombre());}
-
+       // quita a los fusionados
+       for (Algoformer algoformer : personajeFusionado.getPartes()){ this.eliminarPersonaje(algoformer.getNombre());}
+      this.fusionTerminada=true;
 
     }
 
@@ -105,13 +104,24 @@ public class Jugador {
 
         this.estado= new EstadoJugadorEsperando();
 
+        Set entrySet = personajes.entrySet();
+
+
         //AVISO A ALGOFORMERS FIN DE TURNO
         Iterator it = personajes.entrySet().iterator();
         while (it.hasNext()) {
-            ((Algoformer)(((Map.Entry)it.next()).getValue())).finTurno();
+           ((Algoformer)(((Map.Entry)it.next()).getValue())).finTurno();
+            if (this.fusionTerminada){
+
+                this.fusionTerminada=false;
+                break;
+            }
         }
 
     };
+
+
+
 
     //****************************
     // Acciones ************
@@ -167,10 +177,14 @@ public class Jugador {
 
     }
 
-    private void eliminarPersonaje (String nombreDelPerosnaje){
+    private void eliminarPersonaje (String nombreDelPersonaje){
 
-       if (!existePersonaje(nombreDelPerosnaje)) throw new PersonajeInexistenteException();
-        personajes.remove(nombreDelPerosnaje);
+       if (!existePersonaje(nombreDelPersonaje)) throw new PersonajeInexistenteException();
+       if   (this.personajeSeleccionado == obtenerPersonaje(nombreDelPersonaje)) this.personajeSeleccionado= null;
+
+        personajes.remove(nombreDelPersonaje);
+
+
 
     }
 

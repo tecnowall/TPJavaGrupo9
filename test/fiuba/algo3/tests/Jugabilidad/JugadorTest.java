@@ -348,7 +348,22 @@ public class JugadorTest {
 
         Assert.assertTrue(a2.equals( j1.obtenerPersonaje("Sandro")));}
 
+@Test (expected = PersonajeNoSeleccionadoException.class)
+    public void testAlEliminarUnPersonajeSiEsteEstabaSeleccionadoDejaDeEstarlo(){
 
+        Jugador j1 = new Jugador ("Diego", TipoEquipo.AUTOBOTS);
+
+        Algoformer a1 = new Algoformer("diego");
+        a1.setEquipo(TipoEquipo.AUTOBOTS);
+        Algoformer a2 = new Algoformer("Sandro");
+        a2.setEquipo(TipoEquipo.AUTOBOTS);
+
+        j1.agregarPersonaje(a1);
+        j1.agregarPersonaje(a2);
+        j1.seleccionarPersonaje(a1.getNombre());
+        j1.murioUnPersonaje(a1);
+        j1.combinarPersonaje();
+    }
 
     @Test
     public void testTenesPersonajesDebeDarFalseCuandoElJugadorEsRecienCreado(){
@@ -429,7 +444,7 @@ public class JugadorTest {
 
             j1.combinarPersonaje();
         }
-/*
+
     @Test
         public void TestCombinarPersonajeDebreCrearUnaFusion(){
         Tablero tablero = new Tablero(10,10);
@@ -454,11 +469,6 @@ public class JugadorTest {
         tablero.poner (a2,c2);
         tablero.poner (a3,c3);
 
-
-
-
-
-
         j1.agregarPersonaje(a1);
         j1.agregarPersonaje(a2);
         j1.agregarPersonaje(a3);
@@ -470,20 +480,18 @@ public class JugadorTest {
         j1.combinarPersonaje();
 
 
+        j1.finTurno();
+        j1.inicioTurno();
+        j1.finTurno();
+        j1.inicioTurno();
 
-        j1.getAllPersonajes().size();
+        j1.obtenerPersonaje("Superion");
 
-        j1.finTurno();
-        j1.inicioTurno();
-        j1.finTurno();
-        j1.inicioTurno();
-        j1.finTurno();
-        j1.inicioTurno();
-        j1.getAllPersonajes().size();
+        assert (j1.getAllPersonajes().size() == 1);
     }
 
 
-*/
+
 
 
 /*

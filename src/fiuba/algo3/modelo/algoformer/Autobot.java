@@ -55,6 +55,12 @@ public class Autobot extends Algoformer{
 		Bonus bonus = new BonusFusion();
 		this.nuevoBonus( bonus );
 
+		for(ObservadorAlgoformer unObservador : parte1.observadores){
+			superion.suscribir(unObservador);}
+
+
+
+
 	}
 
 	@Override
