@@ -73,7 +73,7 @@ public class Autobot extends Algoformer{
 			parte.salirDelTablero();
 
 		}
-
+		superion.setPosicion(this.getPosicion());
 		this.getTablero().poner( superion, this.getPosicion() );
 		this.jugador.agregarPersonaje( superion );
 		superion.notificarFusionAObservadores(superion);

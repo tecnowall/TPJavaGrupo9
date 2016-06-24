@@ -351,8 +351,13 @@ public class Algoformer implements Ubicable, Fusionable, ObservableAlgoformer{
 		}
 		
 	}
+//TODO
+  protected void setPosicion (Coordenada coordenada){
+
+	  this.posicion= coordenada;
 
 
+  }
 
 
 }

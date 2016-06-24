@@ -68,6 +68,7 @@ public class Decepticon extends Algoformer implements Fusionable {
 		}
 		//TODO aca tenemos un problema como esta recien creado, su posicion orignal es null
 		// cuando lo ubiques el algoformer va a notificar cambio de posicion y va a pinchar le null
+		menasor.setPosicion(this.getPosicion());
 		this.getTablero().poner( menasor, this.getPosicion() );
 		this.jugador.agregarPersonaje( menasor );
 		menasor.notificarFusionAObservadores(menasor);
