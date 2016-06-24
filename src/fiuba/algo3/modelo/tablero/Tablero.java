@@ -98,7 +98,7 @@ public class Tablero {
 		}
 		return adyacentes;
 	}
-	
+
 	public Casillero getCasillero( Coordenada coordenada ){
 		if ( this.casilleros.containsKey( coordenada ) ){
 			return this.casilleros.get( coordenada );

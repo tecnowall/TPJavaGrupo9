@@ -24,12 +24,14 @@ public class Jugador {
     private HashMap<String, Algoformer> personajes;
     private Juego juego;
     private int cantidadPersonajes;
+    private boolean fusionIniciada;
 
     public Jugador(String nombre, TipoEquipo equipo) {
         this.nombre = nombre;
         this.equipo = equipo;
         this.estado = new EstadoJugadorEsperando();
         this.personajes = new HashMap<String,Algoformer>();
+        this.fusionIniciada= false;
     }
     public String obtenerNombre(){return this.nombre;}
     public TipoEquipo obtenerEquipo(){return this.equipo;}
@@ -140,9 +142,10 @@ public class Jugador {
     public void combinarPersonaje(String personaje) {
         if ( this.personajeSeleccionado ==null) throw new PersonajeNoSeleccionadoException();
         if (this.cantidadPersonajes != this.personajes.size()) throw new FaltanPersonajesParaFusionException();
+        if (fusionIniciada) throw new NoSePuedeFusionarMasDeUnaVezException();
 
         this.estado.combinarPersonaje(this.personajeSeleccionado,this.getAllPersonajes());
-
+        fusionIniciada = true;
     }
 
     //***********************************

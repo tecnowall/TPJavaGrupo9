@@ -112,7 +112,7 @@ public class TableroTest {
 //			System.out.print( c + "\n");
 //		}
 //	}
-	
+
 	@Test
 	public void testSePuedeCrearUnTableroConAnchoYAltoDefinidoPorTableroJson(){
 		Ubicable algoformer = new Algoformer("optimus");		
