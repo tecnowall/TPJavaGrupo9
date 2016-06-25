@@ -53,7 +53,7 @@ public class JugadorTest {
         j1.agregarPersonaje(a1);
     }
 
-    @Test( expected = PersonajeNombreDuplicadoExeptions.class)
+    @Test( expected = PersonajeNombreDuplicadoException.class)
     public void testAgregarPersonajeDebeLanzarExepcionCuandoSeAgreganPersonajesConNombreIdentico(){
         Jugador j1 = new Jugador ("Diego", TipoEquipo.AUTOBOTS);
         Algoformer a1= new Algoformer("maradona");
@@ -494,28 +494,173 @@ public class JugadorTest {
 
 
 
-/*
+
+
+
+        @Test(expected =FaltanPersonajesParaFusionException.class)
+        public void testCombinarPersonajeDebeLanzarExcepcionSiJugadorSeCreaConMenosDeTresPersonajes(){
+
+            Jugador j1 = new Jugador ("Diego", TipoEquipo.AUTOBOTS);
+            Autobot a1 = Autobot.getOptimus();
+            Autobot a2 = Autobot.getBumblebee();
+
+
+            j1.agregarPersonaje(a1);
+            j1.agregarPersonaje(a2);
+
+            j1.inicioTurno();
+            j1.seleccionarPersonaje(a1.getNombre());
+            j1.iniciaJuego();
+
+
+            j1.combinarPersonaje();
+
         }
 
-        @Test(expected =   .clas)
-        public void testCombinarPersonajeDebeLanzarExcepcionSiNoTieneTodasLasPartes(){
-
-        }
-        @Test(expected =   .clas)
+        @Test(expected = FaltanPersonajesParaFusionException.class)
         public void testCombinarPersonajeDebeLanzarExcepcionSiTieneTodasLasPartesYMuereUna(){
 
+
+            Tablero tablero = new Tablero(10,10);
+            Jugador j1 = new Jugador ("Diego", TipoEquipo.AUTOBOTS);
+            Autobot a1 = Autobot.getOptimus();
+            Autobot a2 = Autobot.getBumblebee();
+            Autobot a3 = Autobot.getRatchet();
+
+            a1.setTablero(tablero);
+            a2.setTablero(tablero);
+            a3.setTablero(tablero);
+
+
+            Coordenada c1 = new Coordenada( 0, 2 );
+            Coordenada c2 = new Coordenada( 0, 4 );
+            Coordenada c3 = new Coordenada( 0, 6 );
+            a1.ubicar(c1);
+            a2.ubicar(c2);
+            a3.ubicar(c3);
+
+            tablero.poner (a1,c1);
+            tablero.poner (a2,c2);
+            tablero.poner (a3,c3);
+
+            j1.agregarPersonaje(a1);
+            j1.agregarPersonaje(a2);
+            j1.agregarPersonaje(a3);
+            j1.inicioTurno();
+            j1.seleccionarPersonaje(a1.getNombre());
+            j1.iniciaJuego();
+            j1.murioUnPersonaje(a2);
+
+
+            j1.combinarPersonaje();
+
+
         }
 
 
-        @Test(expected =   .clas)
+        @Test(expected =  NoSePuedeFusionarMasDeUnaVezException.class)
         public void TestCombinarPersonajeDebreLanzarExcepcionSiYaSeInicioUnaFusionPreviamente(){
 
+            Tablero tablero = new Tablero(10,10);
+            Jugador j1 = new Jugador ("Diego", TipoEquipo.AUTOBOTS);
+            Autobot a1 = Autobot.getOptimus();
+            Autobot a2 = Autobot.getBumblebee();
+            Autobot a3 = Autobot.getRatchet();
+
+            a1.setTablero(tablero);
+            a2.setTablero(tablero);
+            a3.setTablero(tablero);
+
+
+            Coordenada c1 = new Coordenada( 0, 2 );
+            Coordenada c2 = new Coordenada( 0, 4 );
+            Coordenada c3 = new Coordenada( 0, 6 );
+            a1.ubicar(c1);
+            a2.ubicar(c2);
+            a3.ubicar(c3);
+
+            tablero.poner (a1,c1);
+            tablero.poner (a2,c2);
+            tablero.poner (a3,c3);
+
+            j1.agregarPersonaje(a1);
+            j1.agregarPersonaje(a2);
+            j1.agregarPersonaje(a3);
+            j1.inicioTurno();
+            j1.seleccionarPersonaje(a1.getNombre());
+            j1.iniciaJuego();
+            j1.combinarPersonaje();
+            j1.combinarPersonaje();
+
+
         }
 
-        @Test (expected =   .clas)
+        @Test (expected =  JugadorEnEstadoDeEsperaException.class)
         public void testCombinarPersonajeDebeLanzarExepcionSiElJugadorNoEstaActivo(){
 
+            Jugador j1 = new Jugador ("Diego", TipoEquipo.AUTOBOTS);
+            Autobot a1 = Autobot.getOptimus();
+            Autobot a2 = Autobot.getBumblebee();
+
+
+            j1.agregarPersonaje(a1);
+            j1.agregarPersonaje(a2);
+
+
+            j1.seleccionarPersonaje(a1.getNombre());
+            j1.iniciaJuego();
+
+
+            j1.combinarPersonaje();
+
         }
-    */
+/*
+    @Test
+
+    public void testCombinarPersonajeDebeCrearUnFusionadoEnLaUltimaPosicionDelFusionante(){
+
+
+        Tablero tablero = new Tablero(10,10);
+        Jugador j1 = new Jugador ("Diego", TipoEquipo.AUTOBOTS);
+        Autobot a1 = Autobot.getOptimus();
+        Autobot a2 = Autobot.getBumblebee();
+        Autobot a3 = Autobot.getRatchet();
+
+        a1.setTablero(tablero);
+        a2.setTablero(tablero);
+        a3.setTablero(tablero);
+
+
+        Coordenada c1 = new Coordenada( 0, 2 );
+        Coordenada c2 = new Coordenada( 0, 4 );
+        Coordenada c3 = new Coordenada( 0, 6 );
+        Coordenada c4 = new Coordenada( 0, 3 );
+        a1.ubicar(c1);
+        a2.ubicar(c2);
+        a3.ubicar(c3);
+
+        tablero.poner (a1,c1);
+        tablero.poner (a2,c2);
+        tablero.poner (a3,c3);
+
+        j1.agregarPersonaje(a1);
+        j1.agregarPersonaje(a2);
+        j1.agregarPersonaje(a3);
+        j1.inicioTurno();
+        j1.seleccionarPersonaje(a1.getNombre());
+        j1.iniciaJuego();
+        j1.combinarPersonaje();
+//TODO si se inicio la fusion, no se puede mover al personaje por que le setea velocidad 0 el bonus
+        a1.mover(tablero,c4);
+        j1.finTurno();
+        j1.finTurno();
+       // j1.obtenerPersonaje("menasor");
+
+
+
+
     }
+*/
+
+}
 

@@ -66,9 +66,7 @@ public class Autobot extends Algoformer{
 	@Override
 	public Algofusion completarFusion() {
 		List<Algoformer> partes = superion.getPartes();
-		
 
-		
 		for( Algoformer parte : partes ){
 			parte.salirDelTablero();
 

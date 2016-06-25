@@ -31,7 +31,7 @@ public class EstadoJugadorActivo extends EstadoJugador {
 
     public void combinarPersonaje(Algoformer personaje, ArrayList<Algoformer> listaPersonajes) {
       //  TODO
-
+        if (listaPersonajes.size() < 3) throw new FaltanPersonajesParaFusionException();
         personaje.iniciarFusion(listaPersonajes.get(0),listaPersonajes.get(1),listaPersonajes.get(2));
     }
 

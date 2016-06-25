@@ -45,7 +45,7 @@ public class Jugador {
         }
 
         if (existePersonaje(unPersonaje.getNombre())){
-            throw new PersonajeNombreDuplicadoExeptions();
+            throw new PersonajeNombreDuplicadoException();
         }
 
         personajes.put(unPersonaje.getNombre(), unPersonaje);
@@ -60,7 +60,7 @@ public class Jugador {
         }
 
         if (existePersonaje(personajeFusionado.getNombre())){
-            throw new PersonajeNombreDuplicadoExeptions();
+            throw new PersonajeNombreDuplicadoException();
         }
 
         //TODO no se puede modificar el hashmap mientras esta siendo iterado
