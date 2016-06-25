@@ -218,4 +218,10 @@ public class Jugador {
         this.cantidadPersonajes =  this.personajes.size();
 
     }
+
+    public void captureChispaSuprema(){
+
+        this.juego.capturaronChispaSuprema(this);
+
+    }
 }

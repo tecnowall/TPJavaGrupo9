@@ -20,7 +20,7 @@ public class ChispaSuprema implements Capturable {
 
 	@Override
 	public void serCapturado(Algoformer unAlgoformer) {
-		// TODO Auto-generated method stub
+		unAlgoformer.capturasteChispaSuprema();
 		
 	}
 

@@ -360,4 +360,7 @@ public class Algoformer implements Ubicable, Fusionable, ObservableAlgoformer{
   }
 
 
+	public void capturasteChispaSuprema() {
+		this.jugador.captureChispaSuprema();
+	}
 }

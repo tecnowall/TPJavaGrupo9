@@ -1,5 +1,6 @@
 package fiuba.algo3.tests;
 
+import fiuba.algo3.modelo.Coordenada;
 import fiuba.algo3.modelo.Jugabilidad.Juego.Juego;
 import fiuba.algo3.modelo.Jugabilidad.Juego.JuegoNoIniciadoException;
 import fiuba.algo3.modelo.algoformer.Algoformer;
@@ -39,14 +40,32 @@ public class JuegoTest {
     public void testAlMorirTodosLosPersonajesDeUnJugadorElJuegoTermina(){
 
         Juego unJuego = new Juego(10,15);
+        unJuego.iniciar();
         unJuego.pasarTurno();
 
        ArrayList<Algoformer> lista = unJuego.getJugadorUno().getAllPersonajes();
 
-                for (Algoformer personaje : unJuego.getJugadorUno().getAllPersonajes() ){unJuego.getJugadorUno().murioUnPersonaje(personaje);}
+                for (Algoformer personaje : lista ){unJuego.getJugadorUno().murioUnPersonaje(personaje);}
 
         unJuego.pasarTurno();
     }
+
+
+    @Test (expected = JuegoNoIniciadoException.class)
+    public void testAlCapturarChispaElJuegoTermina(){
+
+        Juego unJuego = new Juego(10,15);
+        unJuego.iniciar();
+
+        unJuego.getJugadorUno().inicioTurno();
+        unJuego.getJugadorUno().seleccionarPersonaje("Optimus");
+        unJuego.getJugadorUno().getPersonajeSeleccionado().capturar(unJuego.getChispaSuperma());
+        unJuego.pasarTurno();
+
+
+
+    }
+
 
 
 }

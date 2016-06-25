@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-//TODO esta clase puede ser que este demas... luego se ve.
+
 public class Juego implements ObservableJuego {
 
     private List<ObservadorJuego> observadores;
@@ -275,7 +275,7 @@ public class Juego implements ObservableJuego {
     public void jugadorSinPersonajes(Jugador unJugador) {
 
         this.finalizar();
-        //notificarObsevadores(unJugador); //todo  notificar a observadores  pero hay que pasarle el ganador
+        notificarObsevadores(unJugador); //todo  notificar a observadores  pero hay que pasarle el ganador
 
 
     }
