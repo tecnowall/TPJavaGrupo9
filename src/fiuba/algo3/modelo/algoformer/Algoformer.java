@@ -297,7 +297,7 @@ public class Algoformer implements Ubicable, Fusionable, ObservableAlgoformer{
 	}
 
 	//TODO REVISAR ESTO QUE PINCHA al llamarlo desde  juego.pasarturno
-	public void finTurno(){
+	public void inicioTurno(){
 
 			Bonus bonus;
 			for ( Map.Entry< BonusID, Bonus> elemento : buffs.entrySet() ){

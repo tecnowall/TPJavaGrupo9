@@ -117,10 +117,11 @@ public class AlgofusionTest {
 
 		optimus.iniciarFusion( optimus, bumblebee, ratchet );
 		
-		Assert.assertThat( optimus.getVelocidad(), is( 0 ) );
-		optimus.finTurno();
-		optimus.finTurno(); //al final del 2do turno se completa la fusion
-		
+		//Assert.assertThat( optimus.getVelocidad(), is( 0 ) );  TODO me parecio que estaria bueno que igual se pueda mover (se puede modificar igual)
+		optimus.inicioTurno();
+		optimus.inicioTurno(); //al final del 2do turno se completa la fusion
+
+
 		Assert.assertThat( tablero.estaOcupado( optimus.getPosicion() ), is( true ) ); //la fusion se pone donde estaba el que la invoco
 		Assert.assertThat( tablero.estaOcupado( bumblebee.getPosicion() ), is( false ) );
 		Assert.assertThat( tablero.estaOcupado( ratchet.getPosicion() ), is( false ) );

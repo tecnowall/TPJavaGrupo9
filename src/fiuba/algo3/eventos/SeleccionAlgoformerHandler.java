@@ -1,6 +1,7 @@
 package fiuba.algo3.eventos;
 
 import fiuba.algo3.modelo.Jugabilidad.Jugador.FaltanPersonajesParaFusionException;
+import fiuba.algo3.modelo.Jugabilidad.Jugador.NoSePuedeFusionarMasDeUnaVezException;
 import fiuba.algo3.modelo.Jugabilidad.Jugador.PersonajeNoSeleccionadoException;
 import fiuba.algo3.modelo.algoformer.Algoformer;
 import fiuba.algo3.modelo.algoformer.AtaqueFueraDeRangoException;
@@ -113,9 +114,9 @@ public class SeleccionAlgoformerHandler implements EventHandler<ActionEvent> {
 					
 				} catch (FaltanPersonajesParaFusionException e) {
 					MenuInferior.log.appendText("\nFaltan personajes para la fusion!");
-				} catch (PersonajeNoSeleccionadoException e) {
+				} catch (NoSePuedeFusionarMasDeUnaVezException e) {
 
-					MenuInferior.log.appendText("\nNo hay algoformer seleccionado");
+					MenuInferior.log.appendText("\nSolo se puede utilizar la fusion una vez");
 				}
 			} else {
 				MenuInferior.log.appendText("\nEste algoformer no es tuyo");

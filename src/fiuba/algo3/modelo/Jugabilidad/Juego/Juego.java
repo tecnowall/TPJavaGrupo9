@@ -52,70 +52,9 @@ public class Juego implements ObservableJuego {
 
         this.terminada = false;
 
-        //****************************************************************************//
-        // creo los jugadores
-        //***************************************************************************//
-        this.jugadorUno = new Jugador ("Jugador 1", TipoEquipo.AUTOBOTS);
-        this.jugadorDos = new Jugador ("Jugador 2", TipoEquipo.DECEPTICONS);
+        crearObjetos();
 
-
-        //****************************************************************************//
-        // creo un tablero
-        this.unTablero = new Tablero(this.altoTablero,this.anchoTablero);
-        //****************************************************************************//
-        //****************************************************************************//
-        // creo los algoformers - Autobots
-        //****************************************************************************//
-        Autobot a1=Autobot.getOptimus();
-        a1.setTablero(unTablero);
-        a1.setEquipo(TipoEquipo.AUTOBOTS);
-
-        Autobot a2=Autobot.getBumblebee();
-        a2.setTablero(unTablero);
-        a2.setEquipo(TipoEquipo.AUTOBOTS);
-
-        Autobot a3=Autobot.getRatchet();
-        a3.setTablero(unTablero);
-        a3.setEquipo(TipoEquipo.AUTOBOTS);
-
-        //Decepticons
-        Decepticon a4=Decepticon.getMegatron();
-        a3.setTablero(unTablero);
-        a4.setEquipo(TipoEquipo.DECEPTICONS);
-
-
-        Decepticon a5=Decepticon.getBonecrusher();
-        a5.setTablero(unTablero);
-        a5.setEquipo(TipoEquipo.DECEPTICONS);
-
-
-        Decepticon a6=Decepticon.getFrenzy();
-        a6.setTablero(unTablero);
-        a6.setEquipo(TipoEquipo.DECEPTICONS);
-
-
-
-        //****************************************************************************//
-       // agrego los Algoformers a cada jugador
-        this.jugadorUno.agregarPersonaje(a1);         this.jugadorUno.agregarPersonaje(a2);         this.jugadorUno.agregarPersonaje(a3);
-      this.jugadorDos.agregarPersonaje(a4); this.jugadorDos.agregarPersonaje(a5);this.jugadorDos.agregarPersonaje(a6);
-
-
-
-
-        //****************************************************************************//
-        this.turno= new Turno(this.jugadorUno,this.jugadorDos);
-
-
-
-        //TODO escribirlo mejor
-        int x = this.unTablero.getAncho();   x= (x-1) /2;
-        int y = this.unTablero.getAlto();   y= (y-1) /2;
-
-
-        this.chispa = new ChispaSuprema();
-        Coordenada cChispa = new Coordenada( x, y );
-        this.posicionarChispaSuprema(cChispa);
+        this.posicionarChispaSuprema();
         this.posicionarAlgoformers();
         this.posicionarTerrenos();
         this.posicionarBonus();
@@ -131,6 +70,66 @@ public class Juego implements ObservableJuego {
 
     }
 
+    private void crearObjetos(){
+
+        //****************************************************************************//
+        // creo los jugadores
+        //***************************************************************************//
+        this.jugadorUno = new Jugador ("Jugador 1", TipoEquipo.AUTOBOTS);
+        this.jugadorDos = new Jugador ("Jugador 2", TipoEquipo.DECEPTICONS);
+
+
+        //****************************************************************************//
+        // creo un tablero
+        this.unTablero = new Tablero(this.altoTablero,this.anchoTablero);
+        //****************************************************************************//
+        //****************************************************************************//
+        // creo los algoformers - Autobots
+        //****************************************************************************//
+        this.crearAlgoformers();
+
+        //****************************************************************************//
+
+        this.chispa = new ChispaSuprema();
+        this.turno= new Turno(this.jugadorUno,this.jugadorDos);
+    }
+
+
+    private void crearAlgoformers(){
+        Autobot a1=Autobot.getOptimus();
+        a1.setTablero(unTablero);
+      //  a1.setEquipo(TipoEquipo.AUTOBOTS);
+
+        Autobot a2=Autobot.getBumblebee();
+        a2.setTablero(unTablero);
+       // a2.setEquipo(TipoEquipo.AUTOBOTS);
+
+        Autobot a3=Autobot.getRatchet();
+        a3.setTablero(unTablero);
+       // a3.setEquipo(TipoEquipo.AUTOBOTS);
+
+        //Decepticons
+        Decepticon a4=Decepticon.getMegatron();
+        a4.setTablero(unTablero);
+        //a4.setEquipo(TipoEquipo.DECEPTICONS);
+
+
+        Decepticon a5=Decepticon.getBonecrusher();
+        a5.setTablero(unTablero);
+        //a5.setEquipo(TipoEquipo.DECEPTICONS);
+
+
+        Decepticon a6=Decepticon.getFrenzy();
+        a6.setTablero(unTablero);
+        // a6.setEquipo(TipoEquipo.DECEPTICONS);
+
+
+        //****************************************************************************//
+        // agrego los Algoformers a cada jugador
+        this.jugadorUno.agregarPersonaje(a1);         this.jugadorUno.agregarPersonaje(a2);         this.jugadorUno.agregarPersonaje(a3);
+        this.jugadorDos.agregarPersonaje(a4); this.jugadorDos.agregarPersonaje(a5);this.jugadorDos.agregarPersonaje(a6);
+
+    }
 
     private void posicionarAlgoformers( ){
 
@@ -168,10 +167,15 @@ public class Juego implements ObservableJuego {
 
     }
 
-    private void posicionarChispaSuprema (Coordenada posicion){
+    private void posicionarChispaSuprema (){
 
-        this.unTablero.poner(this.chispa, posicion);
-        this.chispa.setPosicion(posicion);
+        //TODO escribirlo mejor
+        int x = this.unTablero.getAncho();   x= (x-1) /2;
+        int y = this.unTablero.getAlto();   y= (y-1) /2;
+        Coordenada cChispa = new Coordenada( x, y );
+
+        this.unTablero.poner(this.chispa, cChispa);
+        this.chispa.setPosicion(cChispa);
     }
     
     private void posicionarTerrenos(){

@@ -21,7 +21,7 @@ public class Jugador {
     private HashMap<String, Algoformer> personajes;
     private Juego juego;
     private int cantidadPersonajes;
-    private boolean fusionIniciada;
+    private boolean fusionUtilizada;
     private boolean fusionTerminada;
 
     public Jugador(String nombre, TipoEquipo equipo) {
@@ -29,7 +29,7 @@ public class Jugador {
         this.equipo = equipo;
         this.estado = new EstadoJugadorEsperando();
         this.personajes = new HashMap<String,Algoformer>();
-        this.fusionIniciada= false;
+        this.fusionUtilizada = false;
         this.fusionTerminada= false;
 
     }
@@ -98,6 +98,18 @@ public class Jugador {
 
     public void inicioTurno(){
         this.estado= new EstadoJugadorActivo();
+
+        //AVISO A ALGOFORMERS FIN DE TURNO
+        Iterator it = personajes.entrySet().iterator();
+        while (it.hasNext()) {
+            ((Algoformer)(((Map.Entry)it.next()).getValue())).inicioTurno();
+            if (this.fusionTerminada){
+
+                this.fusionTerminada=false;
+                break;
+            }
+        }
+
  };
 
     public void finTurno(){
@@ -107,16 +119,7 @@ public class Jugador {
         Set entrySet = personajes.entrySet();
 
 
-        //AVISO A ALGOFORMERS FIN DE TURNO
-        Iterator it = personajes.entrySet().iterator();
-        while (it.hasNext()) {
-           ((Algoformer)(((Map.Entry)it.next()).getValue())).finTurno();
-            if (this.fusionTerminada){
 
-                this.fusionTerminada=false;
-                break;
-            }
-        }
 
     };
 
@@ -153,11 +156,12 @@ public class Jugador {
     //TODO  ver si los algoformer tienen un tablero guardado por que sino no tiene sentido pasar tablero
     public void combinarPersonaje() {
         if ( this.personajeSeleccionado ==null) throw new PersonajeNoSeleccionadoException();
+        if (fusionUtilizada) throw new NoSePuedeFusionarMasDeUnaVezException();
         if (this.cantidadPersonajes != this.personajes.size()) throw new FaltanPersonajesParaFusionException();
-        if (fusionIniciada) throw new NoSePuedeFusionarMasDeUnaVezException();
+
 
         this.estado.combinarPersonaje(this.personajeSeleccionado,this.getAllPersonajes());
-        fusionIniciada = true;
+        fusionUtilizada = true;
     }
 
     //***********************************

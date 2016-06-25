@@ -49,8 +49,8 @@ public class pruebas {
 //		Autobot ratchet = new Autobot( "Ratchet", 150, forma5, forma6 );
 //		
 //		Algofusion superion = optimus.iniciarFusion( optimus, bumblebee, ratchet );
-//		optimus.finTurno();
-//		optimus.finTurno();
+//		optimus.inicioTurno();
+//		optimus.inicioTurno();
 //	}
 	
 //	@Test
