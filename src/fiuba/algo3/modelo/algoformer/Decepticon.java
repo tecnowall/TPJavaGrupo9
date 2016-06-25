@@ -52,6 +52,7 @@ public class Decepticon extends Algoformer implements Fusionable {
 		Forma forma = new Terrestre( 115, 2, 2 );
 		menasor = new Algofusion( "Menasor", forma, parte1, parte2, parte3 );
 		menasor.setEquipo( TipoEquipo.DECEPTICONS);
+		menasor.setTablero(this.getTablero());
 		Bonus bonus = new BonusFusion();
 		this.nuevoBonus( bonus );
 

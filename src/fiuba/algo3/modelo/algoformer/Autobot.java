@@ -52,6 +52,7 @@ public class Autobot extends Algoformer{
 		Forma forma = new Terrestre( 100, 2, 3 );
 		superion = new Algofusion( "Superion", forma, parte1, parte2, parte3 );
 		superion.setEquipo( TipoEquipo.AUTOBOTS);
+		superion.setTablero(this.getTablero());
 		Bonus bonus = new BonusFusion();
 		this.nuevoBonus( bonus );
 
