@@ -1,16 +1,13 @@
 package fiuba.algo3.modelo.algoformer;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
 import fiuba.algo3.modelo.Coordenada;
-import fiuba.algo3.modelo.Jugabilidad.Jugador.Jugador;
 import fiuba.algo3.modelo.TipoEquipo;
+import fiuba.algo3.modelo.Jugabilidad.Jugador.Jugador;
 import fiuba.algo3.modelo.bonus.Bonus;
 import fiuba.algo3.modelo.bonus.BonusID;
 import fiuba.algo3.modelo.bonus.TipoEfecto;

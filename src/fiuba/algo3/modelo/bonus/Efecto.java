@@ -3,8 +3,6 @@ package fiuba.algo3.modelo.bonus;
 import java.util.ArrayList;
 import java.util.List;
 
-import fiuba.algo3.modelo.algoformer.Algoformer;
-
 public abstract class Efecto {
 
 	protected double factor;

@@ -2,21 +2,30 @@ package fiuba.algo3.tests.algoformer;
 
 import static org.hamcrest.CoreMatchers.is;
 
-import fiuba.algo3.modelo.*;
-import fiuba.algo3.modelo.Jugabilidad.Juego.Juego;
+import org.junit.Assert;
+import org.junit.Test;
 
+import fiuba.algo3.modelo.Coordenada;
+import fiuba.algo3.modelo.TipoEquipo;
+import fiuba.algo3.modelo.Jugabilidad.Juego.Juego;
 import fiuba.algo3.modelo.Jugabilidad.Jugador.Jugador;
 import fiuba.algo3.modelo.Jugabilidad.Jugador.PersonajeInexistenteException;
-import fiuba.algo3.modelo.algoformer.*;
+import fiuba.algo3.modelo.algoformer.Aerea;
+import fiuba.algo3.modelo.algoformer.Algoformer;
+import fiuba.algo3.modelo.algoformer.AtaqueFueraDeRangoException;
+import fiuba.algo3.modelo.algoformer.Autobot;
+import fiuba.algo3.modelo.algoformer.Forma;
+import fiuba.algo3.modelo.algoformer.FuegoAmigoException;
+import fiuba.algo3.modelo.algoformer.Humanoide;
+import fiuba.algo3.modelo.algoformer.MovimientoFueraDeRangoException;
+import fiuba.algo3.modelo.algoformer.Terrestre;
+import fiuba.algo3.modelo.algoformer.YaPoseoJugadorException;
 import fiuba.algo3.modelo.bonus.BonusDobleCanion;
 import fiuba.algo3.modelo.bonus.BonusTormentaPsionica;
 import fiuba.algo3.modelo.tablero.Capturable;
 import fiuba.algo3.modelo.tablero.Tablero;
 import fiuba.algo3.modelo.terreno.Terreno;
 import fiuba.algo3.modelo.terreno.TormentaPsionica;
-
-import org.junit.Assert;
-import org.junit.Test;
 
 public class AlgoformerTest {
 

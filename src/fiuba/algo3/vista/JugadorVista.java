@@ -1,9 +1,8 @@
 package fiuba.algo3.vista;
 
 import fiuba.algo3.modelo.Jugabilidad.Jugador.Jugador;
-import javafx.scene.control.*;
-import javafx.scene.image.Image;
-import javafx.scene.layout.*;
+import javafx.scene.control.Label;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 

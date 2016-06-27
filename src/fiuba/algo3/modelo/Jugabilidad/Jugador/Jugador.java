@@ -1,15 +1,18 @@
 package fiuba.algo3.modelo.Jugabilidad.Jugador;
 
 
-import fiuba.algo3.modelo.Coordenada;
-import fiuba.algo3.modelo.Jugabilidad.Juego.Juego;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
+import fiuba.algo3.modelo.Coordenada;
 import fiuba.algo3.modelo.TipoEquipo;
+import fiuba.algo3.modelo.Jugabilidad.Juego.Juego;
 import fiuba.algo3.modelo.algoformer.Algoformer;
 import fiuba.algo3.modelo.algoformer.Algofusion;
 import fiuba.algo3.modelo.tablero.Tablero;
-
-import java.util.*;
 
 
 public class Jugador {

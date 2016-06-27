@@ -1,7 +1,6 @@
 package fiuba.algo3.modelo.movimiento;
 
 import java.util.LinkedList;
-import java.util.List;
 
 import fiuba.algo3.modelo.Coordenada;
 import fiuba.algo3.modelo.algoformer.Algoformer;

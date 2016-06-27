@@ -2,16 +2,13 @@ package fiuba.algo3.eventos;
 
 import fiuba.algo3.modelo.Jugabilidad.Jugador.FaltanPersonajesParaFusionException;
 import fiuba.algo3.modelo.Jugabilidad.Jugador.NoSePuedeFusionarMasDeUnaVezException;
-import fiuba.algo3.modelo.Jugabilidad.Jugador.PersonajeNoSeleccionadoException;
 import fiuba.algo3.modelo.algoformer.Algoformer;
 import fiuba.algo3.modelo.algoformer.AtaqueFueraDeRangoException;
 import fiuba.algo3.modelo.algoformer.FuegoAmigoException;
 import fiuba.algo3.vista.ContenedorPrincipal;
 import fiuba.algo3.vista.MenuInferior;
 import fiuba.algo3.vista.TableroVistaControlador;
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-
 import javafx.scene.control.Alert;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
