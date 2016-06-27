@@ -13,8 +13,10 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
 import javafx.scene.control.Alert;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 
-public class SeleccionAlgoformerHandler implements EventHandler<ActionEvent> {
+public class SeleccionAlgoformerHandler implements EventHandler<MouseEvent> {
 
 	Algoformer algoformer;
 
@@ -23,9 +25,10 @@ public class SeleccionAlgoformerHandler implements EventHandler<ActionEvent> {
 	}
 
 	@Override
-	public void handle(ActionEvent event) {
-
-		if ("Observar" == MenuInferior.selecOpciones.getSelectionModel().getSelectedItem().toString()) {
+	public void handle(MouseEvent event) {
+		
+		MouseButton button = event.getButton();
+		if(button==MouseButton.SECONDARY){ //Observar
 			Alert alert = new Alert(Alert.AlertType.INFORMATION);
 			alert.setTitle("Observar Algoformer");
 			alert.setHeaderText(algoformer.getNombre() + " (Forma " + algoformer.getNombreForma() + ")");
@@ -35,6 +38,8 @@ public class SeleccionAlgoformerHandler implements EventHandler<ActionEvent> {
 					+ algoformer.getRango());
 			alert.showAndWait();
 		}
+		else {
+			
 		if ("Mover" == MenuInferior.selecOpciones.getSelectionModel().getSelectedItem().toString()) {
 			if (TableroVistaControlador.seleccionado == false) {
 				if (algoformer.getJugador().getEstado() == "activo") {
@@ -125,4 +130,5 @@ public class SeleccionAlgoformerHandler implements EventHandler<ActionEvent> {
 
 		}
 	}
+}
 }

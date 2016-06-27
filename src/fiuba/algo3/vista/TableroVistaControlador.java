@@ -20,7 +20,10 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.canvas.Canvas;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Cell;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -95,7 +98,7 @@ public class TableroVistaControlador implements ObservadorTablero, ObservadorBon
 		botonAlgo.setText(unAlgoformer.getNombre());
 		
 		SeleccionAlgoformerHandler seleccionAlgoformerHandler = new SeleccionAlgoformerHandler(unAlgoformer);
-		botonAlgo.setOnAction(seleccionAlgoformerHandler);
+		botonAlgo.setOnMouseClicked(seleccionAlgoformerHandler);
 		
 		
 	}
@@ -242,8 +245,14 @@ public class TableroVistaControlador implements ObservadorTablero, ObservadorBon
 	@Override
 	public void finalizoJuego(Jugador playerWin) {
 		//actualizar vista, mostrar al ganador
-		MenuInferior.log.appendText("\n Finalizo juego" + playerWin.obtenerNombre() + " ......!");
-
+		Alert alert = new Alert(Alert.AlertType.INFORMATION);
+		alert.setTitle("Fin de Partida");
+		alert.setHeaderText(null);
+		alert.setContentText("Victoria de " + playerWin.obtenerNombre() + "!");
+		ButtonType ok = alert.getButtonTypes().get(0);
+		if (alert.showAndWait().get()==ok){
+			System.exit(0);
+		}
 	}
 
 
