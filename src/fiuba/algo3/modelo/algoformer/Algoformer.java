@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 import fiuba.algo3.modelo.Coordenada;
 import fiuba.algo3.modelo.Jugabilidad.Jugador.Jugador;
@@ -32,7 +33,7 @@ public class Algoformer implements Ubicable, Fusionable, ObservableAlgoformer{
 	private Forma actual;
 	private TipoEquipo equipo;
 	private Movimiento movimiento;
-	private transient Map<BonusID, Bonus> buffs;
+	private transient ConcurrentHashMap<BonusID, Bonus> buffs;
 	protected Jugador jugador;
 	protected List<ObservadorAlgoformer> observadores;
 	
@@ -49,7 +50,7 @@ public class Algoformer implements Ubicable, Fusionable, ObservableAlgoformer{
 		this.vida = vida;
 		this.actual = humanoide;
 		this.alterna = alterna;
-		this.buffs = new HashMap<BonusID, Bonus>();
+		this.buffs = new ConcurrentHashMap<BonusID, Bonus>();
 		this.observadores = new ArrayList<ObservadorAlgoformer>();
 	}
 	
@@ -58,7 +59,7 @@ public class Algoformer implements Ubicable, Fusionable, ObservableAlgoformer{
 		this.vida = vida;
 		this.actual = humanoide;
 		this.alterna = alterna;
-		this.buffs = new HashMap<BonusID, Bonus>();
+		this.buffs = new ConcurrentHashMap<BonusID, Bonus>();
 		this.observadores = new ArrayList<ObservadorAlgoformer>();
 		setTablero( tablero );
 	}

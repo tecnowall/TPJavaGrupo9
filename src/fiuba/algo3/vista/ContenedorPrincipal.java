@@ -63,14 +63,18 @@ public class ContenedorPrincipal extends BorderPane {
     private void setJugadores(Jugador jugadorUno, Jugador jugadorDos) {
     	
     	VBox vbox1=new VBox(); VBox vbox2=new VBox();
+    	
     	JugadorVista vistaJugador1 = new JugadorVista(vbox1,jugadorUno);
     	JugadorVista vistaJugador2 = new JugadorVista(vbox2,jugadorDos);
     	
     	vistaJugador1.dibujarJugador();
     	vistaJugador2.dibujarJugador();
+    	vistaJugador1.dibujarInfoTerreno();
+    	vistaJugador2.dibujarInfoBonus();
     	this.setLeft(vbox1);
     	this.setRight(vbox2);
-    	
+    	vbox1.setTranslateX(20);
+    	vbox2.setTranslateX(-20);
 
     	for(Algoformer value: jugadorUno.getAllPersonajes()){
     		vistaTablero.ubicarAlgoformer(value,value.getPosicion().getX(),value.getPosicion().getY());
