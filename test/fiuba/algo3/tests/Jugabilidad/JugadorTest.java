@@ -1,15 +1,27 @@
 package fiuba.algo3.tests.Jugabilidad;
 
-import fiuba.algo3.modelo.Coordenada;
-import fiuba.algo3.modelo.Jugabilidad.Jugador.*;
-import fiuba.algo3.modelo.TipoEquipo;
-import fiuba.algo3.modelo.algoformer.*;
-import fiuba.algo3.modelo.tablero.Tablero;
-import org.junit.Assert;
+import java.util.ArrayList;
 
+import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.ArrayList;
+import fiuba.algo3.modelo.Coordenada;
+import fiuba.algo3.modelo.TipoEquipo;
+import fiuba.algo3.modelo.Jugabilidad.Jugador.FaltanPersonajesParaFusionException;
+import fiuba.algo3.modelo.Jugabilidad.Jugador.Jugador;
+import fiuba.algo3.modelo.Jugabilidad.Jugador.JugadorEnEstadoDeEsperaException;
+import fiuba.algo3.modelo.Jugabilidad.Jugador.NoSePuedeFusionarMasDeUnaVezException;
+import fiuba.algo3.modelo.Jugabilidad.Jugador.PersonajeDeOtroEquipoException;
+import fiuba.algo3.modelo.Jugabilidad.Jugador.PersonajeInexistenteException;
+import fiuba.algo3.modelo.Jugabilidad.Jugador.PersonajeNoSeleccionadoException;
+import fiuba.algo3.modelo.Jugabilidad.Jugador.PersonajeNombreDuplicadoException;
+import fiuba.algo3.modelo.algoformer.Algoformer;
+import fiuba.algo3.modelo.algoformer.Autobot;
+import fiuba.algo3.modelo.algoformer.Forma;
+import fiuba.algo3.modelo.algoformer.Humanoide;
+import fiuba.algo3.modelo.algoformer.MovimientoFueraDeRangoException;
+import fiuba.algo3.modelo.algoformer.Terrestre;
+import fiuba.algo3.modelo.tablero.Tablero;
 
 /**
  * Created by jose on 09/06/2016.

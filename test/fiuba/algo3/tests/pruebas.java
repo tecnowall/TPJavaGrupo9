@@ -1,36 +1,5 @@
 package fiuba.algo3.tests;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.*;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import org.junit.Assert;
-import org.junit.Test;
-
-import fiuba.algo3.modelo.Coordenada;
-import fiuba.algo3.modelo.TipoEquipo;
-import fiuba.algo3.modelo.algoformer.Aerea;
-import fiuba.algo3.modelo.algoformer.Algoformer;
-import fiuba.algo3.modelo.algoformer.Algofusion;
-import fiuba.algo3.modelo.algoformer.Autobot;
-import fiuba.algo3.modelo.algoformer.Decepticon;
-import fiuba.algo3.modelo.algoformer.Forma;
-import fiuba.algo3.modelo.algoformer.Humanoide;
-import fiuba.algo3.modelo.algoformer.Terrestre;
-import fiuba.algo3.modelo.bonus.Bonus;
-import fiuba.algo3.modelo.bonus.BonusDobleCanion;
-import fiuba.algo3.modelo.bonus.BonusFusion;
-import fiuba.algo3.modelo.bonus.BonusNebulosaDeAndromeda;
-import fiuba.algo3.modelo.bonus.BonusTormentaPsionica;
-import fiuba.algo3.modelo.bonus.TipoEfecto;
-import fiuba.algo3.modelo.tablero.Capturable;
-import fiuba.algo3.modelo.tablero.Tablero;
-import fiuba.algo3.modelo.terreno.NebulosaDeAndromeda;
-import fiuba.algo3.modelo.terreno.Terreno;
-import fiuba.algo3.modelo.terreno.TormentaPsionica;
-
 public class pruebas {
 
 	

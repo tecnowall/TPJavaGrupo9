@@ -6,39 +6,22 @@ import fiuba.algo3.modelo.Jugabilidad.Juego.Juego;
 import fiuba.algo3.modelo.Jugabilidad.Jugador.Jugador;
 import fiuba.algo3.modelo.algoformer.Algoformer;
 import fiuba.algo3.modelo.algoformer.Algofusion;
-import fiuba.algo3.modelo.bonus.Bonus;
 import fiuba.algo3.modelo.observadores.ObservadorAlgoformer;
 import fiuba.algo3.modelo.observadores.ObservadorBonus;
 import fiuba.algo3.modelo.observadores.ObservadorJuego;
 import fiuba.algo3.modelo.observadores.ObservadorTablero;
-import fiuba.algo3.modelo.tablero.*;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.fxml.FXML;
-import javafx.geometry.HPos;
-import javafx.geometry.Insets;
+import fiuba.algo3.modelo.tablero.Tablero;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
-import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
-import javafx.scene.control.Cell;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.RowConstraints;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
-import javafx.scene.text.Text;
-import org.apache.commons.lang3.ObjectUtils;
 
 //TODO ojo el obsvador juego....
 public class TableroVistaControlador implements ObservadorTablero, ObservadorBonus, ObservadorAlgoformer, ObservadorJuego {
-	//implements ObservadorTablero
 	Tablero tablero;
 	GridPane tableroView;
 	Juego juego;

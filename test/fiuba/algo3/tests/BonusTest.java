@@ -1,11 +1,6 @@
 package fiuba.algo3.tests;
 
-import static org.junit.Assert.*;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import static org.hamcrest.CoreMatchers.*;
+import static org.hamcrest.CoreMatchers.is;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -14,7 +9,7 @@ import fiuba.algo3.modelo.algoformer.Algoformer;
 import fiuba.algo3.modelo.algoformer.Forma;
 import fiuba.algo3.modelo.algoformer.Humanoide;
 import fiuba.algo3.modelo.algoformer.Terrestre;
-import fiuba.algo3.modelo.bonus.*;
+import fiuba.algo3.modelo.bonus.Bonus;
 import fiuba.algo3.modelo.bonus.BonusBurbuja;
 import fiuba.algo3.modelo.bonus.BonusDobleCanion;
 import fiuba.algo3.modelo.bonus.BonusFlash;

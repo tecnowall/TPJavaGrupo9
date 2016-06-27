@@ -1,27 +1,18 @@
 package fiuba.algo3.vista;
 
+import java.util.List;
+
 import fiuba.algo3.modelo.ChispaSuprema;
 import fiuba.algo3.modelo.Jugabilidad.Juego.Juego;
 import fiuba.algo3.modelo.Jugabilidad.Jugador.Jugador;
 import fiuba.algo3.modelo.algoformer.Algoformer;
-import fiuba.algo3.modelo.algoformer.Forma;
-import fiuba.algo3.modelo.algoformer.Humanoide;
-import fiuba.algo3.modelo.algoformer.Terrestre;
 import fiuba.algo3.modelo.bonus.Bonus;
-import fiuba.algo3.modelo.tablero.*;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.canvas.Canvas;
-import javafx.scene.control.*;
-import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.scene.text.Text;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-
-import java.util.List;
 
 public class ContenedorPrincipal extends BorderPane {
 

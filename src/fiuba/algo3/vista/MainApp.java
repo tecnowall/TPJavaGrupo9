@@ -1,20 +1,8 @@
 package fiuba.algo3.vista;
-import java.io.IOException;
-
-import fiuba.algo3.modelo.*;
 import fiuba.algo3.modelo.Jugabilidad.Juego.Juego;
-import fiuba.algo3.modelo.algoformer.Algoformer;
-import fiuba.algo3.modelo.algoformer.Forma;
-import fiuba.algo3.modelo.algoformer.Humanoide;
-import fiuba.algo3.modelo.algoformer.Terrestre;
-import fiuba.algo3.modelo.tablero.Tablero;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 public class MainApp extends Application {

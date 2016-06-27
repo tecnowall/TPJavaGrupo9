@@ -5,7 +5,6 @@ import fiuba.algo3.modelo.algoformer.MovimientoFueraDeRangoException;
 import fiuba.algo3.vista.ContenedorPrincipal;
 import fiuba.algo3.vista.MenuInferior;
 import fiuba.algo3.vista.TableroVistaControlador;
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 

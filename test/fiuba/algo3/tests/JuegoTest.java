@@ -1,12 +1,12 @@
 package fiuba.algo3.tests;
 
-import fiuba.algo3.modelo.Coordenada;
+import java.util.ArrayList;
+
+import org.junit.Test;
+
 import fiuba.algo3.modelo.Jugabilidad.Juego.Juego;
 import fiuba.algo3.modelo.Jugabilidad.Juego.JuegoNoIniciadoException;
 import fiuba.algo3.modelo.algoformer.Algoformer;
-import org.junit.Test;
-
-import java.util.ArrayList;
 
 /**
  * Created by jose on 21/06/2016.

@@ -1,11 +1,10 @@
 package fiuba.algo3.modelo.Jugabilidad.Jugador;
 
-import fiuba.algo3.modelo.Coordenada;
+import java.util.ArrayList;
 
+import fiuba.algo3.modelo.Coordenada;
 import fiuba.algo3.modelo.algoformer.Algoformer;
 import fiuba.algo3.modelo.tablero.Tablero;
-
-import java.util.ArrayList;
 
 public class  EstadoJugadorEsperando extends EstadoJugador{
 

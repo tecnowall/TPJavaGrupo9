@@ -1,7 +1,5 @@
 package fiuba.algo3.modelo.bonus;
 
-import java.util.ArrayList;
-
 public class EfectoMultiplicativo extends Efecto {
 	
 	public EfectoMultiplicativo( double valor, TipoEfecto tipo ){

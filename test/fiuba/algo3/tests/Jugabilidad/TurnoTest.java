@@ -1,13 +1,14 @@
 package fiuba.algo3.tests.Jugabilidad;
 
-import fiuba.algo3.modelo.Jugabilidad.Jugador.Jugador;
-import fiuba.algo3.modelo.Jugabilidad.Juego.Turno;
-import fiuba.algo3.modelo.TipoEquipo;
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.not;
+
 import org.junit.Assert;
 import org.junit.Test;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.CoreMatchers.not;
+import fiuba.algo3.modelo.TipoEquipo;
+import fiuba.algo3.modelo.Jugabilidad.Juego.Turno;
+import fiuba.algo3.modelo.Jugabilidad.Jugador.Jugador;
 
 
 /**

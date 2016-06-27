@@ -1,21 +1,25 @@
 package fiuba.algo3.modelo.Jugabilidad.Juego;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import fiuba.algo3.modelo.ChispaSuprema;
 import fiuba.algo3.modelo.Coordenada;
-import fiuba.algo3.modelo.Jugabilidad.Jugador.Jugador;
 import fiuba.algo3.modelo.TipoEquipo;
+import fiuba.algo3.modelo.Jugabilidad.Jugador.Jugador;
 import fiuba.algo3.modelo.algoformer.Autobot;
 import fiuba.algo3.modelo.algoformer.Decepticon;
 import fiuba.algo3.modelo.bonus.Bonus;
-import fiuba.algo3.modelo.bonus.*;
+import fiuba.algo3.modelo.bonus.BonusBurbuja;
 import fiuba.algo3.modelo.bonus.BonusDobleCanion;
+import fiuba.algo3.modelo.bonus.BonusFlash;
 import fiuba.algo3.modelo.observadores.ObservableJuego;
 import fiuba.algo3.modelo.observadores.ObservadorJuego;
 import fiuba.algo3.modelo.tablero.Tablero;
-import fiuba.algo3.modelo.terreno.*;
-
-import java.util.ArrayList;
-import java.util.List;
+import fiuba.algo3.modelo.terreno.NebulosaDeAndromeda;
+import fiuba.algo3.modelo.terreno.Pantano;
+import fiuba.algo3.modelo.terreno.Rocoso;
+import fiuba.algo3.modelo.terreno.TormentaPsionica;
 
 
 
