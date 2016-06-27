@@ -7,8 +7,9 @@ import fiuba.algo3.vista.MenuInferior;
 import fiuba.algo3.vista.TableroVistaControlador;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.input.MouseEvent;
 
-public class SeleccionVacioHandler implements EventHandler<ActionEvent>{
+public class SeleccionVacioHandler implements EventHandler<MouseEvent>{
 	
 	Coordenada coordenada;
 	public SeleccionVacioHandler(Coordenada unaCoordenada){
@@ -16,7 +17,7 @@ public class SeleccionVacioHandler implements EventHandler<ActionEvent>{
 	}
 
 	@Override
-	public void handle(ActionEvent event) {
+	public void handle(MouseEvent event) {
 		// TODO Auto-generated method stub
 		if ("Observar"==MenuInferior.selecOpciones.getSelectionModel().getSelectedItem().toString()){
 			MenuInferior.log.appendText("\nCasillero: "+coordenada.getX() +"," + coordenada.getY());

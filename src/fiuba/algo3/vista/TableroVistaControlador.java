@@ -80,7 +80,7 @@ public class TableroVistaControlador implements ObservadorTablero, ObservadorBon
 				boton.setPrefHeight(30);
 				Coordenada coordenada=new Coordenada(i, j);
 				SeleccionVacioHandler seleccionVacioHandler = new SeleccionVacioHandler(coordenada);
-				boton.setOnAction(seleccionVacioHandler);
+				boton.setOnMouseClicked(seleccionVacioHandler);
 				if ((ContenedorPrincipal.juego.getChispaSuperma().getPosicion().getX()==i) && (ContenedorPrincipal.juego.getChispaSuperma().getPosicion().getX()==j)){
 					boton.setStyle("-fx-base: #e6e600;"); //Color de chispa suprema
 				}
@@ -111,7 +111,7 @@ public class TableroVistaControlador implements ObservadorTablero, ObservadorBon
 		botonAlgo.setText("");
 		
 		SeleccionVacioHandler seleccionVacioHandler = new SeleccionVacioHandler(coordenada);
-		botonAlgo.setOnAction(seleccionVacioHandler);
+		botonAlgo.setOnMouseClicked(seleccionVacioHandler);
 	}
 	
 	public void dibujarBonus(){
