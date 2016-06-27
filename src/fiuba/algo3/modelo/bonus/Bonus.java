@@ -26,7 +26,7 @@ public abstract class Bonus implements Capturable{
 	
 	public void consumirDuracion(){
 		duracion --;
-		if ( duracion < 1 ){
+		if ( duracion == 0 ){
 			afectado.perderBonus( this.bonusID );
 		}
 	}

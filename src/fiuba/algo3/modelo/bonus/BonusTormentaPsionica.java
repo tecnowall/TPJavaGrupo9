@@ -7,6 +7,7 @@ public class BonusTormentaPsionica extends Bonus {
 	public BonusTormentaPsionica(){
 		bonusID = bonusID.TORMENTA;
 		efectos.add( new EfectoMultiplicativo( 0.6, TipoEfecto.PODER ) );
+		duracion = -1; //no termina nunca
 	}
 	
 	
