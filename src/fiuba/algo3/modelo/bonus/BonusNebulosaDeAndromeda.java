@@ -7,6 +7,7 @@ public class BonusNebulosaDeAndromeda extends Bonus {
 	public BonusNebulosaDeAndromeda(){
 		bonusID = BonusID.NEBULOSA;
 		efectos.add( new EfectoMultiplicativo( 0, TipoEfecto.VELOCIDAD ) );//impide el movimiento
+		duracion = 3;
 	}
 		
 	@Override

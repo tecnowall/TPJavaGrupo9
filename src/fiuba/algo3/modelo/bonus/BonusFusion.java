@@ -8,7 +8,6 @@ public class BonusFusion extends Bonus {
 		bonusID = BonusID.FUSION;
 		duracion = 2;
 		efectos.add( new EfectoMultiplicativo( 0, TipoEfecto.VELOCIDAD ) );
-//		efectos.add( new EfectoFusionar( TipoEfecto.FIN_DE_TURNO ) );
 	}
 	
 	@Override
